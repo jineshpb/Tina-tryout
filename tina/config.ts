@@ -1,11 +1,11 @@
-import { defineConfig } from "tinacms";
+import { defineConfig } from "tinacms"
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "main";
+  "main"
 
 export default defineConfig({
   branch,
@@ -32,7 +32,7 @@ export default defineConfig({
         name: "page",
         label: "Pages",
         path: "content/page",
-        format:"mdx",
+        format: "mdx",
         fields: [
           {
             name: "title",
@@ -52,18 +52,17 @@ export default defineConfig({
           // This is an DEMO router. You can remove this to fit your site
           router: ({ document }) => {
             if (document._sys.filename === "home") {
-              return "/";
+              return "/"
             }
-            return undefined;
+            return undefined
           },
-
         },
       },
       {
         name: "posts",
         label: "Posts",
-        path: "content/posts",
-        format:"mdx",
+        path: "content/post",
+        format: "mdx",
         fields: [
           {
             name: "title",
@@ -89,26 +88,22 @@ export default defineConfig({
           return {
             title: "New Post",
             date: new Date().toISOString(),
-          };
+          }
         },
         ui: {
           // This is an DEMO router. You can remove this to fit your site
           router: ({ document }) => {
-              return `/posts/${document._sys.filename}`;
-            
+            return `/posts/${document._sys.filename}`
           },
           filename: {
             slugify: (values) => {
-              return `${(values.title || "").
-              toLowerCase().replace(/ /g, "-")}`.
-              replace(/[^\w.\/-\s]/gi,"",)
+              return `${(values.title || "")
+                .toLowerCase()
+                .replace(/ /g, "-")}`.replace(/[^\w.\/-\s]/gi, "")
             },
-          }
-
+          },
         },
       },
     ],
-    
   },
-  
-});
+})
