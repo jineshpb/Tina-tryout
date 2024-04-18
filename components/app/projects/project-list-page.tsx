@@ -1,5 +1,6 @@
 "use client"
 
+import { LinkCard } from "@/components/LinkCard"
 import { ProjectsConnectionQuery } from "@/tina/__generated__/types"
 import Link from "next/link"
 import { useTina } from "tinacms/dist/react"
@@ -22,14 +23,43 @@ export function ProjectListPageComponent(props: {
   return (
     <>
       <h1>Projects</h1>
-      <div>
-        {projectList?.map((project: any) => {
-          return (
-            <div key={project.node.id}>
-              <Link href={project.node.link}>{project.node.title}</Link>
-            </div>
-          )
-        })}
+      <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-3 lg:mx-0">
+        <div className="grid grid-cols-1 gap-4">
+          {projectList
+            .filter((_: any, i: number) => i % 3 === 0)
+            .map((project: any) => (
+              <LinkCard
+                key={project.node.id}
+                link={project.node.link}
+                title={project.node.title}
+                description={project.node.description}
+              />
+            ))}
+        </div>
+        <div className="grid grid-cols-1 gap-4">
+          {projectList
+            .filter((_: any, i: number) => i % 3 === 1)
+            .map((project: any) => (
+              <LinkCard
+                key={project.node.id}
+                link={project.node.link}
+                title={project.node.title}
+                description={project.node.description}
+              />
+            ))}
+        </div>
+        <div className="grid grid-cols-1 gap-4">
+          {projectList
+            .filter((_: any, i: number) => i % 3 === 2)
+            .map((project: any) => (
+              <LinkCard
+                key={project.node.id}
+                link={project.node.link}
+                title={project.node.title}
+                description={project.node.description}
+              />
+            ))}
+        </div>
       </div>
     </>
   )

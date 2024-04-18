@@ -12,6 +12,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.368.0",
+    "moment": "^2.30.1",
     "next": "14.2.1",
     "next-themes": "^0.3.0",
     "react": "^18",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.43",
+    "@types/moment": "^2.13.0",
     "@types/node": "^20.12.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",

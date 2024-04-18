@@ -25,7 +25,7 @@ export default function Header() {
         <Link href="/about" className="sm:hidden">
           <RxPerson />
         </Link>
-        <Link href="/project" className="max-sm:hidden">
+        <Link href="/projects" className="max-sm:hidden">
           Projects
         </Link>
         <Link href="/project" className="sm:hidden">
