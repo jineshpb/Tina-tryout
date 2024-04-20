@@ -47,12 +47,106 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
+          {
+            name: "blocks",
+            label: "Blocks",
+            type: "object",
+            list: true,
+            templates: [
+              {
+                name: "welcomeHero",
+                label: "Welcome Hero",
+                fields: [
+                  {
+                    name: "title",
+                    type: "string",
+                    label: "Title",
+                    required: true,
+                  },
+                  {
+                    name: "description",
+                    type: "rich-text",
+                    label: "Description",
+                    required: true,
+                  },
+                  {
+                    name: "link",
+                    type: "object",
+                    label: "Link",
+                    list: true,
+                    fields: [
+                      {
+                        name: "cta",
+                        type: "string",
+                        label: "CTA",
+                      },
+                      {
+                        name: "url",
+                        type: "string",
+                        label: "URL",
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "experience",
+                label: "Experience",
+                fields: [
+                  {
+                    name: "experienceHeading",
+                    type: "string",
+                    label: "Experience Heading",
+                  },
+                  {
+                    name: "roles",
+                    type: "object",
+                    label: "Roles",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.label }
+                      },
+                      defaultItem: {
+                        position: "designer",
+                        company: "TinaCMS",
+                        date: "2021",
+                        description: "I did some stuff",
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "position",
+                        type: "string",
+                        label: "Position",
+                      },
+                      {
+                        name: "company",
+                        type: "string",
+                        label: "Company",
+                      },
+                      {
+                        name: "date",
+                        type: "string",
+                        label: "Date",
+                      },
+                      {
+                        name: "description",
+                        type: "rich-text",
+                        label: "Description",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
         ],
         ui: {
           // This is an DEMO router. You can remove this to fit your site
           router: ({ document }) => {
-            if (document._sys.filename === "home") {
-              return "/"
+            if (document._sys.filename === "about") {
+              return "/about"
             }
             return undefined
           },

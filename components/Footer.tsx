@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { RiYoutubeFill, RiTwitterXFill, RiGithubFill } from "react-icons/ri"
+import { RxDividerVertical } from "react-icons/rx"
 
 export default function Footer() {
   return (
@@ -15,6 +17,18 @@ export default function Footer() {
         </Link>{" "}
         Template
       </p>
+      <div className="flex">
+        <Link href="https://youtube.com">
+          <RiYoutubeFill />
+        </Link>
+        <Link href="https://youtube.com">
+          <RiTwitterXFill />
+        </Link>
+        <Link href="https://youtube.com">
+          <RiGithubFill />
+        </Link>
+        <RxDividerVertical className="text-gray-300" />
+      </div>
     </div>
   )
 }
