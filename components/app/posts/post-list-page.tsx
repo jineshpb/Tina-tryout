@@ -1,5 +1,6 @@
 "use client"
 
+import Heading from "@/components/Heading"
 import { PostsConnectionQuery } from "@/tina/__generated__/types"
 import moment from "moment"
 import Link from "next/link"
@@ -46,51 +47,30 @@ export function PostListPageComponent(props: {
   console.log(tags)
 
   return (
-    <>
-      <h1>Blog</h1>
+    <div className="">
+      <Heading size="lg" as="h1">
+        Blog
+      </Heading>
 
-      <div className="flex md:space-x-12">
-        <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-muted pt-5 font-sans md:flex">
-          <div className="px-6 py-4">
-            <a
-              href="/posts"
-              className={`uppercase ${props.tag === undefined ? "pointer-events-none text-emerald-600 dark:text-emerald-400" : "text-zinc-700 hover:text-emerald-500 dark:text-zinc-300 dark:hover:text-emerald-500"}`}
-            >
-              All posts
-            </a>
-            <ul>
-              {Object.keys(tags)
-                .map((tag: any) => (
-                  <li className="my-3" key={tag}>
-                    <Link
-                      className={`px-3 py-2 text-sm font-medium uppercase ${props.tag === tag ? "pointer-events-none text-emerald-600 dark:text-emerald-400" : "text-primary hover:text-emerald-600 dark:text-zinc-300 dark:hover:text-emerald-500"}`}
-                      aria-label={`view posts tagged ${tag}`}
-                      href={`/posts/tags/${tag}`}
-                    >
-                      {tag} ({tags[tag]})
-                    </Link>
-                  </li>
-                ))
-                .sort((a: any, b: any) => a.key.localeCompare(b.key))}
-            </ul>
-          </div>
-        </div>
-
+      <div className="mt-10 flex w-full justify-between md:space-x-12">
         <div>
           <ul className="m-0 pl-0">
             {postList?.map((post: any) => {
               return (
-                <li key={post.node.id} className="mt-0 pb-2">
+                <li key={post.node.id} className="pb-10">
+                  <Link
+                    href={`/posts/${post.node._sys.filename}`}
+                    className="text-3xl font-semibold tracking-tight "
+                  >
+                    {post.node.title}
+                  </Link>
                   <div className="flex">
                     <span className="text-sm text-gray-400">
                       {moment(post.node.date).format("MMM DD, YYYY")}
                     </span>
                   </div>
-                  <Link href={`/posts/${post.node._sys.filename}`}>
-                    {post.node.title}
-                  </Link>
                   {post.node.tags && (
-                    <div className="flex flex-wrap gap-2 font-sans text-sm text-emerald-600 dark:text-emerald-400">
+                    <div className="flex flex-wrap gap-2 pt-2  text-sm text-purple-600 dark:text-purple-400">
                       {post.node.tags.map((tag: any) => (
                         <Link
                           href={`/posts/tags/${tag}`}
@@ -107,7 +87,32 @@ export function PostListPageComponent(props: {
             })}
           </ul>
         </div>
+        <div className="hidden h-full max-h-screen min-w-[240px] max-w-[280px] flex-wrap overflow-auto rounded bg-slate-100 pt-2 dark:bg-slate-900 md:flex">
+          <div className="px-6 py-4">
+            <a
+              href="/posts"
+              className={`uppercase ${props.tag === undefined ? "pointer-events-none text-purple-600 dark:text-purple-400" : "text-zinc-700 hover:text-purple-500 dark:text-zinc-300 dark:hover:text-purple-500"}`}
+            >
+              All posts
+            </a>
+            <ul>
+              {Object.keys(tags)
+                .map((tag: any) => (
+                  <li className="my-3" key={tag}>
+                    <Link
+                      className={`px-3 py-2 text-sm font-medium uppercase ${props.tag === tag ? "pointer-events-none text-purple-600 dark:text-purple-400" : "text-primary hover:text-purple-600 dark:text-slate-400 dark:hover:text-purple-500"}`}
+                      aria-label={`view posts tagged ${tag}`}
+                      href={`/posts/tags/${tag}`}
+                    >
+                      {tag} ({tags[tag]})
+                    </Link>
+                  </li>
+                ))
+                .sort((a: any, b: any) => a.key.localeCompare(b.key))}
+            </ul>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   )
 }

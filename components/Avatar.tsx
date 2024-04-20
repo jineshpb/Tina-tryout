@@ -81,8 +81,8 @@ export default function Avatar({ image, className }: AvatarProps) {
         <Image
           alt="avatar"
           src={image}
-          width={100}
-          height={100}
+          width={400}
+          height={400}
           className="avatar-image w-full object-fill"
         />
         <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>

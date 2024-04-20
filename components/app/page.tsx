@@ -22,8 +22,10 @@ export function PageComponent(props: {
 
   return (
     <section>
-      <div className="flex gap-8">
-        <Avatar image={"/jinesh-mug.jpg"}></Avatar>
+      <div className="flex flex-col gap-8 md:flex-row">
+        <div className="mt-4 flex w-1/2 md:w-1/3">
+          <Avatar image={"/jinesh-mug.jpg"}></Avatar>
+        </div>
         <div className="w-full">
           {data.page.blocks?.map((block, i) => {
             switch (block?.__typename) {
@@ -74,56 +76,57 @@ export function PageComponent(props: {
           switch (block?.__typename) {
             case "PageBlocksExperience":
               return (
-                <section key={i}>
+                <section key={i} className="mt-40">
                   <Heading
-                    as="h2"
-                    size="xl"
-                    className="text-slate-300 dark:text-slate-600"
+                    size="lg"
+                    className="py-0 text-slate-300 dark:text-slate-600"
                   >
                     {block.experienceHeading}
                   </Heading>
 
-                  {block.roles?.map((role, i) => {
-                    return (
-                      <div key={i} className="pt-10">
-                        <span
-                          className=" text-3xl font-bold"
-                          data-tina-field={
-                            role ? tinaField(role, "position") : undefined
-                          }
-                        >
-                          {role?.position}
-                        </span>
-                        <div className="flex gap-2  text-slate-500 dark:text-slate-500">
+                  <div>
+                    {block.roles?.map((role, i) => {
+                      return (
+                        <div key={i} className="mb-20 mt-10">
                           <span
-                            className="flex gap-4 pt-0"
+                            className=" text-3xl font-bold text-slate-700 dark:text-slate-300 "
                             data-tina-field={
-                              role ? tinaField(role, "company") : undefined
+                              role ? tinaField(role, "position") : undefined
                             }
                           >
-                            {role?.company}
+                            {role?.position}
                           </span>
-                          <span>&#8226;</span>
-                          <span
-                            data-tina-field={
-                              role ? tinaField(role, "date") : undefined
-                            }
-                          >
-                            {role?.date}
-                          </span>
-                        </div>
+                          <div className="flex gap-2  text-slate-500 dark:text-slate-500">
+                            <span
+                              className="flex gap-4 pt-0"
+                              data-tina-field={
+                                role ? tinaField(role, "company") : undefined
+                              }
+                            >
+                              {role?.company}
+                            </span>
+                            <span>&#8226;</span>
+                            <span
+                              data-tina-field={
+                                role ? tinaField(role, "date") : undefined
+                              }
+                            >
+                              {role?.date}
+                            </span>
+                          </div>
 
-                        <div
-                          className="prose prose-xl mt-6"
-                          data-tina-field={
-                            role ? tinaField(role, "description") : undefined
-                          }
-                        >
-                          <TinaMarkdown content={role?.description} />
+                          <div
+                            className="prose prose-lg text-slate-700 dark:text-slate-300"
+                            data-tina-field={
+                              role ? tinaField(role, "description") : undefined
+                            }
+                          >
+                            <TinaMarkdown content={role?.description} />
+                          </div>
                         </div>
-                      </div>
-                    )
-                  })}
+                      )
+                    })}
+                  </div>
                 </section>
               )
             default:

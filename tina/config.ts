@@ -173,6 +173,11 @@ export default defineConfig({
             required: true,
           },
           {
+            name: "coverImage",
+            type: "image",
+            label: "Cover Image",
+          },
+          {
             name: "date",
             type: "datetime",
             label: "Date",

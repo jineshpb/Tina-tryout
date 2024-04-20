@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={spaceGrotesk.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="ms:px-0 prose-xl mx-auto my-10 w-full max-w-4xl px-4 dark:prose-invert">
+          <div className="ms:px-0 mx-auto my-10 w-full max-w-6xl px-4 ">
             <Header />
             <main>{children}</main>
             <Footer />
