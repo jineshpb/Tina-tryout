@@ -1,5 +1,6 @@
 "use client"
 
+import Heading from "@/components/Heading"
 import { LinkCard } from "@/components/LinkCard"
 import { ProjectsConnectionQuery } from "@/tina/__generated__/types"
 import Link from "next/link"
@@ -16,14 +17,17 @@ export function ProjectListPageComponent(props: {
 
   const projectList = data.projectsConnection.edges
 
+  console.log("from project list page", projectList)
+
   if (!projectList) {
     return
   }
 
   return (
     <>
-      <h1>Projects</h1>
-      <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-3 lg:mx-0">
+      <Heading as="h1">Projects</Heading>
+
+      <div className="mx-auto grid grid-cols-1 gap-4 pt-10 md:grid-cols-3 lg:mx-0">
         <div className="grid grid-cols-1 gap-4">
           {projectList
             .filter((_: any, i: number) => i % 3 === 0)

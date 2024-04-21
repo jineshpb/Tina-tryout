@@ -29,6 +29,37 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: "settings",
+        label: "Settings",
+        path: "content/settings",
+        format: "json",
+        fields: [
+          {
+            name: "logo",
+            type: "image",
+            label: "Logo",
+          },
+          {
+            name: "menuItems",
+            type: "object",
+            label: "Menu Items",
+            list: true,
+            fields: [
+              {
+                name: "label",
+                type: "string",
+                label: "Label",
+              },
+              {
+                name: "link",
+                type: "string",
+                label: "Link",
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: "page",
         label: "Pages",
         path: "content/page",

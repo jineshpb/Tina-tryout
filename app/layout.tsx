@@ -31,9 +31,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={spaceGrotesk.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="ms:px-0 mx-auto my-10 w-full max-w-6xl px-4 ">
-            <Header />
-            <main>{children}</main>
+          <div className="ms:px-0 relative mx-auto w-full">
+            <div className="sticky top-0 z-10  inline-flex w-full max-w-7xl  ">
+              <Header />
+            </div>
+
+            <main className="flex justify-center">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

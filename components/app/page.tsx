@@ -8,6 +8,33 @@ import Avatar from "../Avatar"
 import { Button } from "../ui/button"
 import Link from "next/link"
 
+import { ReactNode } from "react"
+import Bounded from "../Bounded"
+function AddBreakAfterComma({ text }: { text: string }) {
+  // Split the text by commas
+  // Split the text by commas
+  const parts = text.split(",")
+  // Create an array to hold parts with line breaks
+  const partsWithBreaks: ReactNode[] = []
+
+  // Iterate through the parts
+  parts.forEach((part, index) => {
+    // Push the part into the array
+    partsWithBreaks.push(part.trim())
+
+    // If it's not the last part, add a comma and a line break
+    if (index !== parts.length - 1) {
+      partsWithBreaks.push(
+        <span key={index}>
+          ,<br />
+        </span>,
+      )
+    }
+  })
+
+  return <div>{partsWithBreaks}</div>
+}
+
 export function PageComponent(props: {
   data: PageQuery
   variables: {
@@ -21,9 +48,9 @@ export function PageComponent(props: {
   const content = data.page.body
 
   return (
-    <section>
+    <Bounded>
       <div className="flex flex-col gap-8 md:flex-row">
-        <div className="mt-4 flex w-1/2 md:w-1/3">
+        <div className="mt-4 flex w-1/2 md:w-1/2">
           <Avatar image={"/jinesh-mug.jpg"}></Avatar>
         </div>
         <div className="w-full">
@@ -36,11 +63,11 @@ export function PageComponent(props: {
                       as="h2"
                       size="xl"
                       data-tina-field={tinaField(block, "title")}
-                      className="my-4"
+                      className="my-4 tracking-tighter"
                     >
-                      {block.title}
+                      <AddBreakAfterComma text={block.title} />
                     </Heading>
-                    <div className="prose prose-xl">
+                    <div className="prose prose-xl text-slate-600 dark:text-slate-300">
                       <TinaMarkdown
                         content={block.description}
                         data-tina-field={tinaField(block, "description")}
@@ -50,13 +77,16 @@ export function PageComponent(props: {
                       {block?.link?.map((link, i) => {
                         return (
                           <Button
+                            size={"lg"}
                             variant="outline"
                             key={i}
                             data-tina-ref={
                               link ? tinaField(link, "cta") : undefined
                             }
                           >
-                            <Link href={link?.url || "#"}>{link?.cta}</Link>
+                            <Link className=" text-lg" href={link?.url || "#"}>
+                              {link?.cta}
+                            </Link>
                           </Button>
                         )
                       })}
@@ -138,6 +168,6 @@ export function PageComponent(props: {
       {/* <section data-tina-field={tinaField(data.page, "body")}>
         <TinaMarkdown content={content} />
       </section> */}
-    </section>
+    </Bounded>
   )
 }

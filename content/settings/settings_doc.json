@@ -1,0 +1,17 @@
+{
+  "logo": "/JB-2.svg",
+  "menuItems": [
+    {
+      "label": "Projects",
+      "link": "/projects"
+    },
+    {
+      "label": "Blog",
+      "link": "/posts"
+    },
+    {
+      "label": "About",
+      "link": "/about"
+    }
+  ]
+}
