@@ -16,6 +16,7 @@ import "./globals.css"
 import Header from "@/components/Header"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer"
+import Bounded from "@/components/Bounded"
 
 export const metadata: Metadata = {
   title: "Tina CMS Blog",
@@ -32,11 +33,13 @@ export default function RootLayout({
       <body className={spaceGrotesk.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 relative mx-auto w-full">
-            <div className="sticky top-0 z-10  inline-flex w-full max-w-7xl  ">
-              <Header />
-            </div>
+            {/* <div className="sticky top-0 z-10 inline-flex  w-full"> */}
+            <Header />
+            {/* </div> */}
 
-            <main className="flex justify-center">{children}</main>
+            <main className="mx-auto w-full">
+              <Bounded>{children}</Bounded>
+            </main>
             <Footer />
           </div>
         </ThemeProvider>

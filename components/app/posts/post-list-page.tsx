@@ -93,7 +93,7 @@ export function PostListPageComponent(props: {
             })}
           </ul>
         </div>
-        <Card className=" m-auto">
+        <Card className=" m-auto hidden flex-col md:flex">
           <CardHeader>
             <CardTitle>Filter by tags</CardTitle>
           </CardHeader>

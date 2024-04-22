@@ -29,7 +29,9 @@ export const LinkCard = ({
 
         <CardFooter>
           <Button>
-            <Link href={link}>View project</Link>
+            <Link href={link} target="_blank">
+              View project
+            </Link>
           </Button>
         </CardFooter>
       </Card>

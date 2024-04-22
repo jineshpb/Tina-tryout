@@ -27,42 +27,8 @@ export default async function Header({ className }: { className?: string }) {
   console.log(result2)
 
   return (
-    <>
+    <div className="sticky top-0 z-10 w-full ">
       <NewNavbar {...result2} />
-      {/* <header
-        className={clsx("m-8 flex justify-between gap-4 text-base ", className)}
-      >
-        <div>
-          <Link href="/">
-            <Image src="/JB-2.svg" alt="Jinesh logo" width={32} height={32} />
-          </Link>
-        </div>
-        <div className="flex items-center gap-8">
-          <div className="flex gap-4">
-            <Link href="/about" className="max-sm:hidden">
-              About
-            </Link>
-            <Link href="/about" className="sm:hidden">
-              <RxPerson />
-            </Link>
-            <Link href="/projects" className="max-sm:hidden">
-              Projects
-            </Link>
-            <Link href="/project" className="sm:hidden">
-              <RxCode />
-            </Link>
-            <Link href="/posts" className="max-sm:hidden">
-              Blog
-            </Link>
-            <Link href="/posts" className="sm:hidden">
-              <RxChatBubble />
-            </Link>
-          </div>
-          <div className="flex justify-between gap-4">
-            <ThemeToggle />
-          </div>
-        </div>
-      </header> */}
-    </>
+    </div>
   )
 }

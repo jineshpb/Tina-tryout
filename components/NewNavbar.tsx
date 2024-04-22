@@ -8,6 +8,8 @@ import { useTina } from "tinacms/dist/react"
 import { Button } from "./ui/button"
 import { MdClose, MdMenu } from "react-icons/md"
 import clsx from "clsx"
+import { ThemeToggle } from "./ThemeToggle"
+import gsap from "gsap"
 
 export default function NewNavbar(props: {
   data: SettingsConnectionQuery
@@ -17,6 +19,8 @@ export default function NewNavbar(props: {
   query: string
 }) {
   const [isMobile, setIsMobile] = useState(isMobileDevice())
+  const [open, setOpen] = useState(false)
+
   const pathname = usePathname()
   function isMobileDevice() {
     if (typeof window !== "undefined") {
@@ -44,10 +48,15 @@ export default function NewNavbar(props: {
 
   // return NavList?.map((setting: any) => {
   return (
-    <nav className="flex w-full justify-between p-10">
+    <nav className="mx-auto flex w-full max-w-7xl items-center justify-between p-10">
       <NameLogo logo={NavList[0]?.node?.logo} />
       {isMobile ? (
-        <MobileNav data={NavList} pathname={pathname} />
+        <MobileNav
+          data={NavList}
+          open={open}
+          setOpen={setOpen}
+          pathname={pathname}
+        />
       ) : (
         <DesktopNav data={NavList} />
       )}
@@ -70,7 +79,7 @@ function NameLogo({ logo }: { logo: any }) {
     <Link
       href="/"
       aria-label="Home page"
-      className="text-xl font-extrabold tracking-tighter text-slate-900"
+      className="text-xl font-extrabold tracking-tighter text-zinc-900"
     >
       <Image src={logo} width={30} height={30} alt="Logo" />
     </Link>
@@ -79,63 +88,86 @@ function NameLogo({ logo }: { logo: any }) {
 
 function MobileNav({
   data,
+  open,
+  setOpen,
   pathname,
 }: {
   data: SettingsConnectionQuery
+  open: boolean
+  setOpen: (open: boolean) => void
   pathname: string
 }) {
-  const [open, setOpen] = useState(false)
+  const tl = gsap.timeline({ paused: true })
+
+  // useEffect(() => {
+  //   if (open) {
+  //     gsap.from("#drawer", { duration: 0.5, opacity: 1 })
+  //   } else {
+  //     gsap.to("#drawer", { duration: 0.5, opacity: 0 })
+  //   }
+  // }, [open])
 
   return (
-    <>
-      <button
-        aria-expanded={open}
-        aria-label="Open menu"
-        className="block p-2 text-2xl text-slate-800"
-        onClick={() => setOpen(true)}
-      >
-        <MdMenu />
-      </button>
-      <div
-        className={clsx(
-          "fixed inset-0 z-50 flex flex-col items-center gap-10 bg-slate-50 pr-4 pt-24 transition-transform duration-300 ease-in-out ",
-          open ? "translate-x-0" : "-translate-x-full",
-        )}
-      >
+    <div>
+      <div className="flex items-center gap-4">
+        <ThemeToggle />
+
         <button
-          aria-label="Close menu"
           aria-expanded={open}
-          className="fixed left-6 top-3 block p-2 text-2xl text-slate-800 "
-          onClick={() => setOpen(false)}
+          aria-label="Open menu"
+          className="block p-2 text-2xl text-zinc-800 dark:text-zinc-400"
+          onClick={() => {
+            if (!open) {
+              setOpen(!open)
+            } else {
+              setOpen(!open)
+            }
+          }}
         >
-          <MdClose />
+          {open ? (
+            <MdMenu />
+          ) : (
+            <>
+              <MdClose />
+              <div
+                id="drawer"
+                className={clsx(
+                  "fixed left-0 top-0 z-[-1]  flex size-full flex-col items-center gap-4 bg-zinc-300 px-10 pt-20 dark:bg-zinc-900",
+                )}
+              >
+                {data[0]?.node?.menuItems?.map((item: any, index: any) => (
+                  <React.Fragment key={index}>
+                    <li className="flex items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
+                      <Link href={item.link}>
+                        <span>{item.label}</span>
+                      </Link>
+                    </li>
+                  </React.Fragment>
+                ))}
+              </div>
+            </>
+          )}
         </button>
-        <div>
-          {data[0]?.node?.menuItems?.map((item: any, index: any) => (
-            <React.Fragment key={index}>
-              <li className="flex items-center first:mt-8">
-                <Link href={item.link}>
-                  <span>{item.label}</span>
-                </Link>
-              </li>
-            </React.Fragment>
-          ))}
-        </div>
       </div>
-    </>
+    </div>
   )
 }
 
 function DesktopNav({ data }: { data: SettingsConnectionQuery }) {
   return (
-    <div key={data[0]?.node?.id} className="flex gap-4">
-      {data[0]?.node?.menuItems?.map((item: any) => {
-        return (
-          <div key={item.id}>
-            <Link href={item.link}>{item.label}</Link>
-          </div>
-        )
-      })}
+    <div className="flex items-center gap-4">
+      <div key={data[0]?.node?.id} className="flex gap-4">
+        {data[0]?.node?.menuItems?.map((item: any) => {
+          return (
+            <div key={item.id}>
+              <Link href={item.link}>{item.label}</Link>
+            </div>
+          )
+        })}
+      </div>
+      <div className="flex justify-between gap-4">
+        <ThemeToggle />
+      </div>
     </div>
   )
 }

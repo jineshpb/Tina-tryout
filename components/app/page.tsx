@@ -67,8 +67,16 @@ export function PageComponent(props: {
                     >
                       <AddBreakAfterComma text={block.title} />
                     </Heading>
-                    <div className="prose prose-xl text-slate-600 dark:text-slate-300">
+                    <div className="prose prose-xl text-zinc-600 dark:text-zinc-400 ">
                       <TinaMarkdown
+                        components={{
+                          bold: (block) => (
+                            <span
+                              className="font-bold text-zinc-600 dark:text-zinc-400 "
+                              {...block}
+                            />
+                          ),
+                        }}
                         content={block.description}
                         data-tina-field={tinaField(block, "description")}
                       />
@@ -109,7 +117,7 @@ export function PageComponent(props: {
                 <section key={i} className="mt-40">
                   <Heading
                     size="lg"
-                    className="py-0 text-slate-300 dark:text-slate-600"
+                    className="py-0 text-zinc-300 dark:text-zinc-600"
                   >
                     {block.experienceHeading}
                   </Heading>
@@ -119,14 +127,14 @@ export function PageComponent(props: {
                       return (
                         <div key={i} className="mb-20 mt-10">
                           <span
-                            className=" text-3xl font-bold text-slate-700 dark:text-slate-300 "
+                            className=" text-3xl font-bold text-zinc-700 dark:text-zinc-300 "
                             data-tina-field={
                               role ? tinaField(role, "position") : undefined
                             }
                           >
                             {role?.position}
                           </span>
-                          <div className="flex gap-2  text-slate-500 dark:text-slate-500">
+                          <div className="flex gap-2  text-zinc-500 dark:text-zinc-500">
                             <span
                               className="flex gap-4 pt-0"
                               data-tina-field={
@@ -146,7 +154,7 @@ export function PageComponent(props: {
                           </div>
 
                           <div
-                            className="prose prose-lg text-slate-700 dark:text-slate-300"
+                            className="prose prose-lg text-zinc-700 dark:text-zinc-300"
                             data-tina-field={
                               role ? tinaField(role, "description") : undefined
                             }

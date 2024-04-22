@@ -24,10 +24,10 @@ export function ProjectListPageComponent(props: {
   }
 
   return (
-    <>
+    <div className=" flex flex-col">
       <Heading as="h1">Projects</Heading>
 
-      <div className="mx-auto grid grid-cols-1 gap-4 pt-10 md:grid-cols-3 lg:mx-0">
+      <div className="mx-auto grid w-full grid-cols-1 gap-4 pt-10 md:grid-cols-3 lg:mx-0">
         <div className="grid grid-cols-1 gap-4">
           {projectList
             .filter((_: any, i: number) => i % 3 === 0)
@@ -65,6 +65,6 @@ export function ProjectListPageComponent(props: {
             ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
