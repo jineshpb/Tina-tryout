@@ -2,6 +2,10 @@ import Link from "next/link"
 import { RiYoutubeFill, RiTwitterXFill, RiGithubFill } from "react-icons/ri"
 import { RxDividerVertical } from "react-icons/rx"
 import Bounded from "./Bounded"
+import { GrInstagram } from "react-icons/gr"
+import { BiLogoBehance } from "react-icons/bi"
+import { FaSquareBehance } from "react-icons/fa6"
+import { FaInstagram } from "react-icons/fa6"
 
 export default function Footer() {
   return (
@@ -9,26 +13,27 @@ export default function Footer() {
       <div className="mt-10 py-10 text-center text-sm">
         <hr />
         <div className="mt-6 flex justify-between">
-          <p>
-            A{" "}
+          <p>All rights reserved. © 2024 Jinesh P bhaskaran </p>
+          <div className="flex gap-4 text-zinc-400 dark:text-zinc-600 ">
             <Link
-              href="https://jineshb.me"
-              target="_blank"
-              className="underline-offset-2 hover:text-emerald-500 hover:underline"
+              href="https://youtube.com"
+              className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
             >
-              Jinesh
-            </Link>{" "}
-            Template
-          </p>
-          <div className="flex gap-2">
-            <Link href="https://youtube.com">
-              <RiYoutubeFill />
+              <RiGithubFill size={24} />
             </Link>
-            <Link href="https://youtube.com">
-              <RiTwitterXFill />
+            <Link
+              href="https://instagram.com/jineshpbhaskar"
+              target="_blank"
+              className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+            >
+              <FaInstagram size={24} />
             </Link>
-            <Link href="https://youtube.com">
-              <RiGithubFill />
+            <Link
+              href="https://instagram.com/jineshpbhaskar"
+              target="_blank"
+              className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+            >
+              <FaSquareBehance size={24} />
             </Link>
           </div>
         </div>

@@ -19,8 +19,12 @@ import Footer from "@/components/Footer"
 import Bounded from "@/components/Bounded"
 
 export const metadata: Metadata = {
-  title: "Tina CMS Blog",
-  description: "My Web dev blog",
+  metadataBase: new URL("https://jineshb.me/"),
+  title: {
+    default: "Jinesh Bhsakaran",
+    template: `%s | Jinesh Bhaskaran`,
+  },
+  description: "Jinesh UX designer",
 }
 
 export default function RootLayout({

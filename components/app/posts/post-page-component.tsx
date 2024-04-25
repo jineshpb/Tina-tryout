@@ -2,8 +2,14 @@
 
 import Heading from "@/components/Heading"
 import { PostsQuery } from "@/tina/__generated__/types"
+import { Metadata } from "next"
 import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
+
+// export const metadata: Metadata = {
+//   title: "Tina CMS Blog",
+//   description: "My Web dev blog",
+// }
 
 export function PostPageComponent(props: {
   data: PostsQuery

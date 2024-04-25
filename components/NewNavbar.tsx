@@ -109,7 +109,7 @@ function MobileNav({
 
   return (
     <div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         <ThemeToggle />
 
         <button
@@ -132,7 +132,7 @@ function MobileNav({
               <div
                 id="drawer"
                 className={clsx(
-                  "fixed left-0 top-0 z-[-1]  flex size-full flex-col items-center gap-4 bg-zinc-300 px-10 pt-20 dark:bg-zinc-900",
+                  "fixed left-0 top-0 z-[-1]  flex size-full flex-col items-center gap-8 bg-zinc-300 px-10 pt-20 dark:bg-zinc-900",
                 )}
               >
                 {data[0]?.node?.menuItems?.map((item: any, index: any) => (
@@ -155,8 +155,8 @@ function MobileNav({
 
 function DesktopNav({ data }: { data: SettingsConnectionQuery }) {
   return (
-    <div className="flex items-center gap-4">
-      <div key={data[0]?.node?.id} className="flex gap-4">
+    <div className="flex items-center gap-6">
+      <div key={data[0]?.node?.id} className="flex gap-6">
         {data[0]?.node?.menuItems?.map((item: any) => {
           return (
             <div key={item.id}>
