@@ -53,7 +53,7 @@ export function PageComponent(props: {
   return (
     <>
       <Bounded>
-        <div className="flex flex-col gap-8 md:flex-row">
+        <div className="flex flex-col gap-12 md:flex-row">
           <div className="mt-4 flex w-1/2 md:w-1/2">
             <Avatar image={"/jinesh-mug.jpg"}></Avatar>
           </div>
@@ -194,8 +194,12 @@ export function PageComponent(props: {
         </div>
 
         <div className=" absolute w-full ">
-          <div className="mx-auto w-full max-w-7xl px-8">
-            <Heading as="h1" size="xl">
+          <div className="mx-auto w-full max-w-7xl px-8 ">
+            <Heading
+              as="h1"
+              size="xl"
+              className="text-zinc-300 dark:text-zinc-600"
+            >
               Thank you for visiting
             </Heading>
           </div>

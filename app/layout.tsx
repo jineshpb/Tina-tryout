@@ -16,7 +16,6 @@ import "./globals.css"
 import Header from "@/components/Header"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer"
-import Bounded from "@/components/Bounded"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jineshb.me/"),
@@ -38,9 +37,7 @@ export default function RootLayout({
       <body className={spaceGrotesk.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 relative mx-auto w-full">
-            {/* <div className="sticky top-0 z-10 inline-flex  w-full"> */}
             <Header />
-            {/* </div> */}
 
             <main className="mx-auto w-full">{children}</main>
             <Footer />

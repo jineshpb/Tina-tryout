@@ -81,7 +81,7 @@ function NameLogo({ logo }: { logo: any }) {
       aria-label="Home page"
       className="text-xl font-extrabold tracking-tighter text-zinc-900"
     >
-      <Image src={logo} width={30} height={30} alt="Logo" />
+      <Image src={logo} width={24} height={24} alt="Logo" />
     </Link>
   )
 }
