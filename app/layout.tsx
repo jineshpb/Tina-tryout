@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     template: `%s | Jinesh Bhaskaran`,
   },
   description: "Jinesh UX designer",
+  category: "design",
 }
 
 export default function RootLayout({
@@ -41,9 +42,7 @@ export default function RootLayout({
             <Header />
             {/* </div> */}
 
-            <main className="mx-auto w-full">
-              <Bounded>{children}</Bounded>
-            </main>
+            <main className="mx-auto w-full">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

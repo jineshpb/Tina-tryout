@@ -1,5 +1,6 @@
 "use client"
 
+import Bounded from "@/components/Bounded"
 import Heading from "@/components/Heading"
 import { PostsQuery } from "@/tina/__generated__/types"
 import { Metadata } from "next"
@@ -24,18 +25,20 @@ export function PostPageComponent(props: {
   const content = data.posts.body
 
   return (
-    <article className="prose">
-      <Heading
-        as="h1"
-        size="md"
-        data-tina-field={tinaField(data.posts, "title")}
-      >
-        {title}
-      </Heading>
+    <Bounded>
+      <article className="prose ">
+        <Heading
+          as="h1"
+          size="md"
+          data-tina-field={tinaField(data.posts, "title")}
+        >
+          {title}
+        </Heading>
 
-      <section data-tina-field={tinaField(data.posts, "body")}>
-        <TinaMarkdown content={content} />
-      </section>
-    </article>
+        <section data-tina-field={tinaField(data.posts, "body")}>
+          <TinaMarkdown content={content} />
+        </section>
+      </article>
+    </Bounded>
   )
 }

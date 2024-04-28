@@ -155,17 +155,20 @@ function MobileNav({
 
 function DesktopNav({ data }: { data: SettingsConnectionQuery }) {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex items-center justify-center gap-8">
       <div key={data[0]?.node?.id} className="flex gap-6">
         {data[0]?.node?.menuItems?.map((item: any) => {
           return (
-            <div key={item.id}>
+            <div
+              key={item.id}
+              className=" font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
+            >
               <Link href={item.link}>{item.label}</Link>
             </div>
           )
         })}
       </div>
-      <div className="flex justify-between gap-4">
+      <div className=" flex  items-center justify-center">
         <ThemeToggle />
       </div>
     </div>

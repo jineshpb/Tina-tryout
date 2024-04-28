@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og"
 
 import { NextRequest } from "next/server"
 import { NextPageContext } from "next"
-import path from "path"
+
 
 export const size = {
   width: 1200,
@@ -25,9 +25,7 @@ const baseUrl = process.env.VERCEL_URL
   : "http://localhost:3000" // Default to localhost if running locally
 
 const url = `${baseUrl}/fonts/SpaceGrotesk-Bold.ttf`
-// const spaceBold = fetch(new URL(url, import.meta.url)).then((res) =>
-//   res.arrayBuffer(),
-// )
+
 
 const fetchFont = async (url: string) => {
   try {
