@@ -19,12 +19,12 @@ export default function Avatar({ image, className }: AvatarProps) {
         ".avatar",
         {
           opacity: 0,
-          scale: 1.4,
+          scale: 1,
         },
         {
           opacity: 1,
           scale: 1,
-          duration: 1.3,
+          duration: 0.8,
           ease: "power3.inOut",
         },
       )
@@ -77,7 +77,7 @@ export default function Avatar({ image, className }: AvatarProps) {
 
   return (
     <div ref={component} className={clsx("relative size-full", className)}>
-      <div className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-200 opacity-0 dark:border-slate-700">
+      <div className=" avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-200 opacity-0 dark:border-slate-700">
         <Image
           alt="avatar"
           src={image}
@@ -85,7 +85,7 @@ export default function Avatar({ image, className }: AvatarProps) {
           height={400}
           className="avatar-image w-full object-fill"
         />
-        <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
+        <div className="highlight scale-120 absolute inset-0 hidden w-full bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
       </div>
     </div>
   )

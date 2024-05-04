@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Space_Grotesk } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,6 +18,7 @@ import "./globals.css"
 import Header from "@/components/Header"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer"
+import { GeistSansNonVariable } from "geist/font/sans-non-variable"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jineshb.me/"),
@@ -26,6 +29,7 @@ export const metadata: Metadata = {
   description: "Jinesh UX designer",
   category: "design",
 }
+// className={spaceGrotesk.className}
 
 export default function RootLayout({
   children,
@@ -33,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={spaceGrotesk.className}>
+    <html lang="en" suppressHydrationWarning className={GeistSans.className}>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 relative mx-auto w-full">
             <Header />

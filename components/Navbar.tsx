@@ -8,10 +8,7 @@ import { MdMenu, MdClose } from "react-icons/md"
 
 import { usePathname } from "next/navigation"
 
-import { LuHome } from "react-icons/lu"
-import { LuUser } from "react-icons/lu"
-import { PiPencilCircle } from "react-icons/pi"
-import { LuSmartphone } from "react-icons/lu"
+
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
@@ -19,7 +16,7 @@ import {
   PostsConnectionQuery,
   SettingsConnectionQuery,
 } from "@/tina/__generated__/types"
-import { useTina } from "tinacms/dist/react"
+
 
 export default function NavBar({
   settings,

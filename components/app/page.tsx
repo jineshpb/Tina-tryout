@@ -12,6 +12,9 @@ import { ReactNode } from "react"
 import Bounded from "../Bounded"
 import RenderModel from "../RenderModel"
 import { ChonkyCat } from "../models/ChonkyCat"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { animateWithGsap } from "../utils/animation"
 
 function AddBreakAfterComma({ text }: { text: string }) {
   // Split the text by commas
@@ -45,6 +48,16 @@ export function PageComponent(props: {
   }
   query: string
 }) {
+  useGSAP(() => {
+    gsap.to(".g_fadeIn", {
+      y: 0,
+      opacity: 1,
+      stagger: 0.1,
+      duration: 1,
+      ease: "power2.inOut",
+    })
+  }, [])
+
   const { data } = useTina(props)
 
   const title = data.page.title
@@ -67,11 +80,11 @@ export function PageComponent(props: {
                         as="h2"
                         size="xl"
                         data-tina-field={tinaField(block, "title")}
-                        className="my-4 tracking-tighter"
+                        className="g_fadeIn my-4 tracking-tighter"
                       >
                         <AddBreakAfterComma text={block.title} />
                       </Heading>
-                      <div className="prose prose-xl text-zinc-600 dark:text-zinc-400 ">
+                      <div className="g_fadeIn prose prose-xl text-zinc-600 dark:text-zinc-400 ">
                         <TinaMarkdown
                           components={{
                             bold: (block) => (
@@ -85,7 +98,7 @@ export function PageComponent(props: {
                           data-tina-field={tinaField(block, "description")}
                         />
                       </div>
-                      <div className="pt-4">
+                      <div className="g_fadeIn pt-4">
                         {block?.link?.map((link, i) => {
                           return (
                             <Button
@@ -124,7 +137,7 @@ export function PageComponent(props: {
                   <section key={i} className="mt-40">
                     <Heading
                       size="lg"
-                      className="py-0 text-zinc-300 dark:text-zinc-600"
+                      className=" py-0 text-zinc-300 dark:text-zinc-600"
                     >
                       {block.experienceHeading}
                     </Heading>
@@ -143,7 +156,7 @@ export function PageComponent(props: {
                             </span>
                             <div className="flex gap-2  text-zinc-500 dark:text-zinc-500">
                               <span
-                                className="flex gap-4 pt-0"
+                                className="flex gap-4 pt-0 font-medium text-purple-500 dark:text-purple-300"
                                 data-tina-field={
                                   role ? tinaField(role, "company") : undefined
                                 }
@@ -186,8 +199,8 @@ export function PageComponent(props: {
         <TinaMarkdown content={content} />
       </section> */}
       </Bounded>
-      <div className="relative mt-[200px] flex w-full flex-col ">
-        <div className="z-10 h-[400px] w-full">
+      <div className="relative mt-[200px] flex w-full flex-col items-end ">
+        <div className="bottom-0 z-10 h-[400px] w-full">
           <RenderModel className="">
             <ChonkyCat />
           </RenderModel>
