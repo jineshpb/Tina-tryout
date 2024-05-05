@@ -2,16 +2,12 @@
   "logo": "/zinc-faint.svg",
   "menuItems": [
     {
-      "label": "About",
-      "link": "/about"
-    },
-    {
       "label": "Projects",
-      "link": "/projects"
+      "link": "projects"
     },
     {
       "label": "Blog",
-      "link": "/posts"
+      "link": "posts"
     }
   ]
 }

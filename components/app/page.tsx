@@ -15,6 +15,11 @@ import { ChonkyCat } from "../models/ChonkyCat"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { animateWithGsap } from "../utils/animation"
+import BigButton from "../BigButton"
+import SmallAvatar from "../SmallAvatar"
+import { FaInstagram } from "react-icons/fa"
+import { FaSquareBehance } from "react-icons/fa6"
+import { RiGithubFill } from "react-icons/ri"
 
 function AddBreakAfterComma({ text }: { text: string }) {
   // Split the text by commas
@@ -48,6 +53,8 @@ export function PageComponent(props: {
   }
   query: string
 }) {
+  console.log(props.data.page.blocks)
+
   useGSAP(() => {
     gsap.to(".g_fadeIn", {
       y: 0,
@@ -61,63 +68,78 @@ export function PageComponent(props: {
   const { data } = useTina(props)
 
   const title = data.page.title
-  const content = data.page.body
 
   return (
     <>
       <Bounded>
         <div className="flex flex-col gap-12 md:flex-row">
-          <div className="mt-4 flex w-1/2 md:w-1/2">
+          {/* <div className="mt-4 flex w-1/2 md:w-1/2">
+            
             <Avatar image={"/jinesh-mug.jpg"}></Avatar>
-          </div>
+          </div> */}
           <div className="w-full">
             {data.page.blocks?.map((block, i) => {
               switch (block?.__typename) {
                 case "PageBlocksWelcomeHero":
                   return (
-                    <section key={i}>
-                      <Heading
-                        as="h2"
-                        size="xl"
-                        data-tina-field={tinaField(block, "title")}
-                        className="g_fadeIn my-4 tracking-tighter"
-                      >
-                        <AddBreakAfterComma text={block.title} />
-                      </Heading>
-                      <div className="g_fadeIn prose prose-xl text-zinc-600 dark:text-zinc-400 ">
-                        <TinaMarkdown
-                          components={{
-                            bold: (block) => (
-                              <span
-                                className="font-bold text-zinc-600 dark:text-zinc-400 "
-                                {...block}
-                              />
-                            ),
-                          }}
-                          content={block.description}
-                          data-tina-field={tinaField(block, "description")}
-                        />
+                    <section key={i} className="flex size-full gap-12">
+                      <div className="flex h-full w-1/2">
+                        <Heading
+                          size="lg"
+                          className="text-base font-medium tracking-tighter text-zinc-500 dark:text-zinc-400"
+                        >
+                          <AddBreakAfterComma text={block.title} />
+                        </Heading>
                       </div>
-                      <div className="g_fadeIn pt-4">
-                        {block?.link?.map((link, i) => {
-                          return (
-                            <Button
-                              size={"lg"}
-                              variant="outline"
-                              key={i}
-                              data-tina-ref={
-                                link ? tinaField(link, "cta") : undefined
-                              }
-                            >
-                              <Link
-                                className=" text-lg"
+                      <div className="flex h-full w-1/2 flex-col justify-between gap-4">
+                        <div className="flex gap-4 ">
+                          <SmallAvatar image={block.profileImage}></SmallAvatar>
+                          <div className="flex flex-col gap-2">
+                            <div className=" text-[46px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 ">
+                              {block?.name}
+                            </div>
+                            <div>
+                              <div className="flex gap-4 px-4 text-zinc-400 dark:text-zinc-600 ">
+                                <Link
+                                  href="https://youtube.com"
+                                  className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+                                >
+                                  <RiGithubFill size={32} />
+                                </Link>
+                                <Link
+                                  href="https://instagram.com/jineshpbhaskar"
+                                  target="_blank"
+                                  className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+                                >
+                                  <FaInstagram size={32} />
+                                </Link>
+                                <Link
+                                  href="https://instagram.com/jineshpbhaskar"
+                                  target="_blank"
+                                  className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+                                >
+                                  <FaSquareBehance size={32} />
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" pt-4">
+                          {block?.link?.map((link, i) => {
+                            return (
+                              <BigButton
+                                key={i}
+                                data-tina-ref={
+                                  link ? tinaField(link, "cta") : undefined
+                                }
+                                className="w-full"
                                 href={link?.url || "#"}
                               >
                                 {link?.cta}
-                              </Link>
-                            </Button>
-                          )
-                        })}
+                              </BigButton>
+                            )
+                          })}
+                        </div>
                       </div>
                     </section>
                   )
@@ -128,6 +150,23 @@ export function PageComponent(props: {
             })}
           </div>
         </div>
+
+        <section className="mt-10">
+          {data.page.blocks?.map((block, i) => {
+            console.log(block)
+
+            switch (block?.__typename) {
+              case "PageBlocksProjects":
+                return (
+                  <div key={i}>
+                    {block.projects?.map((project, i) => {
+                      return <div key={i}>{project?.title}</div>
+                    })}
+                  </div>
+                )
+            }
+          })}
+        </section>
 
         <section className="mt-10">
           {data.page.blocks?.map((block, i) => {

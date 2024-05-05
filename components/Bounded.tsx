@@ -8,10 +8,11 @@ type BoundedProps = {
   className?: string
   children: React.ReactNode
   style?: React.CSSProperties
+  id?: string
 }
 
 const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
-  ({ as: Comp = "section", className, children, ...restProps }, ref) => {
+  ({ as: Comp = "section", className, children, id, ...restProps }, ref) => {
     const [isMobile, setIsMobile] = useState(isMobileDevice())
     function isMobileDevice() {
       if (typeof window !== "undefined") {
@@ -30,7 +31,7 @@ const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
     }, [])
 
     return (
-      <Comp ref={ref} className={clsx("")} {...restProps}>
+      <Comp ref={ref} className={clsx("")} {...restProps} id={id}>
         <div
           className={clsx(
             "relative mx-auto w-full max-w-7xl px-8 pt-[120px]",

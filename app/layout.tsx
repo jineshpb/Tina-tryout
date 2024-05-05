@@ -19,6 +19,7 @@ import Header from "@/components/Header"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import Footer from "@/components/Footer"
 import { GeistSansNonVariable } from "geist/font/sans-non-variable"
+import clsx from "clsx"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jineshb.me/"),
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
   category: "design",
 }
 // className={spaceGrotesk.className}
+// `{GeistSans.className}`
 
 export default function RootLayout({
   children,
@@ -37,7 +39,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={GeistSans.className}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={clsx(GeistSans.className)}
+    >
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 relative mx-auto w-full">

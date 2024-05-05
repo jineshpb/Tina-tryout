@@ -44,8 +44,6 @@ export default function NewNavbar(props: {
   const NavList = data.settingsConnection.edges
   // rest of the code
 
-  console.log(NavList)
-
   // return NavList?.map((setting: any) => {
   return (
     <nav className="mx-auto flex w-full max-w-7xl items-center justify-between p-10">
@@ -76,13 +74,16 @@ function isHome(link: string, pathname: string) {
 function NameLogo({ logo }: { logo: any }) {
   // replace any with the actual type of logo
   return (
-    <Link
-      href="/"
+    <button
+      onClick={() => {
+        const element = document.getElementById("introduction")
+        element?.scrollIntoView({ behavior: "smooth" })
+      }}
       aria-label="Home page"
       className="text-xl font-extrabold tracking-tighter text-zinc-900"
     >
       <Image src={logo} width={24} height={24} alt="Logo" />
-    </Link>
+    </button>
   )
 }
 
@@ -153,18 +154,24 @@ function MobileNav({
   )
 }
 
+function handleClick(link: string) {
+  const element = document.getElementById(link)
+  element?.scrollIntoView({ behavior: "smooth" })
+}
+
 function DesktopNav({ data }: { data: SettingsConnectionQuery }) {
   return (
     <div className="flex items-center justify-center gap-8">
       <div key={data[0]?.node?.id} className="flex gap-6">
         {data[0]?.node?.menuItems?.map((item: any) => {
           return (
-            <div
+            <button
               key={item.id}
-              className=" font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
+              className="text-xl font-medium tracking-tight text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
+              onClick={() => handleClick(item.link)}
             >
-              <Link href={item.link}>{item.label}</Link>
-            </div>
+              {item.label}
+            </button>
           )
         })}
       </div>

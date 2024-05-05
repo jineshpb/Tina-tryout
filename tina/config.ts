@@ -72,12 +72,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          {
-            name: "body",
-            type: "rich-text",
-            label: "Body",
-            isBody: true,
-          },
+
           {
             name: "blocks",
             label: "Blocks",
@@ -95,11 +90,17 @@ export default defineConfig({
                     required: true,
                   },
                   {
-                    name: "description",
-                    type: "rich-text",
-                    label: "Description",
+                    name: "name",
+                    type: "string",
+                    label: "Name",
                     required: true,
                   },
+                  {
+                    name: "profileImage",
+                    type: "image",
+                    label: "Profile Image",
+                  },
+
                   {
                     name: "link",
                     type: "object",
@@ -165,6 +166,50 @@ export default defineConfig({
                         name: "description",
                         type: "rich-text",
                         label: "Description",
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "projects",
+                label: "Projects",
+                fields: [
+                  {
+                    name: "projectsHeading",
+                    type: "string",
+                    label: "Projects Heading",
+                  },
+                  {
+                    name: "projects",
+                    type: "object",
+                    label: "Projects",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.label }
+                      },
+                      defaultItem: {
+                        title: "TinaCMS",
+                        description: "I did some stuff",
+                        link: "https://tina.io",
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "title",
+                        type: "string",
+                        label: "Title",
+                      },
+                      {
+                        name: "description",
+                        type: "string",
+                        label: "Description",
+                      },
+                      {
+                        name: "link",
+                        type: "string",
+                        label: "Link",
                       },
                     ],
                   },
