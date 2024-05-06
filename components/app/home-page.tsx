@@ -17,6 +17,7 @@ import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
 import RenderModel from "../RenderModel"
 import { ChonkyCat } from "../models/ChonkyCat"
+import Footer from "../Footer"
 
 function AddBreakAfterComma({ text }: { text: string }) {
   // Split the text by commas
@@ -107,16 +108,29 @@ export function HomePageComponent(props: {
                       <div className=" pt-4">
                         {block?.link?.map((link, i) => {
                           return (
-                            <BigButton
-                              key={i}
-                              data-tina-ref={
-                                link ? tinaField(link, "cta") : undefined
-                              }
-                              className="w-full"
-                              href={link?.url || "#"}
-                            >
-                              {link?.cta}
-                            </BigButton>
+                            <>
+                              <button
+                                className="w-full"
+                                onClick={() => {
+                                  const element =
+                                    document.getElementById("footer")
+                                  element?.scrollIntoView({
+                                    behavior: "smooth",
+                                  })
+                                }}
+                              >
+                                <BigButton
+                                  key={i}
+                                  data-tina-ref={
+                                    link ? tinaField(link, "cta") : undefined
+                                  }
+                                  className="w-full"
+                                  href={"#"}
+                                >
+                                  {link?.cta}
+                                </BigButton>
+                              </button>
+                            </>
                           )
                         })}
                       </div>
@@ -254,26 +268,8 @@ export function HomePageComponent(props: {
         </Bounded>
       )}
 
-      <section className=" mt-[300px]" id="footer">
-        <div className="relative mt-[200px] flex w-full flex-col items-end ">
-          <div className="bottom-0 z-10 h-[400px] w-full">
-            <RenderModel className="">
-              <ChonkyCat />
-            </RenderModel>
-          </div>
-
-          <div className=" absolute w-full ">
-            <div className="mx-auto w-full max-w-7xl px-8 ">
-              <Heading
-                as="h1"
-                size="xl"
-                className="font-medium tracking-tight text-zinc-300 dark:text-zinc-600"
-              >
-                Thank you for visiting
-              </Heading>
-            </div>
-          </div>
-        </div>
+      <section id="footer">
+        <Footer />
       </section>
     </div>
   )

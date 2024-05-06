@@ -50,7 +50,6 @@ export default function RootLayout({
             <Header />
 
             <main className="mx-auto w-full">{children}</main>
-            <Footer />
           </div>
         </ThemeProvider>
       </body>

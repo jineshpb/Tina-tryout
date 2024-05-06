@@ -22,11 +22,7 @@ export function ChonkyCat(props: any) {
   const [direction, setDirection] = useState(1) // 1 for positive direction, -1 for negative direction
   const [rotationAngle, setRotationAngle] = useState(0)
 
-  console.log(size)
-
   // console.log(nodes)
-
-  console.log(actions)
 
   // actions?.forEach((animation: AnimationAction) => {
   //   animation.play()
