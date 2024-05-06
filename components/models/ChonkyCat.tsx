@@ -3,8 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 import { useGLTF, useAnimations } from "@react-three/drei"
-import { AnimationAction } from "three"
-import { GrActions } from "react-icons/gr"
+
 import { useFrame, useThree } from "@react-three/fiber"
 export function ChonkyCat(props: any) {
   const group = useRef<THREE.Group>()
