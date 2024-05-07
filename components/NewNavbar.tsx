@@ -46,7 +46,7 @@ export default function NewNavbar(props: {
 
   // return NavList?.map((setting: any) => {
   return (
-    <nav className="mx-auto flex w-full max-w-7xl items-center justify-between p-10">
+    <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between p-10">
       <NameLogo logo={NavList[0]?.node?.logo} />
       {isMobile ? (
         <MobileNav
@@ -161,7 +161,7 @@ function handleClick(link: string) {
 
 function DesktopNav({ data }: { data: SettingsConnectionQuery }) {
   return (
-    <div className="flex items-center justify-center gap-8">
+    <div className="flex items-center justify-center gap-8 ">
       <div key={data[0]?.node?.id} className="flex gap-6">
         {data[0]?.node?.menuItems?.map((item: any) => {
           return (

@@ -15,6 +15,7 @@ import { FaLinkedin } from "react-icons/fa"
 import { MdOutlineAlternateEmail } from "react-icons/md"
 import SocialsButton from "./SocialsButton"
 import toast, { Toaster } from "react-hot-toast"
+import { GravityBalls } from "./GravityBalls"
 
 function copyEmail({ copyId }: { copyId: string }) {
   let inputElement = document.createElement("input")
@@ -47,62 +48,63 @@ const notify = () =>
 
 export default function Footer() {
   return (
-    <section className="mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
-      <div className="mx-auto mt-[200px] flex w-full max-w-7xl flex-col items-start gap-4">
-        <Heading
-          className="font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
-          as="h1"
-          size="lg"
-        >
-          Socials
-        </Heading>
-        <div className="mx-auto flex w-full items-center gap-4">
+    <section className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
+      <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
+        <div className="flex w-full flex-col gap-4 px-6">
+          <Heading
+            className="font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
+            as="h1"
+            size="lg"
+          >
+            Socials
+          </Heading>
+          <div className="mx-auto flex w-full items-center gap-4">
+            <SocialsButton
+              link="linkedin.com"
+              text="linkedin"
+              icon={<FaLinkedin size={48} />}
+            />
+            <SocialsButton
+              link="http://www.instagram.com"
+              text="Instagram"
+              icon={<FaInstagram size={48} />}
+            />
+          </div>
           <SocialsButton
-            link="linkedin.com"
-            text="linkedin"
-            icon={<FaLinkedin size={48} />}
+            link="http://www.behance.com"
+            text="Behance"
+            icon={<FaSquareBehance size={48} />}
           />
-          <SocialsButton
-            link="http://www.instagram.com"
-            text="Instagram"
-            icon={<FaInstagram size={48} />}
-          />
+
+          <button
+            className="flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
+            onClick={() => {
+              copyEmail({ copyId: "email" })
+              notify()
+            }}
+          >
+            Copy Email
+            <MdOutlineAlternateEmail size={48} />
+            <Toaster />
+          </button>
         </div>
-        <SocialsButton
-          link="http://www.behance.com"
-          text="Behance"
-          icon={<FaSquareBehance size={48} />}
-        />
-
-        <p id="email" className="hidden">
-          jineshpb@gmail.com
-        </p>
-
-        <button
-          className="flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
-          onClick={() => {
-            copyEmail({ copyId: "email" })
-            notify()
-          }}
-        >
-          Copy Email
-          <MdOutlineAlternateEmail size={48} />
-          <Toaster />
-        </button>
       </div>
-      <div className="relative mt-[200px] flex w-full flex-col items-end ">
-        <div className="bottom-0 z-10 h-[400px] w-full">
-          <RenderModel className="">
+      <div className="relative flex w-full flex-col items-end overflow-hidden text-clip">
+        <div className="bottom-0 z-10 h-[600px] w-full">
+          {/* <RenderModel className="">
             <ChonkyCat />
-          </RenderModel>
+          </RenderModel> */}
+        </div>
+        <div className="absolute -bottom-[500px] z-10  h-[1200px] w-full">
+          <GravityBalls />
         </div>
 
         <div className=" absolute w-full ">
-          <div className="mx-auto w-full px-8 ">
+          <div className="mx-auto mt-[100px] max-w-[1440px] px-8 ">
             <Heading
-              as="h1"
-              size="xl"
-              className=" font-medium tracking-tight text-emerald-300 dark:text-emerald-800"
+              as="h3"
+              size="2xl"
+              className=" font-medium leading-[12rem] tracking-tight text-emerald-700 dark:text-emerald-700"
             >
               Thank you for visiting
             </Heading>
@@ -110,8 +112,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <hr className=" border-emerald-400" />
-      <div className=" my-[50px] flex flex-col items-center gap-4 ">
+      <hr className=" border-emerald-700" />
+      <div className="relative my-[50px] flex flex-col items-center gap-4 ">
         <div className="flex flex-col items-center text-center text-emerald-400 dark:text-emerald-600">
           <p>All rights reserved. © 2024 Jinesh P bhaskaran </p>
           <span>
@@ -122,21 +124,21 @@ export default function Footer() {
         <div className="flex gap-4 text-zinc-400 *:fill-emerald-400 dark:text-zinc-600 ">
           <Link
             href="https://youtube.com"
-            className=" text-emerald-400 transition-all duration-500 hover:text-emerald-300"
+            className=" text-emerald-600 transition-all duration-500 hover:text-emerald-300"
           >
             <RiGithubFill size={24} />
           </Link>
           <Link
             href="https://instagram.com/jineshpbhaskar"
             target="_blank"
-            className="text-emerald-400 transition-all duration-500 hover:text-emerald-300"
+            className="text-emerald-600 transition-all duration-500 hover:text-emerald-300"
           >
             <FaInstagram size={24} />
           </Link>
           <Link
             href="https://instagram.com/jineshpbhaskar"
             target="_blank"
-            className="text-emerald-400 transition-all duration-500 hover:text-emerald-300"
+            className="text-emerald-600 transition-all duration-500 hover:text-emerald-300"
           >
             <FaSquareBehance size={24} />
           </Link>

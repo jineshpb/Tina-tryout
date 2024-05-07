@@ -11,13 +11,15 @@ import { RiGithubFill } from "react-icons/ri"
 import { FaInstagram } from "react-icons/fa"
 import { FaSquareBehance } from "react-icons/fa6"
 import BigButton from "../BigButton"
-import { ReactNode } from "react"
+import { ReactNode, Suspense } from "react"
 import Bounded from "../Bounded"
 import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
 import RenderModel from "../RenderModel"
 import { ChonkyCat } from "../models/ChonkyCat"
 import Footer from "../Footer"
+import { GravityBalls } from "../GravityBalls"
+import Loader from "../Loader"
 
 function AddBreakAfterComma({ text }: { text: string }) {
   // Split the text by commas
@@ -56,23 +58,20 @@ export function HomePageComponent(props: {
   const postsList = data.postsConnection.edges
 
   return (
-    <div className="mx-auto mt-20 w-full snap-mandatory">
-      <Bounded className=" flex w-full flex-row gap-12" id="introduction">
-        {data.page.blocks?.map((block) => {
-          switch (block?.__typename) {
-            case "PageBlocksWelcomeHero":
-              return (
-                <section>
-                  <section className="flex size-full gap-12">
-                    <div className="flex h-full w-1/2">
-                      <Heading
-                        size="lg"
-                        className="text-base font-medium tracking-tighter text-zinc-500 dark:text-zinc-400"
-                      >
+    <>
+      <div className=" mx-auto mt-20 w-full snap-mandatory">
+        <Bounded className=" flex w-full flex-row gap-12" id="introduction">
+          {data.page.blocks?.map((block) => {
+            switch (block?.__typename) {
+              case "PageBlocksWelcomeHero":
+                return (
+                  <section className="mt-12 flex w-full flex-col gap-12 lg:flex-row">
+                    <div className="flex size-full">
+                      <div className="text-8xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 lg:text-8xl">
                         <AddBreakAfterComma text={block.title} />
-                      </Heading>
+                      </div>
                     </div>
-                    <div className="flex h-full w-1/2 flex-col justify-between gap-4">
+                    <div className="flex size-full flex-col justify-between gap-8">
                       <div className="flex gap-4 ">
                         <SmallAvatar image={block.profileImage}></SmallAvatar>
                         <div className="flex flex-col gap-2">
@@ -105,7 +104,7 @@ export function HomePageComponent(props: {
                           </div>
                         </div>
                       </div>
-                      <div className=" pt-4">
+                      <div className="mt-12">
                         {block?.link?.map((link, i) => {
                           return (
                             <>
@@ -126,6 +125,7 @@ export function HomePageComponent(props: {
                                   }
                                   className="w-full"
                                   href={"#"}
+                                  size="xl"
                                 >
                                   {link?.cta}
                                 </BigButton>
@@ -136,141 +136,157 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
                   </section>
-                </section>
-              )
+                )
 
-            default:
-              return null
-          }
-        })}
-      </Bounded>
+              default:
+                return null
+            }
+          })}
+        </Bounded>
 
-      <Bounded className=" mt-[300px]" id="projects">
-        {data.page.blocks?.map((block, i) => {
-          switch (block?.__typename) {
-            case "PageBlocksProjects":
-              return (
-                <>
-                  <Heading
-                    size="md"
-                    className="mt-8 font-normal tracking-tight text-zinc-300 dark:text-zinc-700 "
-                  >
-                    {block.projectsHeading}
-                  </Heading>
-                  <div className="mx-auto grid w-full grid-cols-1 gap-4 pt-10 md:grid-cols-3 lg:mx-0">
-                    <div key={i} className="grid grid-cols-1 gap-4">
-                      {block.projects
-                        ?.filter((_: any, i: number) => i % 3 === 0)
-                        .map((project: any) => (
-                          <ProjectCard key={i} project={project} className="" />
-                        ))}
+        <Bounded className=" mt-[300px]" id="projects">
+          {data.page.blocks?.map((block, i) => {
+            switch (block?.__typename) {
+              case "PageBlocksProjects":
+                return (
+                  <>
+                    <Heading
+                      size="md"
+                      className="mt-8 font-normal tracking-tight text-zinc-300 dark:text-zinc-700 "
+                    >
+                      {block.projectsHeading}
+                    </Heading>
+                    <div className="mx-auto grid w-full grid-cols-1 gap-4 pt-10 lg:mx-0  lg:grid-cols-3 ">
+                      <div key={i} className="grid grid-cols-1 gap-4">
+                        {block.projects
+                          ?.filter((_: any, i: number) => i % 3 === 0)
+                          .map((project: any) => (
+                            <ProjectCard
+                              key={i}
+                              project={project}
+                              className=""
+                            />
+                          ))}
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {block.projects
+                          ?.filter((_: any, i: number) => i % 3 === 1)
+                          .map((project: any) => (
+                            <ProjectCard
+                              key={i}
+                              project={project}
+                              className=""
+                            />
+                          ))}
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {block.projects
+                          ?.filter((_: any, i: number) => i % 3 === 2)
+                          .map((project: any) => (
+                            <ProjectCard
+                              key={i}
+                              project={project}
+                              className=""
+                            />
+                          ))}
+                      </div>
                     </div>
-                    <div className="grid grid-cols-1 gap-4">
-                      {block.projects
-                        ?.filter((_: any, i: number) => i % 3 === 1)
-                        .map((project: any) => (
-                          <ProjectCard key={i} project={project} className="" />
-                        ))}
-                    </div>
-                    <div className="grid grid-cols-1 gap-4">
-                      {block.projects
-                        ?.filter((_: any, i: number) => i % 3 === 2)
-                        .map((project: any) => (
-                          <ProjectCard key={i} project={project} className="" />
-                        ))}
+                  </>
+                )
+            }
+          })}
+        </Bounded>
+
+        <Bounded className=" mt-[300px]" id="career">
+          {data.page.blocks?.map((block) => {
+            switch (block?.__typename) {
+              case "PageBlocksExperience":
+                return (
+                  <div>
+                    <Heading
+                      size="md"
+                      className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700 "
+                    >
+                      {block.experienceHeading}
+                    </Heading>
+                    <div className="flex w-full flex-col ">
+                      {block.roles?.map((role, i) => (
+                        <div
+                          key={i}
+                          className="mb-20 mt-10 flex w-full flex-col items-start gap-10 lg:flex-row"
+                        >
+                          <div
+                            className=" w-full text-[72px] font-normal leading-[3rem] tracking-tighter text-zinc-700 dark:text-zinc-300 "
+                            data-tina-field={
+                              role ? tinaField(role, "position") : undefined
+                            }
+                          >
+                            {role?.position}
+                          </div>
+
+                          <div className="flex w-full flex-col gap-2">
+                            <div className="flex items-center gap-2  text-zinc-500 dark:text-zinc-500">
+                              <span
+                                className="flex gap-4 pt-0 text-2xl font-medium text-emerald-500 dark:text-emerald-300"
+                                data-tina-field={
+                                  role ? tinaField(role, "company") : undefined
+                                }
+                              >
+                                {role?.company}
+                              </span>
+                              <span>&#8226;</span>
+                              <span
+                                data-tina-field={
+                                  role ? tinaField(role, "date") : undefined
+                                }
+                              >
+                                {role?.date}
+                              </span>
+                            </div>
+
+                            <div
+                              className="prose prose-2xl text-zinc-700 dark:text-zinc-300"
+                              data-tina-field={
+                                role
+                                  ? tinaField(role, "description")
+                                  : undefined
+                              }
+                            >
+                              <TinaMarkdown content={role?.description} />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </>
-              )
-          }
-        })}
-      </Bounded>
+                )
 
-      <Bounded className=" mt-[300px]" id="career">
-        {data.page.blocks?.map((block) => {
-          switch (block?.__typename) {
-            case "PageBlocksExperience":
-              return (
-                <>
-                  <Heading
-                    size="md"
-                    className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700 "
-                  >
-                    {block.experienceHeading}
-                  </Heading>
-                  {block.roles?.map((role, i) => (
-                    <div
-                      key={i}
-                      className="mb-20 mt-10 flex items-start gap-10"
-                    >
-                      <div
-                        className=" w-1/2 text-[60px] font-normal leading-9 tracking-tighter text-zinc-700 dark:text-zinc-300 "
-                        data-tina-field={
-                          role ? tinaField(role, "position") : undefined
-                        }
-                      >
-                        {role?.position}
-                      </div>
-
-                      <div className="flex w-1/2 flex-col gap-2">
-                        <div className="flex items-center gap-2  text-zinc-500 dark:text-zinc-500">
-                          <span
-                            className="flex gap-4 pt-0 text-2xl font-medium text-emerald-500 dark:text-emerald-300"
-                            data-tina-field={
-                              role ? tinaField(role, "company") : undefined
-                            }
-                          >
-                            {role?.company}
-                          </span>
-                          <span>&#8226;</span>
-                          <span
-                            data-tina-field={
-                              role ? tinaField(role, "date") : undefined
-                            }
-                          >
-                            {role?.date}
-                          </span>
-                        </div>
-
-                        <div
-                          className="prose prose-lg text-zinc-700 dark:text-zinc-300"
-                          data-tina-field={
-                            role ? tinaField(role, "description") : undefined
-                          }
-                        >
-                          <TinaMarkdown content={role?.description} />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </>
-              )
-
-            default:
-              return null
-          }
-        })}
-      </Bounded>
-
-      {postsList && postsList?.length > 0 && (
-        <Bounded className="mt-[300px]" id="posts">
-          <Heading
-            size="md"
-            className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
-          >
-            Latest posts
-          </Heading>
-          <div className="mt-12 ">
-            {postsList.map((edge: any, i) => {
-              return <PostCard post={edge} key={i} className="" />
-            })}
-          </div>
+              default:
+                return null
+            }
+          })}
         </Bounded>
-      )}
 
-      <section id="footer">
-        <Footer />
-      </section>
-    </div>
+        {postsList && postsList?.length > 0 && (
+          <Bounded className="mt-[300px]" id="posts">
+            <Heading
+              size="md"
+              className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
+            >
+              Latest posts
+            </Heading>
+            <div className="mt-12 ">
+              {postsList.map((edge: any, i) => {
+                return <PostCard post={edge} key={i} className="" />
+              })}
+            </div>
+          </Bounded>
+        )}
+
+        <section id="footer">
+          <Footer />
+        </section>
+      </div>
+    </>
   )
 }

@@ -217,6 +217,11 @@ export default defineConfig({
                         type: "image",
                         label: "Image",
                       },
+                      {
+                        name: "videoLink",
+                        type: "string",
+                        label: "Video link",
+                      },
                     ],
                   },
                 ],

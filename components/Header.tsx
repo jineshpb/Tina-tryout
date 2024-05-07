@@ -10,7 +10,7 @@ export default async function Header({ className }: { className?: string }) {
   console.log(result2)
 
   return (
-    <div className="sticky top-0 z-10 w-full ">
+    <div className="sticky top-0 z-10 w-full backdrop-blur-xl ">
       <NewNavbar {...result2} />
     </div>
   )
