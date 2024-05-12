@@ -18,8 +18,9 @@ import PostCard from "../PostCard"
 import RenderModel from "../RenderModel"
 import { ChonkyCat } from "../models/ChonkyCat"
 import Footer from "../Footer"
-import { GravityBalls } from "../GravityBalls"
-import Loader from "../Loader"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { animateWithGsap } from "../utils/animation"
 
 function AddBreakAfterComma({ text }: { text: string }) {
   // Split the text by commas
@@ -57,25 +58,52 @@ export function HomePageComponent(props: {
 
   const postsList = data.postsConnection.edges
 
+  useGSAP(() => {
+    animateWithGsap(".g_fadeIn", {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.2,
+    })
+  }, [])
+
   return (
     <>
       <div className=" mx-auto mt-20 w-full snap-mandatory">
         <Bounded className=" flex w-full flex-row gap-12" id="introduction">
-          {data.page.blocks?.map((block) => {
+          {data.page.blocks?.map((block, i) => {
             switch (block?.__typename) {
               case "PageBlocksWelcomeHero":
                 return (
-                  <section className="mt-12 flex w-full flex-col gap-12 lg:flex-row">
+                  <section
+                    className="mt-12 flex w-full flex-col gap-12 lg:flex-row"
+                    key={i}
+                  >
                     <div className="flex size-full">
-                      <div className="text-8xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 lg:text-8xl">
+                      <div
+                        className="text-7xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-8xl lg:text-8xl"
+                        data-tina-field={
+                          block ? tinaField(block, "title") : undefined
+                        }
+                      >
                         <AddBreakAfterComma text={block.title} />
                       </div>
                     </div>
                     <div className="flex size-full flex-col justify-between gap-8">
                       <div className="flex gap-4 ">
-                        <SmallAvatar image={block.profileImage}></SmallAvatar>
+                        <SmallAvatar
+                          image={block.profileImage}
+                          data-tina-field={
+                            block ? tinaField(block, "profileImage") : undefined
+                          }
+                        ></SmallAvatar>
                         <div className="flex flex-col gap-2">
-                          <div className=" text-[46px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 ">
+                          <div
+                            className=" text-[46px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 "
+                            data-tina-field={
+                              block ? tinaField(block, "name") : undefined
+                            }
+                          >
                             {block?.name}
                           </div>
                           <div>
@@ -108,7 +136,8 @@ export function HomePageComponent(props: {
                         {block?.link?.map((link, i) => {
                           return (
                             <>
-                              <button
+                              <div
+                                key={i}
                                 className="w-full"
                                 onClick={() => {
                                   const element =
@@ -117,19 +146,16 @@ export function HomePageComponent(props: {
                                     behavior: "smooth",
                                   })
                                 }}
+                                data-tina-field={
+                                  link ? tinaField(link, "cta") : undefined
+                                }
                               >
                                 <BigButton
-                                  key={i}
-                                  data-tina-ref={
-                                    link ? tinaField(link, "cta") : undefined
-                                  }
+                                  linkText={link?.cta || "Hey"}
                                   className="w-full"
-                                  href={"#"}
                                   size="xl"
-                                >
-                                  {link?.cta}
-                                </BigButton>
-                              </button>
+                                />
+                              </div>
                             </>
                           )
                         })}
@@ -152,11 +178,14 @@ export function HomePageComponent(props: {
                   <>
                     <Heading
                       size="md"
-                      className="mt-8 font-normal tracking-tight text-zinc-300 dark:text-zinc-700 "
+                      className="g_fadeIn mt-8 font-normal tracking-tight text-zinc-300 dark:text-zinc-700 "
+                      data-tina-field={
+                        block ? tinaField(block, "projectsHeading") : undefined
+                      }
                     >
                       {block.projectsHeading}
                     </Heading>
-                    <div className="mx-auto grid w-full grid-cols-1 gap-4 pt-10 lg:mx-0  lg:grid-cols-3 ">
+                    <div className="g_fadeIn mx-auto grid w-full grid-cols-1 gap-4 pt-10  lg:mx-0 lg:grid-cols-3 ">
                       <div key={i} className="grid grid-cols-1 gap-4">
                         {block.projects
                           ?.filter((_: any, i: number) => i % 3 === 0)
@@ -205,7 +234,7 @@ export function HomePageComponent(props: {
                   <div>
                     <Heading
                       size="md"
-                      className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700 "
+                      className="g_fadeIn mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700 "
                     >
                       {block.experienceHeading}
                     </Heading>
@@ -213,7 +242,7 @@ export function HomePageComponent(props: {
                       {block.roles?.map((role, i) => (
                         <div
                           key={i}
-                          className="mb-20 mt-10 flex w-full flex-col items-start gap-10 lg:flex-row"
+                          className="g_fadeIn mb-20 mt-10 flex w-full flex-col items-start gap-10 lg:flex-row"
                         >
                           <div
                             className=" w-full text-[72px] font-normal leading-[3rem] tracking-tighter text-zinc-700 dark:text-zinc-300 "

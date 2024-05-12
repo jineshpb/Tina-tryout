@@ -58,7 +58,7 @@ export default function Footer() {
           >
             Socials
           </Heading>
-          <div className="mx-auto flex w-full items-center gap-4">
+          <div className="mx-auto flex w-full  flex-col items-center gap-4 md:flex-row">
             <SocialsButton
               link="linkedin.com"
               text="linkedin"
@@ -78,7 +78,13 @@ export default function Footer() {
 
           <button
             className="flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
-            onClick={() => {
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+              event.preventDefault()
+              copyEmail({ copyId: "email" })
+              notify()
+            }}
+            onTouchStart={(event) => {
+              // Call the copyEmail function and notify on touch start
               copyEmail({ copyId: "email" })
               notify()
             }}
@@ -96,7 +102,7 @@ export default function Footer() {
           </RenderModel> */}
         </div>
         <div className="absolute -bottom-[500px] z-10  h-[1200px] w-full">
-          <GravityBalls />
+          {/* <GravityBalls /> */}
         </div>
 
         <div className=" absolute w-full ">

@@ -235,6 +235,9 @@ export default defineConfig({
             if (document._sys.filename === "about") {
               return "/about"
             }
+            if (document._sys.filename === "home") {
+              return "/"
+            }
             return undefined
           },
           filename: {

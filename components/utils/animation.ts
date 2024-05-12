@@ -4,17 +4,18 @@ import { ScrollTrigger } from "gsap/all"
 gsap.registerPlugin(ScrollTrigger)
 
 export const animateWithGsap = (
-  target: HTMLElement,
+  target: string | HTMLElement,
   animationProps: gsap.TweenVars,
-  scrollProps: gsap.plugins.ScrollTriggerInstanceVars,
+  scrollProps?: gsap.plugins.ScrollTriggerInstanceVars,
 ) => {
   gsap.to(target, {
     ...animationProps,
     scrollTrigger: {
       trigger: target,
-      toggleActions: "restart reverse restart reverse",
+
       start: "top 85%",
       ...scrollProps,
+      markers: true,
     },
   })
 }

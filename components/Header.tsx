@@ -1,5 +1,7 @@
 import client from "@/tina/__generated__/client"
 import NewNavbar from "./NewNavbar"
+import { BlurNav } from "./BlurNav"
+import { SettingsQuery } from "@/tina/__generated__/types"
 
 export default async function Header({ className }: { className?: string }) {
   const result = await client.queries.settings({
@@ -7,11 +9,6 @@ export default async function Header({ className }: { className?: string }) {
   })
 
   const result2 = await client.queries.settingsConnection()
-  console.log(result2)
 
-  return (
-    <div className="sticky top-0 z-10 w-full backdrop-blur-xl ">
-      <NewNavbar {...result2} />
-    </div>
-  )
+  return <NewNavbar {...result2} />
 }

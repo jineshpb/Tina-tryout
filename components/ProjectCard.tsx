@@ -6,6 +6,7 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/all"
 import Image from "next/image"
+import { tinaField } from "tinacms/dist/react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,7 +23,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         trigger: "#projectVideo",
         toggleActions: "play pause reverse restart",
         start: "10% bottom",
-        markers: true,
+        // markers: true,
       },
 
       onComplete: () => {
@@ -31,17 +32,23 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
     })
   }, [])
 
-  console.log(project)
-
   return (
     <>
       <div
         className="group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px]  bg-zinc-800/75 p-4 text-[60px]  "
         id="projectVideo"
       >
-        <div className="flex flex-col text-clip leading-tight tracking-tighter text-zinc-100 dark:text-zinc-400">
+        <div
+          className="flex flex-col text-clip leading-tight tracking-tighter text-zinc-100 dark:text-zinc-400"
+          data-tina-field={project ? tinaField(project, "title") : undefined}
+        >
           {project.title}
-          <span className="text-lg leading-normal tracking-normal text-zinc-500">
+          <span
+            className="text-lg leading-normal tracking-normal text-zinc-500"
+            data-tina-field={
+              project ? tinaField(project, "description") : undefined
+            }
+          >
             {project.description}
           </span>
         </div>
@@ -65,11 +72,10 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
 
         <div className="z-10 h-[80px]">
           <BigButton
+            linkText="View Project"
             href={project?.link}
             className="hidden w-full group-hover:block"
-          >
-            View Project
-          </BigButton>
+          />
         </div>
       </div>
     </>
