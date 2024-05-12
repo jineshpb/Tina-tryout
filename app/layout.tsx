@@ -47,8 +47,6 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 mx-auto w-full">
-            <Header />
-
             <main className="mx-auto w-full">{children}</main>
           </div>
         </ThemeProvider>

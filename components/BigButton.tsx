@@ -13,7 +13,7 @@ type BigButtonProps = {
   linkText?: string | "" | "Hey"
   href?: string
   className?: string
-
+  children: ReactNode
   size?: "xl" | "lg" | "md" | "sm" | "xs"
 }
 
@@ -21,6 +21,7 @@ export default function BigButton({
   linkText,
   href,
   className,
+  children,
 
   size = "lg",
 }: BigButtonProps) {
@@ -33,7 +34,7 @@ export default function BigButton({
             size === "xl" && "text-6xl md:text-6xl",
           )}
         >
-          {linkText ? linkText : "Hey"}
+          {children}
           <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
         </div>
       </Link>
@@ -46,7 +47,7 @@ export default function BigButton({
           size === "xl" && "text-6xl md:text-6xl",
         )}
       >
-        {linkText ? linkText : "Hey"}
+        {children}
         <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
       </div>
     </button>

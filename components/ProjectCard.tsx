@@ -75,7 +75,9 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
             linkText="View Project"
             href={project?.link}
             className="hidden w-full group-hover:block"
-          />
+          >
+            View Project
+          </BigButton>
         </div>
       </div>
     </>

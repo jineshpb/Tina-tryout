@@ -97,6 +97,11 @@ export default defineConfig({
                     required: true,
                   },
                   {
+                    name: "description",
+                    type: "string",
+                    label: "Description",
+                  },
+                  {
                     name: "profileImage",
                     type: "image",
                     label: "Profile Image",

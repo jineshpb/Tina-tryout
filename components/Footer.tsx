@@ -16,16 +16,18 @@ import { MdOutlineAlternateEmail } from "react-icons/md"
 import SocialsButton from "./SocialsButton"
 import toast, { Toaster } from "react-hot-toast"
 import { GravityBalls } from "./GravityBalls"
+import copy from "copy-to-clipboard"
 
 function copyEmail({ copyId }: { copyId: string }) {
-  let inputElement = document.createElement("input")
-  inputElement.type = "text"
-  let copyText = document.getElementById(copyId)?.innerHTML ?? ""
-  inputElement.value = copyText
-  document.body.appendChild(inputElement)
-  inputElement.select()
-  navigator.clipboard.writeText(copyText) // Replace deprecated document.execCommand("copy")
-  document.body.removeChild(inputElement)
+  // let inputElement = document.createElement("input")
+  // inputElement.type = "text"
+  // let copyText = document.getElementById(copyId)?.innerHTML ?? ""
+  // inputElement.value = copyText
+  // document.body.appendChild(inputElement)
+  // inputElement.select()
+  copy("jineshpb@gmail.com")
+  // navigator.clipboard.writeText(copyText) // Replace deprecated document.execCommand("copy")
+  // document.body.removeChild(inputElement)
 }
 
 const notify = () =>
@@ -60,18 +62,18 @@ export default function Footer() {
           </Heading>
           <div className="mx-auto flex w-full  flex-col items-center gap-4 md:flex-row">
             <SocialsButton
-              link="linkedin.com"
+              link="https://www.linkedin.com/in/jineshpb/"
               text="linkedin"
               icon={<FaLinkedin size={48} />}
             />
             <SocialsButton
-              link="http://www.instagram.com"
+              link="https://www.instagram.com/jineshpbhaskar/"
               text="Instagram"
               icon={<FaInstagram size={48} />}
             />
           </div>
           <SocialsButton
-            link="http://www.behance.com"
+            link="https://www.behance.net/jineshpb"
             text="Behance"
             icon={<FaSquareBehance size={48} />}
           />
@@ -80,12 +82,13 @@ export default function Footer() {
             className="flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
               event.preventDefault()
-              copyEmail({ copyId: "email" })
+              copy("jineshpb@gmail.com")
               notify()
             }}
             onTouchStart={(event) => {
+              event.preventDefault()
               // Call the copyEmail function and notify on touch start
-              copyEmail({ copyId: "email" })
+              copy("jineshpb@gmail.com")
               notify()
             }}
           >

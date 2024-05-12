@@ -90,13 +90,18 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
                     <div className="flex size-full flex-col justify-between gap-8">
-                      <div className="flex gap-4 ">
-                        <SmallAvatar
-                          image={block.profileImage}
-                          data-tina-field={
-                            block ? tinaField(block, "profileImage") : undefined
-                          }
-                        ></SmallAvatar>
+                      <div className="flex flex-col gap-8 md:flex-row ">
+                        <div>
+                          <SmallAvatar
+                            image={block.profileImage}
+                            data-tina-field={
+                              block
+                                ? tinaField(block, "profileImage")
+                                : undefined
+                            }
+                            className="size-56 md:size-32 lg:size-40"
+                          ></SmallAvatar>
+                        </div>
                         <div className="flex flex-col gap-2">
                           <div
                             className=" text-[46px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 "
@@ -107,28 +112,16 @@ export function HomePageComponent(props: {
                             {block?.name}
                           </div>
                           <div>
-                            <div className="flex gap-4 px-4 text-zinc-400 dark:text-zinc-600 ">
-                              <Link
-                                href="https://youtube.com"
-                                className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
-                              >
-                                <RiGithubFill size={32} />
-                              </Link>
-                              <Link
-                                href="https://instagram.com/jineshpbhaskar"
-                                target="_blank"
-                                className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
-                              >
-                                <FaInstagram size={32} />
-                              </Link>
-                              <Link
-                                href="https://instagram.com/jineshpbhaskar"
-                                target="_blank"
-                                className="transition-all duration-500 hover:text-zinc-800 dark:hover:text-zinc-300"
-                              >
-                                <FaSquareBehance size={32} />
-                              </Link>
-                            </div>
+                            <p
+                              className="text-2xl font-normal leading-relaxed  text-zinc-500 dark:text-zinc-400"
+                              data-tina-field={
+                                block
+                                  ? tinaField(block, "description")
+                                  : undefined
+                              }
+                            >
+                              {block?.description}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -154,7 +147,9 @@ export function HomePageComponent(props: {
                                   linkText={link?.cta || "Hey"}
                                   className="w-full"
                                   size="xl"
-                                />
+                                >
+                                  Get in touch
+                                </BigButton>
                               </div>
                             </>
                           )
