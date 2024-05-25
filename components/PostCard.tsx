@@ -10,8 +10,14 @@ export default function PostCard({
   className: any
 }) {
   return (
-    <div key={post.node.id} className="my-0 mt-6 list-none gap-4 border-b-2">
-      <Link href={`/posts/${post.node._sys.filename}`}>
+    <div
+      key={post.node.id}
+      className="my-0 list-none gap-4 border-b-2 border-zinc-100 dark:border-zinc-800"
+    >
+      <Link
+        href={`/posts/${post.node._sys.filename}`}
+        className="flex flex-col gap-2"
+      >
         <div
           className="text-[60px] font-normal leading-tight tracking-tighter text-zinc-700 hover:text-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-300"
           data-tina-field={
@@ -20,9 +26,9 @@ export default function PostCard({
         >
           {post.node.title}{" "}
         </div>
-        <span className="text-sm text-gray-400">
+        <span className="pb-2 text-sm text-gray-400">
           {" "}
-          - {moment(post.node.date).format("MMM DD, YYYY")}
+          {moment(post.node.date).format("MMM DD, YYYY")}
         </span>
       </Link>
     </div>

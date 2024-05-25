@@ -11,12 +11,13 @@ import { FaInstagram } from "react-icons/fa6"
 import RenderModel from "./RenderModel"
 import { ChonkyCat } from "./models/ChonkyCat"
 import Heading from "./Heading"
-import { FaLinkedin } from "react-icons/fa"
+import { FaCheck, FaLinkedin } from "react-icons/fa"
 import { MdOutlineAlternateEmail } from "react-icons/md"
 import SocialsButton from "./SocialsButton"
 import toast, { Toaster } from "react-hot-toast"
 import { GravityBalls } from "./GravityBalls"
 import copy from "copy-to-clipboard"
+import { useState } from "react"
 
 function copyEmail({ copyId }: { copyId: string }) {
   // let inputElement = document.createElement("input")
@@ -30,7 +31,14 @@ function copyEmail({ copyId }: { copyId: string }) {
   // document.body.removeChild(inputElement)
 }
 
-const notify = () =>
+const handleCopy = ({
+  setCopied,
+}: {
+  setCopied: (copied: boolean) => void
+}) => {
+  copy("jineshpb@gmail.com")
+
+  setCopied(true), {}
   toast.success("Email copied!", {
     style: {
       borderRadius: "32px",
@@ -47,8 +55,10 @@ const notify = () =>
       secondary: "#FAFAFA",
     },
   })
+}
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false)
   return (
     <section className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
       <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
@@ -79,21 +89,27 @@ export default function Footer() {
           />
 
           <button
-            className="flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
+            className="relative flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
               event.preventDefault()
-              copy("jineshpb@gmail.com")
-              notify()
+
+              {
+                !copied && handleCopy({ setCopied: setCopied })
+              }
             }}
             onTouchStart={(event) => {
               event.preventDefault()
               // Call the copyEmail function and notify on touch start
-              copy("jineshpb@gmail.com")
-              notify()
+
+              {
+                !copied && handleCopy({ setCopied: setCopied })
+              }
             }}
           >
-            Copy Email
-            <MdOutlineAlternateEmail size={48} />
+            {copied ? "Email Copied!" : "Copy Email"}
+
+            {!copied ? <MdOutlineAlternateEmail size={48} /> : <FaCheck />}
+            <span className="absolute bottom-[-6px] left-0 z-10  size-full rounded-[64px] bg-emerald-700/10 transition-all duration-300 group-hover:bottom-[-12px]"></span>
             <Toaster />
           </button>
         </div>

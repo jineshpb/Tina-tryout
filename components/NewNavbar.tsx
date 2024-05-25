@@ -51,12 +51,12 @@ export default function NewNavbar(props: {
   // return NavList?.map((setting: any) => {
   return (
     <nav
-      className="fixed top-0 z-10 w-full items-center  p-10 backdrop-blur-xl "
-      style={{
-        backdropFilter: "blur(20px)",
+      className="fixed top-0 z-10 w-full items-center  p-10 lg:backdrop-blur-xl "
+      // style={{
+      //   backdropFilter: "blur(20px)",
 
-        WebkitBackdropFilter: "blur(20px)",
-      }}
+      //   WebkitBackdropFilter: "blur(20px)",
+      // }}
     >
       <div className="mx-auto max-w-[1440px]">
         {isMobile ? (
@@ -134,7 +134,14 @@ function MobileNav({
     <>
       {open ? (
         <div className="z-20 flex flex-col items-end ">
-          <div className="flex w-full flex-col items-end">
+          <div
+            className="flex w-full flex-col items-end backdrop-blur-xl"
+            style={{
+              backdropFilter: "blur(20px)",
+
+              WebkitBackdropFilter: "blur(20px)",
+            }}
+          >
             <button
               aria-expanded={open}
               aria-label="Open menu"
@@ -148,7 +155,7 @@ function MobileNav({
 
             <div
               id="drawer"
-              className={clsx("flex w-full flex-col items-center gap-8 p-20")}
+              className={clsx(" w-full flex-col items-center gap-8 p-20 ")}
             >
               {data[0].node.menuItems?.map((item: any, index: any) => (
                 <React.Fragment key={index}>

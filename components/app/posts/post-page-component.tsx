@@ -52,8 +52,8 @@ export function PostPageComponent(props: {
           {moment(data.posts.date).format("MMM DD, YYYY")}
         </span>
       </p>
-      <hr className=" mt-2 border-zinc-300" />
-      <article className=" prose-xl ">
+      <hr className=" mt-2 border-zinc-300 dark:border-zinc-700" />
+      <article className=" prose prose-xl prose-zinc text-zinc-800 dark:text-zinc-100 ">
         <section data-tina-field={tinaField(data.posts, "body")}>
           <TinaMarkdown content={content} />
         </section>
