@@ -1,4 +1,5 @@
 import { defineConfig } from "tinacms"
+import { richTextComponents } from "./richtext-schema"
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -45,6 +46,11 @@ export default defineConfig({
             type: "object",
             label: "Menu Items",
             list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.title }
+              },
+            },
             fields: [
               {
                 name: "label",
@@ -143,7 +149,7 @@ export default defineConfig({
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        return { label: item.label }
+                        return { label: item.title }
                       },
                       defaultItem: {
                         position: "designer",
@@ -193,7 +199,7 @@ export default defineConfig({
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        return { label: item.label }
+                        return { label: item?.title }
                       },
                       defaultItem: {
                         title: "TinaCMS",
@@ -289,6 +295,7 @@ export default defineConfig({
             type: "rich-text",
             label: "Body",
             isBody: true,
+            templates: richTextComponents,
           },
         ],
         defaultItem() {

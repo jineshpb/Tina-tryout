@@ -8,6 +8,14 @@ import { Metadata } from "next"
 import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
+import {
+  CaptionedImage,
+  PullQuote,
+  TextBox,
+  TweetEmbed,
+  VideoPlayer,
+} from "@/components/RichText"
+
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
 //   description: "My Web dev blog",
@@ -37,7 +45,7 @@ export function PostPageComponent(props: {
           {title}
         </Heading>
       </div>
-      <p>
+      <p className="mt-4">
         {data.posts.tags?.map((tag) => (
           <span
             key={tag}
@@ -53,9 +61,18 @@ export function PostPageComponent(props: {
         </span>
       </p>
       <hr className=" mt-2 border-zinc-300 dark:border-zinc-700" />
-      <article className=" prose prose-xl prose-zinc text-zinc-800 dark:text-zinc-100 ">
+      <article className=" prose prose-xl prose-zinc dark:prose-invert ">
         <section data-tina-field={tinaField(data.posts, "body")}>
-          <TinaMarkdown content={content} />
+          <TinaMarkdown
+            content={content}
+            components={{
+              TextBox,
+              TweetEmbed,
+              PullQuote,
+              VideoPlayer,
+              CaptionedImage,
+            }}
+          />
         </section>
       </article>
     </Bounded>

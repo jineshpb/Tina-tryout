@@ -1,61 +1,101 @@
 ---
-title: Warehouse management and the associated processes
+title: Defining UX for Walmart's new generation warehouses
 date: 2024-04-20T08:18:01.544Z
 tags:
   - Warehouse-Management
 ---
 
-### Optimizing Warehouse Management: Strategies for Efficiency
+<PullQuote quote="It’s very exciting, the way the company has changed our way of working to put technology to work, whether that’s software of the way we use our data or, increasingly, the way we use robotics in our business." author="Doug McMillon" />
 
-In the dynamic world of supply chain management, efficient warehouse management plays a pivotal role in ensuring smooth operations and customer satisfaction. As businesses expand and globalize, the need for streamlined warehouse processes becomes increasingly crucial. In this blog post, we delve into the fundamentals of warehouse management and explore strategies to optimize efficiency.
+### Brief Overview
 
-### &#xA;![](/warehouse-cover.png)The Importance of Efficient Warehouse Management
+Walmart, renowned for having one of the largest distribution networks in the U.S., faced significant challenges with its aging manual distribution centers. This comprehensive effort aimed to transform these facilities into modern, automated centers, incorporating extensive hardware implementation, system planning, software engineering, and UX design. The initiative sought to enhance efficiency, reduce errors, and improve overall productivity. This case study outlines the UX component of this larger project, detailing its objectives, methodologies, design, and implementation phases, as well as its significant impact on Walmart's operations.
 
-Warehousing is not merely about storing goods; it's a strategic component of the supply chain that impacts the entire business ecosystem. Here's why efficient warehouse management matters:
+### Problem Statement
 
-* Cost Reduction: Effective warehouse management can significantly reduce operational costs by minimizing storage space, optimizing inventory levels, and improving labor efficiency.
-* Enhanced Customer Service: A well-managed warehouse ensures accurate and timely order fulfillment, leading to improved customer satisfaction and retention.
-* Inventory Control: Proper management helps in maintaining optimal inventory levels, reducing stockouts, and preventing overstock situations.
-* Boosts Operational Efficiency: Streamlined processes result in faster turnaround times, reduced lead times, and overall operational excellence.
+Walmart operates a vast distribution network, spanning a massive 151 million square feet and consisting of 216 distribution centers, including Regional Distribution Centers (RDCs), Food Distribution Centers (FSCs), and Fashion Distribution Centers (Fashion DCs). These centers serve as crucial nodes between suppliers and stores, handling the receipt, storage, and dispatch of goods just in time.
 
-### Key Strategies for Warehouse Management Optimization
+Despite some level of automation, manual processes remain prominent in these facilities, leading to increased turnaround times and inaccuracies. Specific issues include:
 
-![](https://res.cloudinary.com/dhuk11prd/image/upload/v1694682818/tdflq1oednmngrnyjpv2.jpg)
+* Inefficient Manual Processes: High reliance on manual processes increases turnaround time and reduces accuracy.
 
-Now, let's explore some strategies to optimize warehouse management:
+<CaptionedImage caption="Different storage locations, racks, pallets and even free cases on the floor" alt="warehouse " imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1716720005/portfolio-tina/Warehouse%20management/panoramix_up_mnpayl.png" />
 
-1\. Embrace Technology
+* Labor-Intensive Operations: Significant reliance on manual labor for tasks such as receiving, storing, and shipping goods.
+* Inconsistent Process Execution: Manual processes are prone to variability, impacting productivity and quality.
 
-Invest in warehouse management systems (WMS) and automation technologies like RFID, barcode scanning, and automated material handling systems. These technologies enhance visibility, accuracy, and speed in operations.
+### Objectives
 
-2\. Layout and Space Utilization
+* Enhance Efficiency: Streamline warehouse operations through increased automation to reduce turn around times and improve throughput.
 
-Design an efficient warehouse layout that minimizes travel time and optimizes storage space. Implement slotting techniques to organize inventory based on picking frequency and size.
+<CaptionedImage imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1716720004/portfolio-tina/Warehouse%20management/other_side_wxwmkz.png" caption="Manual warehouses need a lot of people and fork lifts on the floor. Forklifts move freight from trucks to storage racks" alt="Warehouse image" />
 
-3\. Inventory Management
+Improve Accuracy: Minimize errors in inventory management and order fulfillment.
 
-Implement robust inventory management practices such as ABC analysis, cycle counting, and real-time tracking. Utilize forecasting tools to predict demand and adjust inventory levels accordingly.
+* Reduce Labor Costs: Lower reliance on manual labor and associated costs.
+* Increase Scalability: Develop a system that can scale with Walmart’s growth and evolving needs.
+* Boost Competitiveness: Ensure Walmart’s warehouse operations are on par with or superior to industry standards.
 
-4\. Optimize Order Fulfillment
+### Project Scope
 
-Use efficient picking methods such as batch picking, zone picking, or wave picking to improve productivity. Implement pick-to-light or voice-directed picking systems for accuracy and speed.
+* Implementing hardware solutions provided by automation companies.
+* Developing software interfaces to integrate with the new automated systems.
+* Implementing ergonomic workstations with touch screen interfaces for problem resolution tasks.
 
-5\. Training and Employee Engagement
+### Research and Analysis
 
-Invest in training programs to enhance employee skills and efficiency. Engage employees by encouraging feedback and involving them in process improvement initiatives.
+The project team identified key areas where manual intervention was still necessary, such as problem resolution during freight receipt. An example issue is quantity mismatch, where the received shipment does not match the expected quantity.
 
-6\. Performance Metrics and Continuous Improvement
+### Design 
 
-Define key performance indicators (KPIs) such as order accuracy, inventory turnover, and on-time delivery. Regularly analyze metrics to identify areas for improvement and implement continuous process enhancements.
 
-7\. Collaboration with Suppliers and Logistics Partners
+Adapting Walmart's existing design system to suit touch screen interfaces was crucial. This involved:
 
-Forge strong partnerships with suppliers and logistics providers to streamline inbound and outbound processes. Collaborate on transportation planning and scheduling to minimize lead times.
+* Reconsidering font sizes, button sizes, and touch targets to ensure usability on touch screens.
+* Reducing text instructions to facilitate easy comprehension, especially for associates whose primary language is not English.
 
-8\. Sustainability Practices
+### &#xA;Implementation
 
-Implement sustainable practices such as energy-efficient lighting, waste reduction, and eco-friendly packaging. Sustainability not only reduces costs but also enhances brand reputation.
+The automation partners provided the necessary hardware, while Walmart built the software interfaces. New fully automated facilities were designed to minimize human touchpoints for receiving, storing, fulfilling, and shipping items. However, ergonomic workstations with touch screens were implemented to handle rare cases requiring human intervention
 
-### &#xA;Conclusion
+The new system utilizes technology called ASRS (Automated Storage and Retrieval System). Which reduces the human touch point in receiving, storing and fulfilling freight for an order
 
-In conclusion, efficient warehouse management is the backbone of a successful supply chain. By adopting these strategies and embracing technological advancements, businesses can achieve operational excellence, reduce costs, and deliver superior customer experiences. Remember, continuous improvement is key to staying ahead in the competitive landscape of modern warehouse management.
+<CaptionedImage imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1716720004/portfolio-tina/Warehouse%20management/asrs_-3_w80t4n.png" caption="ASRS systems known for their dense storage architecture" alt="ASRS system" />
+
+Bots Store and retrieve Boxes/Totes instead of forklifts operated by associates. This frees up space between racks and increases density of storage.
+
+Even though most of the freight movement is handles by robots, there are few things that need human intervention such as problem solving/error correction \
+
+
+<CaptionedImage imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1716720004/portfolio-tina/Warehouse%20management/asrs_-2_s7rmvv.png" caption="Error correction station situated close proximity to the storage " alt="warehouse" />
+
+There are touch screen interfaces in-front of the operator console to help him resolve these errors. Once these are resolved it can go into the storage like rest of the freight
+
+<CaptionedImage imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1716720004/portfolio-tina/Warehouse%20management/ASRS_stations_m9mbuv.png" caption="Operator kiosk" alt="Operator kiosk" />
+
+### &#x20;User Context
+
+The primary users of the new system are warehouse associates who handle problem resolution tasks. The touch screen interfaces and ergonomic workstations were designed to ease their job and improve productivity.
+
+The project went live in March 2021, and the new automated facilities have been successfully replicated across the U.S. Key successes include:
+
+* Significant improvements in efficiency and accuracy.
+* Enhanced scalability to support Walmart’s growth.
+* Improved competitiveness in the retail industry.
+
+### Conclusion
+
+The project demonstrated the importance of integrating ergonomic design with advanced automation. Key learnings include the value of user-centric design in improving operational efficiency and the necessity of ongoing iterations based on user feedback.
+
+Go live video from the official channel, there are glimpses of the screens that we conceptualized.
+
+<VideoPlayer url="https://www.youtube.com/watch?v=0TiO6eLGBA8" />
+
+
+
+
+###
+
+Source: [https://mwpvl.com/html/walmart.html](https://mwpvl.com/html/walmart.html)
+
+Global tech Blog: [https://tech.walmart.com/content/walmart-global-tech/en\_us/blog/post/automation-of-fc-and-dc.html](https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/automation-of-fc-and-dc.html)
