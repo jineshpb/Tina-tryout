@@ -1,8 +1,6 @@
 import { ImageResponse } from "@vercel/og"
 
-export const config = {
-  runtime: "experimental-edge",
-}
+export const runtime = "experimental-edge"
 
 const webSiteUrl = "http://localhost:3000"
 

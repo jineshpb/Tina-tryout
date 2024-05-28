@@ -1,4 +1,5 @@
 import { defineConfig } from "tinacms"
+import { richTextComponents } from "./richtext-schema"
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -20,11 +21,12 @@ export default defineConfig({
     publicFolder: "public",
   },
   media: {
-    tina: {
-      mediaRoot: "",
-      publicFolder: "public",
+    loadCustomStore: async () => {
+      const pack = await import("next-tinacms-cloudinary")
+      return pack.TinaCloudCloudinaryMediaStore
     },
   },
+
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
@@ -44,6 +46,11 @@ export default defineConfig({
             type: "object",
             label: "Menu Items",
             list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.title }
+              },
+            },
             fields: [
               {
                 name: "label",
@@ -72,12 +79,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-          {
-            name: "body",
-            type: "rich-text",
-            label: "Body",
-            isBody: true,
-          },
+
           {
             name: "blocks",
             label: "Blocks",
@@ -95,11 +97,22 @@ export default defineConfig({
                     required: true,
                   },
                   {
-                    name: "description",
-                    type: "rich-text",
-                    label: "Description",
+                    name: "name",
+                    type: "string",
+                    label: "Name",
                     required: true,
                   },
+                  {
+                    name: "description",
+                    type: "string",
+                    label: "Description",
+                  },
+                  {
+                    name: "profileImage",
+                    type: "image",
+                    label: "Profile Image",
+                  },
+
                   {
                     name: "link",
                     type: "object",
@@ -136,7 +149,7 @@ export default defineConfig({
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        return { label: item.label }
+                        return { label: item.title }
                       },
                       defaultItem: {
                         position: "designer",
@@ -170,6 +183,60 @@ export default defineConfig({
                   },
                 ],
               },
+              {
+                name: "projects",
+                label: "Projects",
+                fields: [
+                  {
+                    name: "projectsHeading",
+                    type: "string",
+                    label: "Projects Heading",
+                  },
+                  {
+                    name: "projects",
+                    type: "object",
+                    label: "Projects",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item?.title }
+                      },
+                      defaultItem: {
+                        title: "TinaCMS",
+                        description: "I did some stuff",
+                        link: "https://tina.io",
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "title",
+                        type: "string",
+                        label: "Title",
+                      },
+                      {
+                        name: "description",
+                        type: "string",
+                        label: "Description",
+                      },
+                      {
+                        name: "link",
+                        type: "string",
+                        label: "Link",
+                      },
+                      {
+                        name: "image",
+                        type: "image",
+                        label: "Image",
+                      },
+                      {
+                        name: "videoLink",
+                        type: "string",
+                        label: "Video link",
+                      },
+                    ],
+                  },
+                ],
+              },
             ],
           },
         ],
@@ -178,6 +245,9 @@ export default defineConfig({
           router: ({ document }) => {
             if (document._sys.filename === "about") {
               return "/about"
+            }
+            if (document._sys.filename === "home") {
+              return "/"
             }
             return undefined
           },
@@ -225,6 +295,7 @@ export default defineConfig({
             type: "rich-text",
             label: "Body",
             isBody: true,
+            templates: richTextComponents,
           },
         ],
         defaultItem() {

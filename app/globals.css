@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+#body,
+#html {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.break-words {
+  overflow-wrap: anywhere;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -36,13 +47,13 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 240, 5.9%, 10%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 240, 5.9%, 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 240, 5.9%, 10%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
@@ -166,5 +177,9 @@
 
   .e_fadeIn {
     @apply translate-y-[100px] opacity-0;
+  }
+
+  .m_slideUp {
+    @apply translate-y-[100px];
   }
 }

@@ -4,12 +4,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useEffect, useState } from "react"
-import { useTina } from "tinacms/dist/react"
-import { Button } from "./ui/button"
+import { tinaField, useTina } from "tinacms/dist/react"
+
 import { MdClose, MdMenu } from "react-icons/md"
 import clsx from "clsx"
 import { ThemeToggle } from "./ThemeToggle"
 import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { cn } from "@/lib/utils"
 
 export default function NewNavbar(props: {
   data: SettingsConnectionQuery
@@ -18,7 +20,7 @@ export default function NewNavbar(props: {
   }
   query: string
 }) {
-  const [isMobile, setIsMobile] = useState(isMobileDevice())
+  const [isMobile, setIsMobile] = useState(true)
   const [open, setOpen] = useState(false)
 
   const pathname = usePathname()
@@ -34,32 +36,38 @@ export default function NewNavbar(props: {
       setIsMobile(isMobileDevice())
     }
 
+    setIsMobile(isMobileDevice())
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   const { data } = useTina(props)
-  console.log(data.settingsConnection.edges)
 
   const NavList = data.settingsConnection.edges
   // rest of the code
 
-  console.log(NavList)
+  // console.log(newNavlist)
 
   // return NavList?.map((setting: any) => {
   return (
-    <nav className="mx-auto flex w-full max-w-7xl items-center justify-between p-10">
-      <NameLogo logo={NavList[0]?.node?.logo} />
-      {isMobile ? (
-        <MobileNav
-          data={NavList}
-          open={open}
-          setOpen={setOpen}
-          pathname={pathname}
-        />
-      ) : (
-        <DesktopNav data={NavList} />
-      )}
+    <nav
+      className="fixed left-0 top-0 z-10 w-full items-center p-6 lg:backdrop-blur-xl "
+      style={{
+        boxSizing: "border-box",
+      }}
+    >
+      <div className="mx-auto w-full max-w-[1440px]">
+        {isMobile ? (
+          <MobileNav
+            data={NavList}
+            open={open}
+            setOpen={setOpen}
+            pathname={pathname}
+          />
+        ) : (
+          <DesktopNav data={NavList} className="" />
+        )}
+      </div>
     </nav>
   )
   // })
@@ -76,13 +84,16 @@ function isHome(link: string, pathname: string) {
 function NameLogo({ logo }: { logo: any }) {
   // replace any with the actual type of logo
   return (
-    <Link
-      href="/"
+    <button
+      onClick={() => {
+        const element = document.getElementById("introduction")
+        element?.scrollIntoView({ behavior: "smooth" })
+      }}
       aria-label="Home page"
       className="text-xl font-extrabold tracking-tighter text-zinc-900"
     >
       <Image src={logo} width={24} height={24} alt="Logo" />
-    </Link>
+    </button>
   )
 }
 
@@ -99,6 +110,16 @@ function MobileNav({
 }) {
   const tl = gsap.timeline({ paused: true })
 
+  useGSAP(() => {
+    gsap.to("#menuItem", {
+      duration: 0.5,
+      opacity: 1,
+      y: 0,
+      ease: "power2.inOut",
+      stagger: 0.1,
+    })
+  }, [open])
+
   // useEffect(() => {
   //   if (open) {
   //     gsap.from("#drawer", { duration: 0.5, opacity: 1 })
@@ -108,67 +129,105 @@ function MobileNav({
   // }, [open])
 
   return (
-    <div>
-      <div className="flex items-center gap-6">
-        <ThemeToggle />
+    <>
+      {open ? (
+        <div className="z-20 flex flex-col items-end ">
+          <div
+            className="flex w-full flex-col items-end backdrop-blur-xl"
+            style={{
+              backdropFilter: "blur(20px)",
 
-        <button
-          aria-expanded={open}
-          aria-label="Open menu"
-          className="block p-2 text-2xl text-zinc-800 dark:text-zinc-400"
-          onClick={() => {
-            if (!open) {
-              setOpen(!open)
-            } else {
-              setOpen(!open)
-            }
-          }}
-        >
-          {open ? (
-            <MdMenu />
-          ) : (
-            <>
+              WebkitBackdropFilter: "blur(20px)",
+            }}
+          >
+            <button
+              aria-expanded={open}
+              aria-label="Open menu"
+              className=" p-2 text-2xl text-zinc-800 dark:text-zinc-400"
+              onClick={() => {
+                setOpen((prev: boolean) => !prev)
+              }}
+            >
               <MdClose />
-              <div
-                id="drawer"
-                className={clsx(
-                  "fixed left-0 top-0 z-[-1]  flex size-full flex-col items-center gap-8 bg-zinc-300 px-10 pt-20 dark:bg-zinc-900",
-                )}
-              >
-                {data[0]?.node?.menuItems?.map((item: any, index: any) => (
-                  <React.Fragment key={index}>
-                    <li className="flex items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
-                      <Link href={item.link}>
-                        <span>{item.label}</span>
-                      </Link>
-                    </li>
-                  </React.Fragment>
-                ))}
-              </div>
-            </>
-          )}
-        </button>
-      </div>
-    </div>
+            </button>
+
+            <div
+              id="drawer"
+              className={clsx(" w-full flex-col items-center gap-8 p-20 ")}
+            >
+              {data[0].node.menuItems?.map((item: any, index: any) => (
+                <React.Fragment key={index}>
+                  <li className="flex  items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
+                    <button
+                      onClick={() => {
+                        setOpen((prev: boolean) => !prev)
+                        handleClick(item.link)
+                      }}
+                    >
+                      <div className=" flex h-auto overflow-hidden ">
+                        <span
+                          id="menuItem"
+                          className="left-0  top-0 translate-y-8 text-3xl font-medium tracking-tight text-zinc-900 opacity-0 dark:text-zinc-300"
+                        >
+                          {item.label}
+                        </span>
+                      </div>
+                    </button>
+                  </li>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-row-reverse items-center justify-between ">
+          <button
+            aria-expanded={open}
+            aria-label="Open menu"
+            className="text-2xl text-zinc-800 dark:text-zinc-400"
+            onClick={() => {
+              setOpen((prev: boolean) => !prev)
+            }}
+          >
+            <MdMenu />
+          </button>
+          <ThemeToggle />
+        </div>
+      )}
+    </>
   )
 }
 
-function DesktopNav({ data }: { data: SettingsConnectionQuery }) {
+function handleClick(link: string) {
+  const element = document.getElementById(link)
+  element?.scrollIntoView({ behavior: "smooth" })
+}
+
+function DesktopNav({
+  data,
+  className,
+}: {
+  data: SettingsConnectionQuery
+  className?: string
+}) {
   return (
-    <div className="flex items-center justify-center gap-8">
-      <div key={data[0]?.node?.id} className="flex gap-6">
-        {data[0]?.node?.menuItems?.map((item: any) => {
-          return (
-            <div
-              key={item.id}
-              className=" font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
-            >
-              <Link href={item.link}>{item.label}</Link>
-            </div>
-          )
-        })}
-      </div>
-      <div className=" flex  items-center justify-center">
+    <div className={clsx("flex items-center justify-between gap-8", className)}>
+      <NameLogo logo={data[0]?.node?.logo} />
+      <div className="flex items-center gap-6">
+        <div key={data[0]?.node?.id} className="flex gap-6">
+          {data[0]?.node?.menuItems?.map((item: any) => {
+            return (
+              <button
+                key={item.id}
+                className="text-xl font-medium tracking-tight text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
+                onClick={() => handleClick(item.link)}
+                data-tina-ref={item ? tinaField(item, "label") : undefined}
+              >
+                {item.label}
+              </button>
+            )
+          })}
+        </div>
         <ThemeToggle />
       </div>
     </div>

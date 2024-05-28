@@ -11,13 +11,13 @@ export function ThemeToggle() {
     <>
       <button
         onClick={() => setTheme("light")}
-        className="hidden text-gray-300 dark:flex"
+        className="hidden p-2 text-gray-300 dark:flex "
       >
         <FiSun />
       </button>
       <button
         onClick={() => setTheme("dark")}
-        className="flex text-gray-600 dark:hidden"
+        className="flex p-2 text-gray-600 dark:hidden"
       >
         <FaRegMoon />
       </button>

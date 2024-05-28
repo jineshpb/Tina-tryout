@@ -18,8 +18,6 @@ export function ProjectListPageComponent(props: {
 
   const projectList = data.projectsConnection.edges
 
-  console.log("from project list page", projectList)
-
   if (!projectList) {
     return
   }
