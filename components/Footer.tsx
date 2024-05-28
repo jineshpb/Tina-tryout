@@ -62,8 +62,6 @@ const handleCopy = ({
 export default function Footer() {
   const [copied, setCopied] = useState(false)
 
-  console.log(copied)
-
   return (
     <section className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
       <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
