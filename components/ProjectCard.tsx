@@ -74,6 +74,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
           <BigButton
             linkText="View Project"
             href={project?.link}
+            target="_blank"
             className="hidden w-full group-hover:block"
           >
             View Project

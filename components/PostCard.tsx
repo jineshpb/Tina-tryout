@@ -19,7 +19,7 @@ export default function PostCard({
         className="flex flex-col gap-2"
       >
         <div
-          className="text-[60px] font-normal leading-tight tracking-tighter text-zinc-700 hover:text-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-300"
+          className="text-[40px] font-normal leading-tight tracking-tighter text-zinc-700 hover:text-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-300 md:text-[60px]"
           data-tina-field={
             post.node ? tinaField(post.node, "title") : undefined
           }

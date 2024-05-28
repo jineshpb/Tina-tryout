@@ -6,7 +6,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text"
 import Heading from "../Heading"
 import SmallAvatar from "../SmallAvatar"
 import BigButton from "../BigButton"
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import Bounded from "../Bounded"
 import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
@@ -18,7 +18,7 @@ import { EB_Garamond } from "next/font/google"
 import clsx from "clsx"
 import { Spotlight } from "../Spotlight"
 import { DotBackgroundDemo } from "../DotBackground"
-import { GridBackgroundDemo } from "../GridBackground"
+import { BackgroundGradient } from "../ui/BackgroundGradient"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -56,6 +56,22 @@ export function HomePageComponent(props: {
   variables: {}
   query: string
 }) {
+  const [isMobile, setIsMobile] = useState(isMobileDevice())
+  function isMobileDevice() {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768
+    }
+    return false
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(isMobileDevice())
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
   const { data } = useTina(props)
 
   const title = data.page.title
@@ -74,7 +90,7 @@ export function HomePageComponent(props: {
   return (
     <>
       <div className=" mx-auto mt-20 w-full snap-mandatory">
-        <div className="absolute left-0 top-0 -z-20 size-full">
+        <div className="absolute left-0 top-0 -z-20 size-full overflow-hidden">
           <DotBackgroundDemo />
         </div>
         <Bounded className=" flex w-full flex-row gap-12" id="introduction">
@@ -87,7 +103,7 @@ export function HomePageComponent(props: {
                     key={i}
                   >
                     <div className="flex size-full">
-                      <div className="antialiased">
+                      <div className="hidden antialiased lg:block">
                         <Spotlight
                           fill="white"
                           className="-top-40  left-40 md:-top-20 md:left-32"
@@ -102,7 +118,7 @@ export function HomePageComponent(props: {
                         /> */}
                       </div>
                       <div
-                        className="g_fadeIn text-7xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-8xl lg:text-8xl"
+                        className="g_fadeIn text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-8xl lg:text-8xl"
                         data-tina-field={
                           block ? tinaField(block, "title") : undefined
                         }
@@ -111,21 +127,23 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
                     <div className="flex size-full flex-col justify-between gap-8">
-                      <div className="g_fadeIn flex flex-col gap-8 md:flex-row ">
-                        <div>
-                          <SmallAvatar
-                            image={block.profileImage}
-                            data-tina-field={
-                              block
-                                ? tinaField(block, "profileImage")
-                                : undefined
-                            }
-                            className="size-56 md:size-32 lg:size-40"
-                          ></SmallAvatar>
+                      <div className="g_fadeIn flex flex-col gap-10 lg:flex-row ">
+                        <div className="flex items-start justify-start">
+                          <BackgroundGradient className="flex">
+                            <SmallAvatar
+                              image={block.profileImage}
+                              data-tina-field={
+                                block
+                                  ? tinaField(block, "profileImage")
+                                  : undefined
+                              }
+                              className="size-56 md:size-32 lg:size-40"
+                            ></SmallAvatar>
+                          </BackgroundGradient>
                         </div>
                         <div className="g_fadeIn flex flex-col gap-2">
                           <div
-                            className=" text-[46px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 "
+                            className="text-[34px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 md:text-[46px] "
                             data-tina-field={
                               block ? tinaField(block, "name") : undefined
                             }
@@ -134,7 +152,10 @@ export function HomePageComponent(props: {
                           </div>
                           <div>
                             <p
-                              className="text-2xl font-normal leading-relaxed  text-zinc-500 dark:text-zinc-400"
+                              className=" text-xl font-normal  text-zinc-500 dark:text-zinc-400 md:text-2xl"
+                              style={{
+                                lineHeight: "1.6",
+                              }}
                               data-tina-field={
                                 block
                                   ? tinaField(block, "description")
@@ -167,7 +188,7 @@ export function HomePageComponent(props: {
                                 <BigButton
                                   linkText={link?.cta || "Hey"}
                                   className="w-full"
-                                  size="xl"
+                                  size={isMobile ? "lg" : "xl"}
                                 >
                                   Get in touch
                                 </BigButton>
@@ -264,7 +285,7 @@ export function HomePageComponent(props: {
                         >
                           <div
                             className={clsx(
-                              "w-full text-[72px] font-normal leading-[3rem] tracking-tighter text-zinc-700 dark:text-zinc-300",
+                              "w-full text-[60px] font-normal  leading-[4rem] tracking-tighter text-zinc-700 dark:text-zinc-300 md:text-[72px]",
                             )}
                             data-tina-field={
                               role ? tinaField(role, "position") : undefined
@@ -276,7 +297,7 @@ export function HomePageComponent(props: {
                           <div className="flex w-full flex-col gap-2">
                             <div className="flex items-center gap-2  text-zinc-500 dark:text-zinc-500">
                               <span
-                                className="flex gap-4 pt-0 text-2xl font-medium text-emerald-500 dark:text-emerald-300"
+                                className="flex gap-4 pt-0 text-xl font-medium text-emerald-500 dark:text-emerald-300 md:text-2xl"
                                 data-tina-field={
                                   role ? tinaField(role, "company") : undefined
                                 }
@@ -294,7 +315,7 @@ export function HomePageComponent(props: {
                             </div>
 
                             <div
-                              className="prose prose-2xl text-zinc-700 dark:text-zinc-300"
+                              className="prose prose-lg text-zinc-700 md:prose-2xl dark:text-zinc-300"
                               data-tina-field={
                                 role
                                   ? tinaField(role, "description")

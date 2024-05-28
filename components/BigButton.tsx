@@ -12,6 +12,7 @@ type HeadingProps = {
 type BigButtonProps = {
   linkText?: string | "" | "Hey"
   href?: string
+  target?: string
   className?: string
   children: ReactNode
   size?: "xl" | "lg" | "md" | "sm" | "xs"
@@ -20,6 +21,7 @@ type BigButtonProps = {
 export default function BigButton({
   linkText,
   href,
+  target,
   className,
   children,
 
@@ -27,7 +29,7 @@ export default function BigButton({
 }: BigButtonProps) {
   return href ? (
     <button className={className}>
-      <Link href={href} className="">
+      <Link href={href} target={target} className="">
         <div
           className={clsx(
             "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:bg-gradient-to-b hover:from-emerald-200 hover:to-emerald-500",

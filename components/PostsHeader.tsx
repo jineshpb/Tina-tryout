@@ -1,10 +1,8 @@
 import React from "react"
 import BigButton from "./BigButton"
-import { TbSmartHome } from "react-icons/tb"
-import Bounded from "./Bounded"
-import Header from "./Header"
-import Heading from "./Heading"
 import { ThemeToggle } from "./ThemeToggle"
+import { FaArrowLeft } from "react-icons/fa"
+import Heading from "./Heading"
 
 const PostsHeader = () => {
   return (
@@ -12,8 +10,7 @@ const PostsHeader = () => {
       <div className="flex items-center gap-6">
         <BigButton className="" href="/" linkText="Back Home">
           <div className="flex">
-            <TbSmartHome className="mr-4" />
-            Back home
+            <FaArrowLeft />
           </div>
         </BigButton>
         {/* <Heading
@@ -23,7 +20,9 @@ const PostsHeader = () => {
           Jinesh Bhaskaran
         </Heading> */}
       </div>
-      <ThemeToggle />
+      <div className="p-4">
+        <ThemeToggle />
+      </div>
     </div>
   )
 }

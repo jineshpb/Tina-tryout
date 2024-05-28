@@ -18,6 +18,8 @@ import toast, { Toaster } from "react-hot-toast"
 import { GravityBalls } from "./GravityBalls"
 import copy from "copy-to-clipboard"
 import { useState } from "react"
+import Lottie from "react-lottie"
+import animationData from "@/data/confetti.json"
 
 function copyEmail({ copyId }: { copyId: string }) {
   // let inputElement = document.createElement("input")
@@ -59,6 +61,9 @@ const handleCopy = ({
 
 export default function Footer() {
   const [copied, setCopied] = useState(false)
+
+  console.log(copied)
+
   return (
     <section className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
       <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
@@ -111,6 +116,20 @@ export default function Footer() {
             {!copied ? <MdOutlineAlternateEmail size={48} /> : <FaCheck />}
             <span className="absolute bottom-[-6px] left-0 z-10  size-full rounded-[64px] bg-emerald-700/10 transition-all duration-300 group-hover:bottom-[-12px]"></span>
             <Toaster />
+            {copied && (
+              <div className="absolute -bottom-5 right-1/2 ">
+                <Lottie
+                  options={{
+                    loop: false,
+                    autoplay: copied,
+                    animationData,
+                    rendererSettings: {
+                      preserveAspectRatio: "xMidYMid slice",
+                    },
+                  }}
+                />
+              </div>
+            )}
           </button>
         </div>
       </div>
@@ -120,8 +139,8 @@ export default function Footer() {
             <ChonkyCat />
           </RenderModel> */}
         </div>
-        <div className="absolute -bottom-[500px] z-10  h-[1200px] w-full">
-          {/* <GravityBalls /> */}
+        <div className="absolute -bottom-[500px] z-10   h-[1200px] w-full">
+          <GravityBalls />
         </div>
 
         <div className=" absolute w-full ">

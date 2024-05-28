@@ -51,14 +51,12 @@ export default function NewNavbar(props: {
   // return NavList?.map((setting: any) => {
   return (
     <nav
-      className="fixed top-0 z-10 w-full items-center  p-10 lg:backdrop-blur-xl "
-      // style={{
-      //   backdropFilter: "blur(20px)",
-
-      //   WebkitBackdropFilter: "blur(20px)",
-      // }}
+      className="fixed left-0 top-0 z-10 w-full items-center p-6 lg:backdrop-blur-xl "
+      style={{
+        boxSizing: "border-box",
+      }}
     >
-      <div className="mx-auto max-w-[1440px]">
+      <div className="mx-auto w-full max-w-[1440px]">
         {isMobile ? (
           <MobileNav
             data={NavList}
@@ -182,11 +180,11 @@ function MobileNav({
           </div>
         </div>
       ) : (
-        <div className="flex w-full flex-row-reverse items-center justify-between ">
+        <div className="flex flex-row-reverse items-center justify-between ">
           <button
             aria-expanded={open}
             aria-label="Open menu"
-            className=" p-2 text-2xl text-zinc-800 dark:text-zinc-400"
+            className="text-2xl text-zinc-800 dark:text-zinc-400"
             onClick={() => {
               setOpen((prev: boolean) => !prev)
             }}

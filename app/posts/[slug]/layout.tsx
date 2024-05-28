@@ -9,7 +9,7 @@ export default function PostDetailsLayout({
     <>
       <div className=" flex h-screen w-full flex-col items-center ">
         <PostsHeader />
-        <main className="post-detaisl">{children}</main>
+        <main className="post-details w-full">{children}</main>
       </div>
     </>
   )

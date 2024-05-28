@@ -8,7 +8,7 @@ type AvatarProps = {
 export default function SmallAvatar({ image, className }: AvatarProps) {
   return (
     <div
-      className={`relative size-[128px] overflow-hidden rounded-[44px] border-4 border-emerald-300 ${className}`}
+      className={`relative size-[200px] overflow-hidden rounded-[44px] md:size-[128px] ${className}`}
     >
       <Image
         src={image}

@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+.break-words {
+  overflow-wrap: anywhere;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
