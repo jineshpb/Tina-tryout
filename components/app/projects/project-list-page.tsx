@@ -9,12 +9,12 @@ import { useTina } from "tinacms/dist/react"
 
 export function ProjectListPageComponent(props: {
   data: ProjectsConnectionQuery
-  variables: {
-    relativePath: string
-  }
-  query: string
 }) {
-  const { data } = useTina(props)
+  const { data } = useTina({
+    query: "",
+    variables: {},
+    data: props.data,
+  })
 
   const projectList = data.projectsConnection.edges
 
