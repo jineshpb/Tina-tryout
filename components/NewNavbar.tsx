@@ -1,7 +1,7 @@
 "use client"
 import { SettingsConnectionQuery } from "@/tina/__generated__/types"
 import Image from "next/image"
-import Link from "next/link"
+
 import { usePathname } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { tinaField, useTina } from "tinacms/dist/react"
@@ -11,15 +11,8 @@ import clsx from "clsx"
 import { ThemeToggle } from "./ThemeToggle"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { cn } from "@/lib/utils"
 
-export default function NewNavbar(props: {
-  data: SettingsConnectionQuery
-  variables: {
-    relativePath: string
-  }
-  query: string
-}) {
+export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
   const [isMobile, setIsMobile] = useState(true)
   const [open, setOpen] = useState(false)
 
@@ -41,14 +34,14 @@ export default function NewNavbar(props: {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const { data } = useTina(props)
+  const { data } = useTina({
+    query: "",
+    variables: {},
+    data: props.data,
+  })
 
   const NavList = data.settingsConnection.edges
-  // rest of the code
 
-  // console.log(newNavlist)
-
-  // return NavList?.map((setting: any) => {
   return (
     <nav
       className="fixed left-0 top-0 z-10 w-full items-center p-6 lg:backdrop-blur-xl "
@@ -59,13 +52,16 @@ export default function NewNavbar(props: {
       <div className="mx-auto w-full max-w-[1440px]">
         {isMobile ? (
           <MobileNav
-            data={NavList}
+            data={NavList as unknown as SettingsConnectionQuery} // Cast NavList to SettingsConnectionQuery type
             open={open}
             setOpen={setOpen}
-            pathname={pathname}
+            pathname={pathname ?? ""}
           />
         ) : (
-          <DesktopNav data={NavList} className="" />
+          <DesktopNav
+            data={NavList as unknown as SettingsConnectionQuery}
+            className=""
+          /> // Cast NavList to SettingsConnectionQuery type
         )}
       </div>
     </nav>
@@ -103,31 +99,11 @@ function MobileNav({
   setOpen,
   pathname,
 }: {
-  data: SettingsConnectionQuery
+  data: any
   open: boolean
   setOpen: (open: boolean) => void
   pathname: string
 }) {
-  const tl = gsap.timeline({ paused: true })
-
-  useGSAP(() => {
-    gsap.to("#menuItem", {
-      duration: 0.5,
-      opacity: 1,
-      y: 0,
-      ease: "power2.inOut",
-      stagger: 0.1,
-    })
-  }, [open])
-
-  // useEffect(() => {
-  //   if (open) {
-  //     gsap.from("#drawer", { duration: 0.5, opacity: 1 })
-  //   } else {
-  //     gsap.to("#drawer", { duration: 0.5, opacity: 0 })
-  //   }
-  // }, [open])
-
   return (
     <>
       {open ? (
@@ -145,7 +121,7 @@ function MobileNav({
               aria-label="Open menu"
               className=" p-2 text-2xl text-zinc-800 dark:text-zinc-400"
               onClick={() => {
-                setOpen((prev: boolean) => !prev)
+                setOpen(!open)
               }}
             >
               <MdClose />
@@ -155,12 +131,12 @@ function MobileNav({
               id="drawer"
               className={clsx(" w-full flex-col items-center gap-8 p-20 ")}
             >
-              {data[0].node.menuItems?.map((item: any, index: any) => (
+              {data[0]?.node.menuItems?.map((item: any, index: any) => (
                 <React.Fragment key={index}>
                   <li className="flex  items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
                     <button
                       onClick={() => {
-                        setOpen((prev: boolean) => !prev)
+                        setOpen(!open)
                         handleClick(item.link)
                       }}
                     >
@@ -186,7 +162,7 @@ function MobileNav({
             aria-label="Open menu"
             className="text-2xl text-zinc-800 dark:text-zinc-400"
             onClick={() => {
-              setOpen((prev: boolean) => !prev)
+              setOpen(!open)
             }}
           >
             <MdMenu />
@@ -212,22 +188,30 @@ function DesktopNav({
 }) {
   return (
     <div className={clsx("flex items-center justify-between gap-8", className)}>
-      <NameLogo logo={data[0]?.node?.logo} />
+      {Array.isArray(data) &&
+        data.map((item: any, index: number) => (
+          <NameLogo logo={item.node.logo} key={index} />
+        ))}
       <div className="flex items-center gap-6">
-        <div key={data[0]?.node?.id} className="flex gap-6">
-          {data[0]?.node?.menuItems?.map((item: any) => {
+        {Array.isArray(data) &&
+          data.map((item: any) => {
             return (
-              <button
-                key={item.id}
-                className="text-xl font-medium tracking-tight text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
-                onClick={() => handleClick(item.link)}
-                data-tina-ref={item ? tinaField(item, "label") : undefined}
-              >
-                {item.label}
-              </button>
+              <div key={item.id} className="flex gap-6">
+                {item.node.menuItems.map((item: any) => (
+                  <button
+                    key={item.id}
+                    className="text-xl font-medium tracking-tight text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-300 "
+                    onClick={() => handleClick(item.link)}
+                    data-tina-ref={
+                      item.label ? tinaField(item.node, "label") : undefined
+                    }
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             )
           })}
-        </div>
         <ThemeToggle />
       </div>
     </div>

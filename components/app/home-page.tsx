@@ -167,7 +167,7 @@ export function HomePageComponent(props: {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-12">
+                      <div className="mt-12" key={i}>
                         {block?.link?.map((link, i) => {
                           return (
                             <>

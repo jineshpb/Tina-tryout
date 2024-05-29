@@ -22,7 +22,7 @@ export const animateWithGsap = (
 
 export const animateWithGsapTimeline = (
   timeline: gsap.core.Timeline,
-  rotationRef: gsap.core.TweenTarget,
+  rotationRef: any,
   rotationState: number,
   firstTarget: HTMLElement,
   secondTarget: HTMLElement,

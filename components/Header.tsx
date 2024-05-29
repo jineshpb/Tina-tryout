@@ -1,14 +1,12 @@
 import client from "@/tina/__generated__/client"
 import NewNavbar from "./NewNavbar"
-import { BlurNav } from "./BlurNav"
+import { SettingsConnectionQuery } from "@/tina/__generated__/types"
+
 import { SettingsQuery } from "@/tina/__generated__/types"
+import { useTina } from "tinacms/dist/react"
 
 export default async function Header({ className }: { className?: string }) {
-  const result = await client.queries.settings({
-    relativePath: "settings_doc.json",
-  })
-
   const result2 = await client.queries.settingsConnection()
 
-  return <NewNavbar {...result2} />
+  return <NewNavbar data={result2.data} />
 }

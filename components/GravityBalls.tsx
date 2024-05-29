@@ -1,10 +1,13 @@
 import * as THREE from "three"
+import { InstancedMesh, Matrix4 } from "three"
+
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Outlines, Environment, useTexture } from "@react-three/drei"
 import { Physics, usePlane, useSphere } from "@react-three/cannon"
 import { EffectComposer, N8AO, SMAA } from "@react-three/postprocessing"
 import { Suspense, useEffect, useRef } from "react"
 import Loader from "./Loader"
+import { BufferGeometry, Material, NormalBufferAttributes } from "three"
 
 const rfs = THREE.MathUtils.randFloatSpread
 const sphereGeometry = new THREE.SphereGeometry(1, 32, 32)
@@ -40,7 +43,7 @@ export const GravityBalls = () => (
         <Clump />
       </Physics>
       <Environment files="/adamsbridge.hdr" />
-      <EffectComposer disableNormalPass multisampling={0}>
+      <EffectComposer enableNormalPass multisampling={0}>
         <N8AO
           halfRes
           color="black"
@@ -94,7 +97,13 @@ function Clump({
     const scrollOffset = scrollRef.current * 0.01
     for (let i = 0; i < 40; i++) {
       // Get current whereabouts of the instanced sphere
-      ref.current?.getMatrixAt(i, mat)
+      ;(
+        ref.current as InstancedMesh<
+          BufferGeometry,
+          Material | Material[],
+          THREE.InstancedMeshEventMap
+        >
+      )?.getMatrixAt(i, mat)
       // Normalize the position and multiply by a negative force.
       // This is enough to drive it towards the center-point.
       api
@@ -109,9 +118,18 @@ function Clump({
         )
     }
   })
+
   return (
     <instancedMesh
-      ref={ref}
+      ref={
+        ref as React.Ref<
+          InstancedMesh<
+            BufferGeometry<NormalBufferAttributes>,
+            Material | Material[],
+            THREE.InstancedMeshEventMap
+          >
+        >
+      }
       castShadow
       receiveShadow
       args={[sphereGeometry, baubleMaterial, 40]}
@@ -124,32 +142,47 @@ function Borders() {
   const { viewport } = useThree()
   return (
     <>
-      <Plane
+      <mesh
         position={[0, -viewport.height / 2 + 1, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-      />
-      <Plane
+      >
+        <planeGeometry args={[viewport.width, 2]} />
+        <meshBasicMaterial color="white" />
+      </mesh>
+      <mesh
         position={[-viewport.width / 2 - 1, 0, 0]}
         rotation={[0, Math.PI / 2, 0]}
       />
-      <Plane
+      <mesh
         position={[viewport.width / 2 + 1, 0, 0]}
         rotation={[0, -Math.PI / 2, 0]}
       />
-      <Plane
+      <mesh
         position={[0, viewport.height / 2 + 1, 0]}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      <Plane position={[0, 0, -1]} rotation={[0, 0, 0]} />
-      <Plane position={[0, 0, 12]} rotation={[0, -Math.PI, 0]} />
+      <mesh position={[0, 0, -1]} rotation={[0, 0, 0]} />
+      <mesh position={[0, 0, 12]} rotation={[0, -Math.PI, 0]} />
     </>
   )
 }
 
-function Plane({ color, position = [0, 0, 0], ...props }) {
-  const [, api] = usePlane(() => ({ ...props }))
-  useEffect(() => api.position.set(...position), [api, position])
-}
+// function Plane({
+//   position = [0, 0, 0],
+//   rotation = [],
+
+//   ...props
+// }: {
+//   position: number[]
+//   rotation?: number[]
+//   props: any
+// }) {
+//   const [, api] = usePlane(() => props)
+//   useEffect(
+//     () => api.position.set(position[0], position[1], position[2]),
+//     [api, position],
+//   )
+// }
 
 function Pointer() {
   const viewport = useThree((state) => state.viewport)
