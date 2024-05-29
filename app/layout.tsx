@@ -21,8 +21,9 @@ import Footer from "@/components/Footer"
 import { GeistSansNonVariable } from "geist/font/sans-non-variable"
 import clsx from "clsx"
 
+const newUrl = process.env.VERCEL_URL
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jineshb.me/"),
+  metadataBase: new URL(`https://${newUrl}`),
   title: {
     default: "Jinesh Bhsakaran",
     template: `%s | Jinesh Bhaskaran`,
