@@ -21,7 +21,7 @@ const daysOfWeek = [
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000" // Default to localhost if running locally
+  : "http://localhost:3000"
 
 const url = `${baseUrl}/fonts/Geist-Bold.ttf`
 
