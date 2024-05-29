@@ -88,7 +88,7 @@ export default async function Image({
       <div tw="flex h-full pl-8 flex-row-reverse  bg-zinc-800">
         <div tw="flex w-1/3 h-full ">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* <img
             src={`${baseUrl}/green-balls.png`}
             alt="prism"
             tw="w-full h-full object-contain"
@@ -97,7 +97,7 @@ export default async function Image({
               height: "100%",
               objectFit: "cover",
             }}
-          />
+          /> */}
           <div
             tw="absolute left-[-100px] bg-emerald-800 top-[-30px] w-[150px] h-[130%] bg-neutral-800"
             style={{
