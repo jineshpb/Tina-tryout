@@ -25,18 +25,18 @@ const baseUrl = process.env.VERCEL_URL
 
 const url = `${baseUrl}/fonts/Geist-Bold.ttf`
 
-const fetchFont = async (url: string) => {
-  try {
-    const res = await fetch(url)
-    if (!res.ok) {
-      throw new Error(`Failed to fetch (${res.status}) `)
-    }
-    return (await res.arrayBuffer()) as ArrayBuffer
-  } catch (error) {
-    console.error("Error fetching font:", error)
-    throw error
-  }
-}
+// const fetchFont = async (url: string) => {
+//   try {
+//     const res = await fetch(url)
+//     if (!res.ok) {
+//       throw new Error(`Failed to fetch (${res.status}) `)
+//     }
+//     return (await res.arrayBuffer()) as ArrayBuffer
+//   } catch (error) {
+//     console.error("Error fetching font:", error)
+//     throw error
+//   }
+// }
 
 // const spaceBold = fetch(url)
 //   .then((res) => res.arrayBuffer())
@@ -74,7 +74,7 @@ export default async function Image({
   const today = new Date()
   const dayName = daysOfWeek[today.getDay()]
 
-  const spaceBoldFontData = await fetchFont(url)
+  // const spaceBoldFontData = await fetchFont(url)
 
   // const name =
   //   params.name.charAt(0).toUpperCase() + params.name.slice(1).toLowerCase()
@@ -143,14 +143,14 @@ export default async function Image({
           </p>
         </div>
       </div>
+      // {
+      //   fonts: [
+      //     {
+      //       name: "SpaceGrotesk-Bold",
+      //       data: spaceBoldFontData,
+      //     },
+      //   ],
+      // },
     ),
-    {
-      fonts: [
-        {
-          name: "SpaceGrotesk-Bold",
-          data: spaceBoldFontData,
-        },
-      ],
-    },
   )
 }
