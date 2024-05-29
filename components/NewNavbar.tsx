@@ -35,7 +35,7 @@ export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
   }, [])
 
   const { data } = useTina({
-    query: "",
+    query: "settings_doc.json",
     variables: {},
     data: props.data,
   })
