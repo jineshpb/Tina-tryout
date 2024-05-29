@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og"
 import { NextRequest } from "next/server"
 import { NextPageContext } from "next"
 
-export const runtime = "experimental-edge"
+export const runtime = "edge"
 
 export const size = {
   width: 1200,
