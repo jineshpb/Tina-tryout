@@ -1,5 +1,6 @@
 import { ImageResponse } from "@vercel/og"
 
+// import Geist from "@/public/fonts/Geist-Bold.ttf"
 export const runtime = "experimental-edge"
 
 const webSiteUrl = "http://localhost:3000"
@@ -19,8 +20,11 @@ export async function GET(request: Request) {
       : "My website"
 
     const fontData = await fetch(
-      new URL(`${baseUrl}/public/fonts/Geist-Bold.ttf`),
+      new URL(`${baseUrl}/fonts/Geist-Bold.ttf`),
     ).then((res) => res.arrayBuffer())
+    // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
+
+    console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.ttf`)
 
     console.log("title", title)
 
@@ -29,7 +33,7 @@ export async function GET(request: Request) {
         <div tw="flex h-full pl-8 flex-row-reverse  bg-zinc-800">
           <div tw="flex w-1/3 h-full ">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            {/* <img
               src={`${baseUrl}/green-balls.png`}
               alt="balls"
               tw="w-full h-full object-contain"
@@ -38,7 +42,7 @@ export async function GET(request: Request) {
                 height: "100%",
                 objectFit: "cover",
               }}
-            />
+            /> */}
             <div
               tw="absolute left-[-100px] bg-emerald-800 top-[-30px] w-[150px] h-[130%] bg-neutral-800"
               style={{
