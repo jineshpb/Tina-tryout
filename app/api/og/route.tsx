@@ -20,11 +20,11 @@ export async function GET(request: Request) {
       : "My website"
 
     const fontData = await fetch(
-      new URL(`${baseUrl}/fonts/Geist-Bold.ttf`),
+      new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
     ).then((res) => res.arrayBuffer())
     // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
 
-    console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.ttf`)
+    console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.otf`)
 
     console.log("title", title)
 
