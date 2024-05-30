@@ -10,8 +10,6 @@ const baseUrl = process.env.VERCEL_URL
 
 export async function GET(request: Request) {
   try {
-    //api/og?title
-
     console.log("request", request.url)
 
     const { searchParams } = new URL(request.url)
@@ -21,7 +19,7 @@ export async function GET(request: Request) {
       : "My website"
 
     const fontData = await fetch(
-      new URL(`${baseUrl}/fonts/Geist-Bold.ttf`),
+      new URL(`${baseUrl}/public/fonts/Geist-Bold.ttf`),
     ).then((res) => res.arrayBuffer())
 
     console.log("title", title)
