@@ -5,6 +5,9 @@ import { NextRequest } from "next/server"
 import { NextPageContext } from "next"
 
 import http from "http"
+import fs from "fs"
+import path from "path"
+import { fileURLToPath } from "url"
 
 // export const runtime = "edge"
 
@@ -29,21 +32,6 @@ const baseUrl = process.env.VERCEL_URL
 
 const url = `${baseUrl}/fonts/Geist-Bold.ttf`
 
-async function getFont(): Promise<Buffer> {
-  const url = process.env.APP_URL
-  return new Promise((resolve, reject) => {
-    http
-      .get(`${url}/fonts/Geist-Bold.ttf`, (res: http.IncomingMessage) => {
-        const chunks: Buffer[] = []
-        res.on("data", (c: Buffer) => chunks.push(c))
-        res.on("end", () => resolve(Buffer.concat(chunks)))
-      })
-      .on("error", (err: Error) => {
-        reject(err)
-      })
-  })
-}
-
 // const spaceBold = fetch(url)
 //   .then((res) => res.arrayBuffer())
 //   .catch((error) => {
@@ -59,9 +47,13 @@ console.log("meta url", import.meta.url)
 // const spaceRegular = fetch(
 //   new URL("../../../public/fonts/SpaceGrotesk-Regular.ttf", import.meta.url)
 // ).then((res) => res.arrayBuffer());
-const font = fetch(
-  new URL("../../../public/fonts/Geist-Bold.ttf", import.meta.url),
-).then((res) => res.arrayBuffer())
+const font = fetch(new URL(url, import.meta.url)).then((res) =>
+  res.arrayBuffer(),
+)
+
+const fontPath = path.join(process.cwd(), "public/fonts/Geist-Bold.ttf")
+
+const font2 = fs.promises.readFile(fontPath)
 
 export default async function Image({
   params,
@@ -169,7 +161,7 @@ export default async function Image({
       fonts: [
         {
           name: "SpaceGrotesk-Bold",
-          data: await getFont(),
+          data: await font2,
           style: "normal",
         },
       ],
