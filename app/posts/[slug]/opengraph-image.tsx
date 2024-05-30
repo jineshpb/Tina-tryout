@@ -27,24 +27,11 @@ const baseUrl = process.env.VERCEL_URL
 
 const url = `${baseUrl}/fonts/Geist-Bold.ttf`
 
-const fetchFont = async (url: string) => {
-  try {
-    const res = await fetch(url)
-    if (!res.ok) {
-      throw new Error(`Failed to fetch (${res.status}) `)
-    }
-    return (await res.arrayBuffer()) as ArrayBuffer
-  } catch (error) {
-    console.error("Error fetching font:", error)
-    throw error
-  }
-}
-
-const spaceBold = fetch(url)
-  .then((res) => res.arrayBuffer())
-  .catch((error) => {
-    console.error("Error fetching font:", error)
-  })
+// const spaceBold = fetch(url)
+//   .then((res) => res.arrayBuffer())
+//   .catch((error) => {
+//     console.error("Error fetching font:", error)
+//   })
 
 console.log("meta url", import.meta.url)
 
@@ -70,6 +57,18 @@ export default async function Image({
   // console.log("params, req", params, req)
 
   // const name = searchParams.get("name")
+  const fetchFont = async (url: string) => {
+    try {
+      const res = await fetch(url)
+      if (!res.ok) {
+        throw new Error(`Failed to fetch (${res.status}) `)
+      }
+      return (await res.arrayBuffer()) as ArrayBuffer
+    } catch (error) {
+      console.error("Error fetching font:", error)
+      throw error
+    }
+  }
 
   console.log("params", params)
 
