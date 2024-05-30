@@ -138,7 +138,7 @@ export default function Footer() {
           </RenderModel> */}
         </div>
         <div className="absolute -bottom-[500px] z-10   h-[1200px] w-full">
-          <GravityBalls />
+          {/* <GravityBalls /> */}
         </div>
 
         <div className=" absolute w-full ">

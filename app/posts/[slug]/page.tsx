@@ -13,6 +13,8 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }) {
+  // const detaisl = await getPostFromParams({ params })
+
   try {
     const result = await client.queries.posts({
       relativePath: `${params.slug}.mdx`,
@@ -29,6 +31,26 @@ export async function generateMetadata({
       description: "This is a blog page",
       alternates: {
         canonical: `/posts/${params.slug}`,
+      },
+      openGraph: {
+        title: result.data.posts.title,
+        description: result.data.posts.title,
+        type: "article",
+        url: `/posts/${params.slug}`,
+        images: [
+          {
+            url: `/api/og?title=${params.slug.toString()}`,
+            width: 1200,
+            height: 630,
+            alt: result.data.posts.title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: result.data.posts.title,
+        description: result.data.posts.title,
+        images: [`/api/og?title=${params.slug.toString()}`],
       },
     }
   } catch (error) {
