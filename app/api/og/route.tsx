@@ -15,6 +15,7 @@ export async function GET(request: Request) {
 
     const { searchParams } = new URL(request.url)
     const hasTitle = searchParams.has("title")
+
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My website"
@@ -35,6 +36,8 @@ export async function GET(request: Request) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`${baseUrl}/green-balls.png`}
+              width="854"
+              height="332"
               alt="balls"
               tw="w-full h-full object-contain"
               style={{
