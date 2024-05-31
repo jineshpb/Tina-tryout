@@ -95,4 +95,75 @@ export const richTextComponents: Template[] = [
       },
     ],
   },
+  {
+    name: "FeedbackCard",
+    label: "Feedback Card",
+    ui: {
+      defaultItem: {},
+    },
+    fields: [
+      {
+        name: "title",
+        label: "Title",
+        type: "string",
+      },
+      {
+        name: "rating",
+        label: "Rating",
+        type: "number",
+      },
+      {
+        name: "author",
+        label: "Author",
+        type: "string",
+      },
+      {
+        name: "location",
+        label: "Location",
+        type: "string",
+      },
+      {
+        name: "date",
+        label: "Date",
+        type: "datetime",
+      },
+      {
+        name: "authorLink",
+        label: "Author Link",
+        type: "string",
+      },
+      {
+        name: "authorImage",
+        label: "Author Image",
+        type: "image",
+      },
+      {
+        name: "brandLogo",
+        label: "Brand Logo",
+        type: "image",
+      },
+
+      {
+        name: "feedback",
+        label: "Feedback",
+        type: "string",
+      },
+    ],
+  },
+  {
+    name: "TestComponent",
+    label: "Test Component",
+    fields: [
+      {
+        name: "title",
+        label: "Title",
+        type: "string",
+      },
+      {
+        name: "body",
+        label: "Body",
+        type: "string",
+      },
+    ],
+  },
 ]

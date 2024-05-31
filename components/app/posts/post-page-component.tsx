@@ -14,6 +14,8 @@ import {
   TextBox,
   TweetEmbed,
   VideoPlayer,
+  FeedbackCard,
+  TestComponent,
 } from "@/components/RichText"
 
 // export const metadata: Metadata = {
@@ -71,6 +73,8 @@ export function PostPageComponent(props: {
               PullQuote,
               VideoPlayer,
               CaptionedImage,
+              FeedbackCard,
+              TestComponent,
             }}
           />
         </section>

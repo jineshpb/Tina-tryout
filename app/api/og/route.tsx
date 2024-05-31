@@ -9,6 +9,10 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000" // Default to localhost if running locally
 
+const image = fetch(
+  new URL(`${baseUrl}/green-balls.png`, import.meta.url),
+).then((res) => res.arrayBuffer())
+
 export async function GET(request: Request) {
   try {
     console.log("request", request.url)
@@ -24,6 +28,8 @@ export async function GET(request: Request) {
     //   new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
     // ).then((res) => res.arrayBuffer())
     // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
+
+    const imageData = await image
 
     console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.otf`)
 
