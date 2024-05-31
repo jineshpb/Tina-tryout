@@ -151,8 +151,8 @@ export const richTextComponents: Template[] = [
     ],
   },
   {
-    name: "TestComponent",
-    label: "Test Component",
+    name: "ImageTextBlock",
+    label: "Image Text Block",
     fields: [
       {
         name: "title",
@@ -160,8 +160,23 @@ export const richTextComponents: Template[] = [
         type: "string",
       },
       {
+        name: "type",
+        label: "Type",
+        type: "string",
+      },
+      {
         name: "body",
         label: "Body",
+        type: "string",
+      },
+      {
+        name: "image",
+        label: "Image",
+        type: "image",
+      },
+      {
+        name: "imagePosition",
+        label: "Image Position",
         type: "string",
       },
     ],

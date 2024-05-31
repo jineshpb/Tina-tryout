@@ -15,7 +15,7 @@ import {
   TweetEmbed,
   VideoPlayer,
   FeedbackCard,
-  TestComponent,
+  ImageTextBlock,
 } from "@/components/RichText"
 
 // export const metadata: Metadata = {
@@ -74,7 +74,7 @@ export function PostPageComponent(props: {
               VideoPlayer,
               CaptionedImage,
               FeedbackCard,
-              TestComponent,
+              ImageTextBlock,
             }}
           />
         </section>

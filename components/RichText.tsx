@@ -3,6 +3,7 @@ import { Tweet } from "react-tweet"
 import { SlUser } from "react-icons/sl"
 import { FaRegStar } from "react-icons/fa"
 import { FaStar } from "react-icons/fa"
+import { BsHash } from "react-icons/bs"
 
 import moment from "moment"
 
@@ -131,11 +132,31 @@ export const FeedbackCard = (props: any) => {
   )
 }
 
-export const TestComponent = (props: any) => {
+export const ImageTextBlock = (props: any) => {
   return (
     <div>
-      <h1>{props.title}</h1>
-      <p>{props.body}</p>
+      <div
+        className={`flex w-full flex-col items-start gap-4 px-4 pt-8 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+      >
+        <div className="w-full overflow-hidden object-fill">
+          <img
+            src={props.image}
+            alt=""
+            className="max-w-100vw !my-0 rounded-xl lg:max-w-[400px]"
+          />
+        </div>
+        <div className="!my-0 flex w-full flex-col items-start">
+          <div className=" flex items-center justify-center rounded-full bg-zinc-200 px-2 ">
+            <BsHash />
+            <p className=" !my-0 text-[16px]">{props.type}</p>
+          </div>
+
+          <h2 className=" !mb-0 !mt-4 !text-[30px] font-medium tracking-tight">
+            {props.title}
+          </h2>
+          <p className="!mt-4">{props.body}</p>
+        </div>
+      </div>
     </div>
   )
 }
