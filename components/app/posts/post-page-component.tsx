@@ -64,7 +64,10 @@ export function PostPageComponent(props: {
         </span>
       </p>
       <hr className=" mt-2 border-zinc-300 dark:border-zinc-700" />
-      <article className=" prose prose-zinc w-full dark:prose-invert  lg:prose-xl prose-a:break-words prose-a:text-emerald-500 dark:prose-a:text-emerald-400 ">
+      <article
+        className="prose prose-zinc w-full max-w-none dark:prose-invert  lg:prose-xl prose-headings:max-w-3xl prose-p:max-w-3xl 
+      prose-a:break-words prose-a:text-emerald-500  prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 "
+      >
         <section data-tina-field={tinaField(data.posts, "body")}>
           <TinaMarkdown
             content={content}

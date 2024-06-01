@@ -178,6 +178,11 @@ export const richTextComponents: Template[] = [
         name: "imagePosition",
         label: "Image Position",
         type: "string",
+
+        options: [
+          { value: "left", label: "left" },
+          { value: "right", label: "right" },
+        ],
       },
     ],
   },

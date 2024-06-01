@@ -49,12 +49,16 @@ import React, { use, useEffect, useRef } from "react"
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false })
 
 export const VideoPlayer = (props: any) => {
-  return <ReactPlayer url={props.url} controls width="100%" />
+  return (
+    <div className="max-w-4xl">
+      <ReactPlayer url={props.url} controls width="100%" />
+    </div>
+  )
 }
 
 export const CaptionedImage = (props: any) => {
   return (
-    <figure className="flex flex-col items-center justify-center py-6 md:min-w-full  lg:min-w-full xl:min-w-full">
+    <figure className="flex max-w-7xl flex-col items-center justify-center py-6  md:min-w-full lg:min-w-full xl:min-w-full">
       <img
         src={props.imageUrl}
         alt={props.alt}
@@ -72,7 +76,7 @@ export const CaptionedImage = (props: any) => {
 
 export const FeedbackCard = (props: any) => {
   return (
-    <div className="flex flex-col rounded-lg bg-white px-6 py-4 drop-shadow-lg dark:bg-zinc-800 ">
+    <div className="flex max-w-3xl flex-col rounded-lg bg-white px-6 py-4 drop-shadow-lg dark:bg-zinc-800 ">
       <div className="flex w-full flex-row-reverse">
         <div className="flex h-full items-start">
           {props.brandLogo && (
@@ -141,22 +145,24 @@ export const ImageTextBlock = (props: any) => {
   return (
     <div>
       <div
-        className={`flex w-full flex-col items-start gap-4 px-4 pt-8 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+        className={`flex w-full max-w-4xl flex-col items-start gap-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:bg-zinc-800 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
       >
-        <div className="w-full overflow-hidden object-fill">
+        <div className="h-80 w-full overflow-hidden rounded-xl object-cover">
           <img
             src={props.image}
             alt=""
-            className="max-w-100vw !my-0 rounded-xl lg:max-w-[400px]"
+            className="!my-0 size-full object-cover"
           />
         </div>
         <div className="!my-0 flex w-full flex-col items-start">
-          <div className=" flex items-center justify-center rounded-full bg-zinc-200 px-2 ">
+          <div className=" flex items-center justify-center rounded-full bg-zinc-200 px-2 dark:bg-zinc-700 ">
             <BsHash />
-            <p className=" !my-0 text-[16px]">{props.type}</p>
+            <p className=" !my-0 text-[16px] text-zinc-600 dark:text-zinc-300">
+              {props.type}
+            </p>
           </div>
 
-          <h2 className=" !mb-0 !mt-4 !text-[30px] font-medium tracking-tight">
+          <h2 className=" !mb-0 !mt-8 !text-[30px] font-medium tracking-tight">
             {props.title}
           </h2>
           <p className="!mt-4">{props.body}</p>
@@ -177,35 +183,44 @@ export const ImageCarousel = (props: any) => {
   }, [])
 
   return (
-    <motion.div
-      className="motion-parent relative overflow-hidden "
-      ref={carousel}
-      whileTap={{ cursor: "grabbing" }}
-    >
+    <div className="">
       <motion.div
-        className="  flex gap-6   "
-        drag="x"
-        dragConstraints={{
-          right: 0,
-          left: -width,
-        }}
+        className="motion-parent not-prose relative h-[40rem] w-full overflow-hidden"
+        ref={carousel}
+        whileTap={{ cursor: "grabbing" }}
       >
-        {props.images?.map((image: any, index: number) => (
-          <motion.div
-            key={index}
-            className={`flex ${props.orientation === "portrait" && "min-h-[60rem]"} w-full   min-w-[40rem] items-center justify-center overflow-hidden rounded-2xl`}
-          >
-            <img
-              style={{
-                pointerEvents: "none",
-              }}
-              src={image.image}
-              alt={image.caption}
-              className="!my-0 !size-full !object-cover"
-            />
-          </motion.div>
-        ))}
+        <motion.div
+          className=" flex gap-6"
+          drag="x"
+          dragConstraints={{
+            right: 0,
+            left: -width,
+          }}
+        >
+          {props.images?.map((image: any, index: number) => (
+            <motion.div
+              key={index}
+              className={`relative flex flex-col ${props.orientation === "portrait" && "min-h-[60rem]"} w-full   min-w-[40rem] items-center justify-center overflow-hidden rounded-2xl`}
+            >
+              <img
+                style={{
+                  pointerEvents: "none",
+                }}
+                src={image.image}
+                alt={image.caption}
+                className="!my-0 !size-full !object-cover"
+              />
+              <div className="absolute bottom-2 left-4 rounded-full bg-zinc-200/50  dark:bg-zinc-700/50 ">
+                {image.caption && (
+                  <div className="px-4 text-center text-zinc-600 dark:text-zinc-300">
+                    {image.caption}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
