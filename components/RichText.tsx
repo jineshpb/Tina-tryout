@@ -1,9 +1,12 @@
+"use client"
+
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 import { Tweet } from "react-tweet"
 import { SlUser } from "react-icons/sl"
 import { FaRegStar } from "react-icons/fa"
 import { FaStar } from "react-icons/fa"
 import { BsHash } from "react-icons/bs"
+import { motion } from "framer-motion"
 
 import moment from "moment"
 
@@ -41,6 +44,8 @@ export const PullQuote = (props: any) => {
 }
 
 import dynamic from "next/dynamic"
+import Image from "next/image"
+import React, { use, useEffect, useRef } from "react"
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false })
 
 export const VideoPlayer = (props: any) => {
@@ -158,5 +163,49 @@ export const ImageTextBlock = (props: any) => {
         </div>
       </div>
     </div>
+  )
+}
+
+export const ImageCarousel = (props: any) => {
+  const [width, setWidth] = React.useState(0)
+  const carousel = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (carousel.current) {
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+    }
+  }, [])
+
+  return (
+    <motion.div
+      className="motion-parent relative overflow-hidden "
+      ref={carousel}
+      whileTap={{ cursor: "grabbing" }}
+    >
+      <motion.div
+        className="  flex gap-6   "
+        drag="x"
+        dragConstraints={{
+          right: 0,
+          left: -width,
+        }}
+      >
+        {props.images?.map((image: any, index: number) => (
+          <motion.div
+            key={index}
+            className={`flex ${props.orientation === "portrait" && "min-h-[60rem]"} w-full   min-w-[40rem] items-center justify-center overflow-hidden rounded-2xl`}
+          >
+            <img
+              style={{
+                pointerEvents: "none",
+              }}
+              src={image.image}
+              alt={image.caption}
+              className="!my-0 !size-full !object-cover"
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
   )
 }

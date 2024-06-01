@@ -181,4 +181,38 @@ export const richTextComponents: Template[] = [
       },
     ],
   },
+  {
+    name: "ImageCarousel",
+    label: "Image Carousel",
+    fields: [
+      {
+        name: "images",
+        label: "Images",
+        type: "object",
+        list: true,
+        fields: [
+          {
+            name: "image",
+            label: "Image",
+            type: "image",
+          },
+          {
+            name: "caption",
+            label: "Caption",
+            type: "string",
+          },
+        ],
+      },
+      {
+        name: "orientation",
+        label: "Orientation",
+        type: "string",
+
+        options: [
+          { value: "landscape", label: "landscape" },
+          { value: "portrait", label: "portrait" },
+        ],
+      },
+    ],
+  },
 ]
