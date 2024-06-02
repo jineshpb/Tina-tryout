@@ -55,11 +55,27 @@ With mobile, retailers can push targeted offers and promotions directly to the c
 
 ### User Personas
 
-<ImageTextBlock title="“ My #1 Go-to place for food shopping is my local Wholefoods“" body="Gets her grocery daily from nearby  wholefoods. Does serious Walmart visits in the weekend. Social media diva, modelling is her parttime hobby. Have a successful Instagram account. She likes to spend very little time at the supermarket. She is an early adopter.\ Name: Sarah\Age: 24\Occupation: Financial analyst" image="https://res.cloudinary.com/dhuk11prd/image/upload/v1717163161/portfolio-tina/scan%20and%20go/jake-nackos-IF9TK5Uy-KI-unsplash_koiegr.jpg" imagePosition="left" type="User persona" />
-
-<ImageTextBlock title="“ I like my vegetables like my photos, clean and crisp “" imagePosition="right" image="https://res.cloudinary.com/dhuk11prd/image/upload/v1717163164/portfolio-tina/scan%20and%20go/leio-mclaren-L2dTmhQzx4Q-unsplash_afb6st.jpg" body="Concerned about his appearance and looks Visits the nearby supermarket twice or thrice a week, he appreciates quality. Ready to pay premium for quality. Social. \Name: Mike\Age:  27\ Occupation: Photographer/vlogger" type="User persona" />
-
 Among these users Christine is my hero user, she is the power shopper.
+
+<ImageTextBlock
+  title="“ I like my vegetables like my photos, clean and crisp “"
+  type="User persona"
+  body={<>
+    Gets her grocery daily from nearby wholefoods. Does serious Walmart visits in the weekend. Social media diva, modelling is her parttime hobby. Have a successful Instagram account. She likes to spend very little time at the supermarket. She is an early adopter.\ Name: Sarah\Age: 24\Occupation: Financial analyst
+  </>}
+  image="https://res.cloudinary.com/dhuk11prd/image/upload/v1717163164/portfolio-tina/scan%20and%20go/leio-mclaren-L2dTmhQzx4Q-unsplash_afb6st.jpg"
+  imagePosition="left"
+/>
+
+<ImageTextBlock
+  body={<>
+    Gets her grocery daily from nearby wholefoods. Does serious Walmart visits in the weekend. Social media diva, modelling is her parttime hobby. Have a successful Instagram account. She likes to spend very little time at the supermarket. She is an early adopter.\ Name: Sarah\Age: 24\Occupation: Financial analyst
+  </>}
+  title="My #1 Go-to place for food shopping is my local Wholefoods"
+  type="User persona"
+  image="https://res.cloudinary.com/dhuk11prd/image/upload/v1717163161/portfolio-tina/scan%20and%20go/jake-nackos-IF9TK5Uy-KI-unsplash_koiegr.jpg"
+  imagePosition="right"
+/>
 
 ### Apps serving similar purpose
 
@@ -83,30 +99,58 @@ I chose to follow iOS11 , Iphone X design standard and Walmart colour palette fo
 
 can be accessed with swiping left or right. The app always lands on the scan screen, unless its the first time login.
 
-![](https://res.cloudinary.com/dhuk11prd/image/upload/v1717178118/portfolio-tina/scan%20and%20go/Frame_150_ejbren.jpg)
-
 ### Final User experience
 
 <ImageCarousel
   images={[
     {
       image:
-        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717178820/portfolio-tina/scan%20and%20go/Import_list_eqngib.jpg"
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717250742/portfolio-tina/scan%20and%20go/image_47_r8miug.png"
     },
     {
       image:
-        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717178464/portfolio-tina/scan%20and%20go/log_in_kx4cne.jpg"
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717250739/portfolio-tina/scan%20and%20go/image_46_uraywe.png",
+      caption: "Permission"
     },
     {
       image:
-        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717178604/portfolio-tina/scan%20and%20go/onboarding_idz8ld.jpg"
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717250728/portfolio-tina/scan%20and%20go/image_43_c6dg7j.png",
+      caption: "Login"
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717250731/portfolio-tina/scan%20and%20go/image_44_pmi4ch.png"
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717250735/portfolio-tina/scan%20and%20go/image_45_sanwrx.png"
+    }
+  ]}
+  orientation="portrait"
+/>
+
+<ImageCarousel
+  images={[
+    {
+      image:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1693329426/yveyakvjgtllrgqmxvvn.jpg",
+      caption: "Nayans"
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1694682818/tdflq1oednmngrnyjpv2.jpg",
+      caption: "Living"
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1693309484/m8hvakk4rfd91sfarhz6.png",
+      caption: "Lalettan"
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1694713553/spacjjifaeqwokhwg8n5.png",
+      caption: "Polo"
     }
   ]}
   orientation="landscape"
 />
-
-<CaptionedImage imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1717178604/portfolio-tina/scan%20and%20go/onboarding_idz8ld.jpg" caption="Import Shop Pay" alt="Import Shop Pay" />
-
-<CaptionedImage caption="1 - 2 - 3 and we are at the login.. She can import her beloved shopping list from her Ios reminder/notes app or any other third party app. She choses her Organizy shopping list and proceeds" alt="Iphone mockups" imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1717178464/portfolio-tina/scan%20and%20go/log_in_kx4cne.jpg" />
-
-<CaptionedImage caption="Upon successful permission access, let her bring her organizy shopping list to the Walmart app. Scan and go compares her list with the catalogue, and retrieves entries with no conflict. n case of Items with conflict, she can chose which item to go about" alt="iphone mockups" imageUrl="https://res.cloudinary.com/dhuk11prd/image/upload/v1717178820/portfolio-tina/scan%20and%20go/Import_list_eqngib.jpg" />

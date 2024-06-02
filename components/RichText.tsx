@@ -98,8 +98,11 @@ export const FeedbackCard = (props: any) => {
           </div>
           <div className="flex gap-4">
             {props.authorImage ? (
-              <div className="flex size-16  items-center justify-center overflow-hidden rounded-full border-4 border-emerald-300 object-cover dark:border-emerald-500">
-                <img src={props.authorImage} className="m-0 max-w-24" />
+              <div className="flex size-16  items-center justify-center overflow-hidden rounded-full border-4 border-emerald-300  dark:border-emerald-500">
+                <img
+                  src={props.authorImage}
+                  className="m-0 size-16 max-w-24 object-cover"
+                />
               </div>
             ) : (
               <div className="size-auto rounded-full bg-zinc-200 p-2">
@@ -165,7 +168,7 @@ export const ImageTextBlock = (props: any) => {
           <h2 className=" !mb-0 !mt-8 !text-[30px] font-medium tracking-tight">
             {props.title}
           </h2>
-          <p className="!mt-4">{props.body}</p>
+          <TinaMarkdown content={props.body} />
         </div>
       </div>
     </div>
@@ -185,7 +188,7 @@ export const ImageCarousel = (props: any) => {
   return (
     <div className="">
       <motion.div
-        className="motion-parent not-prose relative h-[40rem] w-full overflow-hidden"
+        className="motion-parent not-prose relative w-full overflow-hidden"
         ref={carousel}
         whileTap={{ cursor: "grabbing" }}
       >
@@ -200,11 +203,14 @@ export const ImageCarousel = (props: any) => {
           {props.images?.map((image: any, index: number) => (
             <motion.div
               key={index}
-              className={`relative flex flex-col ${props.orientation === "portrait" && "min-h-[60rem]"} w-full   min-w-[40rem] items-center justify-center overflow-hidden rounded-2xl`}
+              className={`relative flex min-w-[25rem] flex-col ${props.orientation === "landscape" && "min-w-[55rem]"} items-center
+               justify-center overflow-hidden rounded-2xl `}
             >
               <img
                 style={{
                   pointerEvents: "none",
+                  width: "100%",
+                  height: "100%",
                 }}
                 src={image.image}
                 alt={image.caption}

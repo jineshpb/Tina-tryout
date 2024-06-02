@@ -167,7 +167,7 @@ export const richTextComponents: Template[] = [
       {
         name: "body",
         label: "Body",
-        type: "string",
+        type: "rich-text",
       },
       {
         name: "image",

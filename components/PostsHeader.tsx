@@ -3,6 +3,7 @@ import BigButton from "./BigButton"
 import { ThemeToggle } from "./ThemeToggle"
 import { FaArrowLeft } from "react-icons/fa"
 import Heading from "./Heading"
+import { FiHome } from "react-icons/fi"
 
 const PostsHeader = () => {
   return (
@@ -10,7 +11,7 @@ const PostsHeader = () => {
       <div className="flex items-center gap-6">
         <BigButton className="" href="/" linkText="Back Home">
           <div className="flex">
-            <FaArrowLeft />
+            <FiHome />
           </div>
         </BigButton>
         {/* <Heading
