@@ -40,13 +40,13 @@ export function PostPageComponent(props: {
 
   return (
     <>
-      <Bounded className="mt-32">
+      <Bounded className=" mt-32 max-sm:!px-[8px] ">
         <div className="flex w-full">
           <Heading
             as="h1"
             size="lg"
             data-tina-field={tinaField(data.posts, "title")}
-            className="text-zinc-500 dark:text-zinc-300"
+            className="leading-tight text-zinc-500 dark:text-zinc-300"
           >
             {title}
           </Heading>
@@ -66,10 +66,10 @@ export function PostPageComponent(props: {
             {moment(data.posts.date).format("MMM DD, YYYY")}
           </span>
         </p>
-        <hr className=" mt-2 border-zinc-300 dark:border-zinc-700" />
+        <hr className=" mt-2  border-zinc-300 dark:border-zinc-700 " />
         <article
-          className="prose prose-zinc w-full max-w-none dark:prose-invert  lg:prose-xl prose-headings:max-w-3xl prose-p:max-w-3xl 
-      prose-a:break-words prose-a:text-emerald-500  prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 "
+          className="prose prose-zinc w-full !max-w-none   dark:prose-invert lg:prose-xl 
+      prose-headings:max-w-3xl prose-p:max-w-3xl  prose-a:break-words prose-a:text-emerald-500 prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 "
         >
           <section data-tina-field={tinaField(data.posts, "body")}>
             <TinaMarkdown

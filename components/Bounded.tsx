@@ -36,7 +36,7 @@ const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
           className={clsx(
             "relative mx-auto w-full max-w-[1440px] px-8 pt-[120px]",
             {
-              "px-[20px] pt-20": isMobile,
+              "px-[10px] pt-20": isMobile,
             },
             className,
           )}

@@ -7,6 +7,8 @@ import { FaRegStar } from "react-icons/fa"
 import { FaStar } from "react-icons/fa"
 import { BsHash } from "react-icons/bs"
 import { motion } from "framer-motion"
+import animationData from "@/data/swipeLeft.json"
+import * as LottiePlayer from "@lottiefiles/lottie-player"
 
 import moment from "moment"
 
@@ -45,7 +47,9 @@ export const PullQuote = (props: any) => {
 
 import dynamic from "next/dynamic"
 import Image from "next/image"
-import React, { use, useEffect, useRef } from "react"
+import React, { use, useEffect, useRef, useState } from "react"
+import Lottie from "react-lottie"
+
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false })
 
 export const VideoPlayer = (props: any) => {
@@ -76,7 +80,7 @@ export const CaptionedImage = (props: any) => {
 
 export const FeedbackCard = (props: any) => {
   return (
-    <div className="flex max-w-3xl flex-col rounded-lg bg-white px-6 py-4 drop-shadow-lg dark:bg-zinc-800 ">
+    <div className="mt-8 flex max-w-3xl flex-col rounded-lg bg-white px-6 py-4 drop-shadow-lg dark:bg-zinc-800 ">
       <div className="flex w-full flex-row-reverse">
         <div className="flex h-full items-start">
           {props.brandLogo && (
@@ -146,9 +150,9 @@ export const FeedbackCard = (props: any) => {
 
 export const ImageTextBlock = (props: any) => {
   return (
-    <div>
+    <div className="mt-8">
       <div
-        className={`flex w-full max-w-4xl flex-col items-start gap-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:bg-zinc-800 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+        className={` flex w-full max-w-4xl flex-col items-start gap-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:bg-zinc-800 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
       >
         <div className="h-80 w-full overflow-hidden rounded-xl object-cover">
           <img
@@ -177,21 +181,44 @@ export const ImageTextBlock = (props: any) => {
 
 export const ImageCarousel = (props: any) => {
   const [width, setWidth] = React.useState(0)
+  const [autoplay, setAutoplay] = React.useState(true)
+
   const carousel = useRef<HTMLDivElement | null>(null)
 
+  const handlePlay = () => {
+    setAutoplay(false)
+  }
+
   useEffect(() => {
-    if (carousel.current) {
-      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+    const container = carousel.current
+    if (container) {
+      setWidth(container.scrollWidth - container.offsetWidth)
     }
   }, [])
 
   return (
-    <div className="">
+    <div className=" mt-8 !px-0 ">
       <motion.div
-        className="motion-parent not-prose relative w-full overflow-hidden"
         ref={carousel}
+        className="not-prose relative w-full overflow-hidden"
         whileTap={{ cursor: "grabbing" }}
+        onClick={() => handlePlay()}
+        onTouchStart={() => handlePlay()}
       >
+        <div className="absolute right-0 top-0 z-10 size-24">
+          {autoplay && (
+            <Lottie
+              options={{
+                loop: true,
+                autoplay: true, // The autoplay value is always true here
+                animationData,
+                rendererSettings: {
+                  preserveAspectRatio: "xMidYMid slice",
+                },
+              }}
+            />
+          )}
+        </div>
         <motion.div
           className=" flex gap-6"
           drag="x"
@@ -203,7 +230,7 @@ export const ImageCarousel = (props: any) => {
           {props.images?.map((image: any, index: number) => (
             <motion.div
               key={index}
-              className={`relative flex min-w-[25rem] flex-col ${props.orientation === "landscape" && "min-w-[55rem]"} items-center
+              className={`relative !my-0 flex flex-col max-sm:min-w-[80vw]   lg:min-w-[25rem] ${props.orientation === "landscape" && "max-w-24 lg:min-w-[55rem]"} items-center
                justify-center overflow-hidden rounded-2xl `}
             >
               <img
