@@ -10,7 +10,7 @@ export default function PostPageFooter() {
     <section className=" mt-[300px] flex w-full flex-col bg-emerald-800 ">
       <Bounded>
         <h2 className=" mt-6 text-3xl text-emerald-200">Jinesh Bhaskaran</h2>
-        <div className="mb-8 mt-2 flex w-full flex-col flex-wrap items-start gap-8   text-emerald-600 *:fill-emerald-400 md:flex-row ">
+        <div className="mb-8 mt-2 flex w-full flex-col flex-wrap items-start gap-2  text-emerald-600   *:fill-emerald-400 md:flex-row md:gap-8 ">
           <div className="flex gap-4">
             <Link
               href="https://instagram.com/jineshpbhaskar"

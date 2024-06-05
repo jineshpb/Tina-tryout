@@ -10,6 +10,18 @@ import { motion } from "framer-motion"
 import animationData from "@/data/swipeLeft.json"
 import * as LottiePlayer from "@lottiefiles/lottie-player"
 
+import dynamic from "next/dynamic"
+import Image from "next/image"
+import React, { use, useEffect, useRef, useState } from "react"
+import Lottie from "react-lottie"
+import { animateWithGsap } from "./utils/animation"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
 import moment from "moment"
 
 export const TextBox = (props: any) => {
@@ -44,11 +56,6 @@ export const PullQuote = (props: any) => {
     </>
   )
 }
-
-import dynamic from "next/dynamic"
-import Image from "next/image"
-import React, { use, useEffect, useRef, useState } from "react"
-import Lottie from "react-lottie"
 
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false })
 
@@ -152,9 +159,9 @@ export const ImageTextBlock = (props: any) => {
   return (
     <div className="mt-8">
       <div
-        className={` flex w-full max-w-4xl flex-col items-start gap-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:bg-zinc-800 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+        className={`relative flex w-full max-w-4xl flex-col items-start gap-8 rounded-[32px] border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-800 md:p-10 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
       >
-        <div className="h-80 w-full overflow-hidden rounded-xl object-cover">
+        <div className="h-80 w-full overflow-hidden rounded-[16px] object-cover">
           <img
             src={props.image}
             alt=""
@@ -254,6 +261,60 @@ export const ImageCarousel = (props: any) => {
           ))}
         </motion.div>
       </motion.div>
+    </div>
+  )
+}
+
+export const IphoneMockup = (props: any) => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  useGSAP(() => {
+    gsap.to("#exploreVideo", {
+      scrollTrigger: {
+        trigger: "#exploreVideo",
+        toggleActions: "play pause reverse restart",
+        start: "-10% bottom",
+        markers: true, // Add this line
+      },
+      onComplete: () => {
+        if (videoRef.current) {
+          videoRef.current.play()
+          console.log("playing video")
+        }
+      },
+    })
+  }, [])
+
+  return (
+    <div className="relative  mt-20 flex w-full items-center justify-center px-10">
+      <div className="flex max-w-[400px] items-center  justify-center  drop-shadow-xl md:max-w-[450px] ">
+        <div className="absolute left-0 h-full ">
+          <img
+            src="/iphone_clay_white.png"
+            alt=""
+            className="!my-0 size-full"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </div>
+
+        <div className="w-full overflow-hidden rounded-[60px] p-[26px] md:p-[28px]">
+          <video
+            id="exploreVideo"
+            playsInline
+            className="-z-10 !my-0 size-full"
+            preload="none"
+            muted
+            autoPlay
+            ref={videoRef}
+            style={{ objectFit: "contain", width: "100%", height: "100%" }} // Add this line
+          >
+            <source src={props.url} type="video/mp4" />
+          </video>
+        </div>
+      </div>
     </div>
   )
 }

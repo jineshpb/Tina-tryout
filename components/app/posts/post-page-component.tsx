@@ -17,6 +17,7 @@ import {
   FeedbackCard,
   ImageTextBlock,
   ImageCarousel,
+  IphoneMockup,
 } from "@/components/RichText"
 
 import PostPageFooter from "@/components/PostPageFooter"
@@ -83,6 +84,7 @@ export function PostPageComponent(props: {
                 FeedbackCard,
                 ImageTextBlock,
                 ImageCarousel,
+                IphoneMockup,
               }}
             />
           </section>

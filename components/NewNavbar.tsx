@@ -44,7 +44,7 @@ export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
 
   return (
     <nav
-      className="fixed left-0 top-0 z-10 w-full items-center p-6 lg:backdrop-blur-xl "
+      className="fixed left-0 top-0 z-10  w-full items-center p-6 lg:backdrop-blur-xl "
       style={{
         boxSizing: "border-box",
       }}
@@ -104,12 +104,22 @@ function MobileNav({
   setOpen: (open: boolean) => void
   pathname: string
 }) {
+  useEffect(() => {
+    if (open) {
+      gsap.to("#menuItem", {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.1,
+      })
+    }
+  }, [open])
   return (
     <>
       {open ? (
-        <div className="z-20 flex flex-col items-end ">
+        <div className="mobile-drawer  z-20 !m-0 flex w-full flex-col !p-0 ">
           <div
-            className="flex w-full flex-col items-end backdrop-blur-xl"
+            className="flex size-full flex-col items-end backdrop-blur-xl"
             style={{
               backdropFilter: "blur(20px)",
 
@@ -129,11 +139,11 @@ function MobileNav({
 
             <div
               id="drawer"
-              className={clsx(" w-full flex-col items-center gap-8 p-20 ")}
+              className={clsx(" size-full flex-col items-center p-20 ")}
             >
               {data[0]?.node.menuItems?.map((item: any, index: any) => (
                 <React.Fragment key={index}>
-                  <li className="flex  items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
+                  <li className="mt-4  flex items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
                     <button
                       onClick={() => {
                         setOpen(!open)
@@ -143,7 +153,7 @@ function MobileNav({
                       <div className=" flex h-auto overflow-hidden ">
                         <span
                           id="menuItem"
-                          className="left-0  top-0 translate-y-8 text-3xl font-medium tracking-tight text-zinc-900 opacity-0 dark:text-zinc-300"
+                          className="left-0 top-0 translate-y-8 text-3xl font-medium tracking-tight text-zinc-900 opacity-0 dark:text-zinc-300"
                         >
                           {item.label}
                         </span>

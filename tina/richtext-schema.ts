@@ -220,4 +220,20 @@ export const richTextComponents: Template[] = [
       },
     ],
   },
+  {
+    name: "IphoneMockup",
+    label: "Iphone Mockup",
+    fields: [
+      {
+        name: "url",
+        label: "Video URL",
+        type: "string",
+      },
+    ],
+    ui: {
+      defaultItem: {
+        url: "https://www.youtube.com/watch?v=3jWRrafhO7M",
+      },
+    },
+  },
 ]
