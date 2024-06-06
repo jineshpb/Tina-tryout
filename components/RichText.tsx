@@ -250,9 +250,9 @@ export const ImageCarousel = (props: any) => {
                 alt={image.caption}
                 className="!my-0 !size-full !object-cover"
               />
-              <div className="absolute bottom-2 left-4 rounded-full bg-zinc-200/50  dark:bg-zinc-700/50 ">
+              <div className="absolute bottom-2 left-4 rounded-full bg-zinc-200/50 py-2 backdrop-blur-sm dark:bg-zinc-700/50 ">
                 {image.caption && (
-                  <div className="px-4 text-center text-zinc-600 dark:text-zinc-300">
+                  <div className="text-pretty px-4 text-left text-[12px] leading-tight text-zinc-600 dark:text-zinc-300 md:text-[16px]">
                     {image.caption}
                   </div>
                 )}
@@ -285,9 +285,9 @@ export const IphoneMockup = (props: any) => {
   }, [])
 
   return (
-    <div className="relative  mt-20 flex w-full items-center justify-center px-10">
-      <div className="flex max-w-[400px] items-center  justify-center  drop-shadow-xl md:max-w-[450px] ">
-        <div className="absolute left-0 h-full ">
+    <div className="relative  mt-20 flex items-center justify-center px-10">
+      <div className="flex items-center justify-center drop-shadow-xl  lg:max-w-[30%]">
+        <div className="absolute left-0 h-full">
           <img
             src="/iphone_clay_white.png"
             alt=""
@@ -300,16 +300,20 @@ export const IphoneMockup = (props: any) => {
           />
         </div>
 
-        <div className="w-full overflow-hidden rounded-[60px] p-[26px] md:p-[28px]">
+        <div className="w-full overflow-hidden ">
           <video
             id="exploreVideo"
             playsInline
-            className="-z-10 !my-0 size-full"
+            className="-z-10 !my-0 size-full rounded-[10%] p-[5%] lg:p-[6%] "
             preload="none"
             muted
             autoPlay
             ref={videoRef}
-            style={{ objectFit: "contain", width: "100%", height: "100%" }} // Add this line
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
           >
             <source src={props.url} type="video/mp4" />
           </video>
