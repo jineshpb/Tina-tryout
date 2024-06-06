@@ -287,11 +287,11 @@ export const IphoneMockup = (props: any) => {
   return (
     <div className="relative  mt-20 flex items-center justify-center px-10">
       <div className="flex items-center justify-center drop-shadow-xl  lg:max-w-[30%]">
-        <div className="absolute left-0 h-full">
+        <div className="absolute left-0 size-full">
           <img
             src="/iphone_clay_white.png"
             alt=""
-            className="!my-0 size-full"
+            className="not-prose !my-0 size-full"
             style={{
               width: "100%",
               height: "100%",
@@ -304,7 +304,7 @@ export const IphoneMockup = (props: any) => {
           <video
             id="exploreVideo"
             playsInline
-            className="-z-10 !my-0 size-full rounded-[10%] p-[5%] lg:p-[6%] "
+            className="-z-10 !my-0 size-full rounded-[8%] p-[5%] lg:p-[6%] "
             preload="none"
             muted
             autoPlay

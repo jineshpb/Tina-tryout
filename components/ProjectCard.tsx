@@ -35,11 +35,11 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <>
       <div
-        className="group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px]  bg-zinc-800/75 p-4 text-[60px]  "
+        className="group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px]  bg-zinc-800/50 p-4 text-[60px] dark:bg-zinc-800/75  "
         id="projectVideo"
       >
         <div
-          className="flex flex-col text-clip leading-tight tracking-tighter text-zinc-100 dark:text-zinc-400"
+          className="z-20 flex flex-col text-clip leading-tight tracking-tighter text-zinc-100 dark:text-zinc-400"
           data-tina-field={project ? tinaField(project, "title") : undefined}
         >
           {project.title}
@@ -52,23 +52,23 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
             {project.description}
           </span>
         </div>
-
-        <video
-          playsInline
-          className="absolute left-0 top-0 -z-10  size-full object-cover object-center"
-          preload="none"
-          muted
-          autoPlay
-          ref={videoRef}
-        >
-          <source src={project.videoLink} type="video/mp4" />
-        </video>
-
-        {/* 
-        <img
-          src={project.image}
-          className=" absolute left-0 top-0 -z-10 object-cover object-center"
-        /> */}
+        {project.videoLink ? (
+          <video
+            playsInline
+            className="absolute left-0 top-0 -z-10  size-full object-cover object-center"
+            preload="none"
+            muted
+            autoPlay
+            ref={videoRef}
+          >
+            <source src={project.videoLink} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={project.image}
+            className=" absolute left-0 top-0 -z-10 size-full object-cover object-center"
+          />
+        )}
 
         <div className="z-10 h-[80px]">
           <BigButton
