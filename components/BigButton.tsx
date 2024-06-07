@@ -29,10 +29,10 @@ export default function BigButton({
 }: BigButtonProps) {
   return href ? (
     <button className={className}>
-      <Link href={href} target={target} className="">
+      <Link href={href} target={target} className={className}>
         <div
           className={clsx(
-            "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:bg-gradient-to-b hover:from-emerald-200 hover:to-emerald-500",
+            "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500",
             size === "xl" && "text-6xl md:text-6xl",
           )}
         >
@@ -45,7 +45,7 @@ export default function BigButton({
     <button className={className}>
       <div
         className={clsx(
-          "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:bg-gradient-to-b hover:from-emerald-200 hover:to-emerald-500",
+          "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500",
           size === "xl" && "text-6xl md:text-6xl",
         )}
       >

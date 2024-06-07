@@ -35,7 +35,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <>
       <div
-        className="group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px]  bg-zinc-800/50 p-4 text-[60px] dark:bg-zinc-800/75  "
+        className="group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px]    bg-gradient-to-b  from-zinc-800 to-zinc-300/0 p-4 text-[60px] dark:bg-zinc-800/75  "
         id="projectVideo"
       >
         <div
@@ -44,7 +44,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         >
           {project.title}
           <span
-            className="text-lg leading-normal tracking-normal text-zinc-500"
+            className="text-lg leading-normal tracking-normal text-zinc-400 dark:text-zinc-400"
             data-tina-field={
               project ? tinaField(project, "description") : undefined
             }
@@ -70,12 +70,15 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
           />
         )}
 
-        <div className="z-10 h-[80px]">
+        <div
+          className=" z-10  h-[80px] translate-y-24 opacity-80 transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:opacity-100"
+          id="CTAButton"
+        >
           <BigButton
             linkText="View Project"
             href={project?.link}
             target="_blank"
-            className="hidden w-full group-hover:block"
+            className="w-full "
           >
             View Project
           </BigButton>

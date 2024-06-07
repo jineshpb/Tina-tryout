@@ -127,7 +127,7 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
                     <div className="flex size-full flex-col justify-between gap-8">
-                      <div className="g_fadeIn flex flex-col gap-10 lg:flex-row ">
+                      <div className="g_fadeIn flex flex-col gap-10 md:flex-row ">
                         <div className="flex items-start justify-start">
                           <BackgroundGradient className="flex">
                             <SmallAvatar
