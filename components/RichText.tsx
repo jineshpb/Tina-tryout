@@ -273,7 +273,7 @@ export const IphoneMockup = (props: any) => {
         trigger: "#exploreVideo",
         toggleActions: "play pause reverse restart",
         start: "-10% bottom",
-        markers: true, // Add this line
+      
       },
       onComplete: () => {
         if (videoRef.current) {
