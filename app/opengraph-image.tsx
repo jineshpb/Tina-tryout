@@ -156,7 +156,7 @@ export default async function Image({
               lineHeight: 0.5,
               whiteSpace: "pre-wrap",
               textAlign: "left",
-              letterSpacing: "-0.05em",
+              letterSpacing: "-0.09em",
             }}
           >
             Jinesh Bhaskaran
@@ -189,7 +189,7 @@ export default async function Image({
         },
       ],
 
-      emoji: "openmoji",
+      emoji: "fluent",
     },
   )
 }
