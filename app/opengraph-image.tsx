@@ -67,9 +67,9 @@ export default async function Image({
 
   // const name = searchParams.get("name")
 
-  const fontData = await fetch(
-    new URL(`${baseUrl}/fonts/Geist-Black.ttf`),
-  ).then((res) => res.arrayBuffer())
+  const fontData = await fetch(new URL(`${baseUrl}/fonts/Geist-Bold.otf`)).then(
+    (res) => res.arrayBuffer(),
+  )
 
   const today = new Date()
   const dayName = daysOfWeek[today.getDay()]
@@ -156,7 +156,7 @@ export default async function Image({
               lineHeight: 0.5,
               whiteSpace: "pre-wrap",
               textAlign: "left",
-              letterSpacing: "-0.09em",
+              letterSpacing: "-0.05em",
             }}
           >
             Jinesh Bhaskaran
