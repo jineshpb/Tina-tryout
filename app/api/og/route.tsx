@@ -12,9 +12,9 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000" // Default to localhost if running locally
 
-const image = fetch(
-  new URL(`https://${newUrl}/green-balls.png`, import.meta.url),
-).then((res) => res.arrayBuffer())
+const image = fetch(new URL(`https://${newUrl}/green-balls.png`)).then((res) =>
+  res.arrayBuffer(),
+)
 
 console.log("image", image)
 console.log("baseUrl", newUrl)
