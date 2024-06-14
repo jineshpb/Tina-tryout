@@ -51,6 +51,33 @@ const url = `${baseUrl}/fonts/Geist-Black.ttf`
 // const spaceRegular = fetch(
 //   new URL("../../../public/fonts/SpaceGrotesk-Regular.ttf", import.meta.url)
 // ).then((res) => res.arrayBuffer());
+const emojis = [
+  "😀",
+  "😄",
+  "😊",
+  "🙂",
+  "😎",
+  "👍",
+  "🌟",
+  "🎉",
+  "🔥",
+  "💯",
+  " 👋",
+  "😄 ",
+  "🚗",
+  "☕",
+]
+
+const getRandomEmojis = (count: number) => {
+  const randomEmojis: string[] = []
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * emojis.length)
+    randomEmojis.push(emojis[randomIndex])
+  }
+  return randomEmojis
+}
+
+const randomEmojis = getRandomEmojis(5)
 
 export default async function Image({
   params,
@@ -173,10 +200,19 @@ export default async function Image({
           <div
             style={{
               display: "flex",
-              fontSize: 40,
+              fontSize: 60,
             }}
           >
-            👋 😄 🚗 🎮 ☕
+            <div
+              style={{
+                display: "flex",
+                fontSize: 60,
+              }}
+            >
+              {randomEmojis.map((emoji, index) => (
+                <span key={index}>{emoji}</span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
