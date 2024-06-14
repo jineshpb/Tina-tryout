@@ -19,8 +19,8 @@ const daysOfWeek = [
   "Saturday",
 ]
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+const baseUrl = process.env.PERSONAL_URL
+  ? `https://${process.env.PERSONAL_URL}`
   : "http://localhost:3000"
 
 const url = `${baseUrl}/fonts/Geist-Bold.ttf`
@@ -181,12 +181,12 @@ export default async function Image({
       </div>
     ),
     {
-      // fonts: [
-      //   {
-      //     name: "GeistSans-Bold",
-      //     data: fontData,
-      //   },
-      // ],
+      fonts: [
+        {
+          name: "GeistSans-Bold",
+          data: fontData,
+        },
+      ],
     },
   )
 }
