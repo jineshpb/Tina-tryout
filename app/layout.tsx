@@ -22,7 +22,7 @@ import { GeistSansNonVariable } from "geist/font/sans-non-variable"
 import clsx from "clsx"
 
 const newUrl = process.env.VERCEL_URL
-const personalDomain = process.env.NEXT_PUBLIC_PERSONAL_DOMAIN
+const personalDomain = process.env.PERSONAL_DOMAIN
 
 const baseUrl = personalDomain ? personalDomain : newUrl
 export const metadata: Metadata = {
