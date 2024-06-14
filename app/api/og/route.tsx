@@ -1,4 +1,5 @@
 import { ImageResponse } from "@vercel/og"
+import image from "next/image"
 
 // import Geist from "@/public/fonts/Geist-Bold.ttf"
 export const runtime = "experimental-edge"
@@ -12,9 +13,13 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000" // Default to localhost if running locally
 
-const image = fetch(new URL(`https://${newUrl}/green-balls.png`)).then((res) =>
-  res.arrayBuffer(),
-)
+try {
+  const image = fetch(new URL(`https://${newUrl}green-balls.png`)).then((res) =>
+    res.arrayBuffer(),
+  )
+} catch (error) {
+  console.error("Failed to fetch image", error)
+}
 
 console.log("image", image)
 console.log("baseUrl", newUrl)
