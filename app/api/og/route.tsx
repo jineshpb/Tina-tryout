@@ -118,7 +118,7 @@ export async function GET(request: Request) {
                   color: "#27272A",
                 }}
               >
-                Blog
+                Case study
               </p>
             </div>
             <h1

@@ -23,7 +23,7 @@ const baseUrl = process.env.PERSONAL_URL
   ? `https://${process.env.PERSONAL_URL}`
   : "http://localhost:3000"
 
-const url = `${baseUrl}/fonts/Geist-Bold.ttf`
+const url = `${baseUrl}/fonts/Geist-Black.ttf`
 
 // const fetchFont = async (url: string) => {
 //   try {
@@ -67,9 +67,9 @@ export default async function Image({
 
   // const name = searchParams.get("name")
 
-  const fontData = await fetch(new URL(`${baseUrl}/fonts/Geist-Bold.otf`)).then(
-    (res) => res.arrayBuffer(),
-  )
+  const fontData = await fetch(
+    new URL(`${baseUrl}/fonts/Geist-Black.ttf`),
+  ).then((res) => res.arrayBuffer())
 
   const today = new Date()
   const dayName = daysOfWeek[today.getDay()]
@@ -149,13 +149,14 @@ export default async function Image({
             tw="text-[120px] font-extrabold tracking-tight "
             style={{
               display: "flex",
-              fontSize: 90,
+              fontSize: 120,
               fontStyle: "normal",
               color: "#52525B",
               marginTop: 30,
               lineHeight: 0.5,
               whiteSpace: "pre-wrap",
               textAlign: "left",
+              letterSpacing: "-0.05em",
             }}
           >
             Jinesh Bhaskaran
@@ -164,10 +165,10 @@ export default async function Image({
             style={{
               display: "flex",
               fontSize: 40,
-              color: "#71717A",
+              color: "#D4D4D8",
             }}
           >
-            UX designer
+            UX designer/ CG generalist / Coffee enthusiast
           </h2>
           <div
             style={{
@@ -175,7 +176,7 @@ export default async function Image({
               fontSize: 40,
             }}
           >
-            👋 😄 🎉 🚗 🎮 ➡️
+            👋 😄 🚗 🎮 ☕
           </div>
         </div>
       </div>
@@ -187,6 +188,8 @@ export default async function Image({
           data: fontData,
         },
       ],
+
+      emoji: "openmoji",
     },
   )
 }
