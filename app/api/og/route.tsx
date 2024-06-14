@@ -1,5 +1,4 @@
 import { ImageResponse } from "@vercel/og"
-import image from "next/image"
 
 // import Geist from "@/public/fonts/Geist-Bold.ttf"
 export const runtime = "experimental-edge"
@@ -13,13 +12,9 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000" // Default to localhost if running locally
 
-try {
-  const image = fetch(new URL(`https://${newUrl}green-balls.png`)).then((res) =>
-    res.arrayBuffer(),
-  )
-} catch (error) {
-  console.error("Failed to fetch image", error)
-}
+const image = fetch(new URL(`https://${newUrl}green-balls.png`)).then((res) =>
+  res.arrayBuffer(),
+)
 
 console.log("image", image)
 console.log("baseUrl", newUrl)
@@ -50,7 +45,7 @@ export async function GET(request: Request) {
           <div tw="flex w-1/3 h-full ">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${baseUrl}/green-balls.png`}
+              src={`https://${newUrl}green-balls.png`}
               width="854"
               height="332"
               alt="balls"
