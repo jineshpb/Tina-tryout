@@ -67,6 +67,10 @@ export default async function Image({
 
   // const name = searchParams.get("name")
 
+  const fontData = await fetch(new URL(`${baseUrl}/fonts/Geist-Bold.otf`)).then(
+    (res) => res.arrayBuffer(),
+  )
+
   const today = new Date()
   const dayName = daysOfWeek[today.getDay()]
 
@@ -175,14 +179,15 @@ export default async function Image({
           </div>
         </div>
       </div>
-      // {
-      //   fonts: [
-      //     {
-      //       name: "GeistSans-Bold",
-      //       data: spaceBoldFontData,
-      //     },
-      //   ],
-      // },
     ),
+
+    {
+      fonts: [
+        {
+          name: "GeistSans-Bold",
+          data: fontData,
+        },
+      ],
+    },
   )
 }

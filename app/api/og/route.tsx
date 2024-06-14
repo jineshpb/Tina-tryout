@@ -8,11 +8,11 @@ const newSiteUrl = "localhost:3000"
 
 const newUrl = process.env.PERSONAL_URL ? process.env.PERSONAL_URL : newSiteUrl
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000" // Default to localhost if running locally
+const baseUrl = process.env.PERSONAL_URL
+  ? `https://${process.env.PERSONAL_URL}`
+  : "http://localhost:3000/" // Default to localhost if running locally
 
-const image = fetch(new URL(`https://${newUrl}green-balls.png`)).then((res) =>
+const image = fetch(new URL(`${baseUrl}/green-balls.png`)).then((res) =>
   res.arrayBuffer(),
 )
 
@@ -28,9 +28,9 @@ export async function GET(request: Request) {
       ? searchParams.get("title")?.slice(0, 100)
       : "My website"
 
-    // const fontData = await fetch(
-    //   new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
-    // ).then((res) => res.arrayBuffer())
+    const fontData = await fetch(
+      new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
+    ).then((res) => res.arrayBuffer())
     // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
 
     const imageData = await image
@@ -45,7 +45,7 @@ export async function GET(request: Request) {
           <div tw="flex w-1/3 h-full ">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`https://${newUrl}green-balls.png`}
+              src={`${baseUrl}/green-balls.png`}
               width="854"
               height="332"
               alt="balls"
@@ -103,14 +103,14 @@ export async function GET(request: Request) {
         </div>
       ),
       {
-        // fonts: [
-        //   {
-        //     name: "Geist-Bold",
-        //     data: fontData,
-        //   },
-        // ],
-        // width: 1200,
-        // height: 630,
+        fonts: [
+          {
+            name: "Geist-Bold",
+            data: fontData,
+          },
+        ],
+        width: 1200,
+        height: 630,
       },
     )
   } catch (error) {
