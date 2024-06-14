@@ -19,6 +19,7 @@ import clsx from "clsx"
 import { Spotlight } from "../Spotlight"
 import { DotBackgroundDemo } from "../DotBackground"
 import { BackgroundGradient } from "../ui/BackgroundGradient"
+import { ShaderGradientCanvas, ShaderGradient } from "shadergradient"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -108,6 +109,7 @@ export function HomePageComponent(props: {
                           fill="white"
                           className="-top-40  left-40 md:-top-20 md:left-32"
                         />
+
                         {/* <Spotlight
                           fill="#D4D4D8"
                           className="left-1/2 top-10 h-[80vh] w-[50vw] "
@@ -127,7 +129,7 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
                     <div className="flex size-full flex-col justify-between gap-8">
-                      <div className="g_fadeIn flex flex-col gap-10 md:flex-row ">
+                      <div className="g_fadeIn flex flex-col gap-10 xl:flex-row ">
                         <div className="flex items-start justify-start">
                           <BackgroundGradient className="flex">
                             <SmallAvatar

@@ -13,6 +13,8 @@ const image = fetch(
   new URL(`${baseUrl}/green-balls.png`, import.meta.url),
 ).then((res) => res.arrayBuffer())
 
+console.log("baseUrl", baseUrl)
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
