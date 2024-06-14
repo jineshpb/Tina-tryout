@@ -10,7 +10,7 @@ const newUrl = process.env.PERSONAL_URL ? process.env.PERSONAL_URL : newSiteUrl
 
 const baseUrl = process.env.PERSONAL_URL
   ? `https://${process.env.PERSONAL_URL}`
-  : "http://localhost:3000/" // Default to localhost if running locally
+  : "http://localhost:3000" // Default to localhost if running locally
 
 const image = fetch(new URL(`${baseUrl}/green-balls.png`)).then((res) =>
   res.arrayBuffer(),
@@ -32,6 +32,8 @@ export async function GET(request: Request) {
       new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
     ).then((res) => res.arrayBuffer())
     // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
+
+    console.log("fontData", fontData)
 
     const imageData = await image
 

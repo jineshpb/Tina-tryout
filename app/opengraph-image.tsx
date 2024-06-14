@@ -180,14 +180,13 @@ export default async function Image({
         </div>
       </div>
     ),
-
     {
-      fonts: [
-        {
-          name: "GeistSans-Bold",
-          data: fontData,
-        },
-      ],
+      // fonts: [
+      //   {
+      //     name: "GeistSans-Bold",
+      //     data: fontData,
+      //   },
+      // ],
     },
   )
 }
