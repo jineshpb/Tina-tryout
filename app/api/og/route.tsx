@@ -4,16 +4,20 @@ import { ImageResponse } from "@vercel/og"
 export const runtime = "experimental-edge"
 
 const webSiteUrl = "http://localhost:3000"
+const newSiteUrl = "localhost:3000"
+
+const newUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : newSiteUrl
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000" // Default to localhost if running locally
 
 const image = fetch(
-  new URL(`${baseUrl}/green-balls.png`, import.meta.url),
+  new URL(`https://${newUrl}/green-balls.png`, import.meta.url),
 ).then((res) => res.arrayBuffer())
 
-console.log("baseUrl", baseUrl)
+console.log("image", image)
+console.log("baseUrl", newUrl)
 
 export async function GET(request: Request) {
   try {
