@@ -15,8 +15,6 @@ const image = fetch(
 
 export async function GET(request: Request) {
   try {
-    console.log("request", request.url)
-
     const { searchParams } = new URL(request.url)
     const hasTitle = searchParams.has("title")
 
@@ -24,16 +22,16 @@ export async function GET(request: Request) {
       ? searchParams.get("title")?.slice(0, 100)
       : "My website"
 
-    const fontData = await fetch(
-      new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
-    ).then((res) => res.arrayBuffer())
+    // const fontData = await fetch(
+    //   new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
+    // ).then((res) => res.arrayBuffer())
     // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
 
     const imageData = await image
 
-    console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.otf`)
+    // console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.otf`)
 
-    console.log("title", title)
+    // console.log("title", title)
 
     return new ImageResponse(
       (
@@ -99,14 +97,14 @@ export async function GET(request: Request) {
         </div>
       ),
       {
-        fonts: [
-          {
-            name: "Geist-Bold",
-            data: fontData,
-          },
-        ],
-        width: 1200,
-        height: 630,
+        // fonts: [
+        //   {
+        //     name: "Geist-Bold",
+        //     data: fontData,
+        //   },
+        // ],
+        // width: 1200,
+        // height: 630,
       },
     )
   } catch (error) {
