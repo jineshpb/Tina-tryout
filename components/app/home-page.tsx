@@ -19,7 +19,6 @@ import clsx from "clsx"
 import { Spotlight } from "../Spotlight"
 import { DotBackgroundDemo } from "../DotBackground"
 import { BackgroundGradient } from "../ui/BackgroundGradient"
-import { ShaderGradientCanvas, ShaderGradient } from "shadergradient"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
