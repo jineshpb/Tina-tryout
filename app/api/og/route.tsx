@@ -24,9 +24,9 @@ export async function GET(request: Request) {
       ? searchParams.get("title")?.slice(0, 100)
       : "My website"
 
-    // const fontData = await fetch(
-    //   new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
-    // ).then((res) => res.arrayBuffer())
+    const fontData = await fetch(
+      new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
+    ).then((res) => res.arrayBuffer())
     // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
 
     const imageData = await image
@@ -99,12 +99,12 @@ export async function GET(request: Request) {
         </div>
       ),
       {
-        // fonts: [
-        //   {
-        //     name: "Geist-Bold",
-        //     data: fontData,
-        //   },
-        // ],
+        fonts: [
+          {
+            name: "Geist-Bold",
+            data: fontData,
+          },
+        ],
         width: 1200,
         height: 630,
       },
