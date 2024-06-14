@@ -6,7 +6,7 @@ export const runtime = "experimental-edge"
 const webSiteUrl = "http://localhost:3000"
 const newSiteUrl = "localhost:3000"
 
-const newUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : newSiteUrl
+const newUrl = process.env.PERSONAL_URL ? process.env.PERSONAL_URL : newSiteUrl
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
