@@ -1,4 +1,6 @@
 import { ImageResponse } from "@vercel/og"
+import client from "@/tina/__generated__/client"
+import { notFound } from "next/navigation"
 
 // import Geist from "@/public/fonts/Geist-Bold.ttf"
 export const runtime = "experimental-edge"
@@ -16,17 +18,51 @@ const image = fetch(new URL(`${baseUrl}/green-balls.png`)).then((res) =>
   res.arrayBuffer(),
 )
 
-console.log("image", image)
-console.log("baseUrl", newUrl)
+// console.log("image", image)
+// console.log("baseUrl", newUrl)
+
+function convertToSentence(text: string | null | undefined) {
+  // Split the text by hyphens
+  const words = text?.split("-")
+
+  // Capitalize the first word and lowercase the rest
+  const capitalizedWords = words?.map((word, index) => {
+    if (index === 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1)
+    }
+    return word.toLowerCase()
+  })
+
+  // Join the words into a single string and add a period at the end
+  const sentence = capitalizedWords?.join(" ") + "."
+
+  return sentence
+}
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const hasTitle = searchParams.has("title")
 
+    console.log("searchParams", searchParams.get("title"))
+
+    const result = await client.queries
+      .posts({ relativePath: `${searchParams.get("title")}.mdx` })
+      .then((result) => {
+        return result
+      })
+      .catch((error) => {
+        console.error(error)
+        return notFound()
+      })
+
+    // console.log("result", result)
+
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My website"
+
+    const formattedTitle = convertToSentence(title)
 
     const fontData = await fetch(
       new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
@@ -91,7 +127,7 @@ export async function GET(request: Request) {
                 lineHeight: "4.5rem",
               }}
             >
-              {title}
+              {formattedTitle}
             </h1>
             <p
               tw="text-[32px]"
