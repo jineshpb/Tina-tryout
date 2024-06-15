@@ -56,16 +56,19 @@ const emojis = [
   "😄",
   "😊",
   "🙂",
-  "😎",
   "👍",
-  "🌟",
   "🎉",
   "🔥",
-  "💯",
-  " 👋",
+  "👋",
   "😄 ",
   "🚗",
   "☕",
+  "⚽",
+  "🏍️",
+  "🔧",
+  "💻",
+  "🤘",
+  "🤙",
 ]
 
 const getRandomEmojis = (count: number) => {
@@ -155,7 +158,7 @@ export default async function Image({
                 color: "#064E3B",
               }}
             >
-              jineshb.me
+              Design portfolio
             </p>
           </div>
           {/* <span
@@ -209,7 +212,7 @@ export default async function Image({
                 fontSize: 60,
               }}
             >
-              {randomEmojis.map((emoji, index) => (
+              {getRandomEmojis(5).map((emoji, index) => (
                 <span key={index}>{emoji}</span>
               ))}
             </div>
