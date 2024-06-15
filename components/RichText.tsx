@@ -237,7 +237,7 @@ export const ImageCarousel = (props: any) => {
           {props.images?.map((image: any, index: number) => (
             <motion.div
               key={index}
-              className={`relative !my-0 flex flex-col max-sm:min-w-[80vw]   lg:min-w-[25rem] ${props.orientation === "landscape" && "max-w-24 lg:min-w-[55rem]"} items-center
+              className={`relative !my-0 flex flex-col sm:min-w-[80vw] lg:min-w-[25rem] ${props.orientation === "landscape" && "min-w-[80vw] lg:min-w-[55rem]"} items-center
                justify-center overflow-hidden rounded-2xl `}
             >
               <img
@@ -273,7 +273,6 @@ export const IphoneMockup = (props: any) => {
         trigger: "#exploreVideo",
         toggleActions: "play pause reverse restart",
         start: "-10% bottom",
-      
       },
       onComplete: () => {
         if (videoRef.current) {
