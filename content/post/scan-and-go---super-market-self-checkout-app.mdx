@@ -18,11 +18,51 @@ In today’s fast-paced world, time is of the essence. The traditional supermark
 
 I went on to Yelp to look at the customer feedback on various super market establishments
 
-<FeedbackCard feedback="Just one girl on the register who doesn't care how long the line is she is there for her shift and works so slowly and figures that she gets paid whether or not she takes 10 min or 20 with your order. Not enough lines open and the self serve has never once worked properly" title="Cashiers dont care" rating={1} author="Diesel P" location="Levitton, NY" authorImage="https://res.cloudinary.com/dhuk11prd/image/upload/v1693151623/dkzdhm6gpmtkil1cxegs.png" brandLogo="https://res.cloudinary.com/dhuk11prd/image/upload/v1717156874/portfolio-tina/scan%20and%20go/Yelp_Logo.svg_l0nskq.png" />
-
-<FeedbackCard title="I am antisocial" rating={2} author="Kristy R" location="New York, NY" authorImage="https://res.cloudinary.com/dhuk11prd/image/upload/v1717163161/portfolio-tina/scan%20and%20go/jake-nackos-IF9TK5Uy-KI-unsplash_koiegr.jpg" feedback="While waiting for self-checkout (because I am antisocial), the older lady in front of me couldn't figure out how to pay via plastic so one of the employees took me to the employee station and scanned my items there." brandLogo="https://res.cloudinary.com/dhuk11prd/image/upload/v1717156874/portfolio-tina/scan%20and%20go/Yelp_Logo.svg_l0nskq.png" />
-
-<FeedbackCard title="Self check-outs do not accept cash." feedback="Went to the store recently. Seems not to matter what time I get there, there's only one human working a register. So, if you don't want to stand on that line, you go over to the self check-outs.	But be careful!!!	Some of the self check-outs do not accept cash." rating={3} author="Chilly A" location="Long island, NY" authorImage="https://res.cloudinary.com/dhuk11prd/image/upload/v1717163167/portfolio-tina/scan%20and%20go/rivage-jzz_3jWMzHA-unsplash_aj9dty.jpg" brandLogo="https://res.cloudinary.com/dhuk11prd/image/upload/v1717156874/portfolio-tina/scan%20and%20go/Yelp_Logo.svg_l0nskq.png" />
+<FeedbackCard
+  cardItems={[
+    {
+      feedback:
+        "Just one girl on the register who doesn't care how long  the line is she is there for her shift and works so slowly and  figures that she gets paid whether or not she takes 10 min  or 20 with your order. Not enough lines open and the self  serve has never once worked properly",
+      id: 0,
+      title: "Doesn't care how long  the line is",
+      rating: 1,
+      author: "Diesel P",
+      location: "Levittown, NY",
+      date: "2024-06-04T18:30:00.000Z",
+      brandLogo:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717156874/portfolio-tina/scan%20and%20go/Yelp_Logo.svg_l0nskq.png"
+    },
+    {
+      id: 1,
+      feedback:
+        "While waiting for self-checkout (because I am antisocial),  the older lady in front of me couldn't figure out how to pay  via plastic so one of the employees took me to the  employee station and scanned my items there.",
+      title:
+        "The older lady in front of me couldn't figure out how to pay  via plastic",
+      rating: 2,
+      author: "Kristy R",
+      location: "New York, NY",
+      date: "2024-05-31T18:30:00.000Z",
+      brandLogo:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717156874/portfolio-tina/scan%20and%20go/Yelp_Logo.svg_l0nskq.png",
+      authorImage:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717163161/portfolio-tina/scan%20and%20go/jake-nackos-IF9TK5Uy-KI-unsplash_koiegr.jpg"
+    },
+    {
+      id: 2,
+      title: "Some of the self  check-outs do not accept cash",
+      rating: 3,
+      author: "Chilly A",
+      location: "Long Island, NY",
+      date: "2024-06-20T18:30:00.000Z",
+      feedback:
+        "Went to the store recently. Seems not to matter what  time I get there, there's only one human working a register.  So, if you don't want to stand on that line, you go over to  the self check-outs. But be careful!!! Some of the self  check-outs do not accept cash.",
+      authorImage:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1693133112/cld-sample.jpg",
+      brandLogo:
+        "https://res.cloudinary.com/dhuk11prd/image/upload/v1717156874/portfolio-tina/scan%20and%20go/Yelp_Logo.svg_l0nskq.png"
+    }
+  ]}
+/>
 
 #### Insights
 
@@ -54,7 +94,7 @@ With mobile, retailers can push targeted offers and promotions directly to the c
 Among these users Christine is my hero user, she is the power shopper.
 
 <ImageTextBlock
-  title="“ I like my vegetables like my photos, clean and crisp “"
+  title="“My #1 Go-to place for  food shopping is my local  Wholefoods“"
   type="User persona"
   body={<>
     Gets her grocery daily from nearby wholefoods. Does serious Walmart visits
@@ -76,7 +116,7 @@ Among these users Christine is my hero user, she is the power shopper.
     
     Name: **Christine**\
     Age: **40**\
-    Occupation: **Home baker**\\
+    Occupation: **Home baker**
   </>}
   title="“ I like using self checkouts, because its convenient and the staff won’t judge me “"
   type="User persona"

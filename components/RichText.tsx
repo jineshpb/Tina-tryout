@@ -20,9 +20,12 @@ import gsap from "gsap"
 
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+import { CardStack } from "../components/ui/card-stack"
+
 gsap.registerPlugin(ScrollTrigger)
 
 import moment from "moment"
+import { cn } from "@/utils/cn"
 
 export const TextBox = (props: any) => {
   return (
@@ -85,90 +88,56 @@ export const CaptionedImage = (props: any) => {
   )
 }
 
-export const FeedbackCard = (props: any) => {
+export const testComponent = (props: any) => {
   return (
-    <div className="mt-8 flex max-w-3xl flex-col rounded-lg bg-white px-6 py-4 drop-shadow-lg dark:bg-zinc-800 ">
-      <div className="flex w-full flex-row-reverse">
-        <div className="flex h-full items-start">
-          {props.brandLogo && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={props.brandLogo}
-              className="!my-0 size-24 object-contain"
-              alt="brand logo"
-            />
-          )}
-        </div>
-        <div className="flex w-full flex-col">
-          <div className="mb-2">
-            {props.date && (
-              <span className="text-sm italic text-zinc-500 dark:text-zinc-400">
-                {moment(props.date).format("MMM DD, YYYY")}
-              </span>
-            )}
-          </div>
-          <div className="flex gap-4">
-            {props.authorImage ? (
-              <div className="flex size-16  items-center justify-center overflow-hidden rounded-full border-4 border-emerald-300  dark:border-emerald-500">
-                <img
-                  src={props.authorImage}
-                  className="m-0 size-16 max-w-24 object-cover"
-                />
-              </div>
-            ) : (
-              <div className="size-auto rounded-full bg-zinc-200 p-2">
-                <SlUser />
-              </div>
-            )}
-
-            <div className="flex flex-col">
-              <div className="w-full text-[18px] font-bold leading-tight">
-                {props.author}
-              </div>
-
-              <span className="text-[14px] leading-tight">
-                {props.location}
-              </span>
-
-              <div className="gap-1/2 flex w-auto py-1">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <div key={index} className="py-1">
-                    {index < props.rating ? (
-                      <FaStar className="h-[16px]" />
-                    ) : (
-                      <FaRegStar className="h-[16px]" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mt-4">
-        <h3 className="!my-2 !text-2xl">{props.title}</h3>
-        <div className="prose mt-2 flex italic text-zinc-900  dark:text-zinc-200">
-          &quot;{props.feedback}&quot;
-        </div>
-      </div>
+    <div className="not-prose">
+      <CardStack items={props} />
     </div>
+  )
+}
+
+export const FeedbackCard = (props: any) => {
+  return <CardStack items={props} />
+}
+
+export const Highlight = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) => {
+  const isBold = className?.includes("font-bold")
+
+  return (
+    <span
+      className={cn(
+        "bg-emerald-100 px-1 py-0.5",
+        isBold
+          ? "font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500"
+          : "",
+        className,
+      )}
+    >
+      {children}
+    </span>
   )
 }
 
 export const ImageTextBlock = (props: any) => {
   return (
-    <div className="mt-8">
+    <div className="not-prose mt-8 h-full">
       <div
-        className={`relative flex w-full max-w-4xl flex-col items-start gap-8 rounded-[32px] border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-800 md:p-10 ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+        className={`relative flex size-full max-w-4xl flex-col  gap-8 overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50 shadow-xl  dark:border-zinc-700 dark:bg-zinc-800  ${props.imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"}`}
       >
-        <div className="h-80 w-full overflow-hidden rounded-[16px] object-cover">
+        <div className="flex items-center justify-center overflow-hidden max-sm:max-h-60">
           <img
             src={props.image}
             alt=""
-            className="!my-0 size-full object-cover"
+            className="size-full h-full object-cover"
           />
         </div>
-        <div className="!my-0 flex w-full flex-col items-start">
+        <div className="!my-0 flex w-full flex-col items-start p-4 md:p-10">
           <div className=" flex items-center justify-center rounded-full bg-zinc-200 px-2 dark:bg-zinc-700 ">
             <BsHash />
             <p className=" !my-0 text-[16px] text-zinc-600 dark:text-zinc-300">

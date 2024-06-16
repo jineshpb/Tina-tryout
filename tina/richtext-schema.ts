@@ -103,50 +103,63 @@ export const richTextComponents: Template[] = [
     },
     fields: [
       {
-        name: "title",
-        label: "Title",
-        type: "string",
-      },
-      {
-        name: "rating",
-        label: "Rating",
-        type: "number",
-      },
-      {
-        name: "author",
-        label: "Author",
-        type: "string",
-      },
-      {
-        name: "location",
-        label: "Location",
-        type: "string",
-      },
-      {
-        name: "date",
-        label: "Date",
-        type: "datetime",
-      },
-      {
-        name: "authorLink",
-        label: "Author Link",
-        type: "string",
-      },
-      {
-        name: "authorImage",
-        label: "Author Image",
-        type: "image",
-      },
-      {
-        name: "brandLogo",
-        label: "Brand Logo",
-        type: "image",
-      },
+        name: "cardItems",
+        label: "Card Items",
+        type: "object",
+        list: true,
+        fields: [
+          {
+            name: "id",
+            label: "ID",
+            type: "number",
+          },
+          {
+            name: "title",
+            label: "Title",
+            type: "string",
+          },
+          {
+            name: "rating",
+            label: "Rating",
+            type: "number",
+          },
+          {
+            name: "author",
+            label: "Author",
+            type: "string",
+          },
+          {
+            name: "location",
+            label: "Location",
+            type: "string",
+          },
+          {
+            name: "date",
+            label: "Date",
+            type: "datetime",
+          },
+          {
+            name: "authorLink",
+            label: "Author Link",
+            type: "string",
+          },
+          {
+            name: "authorImage",
+            label: "Author Image",
+            type: "image",
+          },
+          {
+            name: "brandLogo",
+            label: "Brand Logo",
+            type: "image",
+          },
 
-      {
-        name: "feedback",
-        label: "Feedback",
-        type: "string",
+          {
+            name: "feedback",
+            label: "Feedback",
+            type: "string",
+          },
+        ],
       },
     ],
   },
