@@ -3,7 +3,7 @@
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 import { Tweet } from "react-tweet"
 import { SlUser } from "react-icons/sl"
-import { FaRegStar } from "react-icons/fa"
+import { FaPause, FaPlay, FaRegStar } from "react-icons/fa"
 import { FaStar } from "react-icons/fa"
 import { BsHash } from "react-icons/bs"
 import { motion } from "framer-motion"
@@ -49,7 +49,7 @@ export const PullQuote = (props: any) => {
   return (
     <>
       <blockquote className="mb-1 border-l-4 border-zinc-200 leading-10 dark:border-zinc-700">
-        <p className="mb-1 text-2xl font-normal opacity-80">{props.quote}</p>
+        <p className=" mb-1 text-2xl font-normal opacity-80">{props.quote}</p>
         {props.author && (
           <a href={props.authorLink} className="text-[0.8em] italic opacity-80">
             - {props.author}
@@ -145,7 +145,7 @@ export const ImageTextBlock = (props: any) => {
             </p>
           </div>
 
-          <h2 className=" !mb-0 !mt-8 !text-[30px] font-medium tracking-tight">
+          <h2 className=" !my-8 !text-[30px] font-medium leading-tight tracking-tight">
             {props.title}
           </h2>
           <TinaMarkdown content={props.body} />
@@ -236,25 +236,65 @@ export const ImageCarousel = (props: any) => {
 
 export const IphoneMockup = (props: any) => {
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  const [isPlaying, setIsPlaying] = useState(true)
+
   useGSAP(() => {
     gsap.to("#exploreVideo", {
       scrollTrigger: {
         trigger: "#exploreVideo",
-        toggleActions: "play pause reverse restart",
+        toggleActions: "play pause none none",
         start: "-10% bottom",
       },
+      onPlay: () => {
+        setIsPlaying(true)
+      },
       onComplete: () => {
+        setIsPlaying(false)
         if (videoRef.current) {
-          videoRef.current.play()
-          console.log("playing video")
+          // videoRef.current.play()
+          // setIsPlaying(true)
         }
       },
     })
   }, [])
 
+  const [isComplete, setIsComplete] = useState(false)
+
+  useGSAP(() => {
+    gsap.to("#exploreVideo", {
+      scrollTrigger: {
+        trigger: "#exploreVideo",
+        toggleActions: "play pause none none",
+        start: "-10% bottom",
+      },
+      onPlay: () => {
+        setIsPlaying(true)
+        setIsComplete(false)
+      },
+      onComplete: () => {
+        setIsPlaying(false)
+        setIsComplete(true)
+      },
+    })
+  }, [])
+
+  const handleClick = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play()
+        setIsPlaying(true)
+        setIsComplete(false)
+      } else {
+        videoRef.current.pause()
+        setIsPlaying(false)
+      }
+    }
+  }
+
   return (
     <div className="relative  mt-20 flex items-center justify-center px-10">
-      <div className="flex items-center justify-center drop-shadow-xl  lg:max-w-[30%]">
+      <div className="relative flex items-center justify-center drop-shadow-xl  lg:max-w-[30%]">
         <div className="absolute left-0 size-full">
           <img
             src="/iphone_clay_white.png"
@@ -285,6 +325,19 @@ export const IphoneMockup = (props: any) => {
           >
             <source src={props.url} type="video/mp4" />
           </video>
+
+          <div className="absolute bottom-2 left-2 z-20   text-[16px] ">
+            <button
+              onClick={handleClick}
+              className="flex items-center justify-center rounded-full bg-zinc-200/50 p-2 shadow-xl dark:bg-zinc-700/50 dark:text-zinc-300"
+            >
+              {isPlaying ? (
+                <FaPause />
+              ) : (
+                <>{isComplete ? <FaPause /> : <FaPlay />}</>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -54,11 +54,11 @@ export const CardStack = ({
         newArray.unshift(newArray.pop()!) // move the last element to the front
         return newArray
       })
-    }, 5000)
+    }, 6000)
   }
 
   return (
-    <div className="not-prose  relative  my-20 min-h-[25rem] w-full  ">
+    <div className="!not-prose  relative  my-20 min-h-[35rem] w-full md:min-h-[25rem]  ">
       {cards?.map((card, index) => {
         // console.log("card", card)
         // console.log("lenght", cards.length)
@@ -83,7 +83,7 @@ export const CardStack = ({
                   <h3 className="!my-2 !text-2xl font-medium tracking-tight">
                     {card.title}
                   </h3>
-                  <p className="mt-2 flex font-normal italic text-zinc-600  dark:text-zinc-200">
+                  <p className="mt-2 flex font-normal italic leading-snug text-zinc-600  dark:text-zinc-200">
                     &quot;{card.feedback}&quot;
                   </p>
                 </div>
