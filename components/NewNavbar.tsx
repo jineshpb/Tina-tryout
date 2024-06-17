@@ -11,6 +11,7 @@ import clsx from "clsx"
 import { ThemeToggle } from "./ThemeToggle"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import { FloatingNav } from "./ui/floating-navbar"
 
 export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
   const [isMobile, setIsMobile] = useState(true)
@@ -44,7 +45,7 @@ export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
 
   return (
     <nav
-      className="fixed left-0 top-0 z-10  w-full items-center p-6 lg:backdrop-blur-xl "
+      className="fixed left-0 top-0 z-10  w-full items-center p-6  "
       style={{
         boxSizing: "border-box",
       }}
@@ -58,10 +59,9 @@ export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
             pathname={pathname ?? ""}
           />
         ) : (
-          <DesktopNav
+          <DesktopFloatingNav
             data={NavList as unknown as SettingsConnectionQuery}
-            className=""
-          /> // Cast NavList to SettingsConnectionQuery type
+          />
         )}
       </div>
     </nav>
@@ -189,18 +189,16 @@ function handleClick(link: string) {
   element?.scrollIntoView({ behavior: "smooth" })
 }
 
-function DesktopNav({
-  data,
-  className,
-}: {
-  data: SettingsConnectionQuery
-  className?: string
-}) {
+function DesktopNav({ data, className }: { data: any; className?: string }) {
+  const [{ cursor, node }] = data
+
+  console.log("node", node?.menuItems)
+
   return (
     <div className={clsx("flex items-center justify-between gap-8", className)}>
       {Array.isArray(data) &&
         data.map((item: any, index: number) => (
-          <NameLogo logo={item.node.logo} key={index} />
+          <NameLogo logo={item.node?.logo} key={index} />
         ))}
       <div className="flex items-center gap-6">
         {Array.isArray(data) &&
@@ -226,4 +224,15 @@ function DesktopNav({
       </div>
     </div>
   )
+}
+
+function DesktopFloatingNav({
+  data,
+  className,
+}: {
+  data: any
+  className?: string
+}) {
+  const [{ cursor, node }] = data
+  return <FloatingNav navItems={node} logo={cursor} />
 }
