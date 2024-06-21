@@ -33,8 +33,13 @@ export default function BigButton({
         <div
           className={clsx(
             "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500",
+
             size === "xl" && "text-6xl md:text-6xl",
           )}
+          style={{
+            boxShadow:
+              "inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 2px 4px #ffffff",
+          }}
         >
           {children}
           <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
@@ -48,6 +53,10 @@ export default function BigButton({
           "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500",
           size === "xl" && "text-6xl md:text-6xl",
         )}
+        style={{
+          boxShadow:
+            "inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 2px 4px #ffffff",
+        }}
       >
         {children}
         <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>

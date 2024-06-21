@@ -6,7 +6,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text"
 import Heading from "../Heading"
 import SmallAvatar from "../SmallAvatar"
 import BigButton from "../BigButton"
-import { ReactNode, useEffect, useState } from "react"
+import { ReactNode, useEffect, useRef, useState } from "react"
 import Bounded from "../Bounded"
 import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
@@ -19,6 +19,10 @@ import clsx from "clsx"
 import { Spotlight } from "../Spotlight"
 import { DotBackgroundDemo } from "../DotBackground"
 import { BackgroundGradient } from "../ui/BackgroundGradient"
+import RenderModel from "../RenderModel"
+import { ChonkyCat } from "../models/ChonkyCat"
+import { motion, MotionConfig, useAnimationControls } from "framer-motion"
+import { Lumiflex, Novatrix } from "uvcanvas"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -48,7 +52,214 @@ function AddBreakAfterComma({ text }: { text: string }) {
     }
   })
 
-  return <div>{partsWithBreaks}</div>
+  return <>{partsWithBreaks}</>
+}
+
+function UXPill() {
+  const cardMotion = {
+    initial: {
+      scale: 1,
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+
+      y: -10,
+      rotate: -5,
+    },
+  }
+  const cardMotion1 = {
+    initial: {
+      scale: 1,
+
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+      x: 2,
+      y: -10,
+      rotate: 10,
+    },
+  }
+  const cardMotion2 = {
+    initial: {
+      scale: 1,
+
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+      x: 2,
+      y: -10,
+      rotate: 15,
+    },
+  }
+
+  const starMotion = {
+    initial: {
+      scale: 1,
+
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+      x: 2,
+      y: -10,
+      rotate: 15,
+    },
+  }
+
+  const starMotion1 = {
+    initial: {
+      scale: 1,
+
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+      x: -20,
+      y: -25,
+      rotate: -50,
+    },
+  }
+  const starMotion2 = {
+    initial: {
+      scale: 1,
+
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+      x: 5,
+      y: -5,
+      rotate: 20,
+    },
+  }
+
+  const glowMotion = {
+    initial: {
+      scale: 1,
+      x: 0,
+      y: 0,
+      rotate: 0,
+    },
+    hover: {
+      scale: 2,
+      transition: { duration: 0.3 },
+      y: -10,
+      rotate: -5,
+    },
+  }
+
+  return (
+    <motion.div
+      whileHover="hover"
+      id="pill"
+      className="backgroud-image:[url('./Noise.png')] relative z-20 hidden h-[100px] w-[160px] overflow-hidden rounded-full  bg-[#1D1C20] md:inline-block"
+      style={{
+        boxShadow:
+          "inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px #A1A1AA",
+      }}
+    >
+      <motion.div>
+        <motion.div
+          variants={cardMotion}
+          id="card-round"
+          className="absolute -bottom-4 right-16 z-10 h-[70px] w-[56px] rounded-[8px] bg-[#38343E]"
+          style={{
+            boxShadow:
+              "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
+          }}
+        >
+          <img src="./Ellipse2.png" alt="" className="pl-2 pt-2" />
+        </motion.div>
+        <motion.div
+          variants={cardMotion1}
+          id="card-rectangle"
+          className="absolute -bottom-4 right-12 z-[13] h-[70px] w-[56px] rounded-[8px] bg-[#38343E]"
+          style={{
+            boxShadow:
+              "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
+          }}
+        >
+          <img src="./Polygon.png" alt="" className="pl-2 pt-2" />
+        </motion.div>
+
+        <motion.div
+          variants={cardMotion2}
+          id="card-figma"
+          className="absolute -bottom-4 right-6 z-[16] h-[70px] w-[56px] rounded-[8px] bg-[#38343E]"
+          style={{
+            boxShadow:
+              "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
+          }}
+        >
+          <img src="./FigmaLogo.png" alt="" className="pl-2 pt-2" />
+        </motion.div>
+
+        <motion.div
+          variants={glowMotion}
+          className="absolute bottom-0 size-8 w-full bg-[#9563FF] blur-xl"
+        ></motion.div>
+      </motion.div>
+      <motion.img
+        variants={starMotion2}
+        src="./Star1.png"
+        alt="star1"
+        className="absolute  bottom-1 right-6 z-[17] size-8"
+      />
+      <motion.img
+        variants={starMotion}
+        src="./Star2.png"
+        alt="star1"
+        className="absolute right-12 top-4 z-[13]"
+      />
+      <motion.img
+        variants={starMotion1}
+        src="./Star4.png"
+        alt="star1"
+        className="absolute bottom-4 left-11 z-[11]"
+      />
+    </motion.div>
+  )
+}
+
+function CGPill() {
+  return (
+    <div className="relative hidden h-[100px] w-[160px] md:block">
+      <motion.div
+        id="pill"
+        className="absolute z-20 inline-block h-[100px] w-[160px] overflow-hidden  rounded-full  "
+        style={{
+          boxShadow:
+            "inset 0 -4px 4px rgba(0, 0, 0, 0.4), inset 0 2px 2px #A1A1AA",
+        }}
+        initial={{ zIndex: 10 }}
+      >
+        <div className="absolute inset-0 z-0 flex size-full items-center justify-center opacity-90">
+          <Novatrix />
+        </div>
+      </motion.div>
+    </div>
+  )
 }
 
 export function HomePageComponent(props: {
@@ -102,12 +313,12 @@ export function HomePageComponent(props: {
                     className="relative mt-12 flex w-full flex-col gap-12 lg:mt-24 lg:flex-row"
                     key={i}
                   >
-                    <div className="flex size-full">
+                    <div className="flex w-full md:w-1/2">
                       <div className="hidden antialiased lg:block">
-                        <Spotlight
+                        {/* <Spotlight
                           fill="white"
                           className="-top-40  left-40 md:-top-20 md:left-32"
-                        />
+                        /> */}
 
                         {/* <Spotlight
                           fill="#D4D4D8"
@@ -118,16 +329,24 @@ export function HomePageComponent(props: {
                           className="left-80 top-28 h-[80vh] w-[50vw]"
                         /> */}
                       </div>
-                      <div
-                        className="g_fadeIn text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-8xl lg:text-8xl"
-                        data-tina-field={
-                          block ? tinaField(block, "title") : undefined
-                        }
-                      >
-                        <AddBreakAfterComma text={block.title} />
+
+                      <div className="g_fadeIn text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-[68px] xl:text-8xl ">
+                        <div className="hidden md:block">
+                          <div className="my-2 flex items-center gap-2">
+                            <h1>UI/UX</h1> {<UXPill />}
+                          </div>
+                          <h1 className=" flex  ">designer, CG </h1>
+                          <div className="my-2 flex items-center  gap-2">
+                            {<CGPill />} generalist,
+                          </div>
+                          novice coder
+                        </div>
+                        <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-6xl md:hidden">
+                          {block?.title}
+                        </div>
                       </div>
                     </div>
-                    <div className="flex size-full flex-col justify-between gap-8">
+                    <div className="flex w-full  flex-col  justify-between gap-8 md:w-1/2">
                       <div className="g_fadeIn flex flex-col gap-10 xl:flex-row ">
                         <div className="flex items-start justify-start">
                           <BackgroundGradient className="flex">

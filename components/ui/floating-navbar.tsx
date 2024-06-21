@@ -100,10 +100,13 @@ export const FloatingNav = ({
           onClick={() => {
             const element = document.getElementById("introduction")
             element?.scrollIntoView({ behavior: "smooth" })
-          }}
+        }}
           aria-label="Home page"
-          className="relative mb-1 flex w-auto items-center justify-center rounded-[28px]   bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-xl font-medium tracking-tighter text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500"
-        >
+        className="relative mb-1 flex w-auto items-center justify-center rounded-[28px]   bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-xl font-medium tracking-tighter text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500"
+         style={{
+            boxShadow: "inset 0 2px 4px #ffffff/0.5",
+         }}
+       >
           {/* <Home size={24} /> */}
           <NameLogo logo={nameLogo} />
           <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
