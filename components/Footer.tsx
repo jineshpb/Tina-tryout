@@ -66,8 +66,25 @@ export default function Footer() {
     <section className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
       <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
         <div className="flex w-full flex-col gap-4 px-6">
+          <div>
+            <Heading
+              as="h1"
+              size="lg"
+              className="font-medium tracking-tighter text-emerald-400 dark:text-emerald-400"
+            >
+              Hi, I&apos;m Jinesh, UI/UX designer based in India.
+            </Heading>
+
+            <p className="prose mt-8 text-2xl text-emerald-200">
+              My expertise is at the intersection of experience design, 3d and
+              cgi. Visually inclined and I believe code is the ultimate truth.
+              You could model something in blender texture it and get a video
+              out , but putting it on the internet and make it available for
+              anyone to experience. Powerful stuff!
+            </p>
+          </div>
           <Heading
-            className="font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
+            className="mt-20 font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
             as="h1"
             size="lg"
           >
@@ -159,7 +176,8 @@ export default function Footer() {
         <div className="flex flex-col items-center text-center text-emerald-400 dark:text-emerald-600">
           <p>All rights reserved. © 2024 Jinesh P bhaskaran </p>
           <span>
-            Cat model from Sketchfab by <br /> Kanna-Nakajima
+            Cat model from Sketchfab by <br /> Kanna-Nakajima, Thanks Aceternity
+            UI
           </span>
         </div>
 

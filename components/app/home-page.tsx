@@ -1,6 +1,10 @@
 "use client"
 
-import { HomePageQuery, PageQuery } from "@/tina/__generated__/types"
+import {
+  HomePageQuery,
+  PageBlocksWelcomeHero,
+  PageQuery,
+} from "@/tina/__generated__/types"
 import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 import Heading from "../Heading"
@@ -22,7 +26,9 @@ import { BackgroundGradient } from "../ui/BackgroundGradient"
 import RenderModel from "../RenderModel"
 import { ChonkyCat } from "../models/ChonkyCat"
 import { motion, MotionConfig, useAnimationControls } from "framer-motion"
-import { Lumiflex, Novatrix } from "uvcanvas"
+import { Lumiflex, Novatrix, Velustro } from "uvcanvas"
+import { FollowerPointerCard } from "../ui/following-pointer"
+import Image from "next/image"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -173,7 +179,7 @@ function UXPill() {
     <motion.div
       whileHover="hover"
       id="pill"
-      className="backgroud-image:[url('./Noise.png')] relative z-20 hidden h-[100px] w-[160px] overflow-hidden rounded-full  bg-[#1D1C20] md:inline-block"
+      className="backgroud-image:[url('./Noise.png')] relative z-20 hidden overflow-hidden rounded-full bg-[#1D1C20] md:inline-block  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
       style={{
         boxShadow:
           "inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px #A1A1AA",
@@ -183,18 +189,22 @@ function UXPill() {
         <motion.div
           variants={cardMotion}
           id="card-round"
-          className="absolute -bottom-4 right-16 z-10 h-[70px] w-[56px] rounded-[8px] bg-[#38343E]"
+          className="absolute -bottom-4 right-16 z-10 rounded-[8px] bg-[#38343E] md:h-[50px] md:w-[36px] lg:h-[70px] lg:w-[56px]"
           style={{
             boxShadow:
               "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
           }}
         >
-          <img src="./Ellipse2.png" alt="" className="pl-2 pt-2" />
+          <img
+            src="./Ellipse2.png"
+            alt=""
+            className="pointer-events-none pl-2 pt-2"
+          />
         </motion.div>
         <motion.div
           variants={cardMotion1}
           id="card-rectangle"
-          className="absolute -bottom-4 right-12 z-[13] h-[70px] w-[56px] rounded-[8px] bg-[#38343E]"
+          className="absolute -bottom-4 right-12 z-[13] rounded-[8px] bg-[#38343E] md:h-[50px] md:w-[36px] lg:h-[70px] lg:w-[56px]"
           style={{
             boxShadow:
               "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
@@ -206,13 +216,17 @@ function UXPill() {
         <motion.div
           variants={cardMotion2}
           id="card-figma"
-          className="absolute -bottom-4 right-6 z-[16] h-[70px] w-[56px] rounded-[8px] bg-[#38343E]"
+          className="absolute -bottom-4 right-6 z-[16] rounded-[8px] bg-[#38343E] md:h-[50px] md:w-[36px] lg:h-[70px] lg:w-[56px]"
           style={{
             boxShadow:
               "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
           }}
         >
-          <img src="./FigmaLogo.png" alt="" className="pl-2 pt-2" />
+          <img
+            src="./FigmaLogo.png"
+            alt=""
+            className="pointer-events-none pl-2 pt-2 md:w-4 lg:w-6"
+          />
         </motion.div>
 
         <motion.div
@@ -224,19 +238,19 @@ function UXPill() {
         variants={starMotion2}
         src="./Star1.png"
         alt="star1"
-        className="absolute  bottom-1 right-6 z-[17] size-8"
+        className="pointer-events-none absolute  bottom-1 right-6 z-[17] md:size-6 lg:size-8"
       />
       <motion.img
         variants={starMotion}
         src="./Star2.png"
         alt="star1"
-        className="absolute right-12 top-4 z-[13]"
+        className="pointer-events-none absolute right-12 top-4 z-[13] md:size-3 lg:size-4"
       />
       <motion.img
         variants={starMotion1}
         src="./Star4.png"
         alt="star1"
-        className="absolute bottom-4 left-11 z-[11]"
+        className="pointer-events-none absolute bottom-0 left-8 z-[11] md:size-8 lg:size-10"
       />
     </motion.div>
   )
@@ -244,10 +258,10 @@ function UXPill() {
 
 function CGPill() {
   return (
-    <div className="relative hidden h-[100px] w-[160px] md:block">
+    <div className="relative hidden md:block md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
       <motion.div
         id="pill"
-        className="absolute z-20 inline-block h-[100px] w-[160px] overflow-hidden  rounded-full  "
+        className="absolute z-20 inline-block overflow-hidden rounded-full md:h-[60px]  md:w-[120px] lg:h-[100px] lg:w-[160px] "
         style={{
           boxShadow:
             "inset 0 -4px 4px rgba(0, 0, 0, 0.4), inset 0 2px 2px #A1A1AA",
@@ -261,6 +275,19 @@ function CGPill() {
     </div>
   )
 }
+const TitleComponent = ({ title }: { title: string }) => (
+  <div className="flex items-center space-x-2">
+    <Image
+      src="/slightly-smiling-face_1f642.png"
+      height="20"
+      width="20"
+      alt="thumbnail"
+      className="rounded-full border-2 border-white"
+    />
+    <p></p>
+    <p>{title}</p>
+  </div>
+)
 
 export function HomePageComponent(props: {
   data: HomePageQuery
@@ -313,45 +340,57 @@ export function HomePageComponent(props: {
                     className="relative mt-12 flex w-full flex-col gap-12 lg:mt-24 lg:flex-row"
                     key={i}
                   >
-                    <div className="flex w-full md:w-1/2">
-                      <div className="hidden antialiased lg:block">
-                        {/* <Spotlight
-                          fill="white"
-                          className="-top-40  left-40 md:-top-20 md:left-32"
-                        /> */}
-
-                        {/* <Spotlight
-                          fill="#D4D4D8"
-                          className="left-1/2 top-10 h-[80vh] w-[50vw] "
-                        /> */}
-                        {/* <Spotlight
-                          fill="#047857"
-                          className="left-80 top-28 h-[80vh] w-[50vw]"
-                        /> */}
-                      </div>
-
-                      <div className="g_fadeIn text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-[68px] xl:text-8xl ">
-                        <div className="hidden md:block">
-                          <div className="my-2 flex items-center gap-2">
-                            <h1>UI/UX</h1> {<UXPill />}
+                    <div className="flex w-full ">
+                      <div className="g_fadeIn w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-9xl ">
+                        <div className="mx-auto hidden items-center justify-center space-y-6 md:block">
+                          <div className=" flex w-full items-center justify-center gap-4">
+                            <h1>UI/UX</h1> {<UXPill />} designer,
                           </div>
-                          <h1 className=" flex  ">designer, CG </h1>
-                          <div className="my-2 flex items-center  gap-2">
-                            {<CGPill />} generalist,
+                          <h1 className=" flex items-center justify-center gap-4  ">
+                            CG {<CGPill />} generalist,
+                          </h1>
+
+                          <div className="flex items-center justify-center gap-4">
+                            novice coder{" "}
+                            <FollowerPointerCard
+                              title={<TitleComponent title={"That's me"} />}
+                            >
+                              <div
+                                className=" md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]  "
+                                onClick={() => {
+                                  const element =
+                                    document.getElementById("footer")
+                                  element?.scrollIntoView({
+                                    behavior: "smooth",
+                                  })
+                                }}
+                              >
+                                <BackgroundGradient className=" size-full overflow-hidden rounded-full">
+                                  <SmallAvatar
+                                    image={block?.profileImage}
+                                    data-tina-field={
+                                      block
+                                        ? tinaField(block, "profileImage")
+                                        : undefined
+                                    }
+                                    className="  rounded-full md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
+                                  ></SmallAvatar>
+                                </BackgroundGradient>
+                              </div>
+                            </FollowerPointerCard>
                           </div>
-                          novice coder
                         </div>
                         <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-6xl md:hidden">
                           {block?.title}
                         </div>
                       </div>
                     </div>
-                    <div className="flex w-full  flex-col  justify-between gap-8 md:w-1/2">
+                    {/* <div className="flex w-full  flex-col  justify-between gap-8 md:w-1/2">
                       <div className="g_fadeIn flex flex-col gap-10 xl:flex-row ">
                         <div className="flex items-start justify-start">
                           <BackgroundGradient className="flex">
                             <SmallAvatar
-                              image={block.profileImage}
+                              image={block.profileImage ?? 'default-image.jpg'}
                               data-tina-field={
                                 block
                                   ? tinaField(block, "profileImage")
@@ -382,7 +421,7 @@ export function HomePageComponent(props: {
                                   : undefined
                               }
                             >
-                              {block?.description}
+                              {block?.description ?? 'No description available'}
                             </p>
                           </div>
                         </div>
@@ -417,7 +456,7 @@ export function HomePageComponent(props: {
                           )
                         })}
                       </div>
-                    </div>
+                    </div> */}
                   </section>
                 )
 
