@@ -72,7 +72,7 @@ export default function Footer() {
               size="lg"
               className="font-medium tracking-tighter text-emerald-400 dark:text-emerald-400"
             >
-              Hi, I&apos;m Jinesh, UI/UX designer based in India.
+              Hi, I&apos;m Jinesh, UI/UX designer based in Bangalore.
             </Heading>
 
             <p className="prose mt-8 text-2xl text-emerald-200">

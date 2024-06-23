@@ -337,7 +337,7 @@ export function HomePageComponent(props: {
               case "PageBlocksWelcomeHero":
                 return (
                   <section
-                    className="relative mt-12 flex w-full flex-col gap-12 lg:mt-24 lg:flex-row"
+                    className="relative mt-24 flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
                     key={i}
                   >
                     <div className="flex w-full ">
