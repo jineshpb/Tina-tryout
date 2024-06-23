@@ -136,6 +136,8 @@ export default async function Image({
       >
         <img
           src={`${baseUrl}/bg-gradient.jpg`}
+          width="770"
+          height="432"
           alt="gradient"
           style={{
             height: "115%",
@@ -153,7 +155,6 @@ export default async function Image({
             background: "linear-gradient(to bottom, #6EE7B7, #10B981)",
             boxShadow:
               "inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 2px 4px #ffffff",
-            
           }}
         >
           {/* <svg height={60} viewBox="0 0 40 40" fill="#A1A1AA">
