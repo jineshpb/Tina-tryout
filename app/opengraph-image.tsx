@@ -128,11 +128,22 @@ export default async function Image({
           flexWrap: "nowrap",
           padding: "40px",
           backgroundColor: "white",
-          backgroundImage:
-            "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
+          // backgroundImage:
+          //   "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
+
           backgroundSize: "100px 100px",
         }}
       >
+        <img
+          src={`${baseUrl}/bg-gradient.jpg`}
+          alt="gradient"
+          style={{
+            height: "115%",
+            width: "115%",
+            position: "absolute",
+            opacity: 0.3,
+          }}
+        />
         <div
           tw="flex py-4 px-8  shadow-lg"
           style={{
@@ -140,6 +151,9 @@ export default async function Image({
             borderRadius: 30,
             gap: 20,
             background: "linear-gradient(to bottom, #6EE7B7, #10B981)",
+            boxShadow:
+              "inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 2px 4px #ffffff",
+            
           }}
         >
           {/* <svg height={60} viewBox="0 0 40 40" fill="#A1A1AA">
@@ -195,7 +209,7 @@ export default async function Image({
             style={{
               display: "flex",
               fontSize: 40,
-              color: "#D4D4D8",
+              color: "#A1A1AA",
             }}
           >
             UX designer/ CG generalist / Coffee enthusiast
