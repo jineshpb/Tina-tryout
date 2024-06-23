@@ -481,15 +481,21 @@ export function HomePageComponent(props: {
                     >
                       {block.projectsHeading}
                     </Heading>
-                    <div className="g_fadeIn mx-auto grid w-full grid-cols-1 gap-4 pt-10  lg:mx-0 lg:grid-cols-3 ">
-                      <div key={i} className="grid grid-cols-1 gap-4">
+                    <div
+                      className="g_fadeIn mx-auto grid w-full grid-cols-1 gap-4  pt-10 lg:mx-0 lg:grid-cols-3 "
+                      style={{ gridAutoRows: "fr" }}
+                    >
+                      <div
+                        key={i}
+                        className="grid auto-rows-fr grid-cols-1 gap-4"
+                      >
                         {block.projects
                           ?.filter((_: any, i: number) => i % 3 === 0)
                           .map((project: any) => (
                             <ProjectCard
-                              key={i}
+                              key={project.id}
                               project={project}
-                              className=""
+                              className="h-full min-h-80"
                             />
                           ))}
                       </div>
@@ -498,9 +504,9 @@ export function HomePageComponent(props: {
                           ?.filter((_: any, i: number) => i % 3 === 1)
                           .map((project: any) => (
                             <ProjectCard
-                              key={i}
+                              key={project.id}
                               project={project}
-                              className=""
+                              className="h-full min-h-80"
                             />
                           ))}
                       </div>
@@ -509,9 +515,9 @@ export function HomePageComponent(props: {
                           ?.filter((_: any, i: number) => i % 3 === 2)
                           .map((project: any) => (
                             <ProjectCard
-                              key={i}
+                              key={project.id}
                               project={project}
-                              className=""
+                              className="h-full min-h-80"
                             />
                           ))}
                       </div>

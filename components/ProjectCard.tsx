@@ -35,7 +35,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <>
       <div
-        className="group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px]    bg-gradient-to-b  from-zinc-800 to-zinc-300/0 p-4 text-[60px] dark:bg-zinc-800/75  "
+        className={`group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px] bg-gradient-to-b  from-zinc-800 to-zinc-300/0 p-4 text-[60px] dark:bg-zinc-800/75 ${className} `}
         id="projectVideo"
       >
         <div
