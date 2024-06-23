@@ -7,6 +7,9 @@ import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/all"
 import Image from "next/image"
 import { tinaField } from "tinacms/dist/react"
+import { Playfair_Display } from "next/font/google"
+import { cn } from "@/lib/utils"
+import { GeistSans } from "geist/font/sans"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,6 +17,8 @@ interface ProjectCardProps {
   project: any
   className: any
 }
+
+const Playfair = Playfair_Display({ subsets: ["latin"] })
 
 export default function ProjectCard({ project, className }: ProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -35,16 +40,22 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <>
       <div
-        className={`group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px] bg-gradient-to-b  from-zinc-800 to-zinc-300/0 p-4 text-[60px] dark:bg-zinc-800/75 ${className} `}
+        className={cn(
+          "group relative flex size-full flex-col justify-between overflow-hidden rounded-[56px] bg-gradient-to-b  from-zinc-800 to-zinc-300/0 p-4 text-[60px] dark:bg-zinc-800/75",
+          className,
+        )}
         id="projectVideo"
       >
         <div
-          className="z-20 flex flex-col text-clip leading-tight tracking-tighter text-zinc-100 dark:text-zinc-400"
+          className="z-20 flex flex-col text-clip p-4 leading-[60px]  tracking-tight  text-zinc-100 dark:text-zinc-400"
           data-tina-field={project ? tinaField(project, "title") : undefined}
         >
           {project.title}
           <span
-            className="text-lg leading-normal tracking-normal text-zinc-400 dark:text-zinc-400"
+            className={cn(
+              "text-lg  leading-normal tracking-normal text-zinc-400 dark:text-zinc-400",
+              GeistSans.className,
+            )}
             data-tina-field={
               project ? tinaField(project, "description") : undefined
             }

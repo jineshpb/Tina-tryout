@@ -176,7 +176,7 @@ export default function Footer() {
         <div className="flex flex-col items-center text-center text-emerald-400 dark:text-emerald-600">
           <p>All rights reserved. © 2024 Jinesh P bhaskaran </p>
           <span>
-            Cat model from Sketchfab by <br /> Kanna-Nakajima, Thanks Aceternity
+            Cat model from Sketchfab by <br /> Kanna-Nakajima, Thanks Aceternity, uv canvas
             UI
           </span>
         </div>

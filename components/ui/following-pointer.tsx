@@ -27,10 +27,23 @@ export const FollowerPointerCard = ({
       }
     }
 
+    const handleResize = () => {
+      updateRect()
+    }
+
+    const handleLoad = () => {
+      updateRect()
+    }
+
     updateRect()
 
-    window.addEventListener("resize", updateRect)
-    return () => window.removeEventListener("resize", updateRect)
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("load", handleLoad)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("load", handleLoad)
+    }
   }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {

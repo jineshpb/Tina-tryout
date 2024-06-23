@@ -17,8 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 import "./globals.css"
 import Header from "@/components/Header"
 import { ThemeProvider } from "@/components/ThemeProvider"
-import Footer from "@/components/Footer"
-import { GeistSansNonVariable } from "geist/font/sans-non-variable"
+
 import clsx from "clsx"
 
 const newUrl = process.env.VERCEL_URL
