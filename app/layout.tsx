@@ -27,7 +27,7 @@ const baseUrl = personalDomain ? personalDomain : newUrl
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${baseUrl}`),
   title: {
-    default: "Jinesh Bhsakaran",
+    default: "Jinesh Bhaskaran",
     template: `%s | Jinesh Bhaskaran`,
   },
   description: "Jinesh UX designer",
