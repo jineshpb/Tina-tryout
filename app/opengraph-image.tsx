@@ -82,6 +82,8 @@ const getRandomEmojis = (count: number) => {
 
 const randomEmojis = getRandomEmojis(5)
 
+const image = `${baseUrl}/bgGradient.jpg`
+
 export default async function Image({
   params,
   req,
@@ -134,8 +136,9 @@ export default async function Image({
           backgroundSize: "100px 100px",
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`${baseUrl}/bg-gradient.jpg`}
+          src={image}
           width="770"
           height="432"
           alt="gradient"
