@@ -115,10 +115,11 @@ export default async function Image({
   // const title =
   //   searchParams.get("title") ||
   //   "Building an interactive webGL experience in Next.js";
+
   return new ImageResponse(
     (
       <div
-        tw="flex h-full pl-8 flex-row-reverse  bg-neutral-800"
+        tw="flex h-full pl-8 flex-row-reverse bg-custom-gradient"
         style={{
           height: "100%",
           width: "100%",
@@ -130,15 +131,13 @@ export default async function Image({
           flexWrap: "nowrap",
           padding: "40px",
           backgroundColor: "white",
-          // backgroundImage:
-          //   "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
-
+          backgroundImage:
+            "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
           backgroundSize: "100px 100px",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={image}
+        {/* <img
+         
           width="770"
           height="432"
           alt="gradient"
@@ -148,7 +147,7 @@ export default async function Image({
             position: "absolute",
             opacity: 0.3,
           }}
-        />
+        /> */}
         <div
           tw="flex py-4 px-8  shadow-lg"
           style={{

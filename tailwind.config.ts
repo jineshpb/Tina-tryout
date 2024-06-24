@@ -25,6 +25,13 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        "custom-gradient":
+          "repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 32px), repeating-linear-gradient(#f0f0f0, #f0f0f0)",
+      },
+      backgroundColor: {
+        "custom-bg": "#ffffff",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
