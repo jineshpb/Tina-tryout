@@ -71,6 +71,17 @@ const emojis = [
   "🤙",
 ]
 
+const roles = [
+  "UX designer",
+  "CG generalist",
+  "Coffee lover",
+  "Frontend developer*",
+  "UI designer",
+  "Product designer",
+  "Web developer*",
+  "Graphic designer",
+]
+
 const getRandomEmojis = (count: number) => {
   const randomEmojis: string[] = []
   for (let i = 0; i < count; i++) {
@@ -80,7 +91,17 @@ const getRandomEmojis = (count: number) => {
   return randomEmojis
 }
 
+const getRandomRoles = (count: number) => {
+  const randomRoles: string[] = []
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * roles.length)
+    randomRoles.push(roles[randomIndex])
+  }
+  return randomRoles
+}
+
 const randomEmojis = getRandomEmojis(5)
+const randomRoles = getRandomRoles(1)
 
 const image = `${baseUrl}/bgGradient.jpg`
 
@@ -93,12 +114,6 @@ export default async function Image({
   req: NextRequest
   context: NextPageContext
 }) {
-  // const { searchParams } = req.nextUrl
-
-  // console.log("params, req", params, req)
-
-  // const name = searchParams.get("name")
-
   const fontData = await fetch(new URL(`${baseUrl}/fonts/Geist-Bold.otf`)).then(
     (res) => res.arrayBuffer(),
   )
@@ -130,9 +145,9 @@ export default async function Image({
           flexDirection: "column",
           flexWrap: "nowrap",
           padding: "40px",
-          backgroundColor: "white",
+          backgroundColor: "#27272A",
           backgroundImage:
-            "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
+            "radial-gradient(circle at 25px 25px, #3F3F467F 2%, transparent 0%), radial-gradient(circle at 75px 75px, #3F3F467F 2%, transparent 0%)",
           backgroundSize: "100px 100px",
         }}
       >
@@ -193,30 +208,33 @@ export default async function Image({
         </div>
         <div tw="flex flex-col w-full p-6 mt-auto mb-8 relative z-10">
           <h1
-            tw="text-[120px] font-extrabold tracking-tight "
+            tw="text-[120px] flex flex-col font-extrabold tracking-tight "
             style={{
               display: "flex",
               fontSize: 120,
               fontStyle: "normal",
-              color: "#52525B",
+              color: "#71717A",
               marginTop: 30,
-              lineHeight: 0.5,
+              lineHeight: 0.6,
               whiteSpace: "pre-wrap",
               textAlign: "left",
               letterSpacing: "-0.05em",
             }}
           >
-            Jinesh Bhaskaran
+            Hi, I&apos;m Jinesh
           </h1>
-          <h2
+          <p
+            tw="flex"
             style={{
-              display: "flex",
-              fontSize: 40,
-              color: "#A1A1AA",
+              fontSize: 60,
+              lineHeight: 0.6,
+              marginBottom: 30,
+              color: "#3F3F46",
             }}
           >
-            UX designer/ CG generalist / Coffee enthusiast
-          </h2>
+            I&apos;m a {randomRoles[0]}
+          </p>
+
           <div
             style={{
               display: "flex",
