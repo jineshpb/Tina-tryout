@@ -169,7 +169,7 @@ export default async function Image({
             position: "relative",
             borderRadius: 30,
             gap: 20,
-            background: "linear-gradient(to bottom, #6EE7B7, #10B981)",
+            background: "linear-gradient(to bottom, #52525B, #3F3F46)",
             boxShadow:
               "inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 2px 4px #ffffff",
           }}
@@ -187,7 +187,7 @@ export default async function Image({
               style={{
                 position: "relative",
                 lineHeight: 0.2,
-                color: "#064E3B",
+                color: "#A1A1AA",
               }}
             >
               Design portfolio
@@ -213,12 +213,12 @@ export default async function Image({
               display: "flex",
               fontSize: 120,
               fontStyle: "normal",
-              color: "#71717A",
+              color: "#A1A1AA",
               marginTop: 30,
               lineHeight: 0.6,
               whiteSpace: "pre-wrap",
               textAlign: "left",
-              letterSpacing: "-0.05em",
+              letterSpacing: "-0.03em",
             }}
           >
             Hi, I&apos;m Jinesh
@@ -229,7 +229,7 @@ export default async function Image({
               fontSize: 60,
               lineHeight: 0.6,
               marginBottom: 30,
-              color: "#3F3F46",
+              color: "#71717A",
             }}
           >
             I&apos;m a {randomRoles[0]}
