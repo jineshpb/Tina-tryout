@@ -90,18 +90,20 @@ const getRandomEmojis = (count: number) => {
   }
   return randomEmojis
 }
-
 const getRandomRoles = (count: number) => {
   const randomRoles: string[] = []
-  for (let i = 0; i < count; i++) {
+  while (randomRoles.length < count) {
     const randomIndex = Math.floor(Math.random() * roles.length)
-    randomRoles.push(roles[randomIndex])
+    const role = roles[randomIndex]
+    if (!randomRoles.includes(role)) {
+      randomRoles.push(role)
+    }
   }
-  return randomRoles
+  return randomRoles.slice(0, count).join(", ")
 }
 
 const randomEmojis = getRandomEmojis(5)
-const randomRoles = getRandomRoles(1)
+const randomRoles = getRandomRoles(3)
 
 const image = `${baseUrl}/bgGradient.jpg`
 
@@ -226,13 +228,13 @@ export default async function Image({
           <p
             tw="flex"
             style={{
-              fontSize: 60,
+              fontSize: 38,
               lineHeight: 0.6,
               marginBottom: 30,
               color: "#71717A",
             }}
           >
-            I&apos;m a {randomRoles[0]}
+            {getRandomRoles(3)}
           </p>
 
           <div
