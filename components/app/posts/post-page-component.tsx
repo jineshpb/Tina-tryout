@@ -21,11 +21,19 @@ import {
 } from "@/components/RichText"
 
 import PostPageFooter from "@/components/PostPageFooter"
+import { EB_Garamond } from "next/font/google"
+import { cn } from "@/lib/utils"
 
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
 //   description: "My Web dev blog",
 // }
+
+const EbGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: "400",
+  style: "normal",
+})
 
 export function PostPageComponent(props: {
   data: PostsQuery
@@ -42,12 +50,11 @@ export function PostPageComponent(props: {
   return (
     <>
       <Bounded className=" mt-32 max-sm:!px-[8px] ">
-        <div className="not-prose flex w-full">
+        <div className="!not-prose flex w-full">
           <Heading
             as="h1"
-            size="md"
             data-tina-field={tinaField(data.posts, "title")}
-            className="mx-2 leading-tight text-zinc-500 dark:text-zinc-300"
+            className="mx-2  leading-tight text-zinc-500 dark:text-zinc-300"
           >
             {title}
           </Heading>
@@ -62,15 +69,14 @@ export function PostPageComponent(props: {
             </span>
           ))}
         </p>
-        <p className="mt-6">
+        <p className=" mt-6">
           <span data-tina-field={tinaField(data.posts, "date")}>
             {moment(data.posts.date).format("MMM DD, YYYY")}
           </span>
         </p>
-        <hr className=" mt-2  border-zinc-300 dark:border-zinc-700 " />
+        <hr className=" mb-20 mt-2  border-zinc-300 dark:border-zinc-700 " />
         <article
-          className="prose-xl prose-zinc w-full !max-w-none   dark:prose-invert lg:prose-xl 
-      prose-headings:max-w-3xl prose-p:max-w-3xl  prose-a:break-words prose-a:text-emerald-500 prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 "
+          className={`  prose-xl prose-zinc   w-full !max-w-none dark:prose-invert lg:prose-xl  prose-headings:max-w-3xl 	 prose-p:max-w-3xl prose-a:break-words prose-a:text-emerald-500 prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 `}
         >
           <section data-tina-field={tinaField(data.posts, "body")}>
             <TinaMarkdown
