@@ -1,7 +1,7 @@
 import { Heading } from "lucide-react"
 import { LinkCard } from "./LinkCard"
 import BigButton from "./BigButton"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/all"
@@ -21,6 +21,25 @@ interface ProjectCardProps {
 const Playfair = Playfair_Display({ subsets: ["latin"] })
 
 export default function ProjectCard({ project, className }: ProjectCardProps) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  function isMobileDevice() {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768
+    }
+    return false
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(isMobileDevice())
+    }
+
+    setIsMobile(isMobileDevice())
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   const videoRef = useRef<HTMLVideoElement | null>(null)
   useGSAP(() => {
     gsap.to("#projectVideo", {
@@ -63,7 +82,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
             {project.description}
           </span>
         </div>
-        {project.videoLink ? (
+        {project.videoLink && !isMobile ? (
           <video
             playsInline
             className="absolute left-0 top-0 -z-10  size-full object-cover object-center"

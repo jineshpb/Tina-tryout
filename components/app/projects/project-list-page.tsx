@@ -34,7 +34,7 @@ export function ProjectListPageComponent(props: {
               .map((project: any) => (
                 <LinkCard
                   key={project.node.id}
-                  link={project.node.link}
+                  link={`/projects/${project.node.title}`}
                   title={project.node.title}
                   description={project.node.description}
                 />
