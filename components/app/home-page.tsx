@@ -5,7 +5,7 @@ import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 import Heading from "../Heading"
 import SmallAvatar from "../SmallAvatar"
-import { ReactNode, useEffect, useState } from "react"
+import { ReactNode, Suspense, useEffect, useRef, useState } from "react"
 import Bounded from "../Bounded"
 import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
@@ -24,6 +24,7 @@ import { Novatrix } from "uvcanvas"
 import { FollowerPointerCard } from "../ui/following-pointer"
 import Image from "next/image"
 import ProjectGrid from "../ProjectGrid"
+import { FaSpinner } from "react-icons/fa"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -174,7 +175,7 @@ function UXPill() {
     <motion.div
       whileHover="hover"
       id="pill"
-      className="backgroud-image:[url('./Noise.png')] relative z-20 hidden overflow-hidden rounded-full bg-[#1D1C20] md:inline-block  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
+      className=" backgroud-image:[url('./Noise.png')] relative z-0 hidden overflow-hidden rounded-full bg-[#1D1C20] md:inline-block  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
       style={{
         boxShadow:
           "inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px #A1A1AA",
@@ -190,9 +191,11 @@ function UXPill() {
               "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
           }}
         >
-          <img
-            src="./Ellipse2.png"
-            alt=""
+          <Image
+            src="/Ellipse2.png"
+            alt="ellise"
+            width={24}
+            height={24}
             className="pointer-events-none pl-2 pt-2"
           />
         </motion.div>
@@ -205,7 +208,13 @@ function UXPill() {
               "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
           }}
         >
-          <img src="./Polygon.png" alt="" className="pl-2 pt-2" />
+          <Image
+            src="/Polygon.png"
+            alt="rectangle"
+            width={24}
+            height={24}
+            className="pl-2 pt-2"
+          />
         </motion.div>
 
         <motion.div
@@ -217,9 +226,11 @@ function UXPill() {
               "-5px -10px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px #525154",
           }}
         >
-          <img
-            src="./FigmaLogo.png"
-            alt=""
+          <Image
+            src="/FigmaLogo.png"
+            alt="figma logo"
+            width={24}
+            height={24}
             className="pointer-events-none pl-2 pt-2 md:w-4 lg:w-6"
           />
         </motion.div>
@@ -315,7 +326,7 @@ export function HomePageComponent(props: {
     animateWithGsap(".g_fadeIn", {
       y: 0,
       opacity: 1,
-      duration: 1,
+      duration: 0.5,
       stagger: 0.1,
     })
   }, [])
@@ -335,14 +346,19 @@ export function HomePageComponent(props: {
                     className="relative mt-24 flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
                     key={i}
                   >
-                    <div className="hidden w-full md:flex ">
-                      <div className="g_fadeIn w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-9xl ">
+                    <div className="g_fadeIn hidden w-full md:flex ">
+                      <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-9xl ">
                         <div className="mx-auto items-center justify-center space-y-6 ">
                           <div className=" flex w-full items-center justify-center gap-4">
-                            <h1>UI/UX</h1> {<UXPill />} designer,
+                            <h1>UI/UX</h1> <UXPill />
+                            <h1>designer,</h1>
                           </div>
                           <h1 className=" flex items-center justify-center gap-4  ">
-                            CG {<CGPill />} generalist,
+                            CG{" "}
+                            <Suspense fallback={<FaSpinner />}>
+                              <CGPill />
+                            </Suspense>{" "}
+                            generalist,
                           </h1>
 
                           <div className="flex items-center justify-center gap-4">

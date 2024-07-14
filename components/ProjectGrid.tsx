@@ -9,7 +9,14 @@ import Image from "next/image"
 function GridCard({ project }: any) {
   return (
     <div className="mt-12 h-auto w-full rounded-xl  ">
-      <p className="uppercase text-zinc-300 ">Project Type</p>
+      {project.projectType ? (
+        <p className="uppercase text-zinc-300 dark:text-zinc-700 ">
+          {project.projectType}
+        </p>
+      ) : (
+        <p className="uppercase text-zinc-300 dark:text-zinc-700  ">Generic</p>
+      )}
+
       <div
         className="mt-2 overflow-hidden rounded-lg "
         style={{
@@ -19,12 +26,22 @@ function GridCard({ project }: any) {
             "repeating-linear-gradient(45deg, #a8a8a8 0, #a8a8a8 1px, #ffffff 0, #ffffff)",
         }}
       >
-        <img src={project.image} alt="Project image" loading="lazy" />
+        <Image
+          src={project?.image}
+          alt="Project image"
+          width={1440}
+          height={1920}
+          loading="lazy"
+        />
       </div>
-      <div className="mt-2 flex w-full items-start justify-between">
+      <div className="mt-4 flex w-full items-start justify-between">
         <div>
-          <div className="text-xl font-bold text-zinc-600">{project.title}</div>
-          <div className="text-zinc-400">{project.description}</div>
+          <div className=" text-xl font-medium text-zinc-600 dark:text-zinc-300">
+            {project.title}
+          </div>
+          <div className="text-zinc-400 dark:text-zinc-600">
+            {project.description}
+          </div>
         </div>
         {project.link && (
           <Button className="" variant="ghost">

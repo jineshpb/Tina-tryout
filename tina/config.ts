@@ -205,9 +205,15 @@ export default defineConfig({
                         title: "TinaCMS",
                         description: "I did some stuff",
                         link: "https://tina.io",
+                        image: "/jinesh-mug.jpg",
                       },
                     },
                     fields: [
+                      {
+                        name: "projectType",
+                        type: "string",
+                        label: "Project Type",
+                      },
                       {
                         name: "title",
                         type: "string",
