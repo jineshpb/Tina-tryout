@@ -1,34 +1,29 @@
 "use client"
 
-import {
-  HomePageQuery,
-  PageBlocksWelcomeHero,
-  PageQuery,
-} from "@/tina/__generated__/types"
+import { HomePageQuery } from "@/tina/__generated__/types"
 import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 import Heading from "../Heading"
 import SmallAvatar from "../SmallAvatar"
-import BigButton from "../BigButton"
-import { ReactNode, useEffect, useRef, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import Bounded from "../Bounded"
 import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
 import Footer from "../Footer"
 import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
+
 import { animateWithGsap } from "../utils/animation"
 import { EB_Garamond } from "next/font/google"
 import clsx from "clsx"
-import { Spotlight } from "../Spotlight"
+
 import { DotBackgroundDemo } from "../DotBackground"
 import { BackgroundGradient } from "../ui/BackgroundGradient"
-import RenderModel from "../RenderModel"
-import { ChonkyCat } from "../models/ChonkyCat"
-import { motion, MotionConfig, useAnimationControls } from "framer-motion"
-import { Lumiflex, Novatrix, Velustro } from "uvcanvas"
+
+import { motion } from "framer-motion"
+import { Novatrix } from "uvcanvas"
 import { FollowerPointerCard } from "../ui/following-pointer"
 import Image from "next/image"
+import ProjectGrid from "../ProjectGrid"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -328,7 +323,7 @@ export function HomePageComponent(props: {
   return (
     <>
       <div className=" mx-auto mt-20 w-full snap-mandatory">
-        <div className="absolute left-0 top-0 -z-20 size-full overflow-hidden">
+        <div className="absolute left-0 top-0  -z-20 size-full overflow-hidden">
           <DotBackgroundDemo />
         </div>
         <Bounded className=" flex w-full flex-row gap-12" id="introduction">
@@ -340,9 +335,9 @@ export function HomePageComponent(props: {
                     className="relative mt-24 flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
                     key={i}
                   >
-                    <div className="flex w-full ">
+                    <div className="hidden w-full md:flex ">
                       <div className="g_fadeIn w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-9xl ">
-                        <div className="mx-auto hidden items-center justify-center space-y-6 md:block">
+                        <div className="mx-auto items-center justify-center space-y-6 ">
                           <div className=" flex w-full items-center justify-center gap-4">
                             <h1>UI/UX</h1> {<UXPill />} designer,
                           </div>
@@ -380,83 +375,12 @@ export function HomePageComponent(props: {
                             </FollowerPointerCard>
                           </div>
                         </div>
-                        <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-6xl md:hidden">
-                          {block?.title}
-                        </div>
                       </div>
                     </div>
-                    {/* <div className="flex w-full  flex-col  justify-between gap-8 md:w-1/2">
-                      <div className="g_fadeIn flex flex-col gap-10 xl:flex-row ">
-                        <div className="flex items-start justify-start">
-                          <BackgroundGradient className="flex">
-                            <SmallAvatar
-                              image={block.profileImage ?? 'default-image.jpg'}
-                              data-tina-field={
-                                block
-                                  ? tinaField(block, "profileImage")
-                                  : undefined
-                              }
-                              className="size-56 md:size-32 lg:size-40"
-                            ></SmallAvatar>
-                          </BackgroundGradient>
-                        </div>
-                        <div className="g_fadeIn flex flex-col gap-2">
-                          <div
-                            className="text-[34px] font-semibold tracking-tight text-zinc-600 dark:text-zinc-400 md:text-[46px] "
-                            data-tina-field={
-                              block ? tinaField(block, "name") : undefined
-                            }
-                          >
-                            {block?.name}
-                          </div>
-                          <div>
-                            <p
-                              className=" text-xl font-normal  text-zinc-500 dark:text-zinc-400 md:text-2xl"
-                              style={{
-                                lineHeight: "1.6",
-                              }}
-                              data-tina-field={
-                                block
-                                  ? tinaField(block, "description")
-                                  : undefined
-                              }
-                            >
-                              {block?.description ?? 'No description available'}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-12" key={i}>
-                        {block?.link?.map((link, i) => {
-                          return (
-                            <>
-                              <div
-                                key={i}
-                                className="g_fadeIn w-full"
-                                onClick={() => {
-                                  const element =
-                                    document.getElementById("footer")
-                                  element?.scrollIntoView({
-                                    behavior: "smooth",
-                                  })
-                                }}
-                                data-tina-field={
-                                  link ? tinaField(link, "cta") : undefined
-                                }
-                              >
-                                <BigButton
-                                  linkText={link?.cta || "Hey"}
-                                  className="w-full"
-                                  size={isMobile ? "lg" : "xl"}
-                                >
-                                  Get in touch
-                                </BigButton>
-                              </div>
-                            </>
-                          )
-                        })}
-                      </div>
-                    </div> */}
+
+                    <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-6xl tracking-tighter text-zinc-500 dark:text-zinc-400 md:hidden ">
+                      {block?.title}
+                    </div>
                   </section>
                 )
 
@@ -466,6 +390,28 @@ export function HomePageComponent(props: {
           })}
         </Bounded>
 
+        <Bounded className=" mt-[300px] max-w-[1800px]" id="projects">
+          {data.page.blocks?.map((block, i) => {
+            switch (block?.__typename) {
+              case "PageBlocksProjects":
+                return (
+                  <>
+                    <Heading
+                      size="md"
+                      className=" mt-8 font-normal tracking-tight text-zinc-300 dark:text-zinc-700 "
+                      data-tina-field={
+                        block ? tinaField(block, "projectsHeading") : undefined
+                      }
+                    >
+                      {block.projectsHeading}
+                    </Heading>
+                    <ProjectGrid {...data} />
+                  </>
+                )
+            }
+          })}
+        </Bounded>
+        {/* 
         <Bounded className=" mt-[300px]" id="projects">
           {data.page.blocks?.map((block, i) => {
             switch (block?.__typename) {
@@ -526,7 +472,7 @@ export function HomePageComponent(props: {
                 )
             }
           })}
-        </Bounded>
+        </Bounded> */}
 
         <Bounded className=" mt-[300px]" id="career">
           {data.page.blocks?.map((block) => {

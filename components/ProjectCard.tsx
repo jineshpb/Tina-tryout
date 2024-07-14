@@ -1,11 +1,9 @@
-import { Heading } from "lucide-react"
-import { LinkCard } from "./LinkCard"
 import BigButton from "./BigButton"
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/all"
-import Image from "next/image"
+
 import { tinaField } from "tinacms/dist/react"
 import { Playfair_Display } from "next/font/google"
 import { cn } from "@/lib/utils"
@@ -47,7 +45,6 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         trigger: "#projectVideo",
         toggleActions: "play pause reverse restart",
         start: "10% bottom",
-        // markers: true,
       },
 
       onComplete: () => {
