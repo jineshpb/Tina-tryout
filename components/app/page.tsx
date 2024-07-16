@@ -53,7 +53,7 @@ export function PageComponent(props: {
   }
   query: string
 }) {
-  console.log(props.data.page.blocks)
+  // console.log(props.data.page.blocks)
 
   useGSAP(() => {
     gsap.to(".g_fadeIn", {

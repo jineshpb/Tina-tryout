@@ -318,9 +318,13 @@ export function HomePageComponent(props: {
   }, [])
   const { data } = useTina(props)
 
+  // console.log(data)
+
   const title = data.page.title
 
   const postsList = data.postsConnection.edges
+
+  const projectList = data.projectsConnection.edges
 
   useGSAP(() => {
     animateWithGsap(".g_fadeIn", {
@@ -407,7 +411,7 @@ export function HomePageComponent(props: {
         </Bounded>
 
         <Bounded className=" mt-[300px] max-w-[1800px]" id="projects">
-          {data.page.blocks?.map((block, i) => {
+          {/* {data.page.blocks?.map((block, i) => {
             switch (block?.__typename) {
               case "PageBlocksProjects":
                 return (
@@ -425,7 +429,21 @@ export function HomePageComponent(props: {
                   </>
                 )
             }
-          })}
+          })} */}
+
+          {projectList && projectList?.length > 0 && (
+            <div>
+              <Heading
+                size="md"
+                className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
+              >
+                Projects
+              </Heading>
+              <div className="mt-12 flex flex-col gap-6 ">
+                <ProjectGrid data={projectList} />
+              </div>
+            </div>
+          )}
         </Bounded>
         {/* 
         <Bounded className=" mt-[300px]" id="projects">

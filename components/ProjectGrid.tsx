@@ -7,11 +7,14 @@ import Link from "next/link"
 import Image from "next/image"
 
 function GridCard({ project }: any) {
+  console.log("Grid card project", project)
+  console.log("Grid card project")
+
   return (
     <div className="mt-12 h-auto w-full rounded-xl  ">
-      {project.projectType ? (
+      {project.node.type ? (
         <p className="uppercase text-zinc-300 dark:text-zinc-700 ">
-          {project.projectType}
+          {project.node.type}
         </p>
       ) : (
         <p className="uppercase text-zinc-300 dark:text-zinc-700  ">Generic</p>
@@ -27,7 +30,7 @@ function GridCard({ project }: any) {
         }}
       >
         <Image
-          src={project?.image}
+          src={project.node.image}
           alt="Project image"
           width={1440}
           height={1920}
@@ -37,16 +40,16 @@ function GridCard({ project }: any) {
       <div className="mt-4 flex w-full items-start justify-between">
         <div>
           <div className=" text-xl font-medium text-zinc-600 dark:text-zinc-300">
-            {project.title}
+            {project.node.title}
           </div>
           <div className="text-zinc-400 dark:text-zinc-600">
-            {project.description}
+            {project.node.description}
           </div>
         </div>
-        {project.link && (
+        {project.node.link && (
           <Button className="" variant="ghost">
             <Link
-              href={project?.link}
+              href={project?.node.link}
               target="_blank"
               className="flex items-center"
             >
@@ -60,34 +63,27 @@ function GridCard({ project }: any) {
   )
 }
 
-const ProjectGrid = (data: HomePageQuery) => {
+const ProjectGrid = ({ data }: any) => {
+  console.log("projects", data)
+
   return (
     <div className="w-full">
-      {data.page.blocks?.map((block, i) => {
-        switch (block?.__typename) {
-          case "PageBlocksProjects":
-            return (
-              <div className="mx-auto grid w-full grid-cols-1 gap-8  pt-12 lg:mx-0 lg:grid-cols-2  ">
-                <div className=" h-auto   grid-cols-1 gap-4 ">
-                  {block.projects
-                    ?.filter((_: any, i: number) => i % 2 === 0)
-                    .map((project: any) => (
-                      <GridCard key={i} project={project} />
-                    ))}
-                </div>
-                <div className=" h-auto  grid-cols-1 gap-4 ">
-                  {block.projects
-                    ?.filter((_: any, i: number) => i % 2 === 1)
-                    .map((project: any) => (
-                      <GridCard key={i} project={project} />
-                    ))}
-                </div>
-              </div>
-            )
-          default:
-            return null
-        }
-      })}
+      <div className="mx-auto grid w-full grid-cols-1 gap-8  pt-12 lg:mx-0 lg:grid-cols-2  ">
+        <div className=" h-auto   grid-cols-1 gap-4 ">
+          {data
+            ?.filter((_: any, i: number) => i % 2 === 0)
+            .map((project: any, i: number) => (
+              <GridCard key={i} project={project} />
+            ))}
+        </div>
+        <div className=" h-auto   grid-cols-1 gap-4 ">
+          {data
+            ?.filter((_: any, i: number) => i % 2 === 1)
+            .map((project: any, i: number) => (
+              <GridCard key={i} project={project} />
+            ))}
+        </div>
+      </div>
     </div>
   )
 }

@@ -15,4 +15,16 @@ query homePage($filter: PostsFilter) {
       }
     }
   }
+
+  projectsConnection {
+    edges {
+      node {
+        type
+        title
+        description
+        link
+        image
+      }
+    }
+  }
 }

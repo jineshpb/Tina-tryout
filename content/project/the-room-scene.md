@@ -1,8 +1,9 @@
 ---
+type: three js scene
 title: The room scene
-description: >-
-  Three JS scene of room, with light and dark toggle. Built with vanilla three
-  js, HTML and css
+description: Three JS Scene with Dark mode integrated. Inspired from Bruno Simon
 link: 'https://portfolio-jinesh.firebaseapp.com/'
+image: >-
+  https://res.cloudinary.com/dhuk11prd/image/upload/v1714999894/portfolio-tina/image_1_nvsexp.png
 ---
 

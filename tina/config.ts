@@ -331,6 +331,11 @@ export default defineConfig({
 
         fields: [
           {
+            name: "type",
+            type: "string",
+            label: "Project Type",
+          },
+          {
             name: "title",
             type: "string",
             label: "Title",
@@ -347,9 +352,19 @@ export default defineConfig({
             name: "link",
             type: "string",
             label: "Link",
-            required: true,
+          },
+          {
+            name: "image",
+            type: "image",
+            label: "Cover Image",
           },
         ],
+        defaultItem: {
+          title: "TinaCMS",
+          description: "I did some stuff",
+          link: "https://tina.io",
+          image: "/jinesh-mug.jpg",
+        },
 
         ui: {
           // This is an DEMO router. You can remove this to fit your site

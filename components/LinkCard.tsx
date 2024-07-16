@@ -14,10 +14,12 @@ export const LinkCard = ({
   link,
   title,
   description,
+  fileLink,
 }: {
   link: string
   title: string
   description: string
+  fileLink: string
 }) => {
   return (
     <>
@@ -29,7 +31,7 @@ export const LinkCard = ({
 
         <CardFooter>
           <Button>
-            <Link href={link} target="_blank">
+            <Link href={fileLink} target="_blank">
               View project
             </Link>
           </Button>

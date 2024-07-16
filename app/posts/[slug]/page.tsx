@@ -14,6 +14,7 @@ export async function generateMetadata({
   params: { slug: string }
 }) {
   // const detaisl = await getPostFromParams({ params })
+  console.log("params", params)
 
   try {
     const result = await client.queries.posts({
