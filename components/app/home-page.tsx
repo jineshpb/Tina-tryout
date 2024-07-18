@@ -398,7 +398,7 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
 
-                    <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-6xl tracking-tighter text-zinc-500 dark:text-zinc-400 md:hidden ">
+                    <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-5xl font-semibold tracking-tighter text-zinc-500 dark:text-zinc-400 md:hidden ">
                       {block?.title}
                     </div>
                   </section>
