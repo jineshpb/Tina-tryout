@@ -5,6 +5,7 @@ import Heading from "@/components/Heading"
 import { LinkCard } from "@/components/LinkCard"
 import { ProjectsConnectionQuery } from "@/tina/__generated__/types"
 import Link from "next/link"
+import { useCallback } from "react"
 import { useTina } from "tinacms/dist/react"
 
 export function ProjectListPageComponent(props: {
@@ -31,7 +32,7 @@ export function ProjectListPageComponent(props: {
           <div className="grid grid-cols-1 gap-4">
             {projectList
               .filter((_: any, i: number) => i % 3 === 0)
-              .map((project: any) => (
+              .map((project: any, index) => (
                 <LinkCard
                   key={project.node.id}
                   link={`/projects/${project.node.title}`}
@@ -44,7 +45,7 @@ export function ProjectListPageComponent(props: {
           <div className="grid grid-cols-1 gap-4">
             {projectList
               .filter((_: any, i: number) => i % 3 === 1)
-              .map((project: any) => (
+              .map((project: any, index) => (
                 <LinkCard
                   key={project.node.id}
                   link={project.node.link}
@@ -57,7 +58,7 @@ export function ProjectListPageComponent(props: {
           <div className="grid grid-cols-1 gap-4">
             {projectList
               .filter((_: any, i: number) => i % 3 === 2)
-              .map((project: any) => (
+              .map((project: any, index) => (
                 <LinkCard
                   key={project.node.id}
                   link={project.node.link}

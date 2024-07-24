@@ -25,6 +25,12 @@ import { FollowerPointerCard } from "../ui/following-pointer"
 import Image from "next/image"
 import ProjectGrid from "../ProjectGrid"
 import { FaSpinner } from "react-icons/fa"
+import { Loader } from "lucide-react"
+
+import animationData from "@/data/loading.json"
+import Lottie from "react-lottie"
+import { BiLoaderAlt } from "react-icons/bi"
+import gsap from "gsap"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -55,6 +61,34 @@ function AddBreakAfterComma({ text }: { text: string }) {
   })
 
   return <>{partsWithBreaks}</>
+}
+
+const DelayedComponent = ({
+  children,
+  delay = 0,
+}: {
+  children: JSX.Element
+  delay?: number
+}) => {
+  const [isReady, setIsReady] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsReady(true)
+    }, delay)
+
+    return () => clearTimeout(timer)
+  }, [delay])
+
+  return isReady ? (
+    children
+  ) : (
+    <div className="flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
+      {/* <Loader className="  animate-spin" /> */}
+
+      <BiLoaderAlt className=" size-8 animate-spin" />
+    </div>
+  )
 }
 
 function UXPill() {
@@ -318,21 +352,16 @@ export function HomePageComponent(props: {
   }, [])
   const { data } = useTina(props)
 
-  // console.log(data)
-
-  const title = data.page.title
-
   const postsList = data.postsConnection.edges
 
   const projectList = data.projectsConnection.edges
 
   useGSAP(() => {
-    animateWithGsap(".g_fadeIn", {
-      y: 0,
-      opacity: 1,
-      duration: 0.5,
-      stagger: 0.1,
-    })
+    gsap.fromTo(
+      ".g_fadeIn",
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.2 },
+    )
   }, [])
 
   return (
@@ -350,49 +379,54 @@ export function HomePageComponent(props: {
                     className="relative mt-24 flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
                     key={i}
                   >
-                    <div className="g_fadeIn hidden w-full md:flex ">
+                    <div className=" hidden w-full md:flex ">
                       <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-9xl ">
                         <div className="mx-auto items-center justify-center space-y-6 ">
                           <div className=" flex w-full items-center justify-center gap-4">
-                            <h1>UI/UX</h1> <UXPill />
+                            <h1>UI/UX</h1>
+                            <DelayedComponent>
+                              <UXPill />
+                            </DelayedComponent>
                             <h1>designer,</h1>
                           </div>
                           <h1 className=" flex items-center justify-center gap-4  ">
                             CG{" "}
-                            <Suspense fallback={<FaSpinner />}>
+                            <DelayedComponent>
                               <CGPill />
-                            </Suspense>{" "}
+                            </DelayedComponent>
                             generalist,
                           </h1>
 
                           <div className="flex items-center justify-center gap-4">
                             novice coder{" "}
-                            <FollowerPointerCard
-                              title={<TitleComponent title={"That's me"} />}
-                            >
-                              <div
-                                className=" md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]  "
-                                onClick={() => {
-                                  const element =
-                                    document.getElementById("footer")
-                                  element?.scrollIntoView({
-                                    behavior: "smooth",
-                                  })
-                                }}
+                            <DelayedComponent>
+                              <FollowerPointerCard
+                                title={<TitleComponent title={"That's me"} />}
                               >
-                                <BackgroundGradient className=" size-full overflow-hidden rounded-full">
-                                  <SmallAvatar
-                                    image={block?.profileImage}
-                                    data-tina-field={
-                                      block
-                                        ? tinaField(block, "profileImage")
-                                        : undefined
-                                    }
-                                    className="  rounded-full md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
-                                  ></SmallAvatar>
-                                </BackgroundGradient>
-                              </div>
-                            </FollowerPointerCard>
+                                <div
+                                  className=" md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]  "
+                                  onClick={() => {
+                                    const element =
+                                      document.getElementById("footer")
+                                    element?.scrollIntoView({
+                                      behavior: "smooth",
+                                    })
+                                  }}
+                                >
+                                  <BackgroundGradient className=" size-full overflow-hidden rounded-full">
+                                    <SmallAvatar
+                                      image={block?.profileImage}
+                                      data-tina-field={
+                                        block
+                                          ? tinaField(block, "profileImage")
+                                          : undefined
+                                      }
+                                      className="  rounded-full md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
+                                    ></SmallAvatar>
+                                  </BackgroundGradient>
+                                </div>
+                              </FollowerPointerCard>
+                            </DelayedComponent>
                           </div>
                         </div>
                       </div>

@@ -10,6 +10,8 @@ type AvatarProps = {
   className?: string
 }
 
+// add a new fucntional component
+
 export default function Avatar({ image, className }: AvatarProps) {
   const component = useRef(null)
 
