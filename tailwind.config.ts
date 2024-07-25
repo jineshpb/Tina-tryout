@@ -91,9 +91,14 @@ const config = {
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
+        shimmer: {
+          "0%": { backgroundPosition: "-200px 0" },
+          "100%": { backgroundPosition: "200px 0" },
+        },
       },
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        shimmer: "shimmer 1.5s infinite linear",
       },
     },
   },

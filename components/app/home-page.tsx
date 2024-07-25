@@ -83,10 +83,10 @@ const DelayedComponent = ({
   return isReady ? (
     children
   ) : (
-    <div className="flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
+    <div className="animate-shimmer flex items-center justify-center rounded-full bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
       {/* <Loader className="  animate-spin" /> */}
 
-      <BiLoaderAlt className=" size-8 animate-spin" />
+      {/* <BiLoaderAlt className=" size-12 animate-spin" /> */}
     </div>
   )
 }
@@ -384,6 +384,7 @@ export function HomePageComponent(props: {
                         <div className="mx-auto items-center justify-center space-y-6 ">
                           <div className=" flex w-full items-center justify-center gap-4">
                             <h1>UI/UX</h1>
+
                             <DelayedComponent>
                               <UXPill />
                             </DelayedComponent>
