@@ -81,9 +81,9 @@ export default async function Image({
     (res) => res.arrayBuffer(),
   )
 
-  // const serifFontData = await fetch(
-  //   new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
-  // ).then((res) => res.arrayBuffer())
+  const serifFontData = await fetch(
+    new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
+  ).then((res) => res.arrayBuffer())
 
   const PPEditorialFontData = await fetch(
     new URL(`${baseUrl}/fonts/PPEditorialNew-Regular.otf`),
@@ -142,7 +142,7 @@ export default async function Image({
             Hi,
             <span
               style={{
-                // fontFamily: "PPEditorialNew-Italic",
+                fontFamily: "PPEditorialNew-Italic",
                 marginLeft: "20px",
                 marginRight: "20px",
               }}
@@ -190,10 +190,10 @@ export default async function Image({
           name: "GeistSans-Bold",
           data: fontData,
         },
-        // {
-        //   name: "PPEditorialNew-Italic",
-        //   data: serifFontData,
-        // },
+        {
+          name: "PPEditorialNew-Italic",
+          data: serifFontData,
+        },
         {
           name: "PPEditorialNew-Regular",
           data: PPEditorialFontData,
