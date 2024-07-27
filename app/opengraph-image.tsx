@@ -81,13 +81,13 @@ export default async function Image({
     new URL(`${baseUrl}/fonts/Geist-Regular.otf`),
   ).then((res) => res.arrayBuffer())
 
-  const serifFontData = await fetch(
-    new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
-  ).then((res) => res.arrayBuffer())
+  // const serifFontData = await fetch(
+  //   new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
+  // ).then((res) => res.arrayBuffer())
 
-  const PPEditorialFontData = await fetch(
-    new URL(`${baseUrl}/fonts/PPEditorialNew-Regular.otf`),
-  ).then((res) => res.arrayBuffer())
+  // const PPEditorialFontData = await fetch(
+  //   new URL(`${baseUrl}/fonts/PPEditorialNew-Regular.otf`),
+  // ).then((res) => res.arrayBuffer())
 
   return new ImageResponse(
     (
@@ -190,14 +190,14 @@ export default async function Image({
           name: "GeistSans-Bold",
           data: fontData,
         },
-        {
-          name: "PPEditorialNew-Italic",
-          data: serifFontData,
-        },
-        {
-          name: "PPEditorialNew-Regular",
-          data: PPEditorialFontData,
-        },
+        // {
+        //   name: "PPEditorialNew-Italic",
+        //   data: serifFontData,
+        // },
+        // {
+        //   name: "PPEditorialNew-Regular",
+        //   data: PPEditorialFontData,
+        // },
       ],
 
       emoji: "fluent",
