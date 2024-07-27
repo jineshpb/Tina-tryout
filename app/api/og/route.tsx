@@ -64,9 +64,9 @@ export async function GET(request: Request) {
       new URL(`${baseUrl}/fonts/Geist-Medium.otf`),
     ).then((res) => res.arrayBuffer())
 
-    // const PPEditorialItalic = await fetch(
-    //   new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
-    // ).then((res) => res.arrayBuffer())
+    const PPEditorialItalic = await fetch(
+      new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
+    ).then((res) => res.arrayBuffer())
 
     const imageData = await image
 
@@ -108,7 +108,7 @@ export async function GET(request: Request) {
                 style={{
                   fontSize: "32px",
                   color: "#71717A",
-                  // fontFamily: "PPEDitorial-Italic",
+                  fontFamily: "PPEditorial-Italic",
                 }}
               >
                 www.jinesh.me
@@ -141,10 +141,10 @@ export async function GET(request: Request) {
             name: "Geist-Bold",
             data: fontData,
           },
-          // {
-          //   name: "PPEDitorial-Italic",
-          //   data: PPEditorialItalic,
-          // },
+          {
+            name: "PPEditorial-Italic",
+            data: PPEditorialItalic,
+          },
         ],
         width: 1200,
         height: 630,
