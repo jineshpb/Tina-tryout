@@ -12,7 +12,7 @@ const baseUrl = process.env.PERSONAL_URL
   ? `https://${process.env.PERSONAL_URL}`
   : "http://localhost:3000"
 
-const url = `${baseUrl}/fonts/Geist-Black.ttf`
+const url = `${baseUrl}/fonts/Geist-Regular.ttf`
 
 const emojis = [
   "😀",
@@ -77,9 +77,17 @@ export default async function Image({
   req: NextRequest
   context: NextPageContext
 }) {
-  const fontData = await fetch(new URL(`${baseUrl}/fonts/Geist-Bold.otf`)).then(
-    (res) => res.arrayBuffer(),
-  )
+  const fontData = await fetch(
+    new URL(`${baseUrl}/fonts/Geist-Regular.otf`),
+  ).then((res) => res.arrayBuffer())
+
+  const serifFontData = await fetch(
+    new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
+  ).then((res) => res.arrayBuffer())
+
+  const PPEditorialFontData = await fetch(
+    new URL(`${baseUrl}/fonts/PPEditorialNew-Regular.otf`),
+  ).then((res) => res.arrayBuffer())
 
   return new ImageResponse(
     (
@@ -95,19 +103,15 @@ export default async function Image({
           flexDirection: "column",
           flexWrap: "nowrap",
           padding: "40px",
-          backgroundColor: "#27272A",
-          backgroundImage:
-            "radial-gradient(circle at 25px 25px, #3F3F467F 2%, transparent 0%), radial-gradient(circle at 75px 75px, #3F3F467F 2%, transparent 0%)",
-          backgroundSize: "100px 100px",
+          backgroundColor: "#ffffff",
         }}
       >
         <div
           tw="flex py-4 px-8"
           style={{
             position: "relative",
-            borderRadius: 30,
+
             gap: 20,
-            background: "linear-gradient(to bottom, #52525B, #3F3F46)",
           }}
         >
           <div tw="flex text-[30px] text-zinc-400 ">
@@ -124,17 +128,29 @@ export default async function Image({
         </div>
         <div tw="flex flex-col w-full p-6 mt-auto mb-8 relative z-10">
           <h1
-            tw="flex flex-col"
+            tw="flex"
             style={{
               fontSize: 120,
-              color: "#A1A1AA",
+              color: "#71717A",
               marginTop: 30,
               lineHeight: 0.6,
               textAlign: "left",
               letterSpacing: "-0.03em",
+              fontFamily: "PPEditorialNew-Regular",
             }}
           >
-            Hi, I&apos;m Jinesh
+            Hi,
+            <span
+              style={{
+                fontFamily: "PPEditorialNew-Italic",
+                marginLeft: "20px",
+                marginRight: "20px",
+              }}
+            >
+              {" "}
+              I&apos;m
+            </span>{" "}
+            Jinesh
           </h1>
           <p
             tw="flex"
@@ -142,7 +158,7 @@ export default async function Image({
               fontSize: 38,
               lineHeight: 0.6,
               marginBottom: 30,
-              color: "#71717A",
+              color: "#A1A1AA",
             }}
           >
             {getRandomRoles(3)}
@@ -173,6 +189,14 @@ export default async function Image({
         {
           name: "GeistSans-Bold",
           data: fontData,
+        },
+        {
+          name: "PPEditorialNew-Italic",
+          data: serifFontData,
+        },
+        {
+          name: "PPEditorialNew-Regular",
+          data: PPEditorialFontData,
         },
       ],
 

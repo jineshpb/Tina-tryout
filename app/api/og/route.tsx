@@ -44,8 +44,6 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url)
     const hasTitle = searchParams.has("title")
 
-    console.log("searchParams", searchParams.get("title"))
-
     const result = await client.queries
       .posts({ relativePath: `${searchParams.get("title")}.mdx` })
       .then((result) => {
@@ -56,8 +54,6 @@ export async function GET(request: Request) {
         return notFound()
       })
 
-    // console.log("result", result)
-
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My website"
@@ -65,21 +61,18 @@ export async function GET(request: Request) {
     const formattedTitle = convertToSentence(title)
 
     const fontData = await fetch(
-      new URL(`${baseUrl}/fonts/Geist-Bold.otf`),
+      new URL(`${baseUrl}/fonts/Geist-Medium.otf`),
     ).then((res) => res.arrayBuffer())
-    // const fontData = await fetch(Geist).then((res) => res.arrayBuffer())
 
-    console.log("fontData", fontData)
+    const PPEditorialItalic = await fetch(
+      new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
+    ).then((res) => res.arrayBuffer())
 
     const imageData = await image
 
-    // console.log("fontURL", `${baseUrl}/fonts/Geist-Bold.otf`)
-
-    // console.log("title", title)
-
     return new ImageResponse(
       (
-        <div tw="flex h-full pl-8 flex-row-reverse  bg-zinc-800">
+        <div tw="flex h-full pl-8 flex-row-reverse bg-white ">
           <div tw="flex w-1/3 h-full ">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -98,33 +91,35 @@ export async function GET(request: Request) {
               tw="absolute left-[-100px] bg-emerald-800 top-[-30px] w-[150px] h-[130%] bg-neutral-800"
               style={{
                 transform: "rotate(12deg)",
-                background: "#27272A",
+                background: "#ffffff",
               }}
             ></div>
           </div>
           <div tw="flex items-start flex-col  w-2/3 p-6 mt-auto mb-8 text-white relative z-10">
             <div
-              tw="flex py-4 px-8  shadow-lg"
+              tw="flex py-4  "
               style={{
                 position: "relative",
-                borderRadius: 30,
+
                 gap: 20,
-                background: "linear-gradient(to bottom, #6EE7B7, #10B981)",
               }}
             >
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#27272A",
+                  color: "#71717A",
+                  fontFamily: "PPEDitorial-Italic",
                 }}
               >
-                Case study
+                www.jinesh.me
               </p>
             </div>
             <h1
               tw="text-[76px]  font-extrabold"
               style={{
                 lineHeight: "4.5rem",
+                color: "#71717A",
+                letterSpacing: "-0.03em",
               }}
             >
               {formattedTitle}
@@ -132,7 +127,7 @@ export async function GET(request: Request) {
             <p
               tw="text-[32px]"
               style={{
-                color: "#52525B",
+                color: "#D4D4D8",
               }}
             >
               A case study by jinesh
@@ -145,6 +140,10 @@ export async function GET(request: Request) {
           {
             name: "Geist-Bold",
             data: fontData,
+          },
+          {
+            name: "PPEDitorial-Italic",
+            data: PPEditorialItalic,
           },
         ],
         width: 1200,
