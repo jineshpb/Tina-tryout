@@ -136,13 +136,13 @@ export default async function Image({
               lineHeight: 0.6,
               textAlign: "left",
               letterSpacing: "-0.03em",
-              fontFamily: "PPEditorialNew-Regular",
+              // fontFamily: "PPEditorialNew-Regular",
             }}
           >
             Hi,
             <span
               style={{
-                fontFamily: "PPEditorialNew-Italic",
+                // fontFamily: "PPEditorialNew-Italic",
                 marginLeft: "20px",
                 marginRight: "20px",
               }}
