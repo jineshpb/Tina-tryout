@@ -77,9 +77,9 @@ export default async function Image({
   req: NextRequest
   context: NextPageContext
 }) {
-  const fontData = await fetch(new URL(`${baseUrl}/fonts/Geist-Bold.otf`)).then(
-    (res) => res.arrayBuffer(),
-  )
+  const fontData = await fetch(
+    new URL(`${baseUrl}/fonts/Geist-Regular.otf`),
+  ).then((res) => res.arrayBuffer())
 
   const serifFontData = await fetch(
     new URL(`${baseUrl}/fonts/PPEditorialNew-Italic.otf`),
@@ -187,7 +187,7 @@ export default async function Image({
     {
       fonts: [
         {
-          name: "GeistSans-Bold",
+          name: "GeistSans-Regular",
           data: fontData,
         },
         {
