@@ -38,7 +38,7 @@ export function ProjectListPageComponent(props: {
                   link={`/projects/${project.node.title}`}
                   title={project.node.title}
                   description={project.node.description}
-                  fileLink={`/posts/${project.node._sys.filename}`}
+                  fileLink={`/projects/${project.node._sys.filename}`}
                 />
               ))}
           </div>
@@ -51,7 +51,7 @@ export function ProjectListPageComponent(props: {
                   link={project.node.link}
                   title={project.node.title}
                   description={project.node.description}
-                  fileLink={`/posts/${project.node._sys.filename}`}
+                  fileLink={`/projects/${project.node._sys.filename}`}
                 />
               ))}
           </div>
@@ -64,7 +64,7 @@ export function ProjectListPageComponent(props: {
                   link={project.node.link}
                   title={project.node.title}
                   description={project.node.description}
-                  fileLink={`/posts/${project.node._sys.filename}`}
+                  fileLink={`/projects/${project.node._sys.filename}`}
                 />
               ))}
           </div>

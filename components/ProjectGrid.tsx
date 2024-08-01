@@ -6,9 +6,48 @@ import { Button } from "./ui/button"
 import Link from "next/link"
 import Image from "next/image"
 
+const convertToKebabCase = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/[^a-z0-9-]/g, "") // Optional: Remove any character that is not a letter, number, or hyphen
+}
+
+function RenderButton({ project }: any) {
+  const kebabProjectTitle = convertToKebabCase(project.node.title)
+  if (!project.node.link) {
+    return null // Do not render anything if project.node.link does not exist
+  }
+
+  if (project.node.type === "rive") {
+    return (
+      <Button className="" variant="ghost">
+        <Link
+          href={`/projects/${kebabProjectTitle}`}
+          className="flex items-center"
+        >
+          View
+        </Link>
+      </Button>
+    )
+  }
+  return (
+    <Button className="" variant="ghost">
+      <Link
+        href={project?.node.link}
+        className="flex items-center"
+        target="_blank"
+      >
+        <FiExternalLink className="mr-2" />
+        View
+      </Link>
+    </Button>
+  )
+}
+
 function GridCard({ project }: any) {
-  console.log("Grid card project", project)
-  console.log("Grid card project")
+  // console.log("Grid card project", project)
+  // console.log("Grid card project")
 
   return (
     <div className="mt-12 h-auto w-full rounded-xl  ">
@@ -46,18 +85,7 @@ function GridCard({ project }: any) {
             {project.node.description}
           </div>
         </div>
-        {project.node.link && (
-          <Button className="" variant="ghost">
-            <Link
-              href={project?.node.link}
-              target="_blank"
-              className="flex items-center"
-            >
-              <FiExternalLink className="mr-2" />
-              View
-            </Link>
-          </Button>
-        )}
+        {<RenderButton project={project} />}
       </div>
     </div>
   )
@@ -65,7 +93,6 @@ function GridCard({ project }: any) {
 
 const ProjectGrid = ({ data }: any) => {
   console.log("projects", data)
-
   return (
     <div className="w-full">
       <div className="mx-auto grid w-full grid-cols-1 gap-8  pt-12 lg:mx-0 lg:grid-cols-2  ">

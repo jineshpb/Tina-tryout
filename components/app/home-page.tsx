@@ -5,14 +5,12 @@ import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 import Heading from "../Heading"
 import SmallAvatar from "../SmallAvatar"
-import { ReactNode, Suspense, useEffect, useRef, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import Bounded from "../Bounded"
-import ProjectCard from "../ProjectCard"
 import PostCard from "../PostCard"
 import Footer from "../Footer"
 import { useGSAP } from "@gsap/react"
 
-import { animateWithGsap } from "../utils/animation"
 import { EB_Garamond } from "next/font/google"
 import clsx from "clsx"
 
@@ -24,12 +22,7 @@ import { Novatrix } from "uvcanvas"
 import { FollowerPointerCard } from "../ui/following-pointer"
 import Image from "next/image"
 import ProjectGrid from "../ProjectGrid"
-import { FaSpinner } from "react-icons/fa"
-import { Loader } from "lucide-react"
 
-import animationData from "@/data/loading.json"
-import Lottie from "react-lottie"
-import { BiLoaderAlt } from "react-icons/bi"
 import gsap from "gsap"
 
 const EbGaramond = EB_Garamond({
@@ -83,7 +76,7 @@ const DelayedComponent = ({
   return isReady ? (
     children
   ) : (
-    <div className="animate-shimmer flex items-center justify-center rounded-full bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
+    <div className="flex animate-shimmer items-center justify-center rounded-full bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
       {/* <Loader className="  animate-spin" /> */}
 
       {/* <BiLoaderAlt className=" size-12 animate-spin" /> */}

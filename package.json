@@ -21,6 +21,7 @@
     "@react-three/drei": "^9.105.5",
     "@react-three/fiber": "^8.16.2",
     "@react-three/postprocessing": "^2.16.2",
+    "@rive-app/react-canvas": "^4.13.4",
     "@tinacms/auth": "^1.0.4",
     "@vercel/og": "^0.6.2",
     "class-variance-authority": "^0.7.0",
@@ -46,6 +47,7 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.165.0",
     "tinacms": "^1.5.30",
+    "use-scramble": "^2.2.15",
     "uvcanvas": "^0.2.1"
   },
   "devDependencies": {
