@@ -58,8 +58,10 @@ export function ProjectPageComponent(props: {
   }
   query: string
 }) {
+  console.log("ProjectPageComponent", props.data.projects)
+
   const { RiveComponent, rive } = useRive({
-    src: "https://res.cloudinary.com/dhuk11prd/raw/upload/v1722429691/portfolio-tina/brio-carplay_xaw0k7.riv",
+    src: `${props.data.projects?.link}`,
 
     stateMachines: "State Machine 1",
 
