@@ -76,11 +76,11 @@ export async function GET(request: Request) {
 
     return new ImageResponse(
       (
-        <div tw="flex h-full pl-8 flex-row-reverse bg-white ">
+        <div tw="flex h-full pl-8 flex-row-reverse bg-neutral-900 ">
           <div tw="flex w-1/2 h-full ">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${baseUrl}/brio-cover.jpg`}
+              src={`https://res.cloudinary.com/dhuk11prd/image/upload/v1722534056/portfolio-tina/brio%20x%20carplay/untitled-min_1_ntapat.png`}
               width="854"
               height="332"
               alt="balls"
@@ -92,10 +92,9 @@ export async function GET(request: Request) {
               }}
             />
             <div
-              tw="absolute left-[-100px] bg-emerald-800 top-[-30px] w-[150px] h-[130%] bg-neutral-800"
+              tw="absolute left-[-100px] bg-emerald-800 top-[-30px] w-[150px] h-[130%] bg-neutral-900"
               style={{
                 transform: "rotate(12deg)",
-                background: "#ffffff",
               }}
             ></div>
           </div>
@@ -110,31 +109,25 @@ export async function GET(request: Request) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#71717A",
+
                   fontFamily: "PPEditorial-Italic",
                 }}
+                tw=" text-neutral-500"
               >
                 www.jinesh.me
               </p>
             </div>
             <h1
-              tw="text-[76px]  font-extrabold"
+              tw="text-[76px]  font-extrabold text-neutral-300"
               style={{
                 lineHeight: "4.5rem",
-                color: "#71717A",
+
                 letterSpacing: "-0.03em",
               }}
             >
               {formattedTitle}
             </h1>
-            <p
-              tw="text-[32px]"
-              style={{
-                color: "#D4D4D8",
-              }}
-            >
-              Interactive poster
-            </p>
+            <p tw="text-[32px] text-neutral-500">Interactive poster</p>
           </div>
         </div>
       ),

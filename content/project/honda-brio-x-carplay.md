@@ -7,6 +7,6 @@ description: >-
 link: >-
   https://res.cloudinary.com/dhuk11prd/raw/upload/v1722534745/portfolio-tina/brio%20x%20carplay/brio-carplay_felmg1.riv
 image: >-
-  https://res.cloudinary.com/dhuk11prd/image/upload/v1722534056/portfolio-tina/brio%20x%20carplay/untitled-min_1_ntapat.png
+  https://res.cloudinary.com/dhuk11prd/image/upload/v1722593070/portfolio-tina/brio%20x%20carplay/wide-4-min_csa9gu.png
 ---
 

@@ -22,8 +22,6 @@ const RiveWrapper = () => {
   return <RiveComponent />
 }
 
-const LazyRiveWrapper = lazy(() => Promise.resolve({ default: RiveWrapper }))
-
 const DelayedComponent = ({
   children,
   delay = 0,
@@ -58,8 +56,6 @@ export function ProjectPageComponent(props: {
   }
   query: string
 }) {
-  console.log("ProjectPageComponent", props.data.projects)
-
   const { RiveComponent, rive } = useRive({
     src: `${props.data.projects?.link}`,
 
@@ -71,27 +67,6 @@ export function ProjectPageComponent(props: {
     }),
     autoplay: true,
   })
-
-  function trackCursorPosition(event: React.MouseEvent<HTMLDivElement>) {
-    const x = event.clientX
-    const y = event.clientY
-    console.log("Cursor position:", x, y)
-
-    if (typeof (trackCursorPosition as any).prevX !== "undefined") {
-      if (x > (trackCursorPosition as any).prevX) {
-        console.log("Cursor is moving to the right")
-      } else if (x < (trackCursorPosition as any).prevX) {
-        console.log("Cursor is moving to the left")
-      }
-    }
-
-    if (x === (trackCursorPosition as any).prevX) {
-      console.log("Cursor is at rest")
-    }
-
-    ;(trackCursorPosition as any).prevX = x
-    ;(trackCursorPosition as any).prevY = y
-  }
 
   return (
     <div className="d:h-screen relative flex h-[calc(100dvh)] w-full flex-col items-center justify-center overflow-hidden bg-[#090909]">
@@ -173,10 +148,7 @@ export function ProjectPageComponent(props: {
           />
         </div>
       </div>
-      <div
-        className="flex h-screen w-[130%] max-w-[1800px] flex-col items-center justify-center"
-        onMouseMove={trackCursorPosition}
-      >
+      <div className="flex h-screen w-[130%] max-w-[1800px] flex-col items-center justify-center">
         <DelayedComponent>
           <RiveComponent />
         </DelayedComponent>
