@@ -383,7 +383,7 @@ export function HomePageComponent(props: {
                             </DelayedComponent>
                             <h1>designer,</h1>
                           </div>
-                          <h1 className=" flex items-center justify-center gap-4  ">
+                          <h1 className=" flex items-center justify-center gap-4   ">
                             CG{" "}
                             <DelayedComponent>
                               <CGPill />
@@ -421,6 +421,11 @@ export function HomePageComponent(props: {
                                 </div>
                               </FollowerPointerCard>
                             </DelayedComponent>
+                          </div>
+                          <div className="mx-auto flex w-full items-center justify-center">
+                            <h3 className="font-ppeditorial mt-6 text-3xl tracking-wide text-zinc-300 dark:text-zinc-700 ">
+                              and generally curious.
+                            </h3>
                           </div>
                         </div>
                       </div>

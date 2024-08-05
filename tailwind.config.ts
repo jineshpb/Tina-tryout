@@ -17,6 +17,9 @@ const config = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      ppeditorial: ["PPEditorial", "serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
