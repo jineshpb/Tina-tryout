@@ -3,6 +3,7 @@ type: front end
 title: Charging station finder
 description: EV charger finding app with a touch of AI
 link: 'https://charging-station-finder.vercel.app/'
-image: ''
+image: >-
+  https://res.cloudinary.com/dhuk11prd/image/upload/v1724600802/portfolio-tina/og_image_otx1fc.png
 ---
 
