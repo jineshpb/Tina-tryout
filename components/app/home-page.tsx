@@ -291,10 +291,10 @@ function UXPill() {
 
 function CGPill() {
   return (
-    <div className="relative hidden md:block md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
+    <div className="relative -z-10 hidden md:block md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
       <motion.div
         id="pill"
-        className="absolute z-20 inline-block overflow-hidden rounded-full md:h-[60px]  md:w-[120px] lg:h-[100px] lg:w-[160px] "
+        className="absolute inline-block overflow-hidden rounded-full md:h-[60px]  md:w-[120px] lg:h-[100px] lg:w-[160px] "
         style={{
           boxShadow:
             "inset 0 -4px 4px rgba(0, 0, 0, 0.4), inset 0 2px 2px #A1A1AA",

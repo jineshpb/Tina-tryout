@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   motion,
   AnimatePresence,
@@ -59,6 +59,9 @@ export const FloatingNav = ({
   const nameLogo = navItems.logo
 
   const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    setVisible(true)
+  }, [])
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
@@ -78,10 +81,10 @@ export const FloatingNav = ({
   })
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="sync">
       <motion.div
         initial={{
-          opacity: 1,
+          opacity: 0,
           y: -100,
         }}
         animate={{
@@ -89,10 +92,11 @@ export const FloatingNav = ({
           opacity: visible ? 1 : 0,
         }}
         transition={{
-          duration: 0.2,
+          duration: 0.3,
+          ease: "easeInOut",
         }}
         className={cn(
-          "fixed inset-x-0  top-10 z-[5000] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white py-2 pl-2  pr-4 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-white/[0.1] dark:bg-zinc-800  ",
+          "fixed inset-x-0 top-10 z-[9999] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white py-2 pl-2 pr-4 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-white/[0.1] dark:bg-zinc-800",
           className,
         )}
       >
@@ -100,13 +104,13 @@ export const FloatingNav = ({
           onClick={() => {
             const element = document.getElementById("introduction")
             element?.scrollIntoView({ behavior: "smooth" })
-        }}
+          }}
           aria-label="Home page"
-        className="relative mb-1 flex w-auto items-center justify-center rounded-[28px]   bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-xl font-medium tracking-tighter text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500"
-         style={{
+          className="relative mb-1 flex w-auto items-center justify-center rounded-[28px]   bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-xl font-medium tracking-tighter text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500"
+          style={{
             boxShadow: "inset 0 2px 4px #ffffff/0.5",
-         }}
-       >
+          }}
+        >
           {/* <Home size={24} /> */}
           <NameLogo logo={nameLogo} />
           <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
