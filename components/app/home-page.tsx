@@ -345,9 +345,19 @@ export function HomePageComponent(props: {
   }, [])
   const { data } = useTina(props)
 
+  // console.log("data", data)
+
   const postsList = data.postsConnection.edges
 
   const projectList = data.projectsConnection.edges
+  const sortedProjectList =
+    projectList?.sort((a, b) => {
+      const dateA = new Date(a?.node?.date ?? "")
+      const dateB = new Date(b?.node?.date ?? "")
+      return dateB.getTime() - dateA.getTime() // Sort in descending order (newest first)
+    }) ?? []
+
+  // console.log("sortedProjectList", sortedProjectList)
 
   useGSAP(() => {
     gsap.fromTo(
@@ -423,7 +433,7 @@ export function HomePageComponent(props: {
                             </DelayedComponent>
                           </div>
                           <div className="mx-auto flex w-full items-center justify-center">
-                            <h3 className="font-ppeditorial mt-6 text-3xl tracking-wide text-zinc-300 dark:text-zinc-700 ">
+                            <h3 className="mt-6 font-ppeditorial text-3xl tracking-wide text-zinc-300 dark:text-zinc-700 ">
                               and generally curious.
                             </h3>
                           </div>
@@ -464,7 +474,7 @@ export function HomePageComponent(props: {
             }
           })} */}
 
-          {projectList && projectList?.length > 0 && (
+          {sortedProjectList && sortedProjectList?.length > 0 && (
             <div>
               <Heading
                 size="md"
@@ -473,7 +483,7 @@ export function HomePageComponent(props: {
                 Projects
               </Heading>
               <div className="mt-12 flex flex-col gap-6 ">
-                <ProjectGrid data={projectList} />
+                <ProjectGrid data={sortedProjectList} />
               </div>
             </div>
           )}

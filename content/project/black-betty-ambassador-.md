@@ -1,4 +1,5 @@
 ---
+date: 2022-05-29T18:30:00.000Z
 type: three js scene
 title: 'Black betty ambassador '
 description: Three js scene featuring mad max inspiredambassador

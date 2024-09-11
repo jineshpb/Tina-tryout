@@ -1,4 +1,5 @@
 ---
+date: 2024-02-13T18:30:00.000Z
 type: generic
 title: Arc designz website
 description: Website for a commercial wrapping company

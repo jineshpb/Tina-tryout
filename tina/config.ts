@@ -331,6 +331,12 @@ export default defineConfig({
 
         fields: [
           {
+            name: "date",
+            type: "datetime",
+            label: "Date",
+            required: true,
+          },
+          {
             name: "type",
             type: "string",
             label: "Project Type",
@@ -364,10 +370,17 @@ export default defineConfig({
           description: "I did some stuff",
           link: "https://tina.io",
           image: "/jinesh-mug.jpg",
+          date: new Date().toISOString(),
         },
 
         ui: {
           // This is an DEMO router. You can remove this to fit your site
+          // router: ({ document }) => {
+          //   if (document._sys.filename) {
+          //     return `/projects/${document._sys.filename}`
+          //   }
+          //   return undefined
+          // },
 
           filename: {
             slugify: (values) => {

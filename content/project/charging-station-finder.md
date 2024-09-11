@@ -1,4 +1,5 @@
 ---
+date: 2024-08-31T18:30:00.000Z
 type: front end
 title: Charging station finder
 description: EV charger finding app with a touch of AI

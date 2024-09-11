@@ -1,4 +1,5 @@
 ---
+date: 2023-03-07T18:30:00.000Z
 type: CGI
 title: Se lorry flat rider
 description: Low rider tow truck inspired by TATA SE truck

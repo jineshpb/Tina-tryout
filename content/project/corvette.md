@@ -1,4 +1,5 @@
 ---
+date: 2023-02-06T18:30:00.000Z
 type: CGI
 title: Corvette
 description: CGI and visualisation

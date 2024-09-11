@@ -92,7 +92,7 @@ function GridCard({ project }: any) {
 }
 
 const ProjectGrid = ({ data }: any) => {
-  console.log("projects", data)
+  // console.log("projects", data)
   return (
     <div className="w-full">
       <div className="mx-auto grid w-full grid-cols-1 gap-8  pt-12 lg:mx-0 lg:grid-cols-2  ">

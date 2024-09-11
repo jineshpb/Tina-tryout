@@ -1,4 +1,5 @@
 ---
+date: 2024-08-11T18:30:00.000Z
 type: rive
 title: Honda Brio x Carplay
 description: >-

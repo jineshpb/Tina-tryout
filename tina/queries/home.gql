@@ -19,6 +19,7 @@ query homePage($filter: PostsFilter) {
   projectsConnection {
     edges {
       node {
+        date
         type
         title
         description
