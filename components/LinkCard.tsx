@@ -23,7 +23,7 @@ export const LinkCard = ({
 }) => {
   return (
     <>
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{description}</CardDescription>

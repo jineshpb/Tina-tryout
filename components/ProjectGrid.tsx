@@ -50,9 +50,9 @@ function GridCard({ project }: any) {
   // console.log("Grid card project")
 
   return (
-    <div className="mt-12 h-auto w-full rounded-xl  ">
+    <div className="mt-12 h-auto w-full  ">
       {project.node.type ? (
-        <p className="uppercase text-zinc-300 dark:text-zinc-700 ">
+        <p className="uppercase text-zinc-300 dark:text-zinc-700">
           {project.node.type}
         </p>
       ) : (
@@ -60,7 +60,7 @@ function GridCard({ project }: any) {
       )}
 
       <div
-        className="mt-2 overflow-hidden rounded-lg "
+        className="mt-2 overflow-hidden rounded-3xl "
         style={{
           backgroundColor: "#ffffff",
           backgroundSize: "10px 10px",
