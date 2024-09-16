@@ -7,7 +7,7 @@ import { FiHome } from "react-icons/fi"
 
 const PostsHeader = () => {
   return (
-    <div className="mx-auto my-8 flex w-full max-w-[1440px] items-center justify-between px-4 ">
+    <div className="absolute top-0 z-[99] mx-auto my-8 flex w-full max-w-[1440px] items-center justify-between px-4 ">
       <div className="flex items-center gap-6">
         <BigButton className="" href="/" linkText="Back Home">
           <div className="flex">

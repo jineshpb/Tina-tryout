@@ -9,6 +9,7 @@ query homePage($filter: PostsFilter) {
         title
         date
         id
+        password
         _sys {
           filename
         }

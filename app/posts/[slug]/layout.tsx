@@ -7,7 +7,7 @@ export default function PostDetailsLayout({
 }) {
   return (
     <>
-      <div className=" flex h-screen w-full flex-col items-center ">
+      <div className=" flex w-full flex-col items-center ">
         <PostsHeader />
         <main className="post-details w-full">{children}</main>
       </div>

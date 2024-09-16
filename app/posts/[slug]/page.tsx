@@ -2,6 +2,7 @@ import { PostPageComponent } from "@/components/app/posts/post-page-component"
 import client from "@/tina/__generated__/client"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import PasswordProtection from "@/components/PasswordProtection"
 
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
@@ -74,6 +75,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
       console.error(error)
       return notFound()
     })
+
+  if (result.data.posts.protected) {
+    return <PasswordProtection {...result} />
+  }
 
   return <PostPageComponent {...result} />
 }

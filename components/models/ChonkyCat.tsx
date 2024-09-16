@@ -8,7 +8,7 @@ import { useFrame, useThree } from "@react-three/fiber"
 export function ChonkyCat(props: any) {
   const group = useRef<THREE.Group>()
 
-  const { nodes, materials, animations } = useGLTF("models/cat.glb")
+  const { nodes, materials, animations } = useGLTF("/models/cat.glb")
   const { actions } = useAnimations(animations, group)
   const { size } = useThree()
 

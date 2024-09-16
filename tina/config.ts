@@ -303,6 +303,16 @@ export default defineConfig({
             isBody: true,
             templates: richTextComponents,
           },
+          {
+            type: "boolean",
+            name: "protected",
+            label: "Password Protected",
+          },
+          {
+            type: "string",
+            name: "password",
+            label: "Password",
+          },
         ],
         defaultItem() {
           return {
