@@ -369,7 +369,7 @@ export function HomePageComponent(props: {
 
   return (
     <>
-      <div className=" mx-auto mt-20 w-full snap-mandatory">
+      <div className=" mx-auto  mt-20 w-full snap-mandatory">
         <div className="absolute left-0 top-0  -z-20 size-full overflow-hidden">
           <DotBackgroundDemo />
         </div>
@@ -441,8 +441,13 @@ export function HomePageComponent(props: {
                       </div>
                     </div>
 
-                    <div className="mb-16 flex w-full flex-col items-center justify-center text-left text-5xl font-semibold tracking-tighter text-zinc-500 dark:text-zinc-400 md:hidden ">
+                    <div className=" mb-16 flex w-full flex-col items-center justify-center px-6 text-center text-5xl font-semibold tracking-tighter text-zinc-500 dark:text-zinc-400 md:hidden ">
                       {block?.title}
+                      <div className="mx-auto flex w-full items-center justify-center">
+                        <h3 className="mt-4 font-ppeditorial text-lg font-normal tracking-wide text-zinc-300 dark:text-zinc-700 ">
+                          and generally curious.
+                        </h3>
+                      </div>
                     </div>
                   </section>
                 )
@@ -453,27 +458,7 @@ export function HomePageComponent(props: {
           })}
         </Bounded>
 
-        <Bounded className=" mt-[300px] max-w-[1800px]" id="projects">
-          {/* {data.page.blocks?.map((block, i) => {
-            switch (block?.__typename) {
-              case "PageBlocksProjects":
-                return (
-                  <>
-                    <Heading
-                      size="md"
-                      className=" mt-8 font-normal tracking-tight text-zinc-300 dark:text-zinc-700 "
-                      data-tina-field={
-                        block ? tinaField(block, "projectsHeading") : undefined
-                      }
-                    >
-                      {block.projectsHeading}
-                    </Heading>
-                    <ProjectGrid {...data} />
-                  </>
-                )
-            }
-          })} */}
-
+        <div className=" mt-[300px] w-full px-6" id="projects">
           {sortedProjectList && sortedProjectList?.length > 0 && (
             <div>
               <Heading
@@ -482,12 +467,12 @@ export function HomePageComponent(props: {
               >
                 Projects
               </Heading>
-              <div className="mt-12 flex flex-col gap-6 ">
+              <div className="flex flex-col gap-6 lg:mt-20">
                 <ProjectGrid data={sortedProjectList} />
               </div>
             </div>
           )}
-        </Bounded>
+        </div>
         {/* 
         <Bounded className=" mt-[300px]" id="projects">
           {data.page.blocks?.map((block, i) => {
