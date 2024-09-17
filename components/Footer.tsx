@@ -97,7 +97,7 @@ export default function Footer() {
               icon={<FaLinkedin size={48} />}
             />
             <SocialsButton
-              link="https://www.instagram.com/jineshpbhaskar/"
+              link="https://www.instagram.com/arcdesignz99/"
               text="Instagram"
               icon={<FaInstagram size={48} />}
             />
@@ -183,7 +183,8 @@ export default function Footer() {
 
         <div className="flex gap-4 text-zinc-400 *:fill-emerald-400 dark:text-zinc-600 ">
           <Link
-            href="https://youtube.com"
+            target="_blank"
+            href="https://github.com/jineshpb"
             className=" text-emerald-600 transition-all duration-500 hover:text-emerald-300"
           >
             <RiGithubFill size={24} />
@@ -196,7 +197,7 @@ export default function Footer() {
             <FaInstagram size={24} />
           </Link>
           <Link
-            href="https://instagram.com/jineshpbhaskar"
+            href="https://www.behance.net/jineshpb"
             target="_blank"
             className="text-emerald-600 transition-all duration-500 hover:text-emerald-300"
           >
