@@ -56,14 +56,14 @@ export default function PasswordProtection({
 
   return (
     <div className="flex h-screen flex-col overflow-hidden">
-      <div className="mt-32 flex grow items-start justify-center lg:mt-44">
+      <div className="mt-32 flex grow items-start justify-center px-6  lg:mt-44">
         <Bounded className="flex w-full max-w-lg flex-col gap-2">
           <div className="flex items-center gap-3">
             <FaLock />
             <h1 className="text-2xl font-bold">Password Protection</h1>
           </div>
 
-          <div className="px-4">
+          <div className="">
             <p className="text-sm text-gray-500">
               Some contents on this page are bounded by NDA. Please enter the
               password to access. Need password? Please contact{" "}
