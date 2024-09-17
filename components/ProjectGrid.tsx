@@ -60,7 +60,7 @@ function GridCard({ project }: any) {
       )}
 
       <div
-        className="mt-2 overflow-hidden rounded-3xl "
+        className="mt-2 overflow-hidden rounded-lg "
         style={{
           backgroundColor: "#ffffff",
           backgroundSize: "10px 10px",
