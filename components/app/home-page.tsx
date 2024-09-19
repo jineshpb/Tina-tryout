@@ -202,11 +202,7 @@ function UXPill() {
     <motion.div
       whileHover="hover"
       id="pill"
-      className=" backgroud-image:[url('./Noise.png')] relative z-0 hidden overflow-hidden rounded-full bg-[#1D1C20] md:inline-block  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
-      style={{
-        boxShadow:
-          "inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px #A1A1AA",
-      }}
+      className=" backgroud-image:[url('./Noise.png')] relative z-0 hidden overflow-hidden rounded-full   bg-[#1D1C20]   shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] md:inline-block md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
     >
       <motion.div>
         <motion.div
@@ -294,11 +290,7 @@ function CGPill() {
     <div className="relative -z-10 hidden md:block md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
       <motion.div
         id="pill"
-        className="absolute inline-block overflow-hidden rounded-full md:h-[60px]  md:w-[120px] lg:h-[100px] lg:w-[160px] "
-        style={{
-          boxShadow:
-            "inset 0 -4px 4px rgba(0, 0, 0, 0.4), inset 0 2px 2px #A1A1AA",
-        }}
+        className="absolute inline-block overflow-hidden rounded-full shadow-[0px_5px_8px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
         initial={{ zIndex: 10 }}
       >
         <div className="absolute inset-0 z-0 flex size-full items-center justify-center opacity-90">
