@@ -46,9 +46,6 @@ function RenderButton({ project }: any) {
 }
 
 function GridCard({ project }: any) {
-  // console.log("Grid card project", project)
-  // console.log("Grid card project")
-
   return (
     <div className="mt-12 h-auto w-full  ">
       {project.node.type ? (
@@ -92,24 +89,18 @@ function GridCard({ project }: any) {
 }
 
 const ProjectGrid = ({ data }: any) => {
-  // console.log("projects", data)
   return (
     <div className="w-full">
-      <div className="mx-auto grid w-full grid-cols-1 gap-8  pt-12 lg:mx-0 lg:grid-cols-2  ">
-        <div className=" h-auto   grid-cols-1 gap-4 ">
-          {data
-            ?.filter((_: any, i: number) => i % 2 === 0)
-            .map((project: any, i: number) => (
-              <GridCard key={i} project={project} />
-            ))}
-        </div>
-        <div className=" h-auto   grid-cols-1 gap-4 ">
-          {data
-            ?.filter((_: any, i: number) => i % 2 === 1)
-            .map((project: any, i: number) => (
-              <GridCard key={i} project={project} />
-            ))}
-        </div>
+      <div className="mx-auto grid w-full grid-cols-1 gap-8 pt-12 lg:mx-0 lg:grid-cols-2 2xl:grid-cols-3">
+        {[0, 1, 2].map((columnIndex) => (
+          <div key={columnIndex} className="h-auto grid-cols-1 gap-4">
+            {data
+              ?.filter((_: any, i: number) => i % 3 === columnIndex)
+              .map((project: any, i: number) => (
+                <GridCard key={i} project={project} />
+              ))}
+          </div>
+        ))}
       </div>
     </div>
   )
