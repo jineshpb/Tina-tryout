@@ -5,6 +5,7 @@ import { FiExternalLink } from "react-icons/fi"
 import { Button } from "./ui/button"
 import Link from "next/link"
 import Image from "next/image"
+import { cn } from "@/lib/utils"
 
 const convertToKebabCase = (str: string) => {
   return str
@@ -91,16 +92,39 @@ function GridCard({ project }: any) {
 const ProjectGrid = ({ data }: any) => {
   return (
     <div className="w-full">
-      <div className="mx-auto grid w-full grid-cols-1 gap-8 pt-12 lg:mx-0 lg:grid-cols-2 2xl:grid-cols-3">
-        {[0, 1, 2].map((columnIndex) => (
-          <div key={columnIndex} className="h-auto grid-cols-1 gap-4">
-            {data
-              ?.filter((_: any, i: number) => i % 3 === columnIndex)
-              .map((project: any, i: number) => (
-                <GridCard key={i} project={project} />
-              ))}
-          </div>
-        ))}
+      <div
+        className={cn(
+          "mx-auto grid w-full gap-8 pt-12",
+          "grid-cols-1",
+          "md:grid-cols-2",
+          "2xl:grid-cols-3",
+        )}
+      >
+        {/* For 2XL screens (3 columns) */}
+        <div className="hidden 2xl:contents">
+          {[0, 1, 2].map((columnIndex) => (
+            <div key={columnIndex} className="h-auto grid-cols-1 gap-4">
+              {data
+                ?.filter((_: any, i: number) => i % 3 === columnIndex)
+                .map((project: any, i: number) => (
+                  <GridCard key={i} project={project} />
+                ))}
+            </div>
+          ))}
+        </div>
+
+        {/* For MD screens (2 columns) */}
+        <div className="contents 2xl:hidden">
+          {[0, 1].map((columnIndex) => (
+            <div key={columnIndex} className="h-auto grid-cols-1 gap-4">
+              {data
+                ?.filter((_: any, i: number) => i % 2 === columnIndex)
+                .map((project: any, i: number) => (
+                  <GridCard key={i} project={project} />
+                ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -42,12 +42,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={clsx(GeistSans.className)}
-    >
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-abcwhyte-regular">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 mx-auto w-full">
             <main className="mx-auto w-full">{children}</main>

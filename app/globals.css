@@ -6,6 +6,18 @@
   font-family: "PPEditorial";
   src: url("../public/fonts/PPEditorialNew-Italic.otf");
 }
+@font-face {
+  font-family: "ABCWhyteRegular";
+  src: url("../public/fonts/whyte-inktrap/ABCWhyteInktrap-Book-Trial.otf");
+}
+@font-face {
+  font-family: "ABCWhyteBold";
+  src: url("../public/fonts/whyte-inktrap/ABCWhyteInktrap-Bold-Trial.otf");
+}
+@font-face {
+  font-family: "ABCWhyteMedium";
+  src: url("../public/fonts/whyte-inktrap/ABCWhyteInktrap-Medium-Trial.otf");
+}
 
 #body,
 #html {
@@ -196,6 +208,18 @@
         #ffffff 32px
       ),
       repeating-linear-gradient(#f0f0f0, #f0f0f0);
+  }
+
+  .font-abcwhyte-regular {
+    font-family: "ABCWhyteRegular", sans-serif;
+  }
+
+  .font-abcwhyte-medium {
+    font-family: "ABCWhyteMedium", sans-serif;
+  }
+
+  .font-abcwhyte-bold {
+    font-family: "ABCWhyteBold", sans-serif;
   }
 
   .custom-dot-bg {
