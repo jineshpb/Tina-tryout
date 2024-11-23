@@ -29,6 +29,7 @@ const config = {
     },
     extend: {
       backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "custom-gradient":
           "repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 32px), repeating-linear-gradient(#f0f0f0, #f0f0f0)",
       },

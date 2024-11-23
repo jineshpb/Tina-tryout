@@ -67,12 +67,8 @@ export default function Footer() {
       <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
         <div className="flex w-full flex-col gap-4 px-6">
           <div>
-            <Heading
-              as="h1"
-              size="lg"
-              className="font-medium tracking-tighter text-emerald-400 dark:text-emerald-400"
-            >
-              Hi, I&apos;m Jinesh, UI/UX designer based in Bangalore.
+            <Heading className="font-abcwhyte-bold tracking-tight text-emerald-400 dark:text-emerald-400">
+              Hi, I&apos;m Jinesh, <br /> Product Designer based in Bangalore.
             </Heading>
 
             <p className="prose mt-8 text-2xl text-emerald-200">

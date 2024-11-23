@@ -24,6 +24,9 @@ import Image from "next/image"
 import ProjectGrid from "../ProjectGrid"
 
 import gsap from "gsap"
+import CanvasPill from "../CanvasPill"
+import ProductPill from "../ProductPill"
+import MobileHero from "../MobileHero"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -76,7 +79,7 @@ const DelayedComponent = ({
   return isReady ? (
     children
   ) : (
-    <div className="flex animate-shimmer items-center justify-center rounded-full bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
+    <div className="flex animate-shimmer items-center justify-center rounded-[40px] bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
       {/* <Loader className="  animate-spin" /> */}
 
       {/* <BiLoaderAlt className=" size-12 animate-spin" /> */}
@@ -285,21 +288,6 @@ function UXPill() {
   )
 }
 
-function CGPill() {
-  return (
-    <div className="relative -z-10 hidden md:block md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] ">
-      <motion.div
-        id="pill"
-        className="absolute inline-block overflow-hidden rounded-full shadow-[0px_5px_8px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
-        initial={{ zIndex: 10 }}
-      >
-        <div className="absolute inset-0 z-0 flex size-full items-center justify-center opacity-90">
-          <Novatrix />
-        </div>
-      </motion.div>
-    </div>
-  )
-}
 const TitleComponent = ({ title }: { title: string }) => (
   <div className="flex items-center space-x-2">
     <Image
@@ -337,8 +325,6 @@ export function HomePageComponent(props: {
   }, [])
   const { data } = useTina(props)
 
-  // console.log("data", data)
-
   const postsList = data.postsConnection.edges
 
   const projectList = data.projectsConnection.edges
@@ -371,24 +357,24 @@ export function HomePageComponent(props: {
               case "PageBlocksWelcomeHero":
                 return (
                   <section
-                    className="relative mt-24 flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
+                    className="relative  flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
                     key={i}
                   >
-                    <div className=" hidden w-full md:flex ">
-                      <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-9xl ">
+                    <div className=" mt-24 hidden w-full md:flex ">
+                      <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-8xl xl:text-9xl ">
                         <div className="mx-auto items-center justify-center space-y-6 ">
                           <div className=" flex w-full items-center justify-center gap-4">
-                            <h1>UI/UX</h1>
+                            <h1>Product</h1>
 
                             <DelayedComponent>
-                              <UXPill />
+                              <ProductPill />
                             </DelayedComponent>
                             <h1>designer,</h1>
                           </div>
-                          <h1 className=" flex items-center justify-center gap-4   ">
+                          <h1 className=" flex items-start justify-center   ">
                             CG{" "}
                             <DelayedComponent>
-                              <CGPill />
+                              <CanvasPill className="h-[80px] w-[130px] lg:h-[130px] lg:w-[180px]" />
                             </DelayedComponent>
                             generalist,
                           </h1>
@@ -400,7 +386,6 @@ export function HomePageComponent(props: {
                                 title={<TitleComponent title={"That's me"} />}
                               >
                                 <div
-                                  className=" md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]  "
                                   onClick={() => {
                                     const element =
                                       document.getElementById("footer")
@@ -409,7 +394,7 @@ export function HomePageComponent(props: {
                                     })
                                   }}
                                 >
-                                  <BackgroundGradient className=" size-full overflow-hidden rounded-full">
+                                  <BackgroundGradient className=" size-full">
                                     <SmallAvatar
                                       image={block?.profileImage}
                                       data-tina-field={
@@ -417,7 +402,6 @@ export function HomePageComponent(props: {
                                           ? tinaField(block, "profileImage")
                                           : undefined
                                       }
-                                      className="  rounded-full md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px] "
                                     ></SmallAvatar>
                                   </BackgroundGradient>
                                 </div>
@@ -434,7 +418,8 @@ export function HomePageComponent(props: {
                     </div>
 
                     <div className=" mb-16 flex w-full flex-col items-center justify-center px-6 text-center text-5xl font-semibold tracking-tighter text-zinc-500 dark:text-zinc-400 md:hidden ">
-                      {block?.title}
+                      {/* {block?.title} */}
+                      <MobileHero />
                       <div className="mx-auto flex w-full items-center justify-center">
                         <h3 className="mt-4 font-ppeditorial text-lg font-normal tracking-wide text-zinc-300 dark:text-zinc-700 ">
                           and generally curious.
