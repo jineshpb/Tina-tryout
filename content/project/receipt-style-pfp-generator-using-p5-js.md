@@ -8,6 +8,6 @@ description: >-
   a receipt style profile picture
 link: 'https://receipted-self-upload.vercel.app/'
 image: >-
-  https://res.cloudinary.com/dhuk11prd/image/upload/v1735193887/portfolio-tina/Screenshot_105_kekgzj.png
+  https://res.cloudinary.com/dhuk11prd/image/upload/v1735195884/portfolio-tina/Scene_fzinmm.png
 ---
 
