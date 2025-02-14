@@ -7,6 +7,6 @@ description: >-
   Evolved and became the video to haiku idea
 link: 'https://video-to-haiku.up.railway.app/'
 image: >-
-  https://res.cloudinary.com/dhuk11prd/image/upload/v1739509908/portfolio-tina/og-image_dcgaq6.png
+  https://res.cloudinary.com/dhuk11prd/image/upload/v1739510467/portfolio-tina/og-image_gpuicr.png
 ---
 
