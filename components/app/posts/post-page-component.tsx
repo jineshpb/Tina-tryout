@@ -18,6 +18,7 @@ import {
   ImageTextBlock,
   ImageCarousel,
   IphoneMockup,
+  FigmaPrototype,
 } from "@/components/RichText"
 
 import PostPageFooter from "@/components/PostPageFooter"
@@ -91,6 +92,7 @@ export function PostPageComponent(props: {
                 ImageTextBlock,
                 ImageCarousel,
                 IphoneMockup,
+                FigmaPrototype,
               }}
             />
           </section>

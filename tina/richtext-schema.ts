@@ -249,4 +249,30 @@ export const richTextComponents: Template[] = [
       },
     },
   },
+  {
+    name: "FigmaPrototype",
+    label: "Figma Prototype",
+    fields: [
+      {
+        name: "url",
+        label: "Embed URL",
+        type: "string",
+        description:
+          "The Figma prototype embed URL (from Share > Get embed code)",
+      },
+      {
+        name: "height",
+        label: "Height",
+        type: "string",
+        description: "Optional: Set a custom height (default: aspect-video)",
+        required: false,
+      },
+    ],
+    ui: {
+      defaultItem: {
+        url: "",
+        height: "",
+      },
+    },
+  },
 ]

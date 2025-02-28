@@ -343,3 +343,15 @@ export const IphoneMockup = (props: any) => {
     </div>
   )
 }
+
+export const FigmaPrototype = (props: any) => {
+  return (
+    <div className="my-8 aspect-video w-full">
+      <iframe
+        className="size-full rounded-lg border-none"
+        src={props.url}
+        allowFullScreen
+      />
+    </div>
+  )
+}
