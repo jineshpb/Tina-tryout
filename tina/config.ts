@@ -37,29 +37,24 @@ export default defineConfig({
         format: "json",
         fields: [
           {
-            name: "logo",
             type: "image",
+            name: "logo",
             label: "Logo",
           },
           {
-            name: "menuItems",
             type: "object",
+            name: "menuItems",
             label: "Menu Items",
             list: true,
-            ui: {
-              itemProps: (item) => {
-                return { label: item?.title }
-              },
-            },
             fields: [
               {
-                name: "label",
                 type: "string",
+                name: "label",
                 label: "Label",
               },
               {
-                name: "link",
                 type: "string",
+                name: "link",
                 label: "Link",
               },
             ],

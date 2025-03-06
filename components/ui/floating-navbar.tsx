@@ -11,7 +11,7 @@ import Link from "next/link"
 import Image from "next/image"
 import node from "postcss/lib/node"
 import { ThemeToggle } from "../ThemeToggle"
-import { Home } from "lucide-react"
+import { Home, Radio } from "lucide-react"
 
 function NameLogo({ logo }: { logo: any }) {
   // replace any with the actual type of logo
@@ -128,6 +128,18 @@ export const FloatingNav = ({
               <span className="hidden text-xl sm:block">{navItem.label}</span>
             </button>
           ))}
+
+        <div className="mx-auto flex w-auto items-center justify-center tracking-normal">
+          <a
+            href="https://live.jineshb.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border-2 border-emerald-500 bg-emerald-50 px-3 py-1 text-sm text-emerald-700 transition-colors hover:bg-emerald-100 dark:border-emerald-500 dark:bg-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-700"
+          >
+            <Radio className="size-3 animate-pulse" />
+            <span className="inline-block min-w-fit">Live</span>
+          </a>
+        </div>
         <button className="relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white">
           <ThemeToggle />
           <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500  to-transparent" />

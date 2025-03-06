@@ -3,6 +3,14 @@ query homePage($filter: PostsFilter) {
     ...PageParts
   }
 
+  settings(relativePath: "settings.json") {
+    logo
+    menuItems {
+      label
+      link
+    }
+  }
+
   postsConnection(sort: "date", filter: $filter, last: 5) {
     edges {
       node {

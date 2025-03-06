@@ -27,6 +27,14 @@ import gsap from "gsap"
 import CanvasPill from "../CanvasPill"
 import ProductPill from "../ProductPill"
 import MobileHero from "../MobileHero"
+import { Radio } from "lucide-react"
+import Link from "next/link"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -357,12 +365,12 @@ export function HomePageComponent(props: {
               case "PageBlocksWelcomeHero":
                 return (
                   <section
-                    className="relative  flex w-full flex-col gap-12 lg:mt-32 lg:flex-row"
+                    className="relative  flex w-full flex-col gap-12 lg:mt-24 lg:flex-row"
                     key={i}
                   >
                     <div className=" mt-24 hidden w-full md:flex ">
                       <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-8xl xl:text-9xl ">
-                        <div className="mx-auto items-center justify-center space-y-6 ">
+                        <div className="mx-auto w-full items-center justify-center space-y-6 ">
                           <div className=" flex w-full items-center justify-center gap-4">
                             <h1>Product</h1>
 
