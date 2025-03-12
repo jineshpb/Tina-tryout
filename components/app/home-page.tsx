@@ -371,15 +371,16 @@ export function HomePageComponent(props: {
                     <div className=" mt-24 hidden w-full md:flex ">
                       <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-8xl xl:text-9xl ">
                         <div className="mx-auto w-full items-center justify-center space-y-6 ">
-                          <div className=" flex w-full items-center justify-center gap-4">
-                            <h1>Product</h1>
-
-                            <DelayedComponent>
-                              <ProductPill />
-                            </DelayedComponent>
-                            <h1>designer,</h1>
+                          <div className="select-none">
+                            <div className="flex w-full items-center justify-center gap-4">
+                              <h1>Product</h1>
+                              <DelayedComponent>
+                                <ProductPill />
+                              </DelayedComponent>
+                              <h1>designer,</h1>
+                            </div>
                           </div>
-                          <h1 className=" flex items-start justify-center   ">
+                          <h1 className=" flex select-none items-start justify-center   ">
                             CG{" "}
                             <DelayedComponent>
                               <CanvasPill className="h-[80px] w-[130px] lg:h-[130px] lg:w-[180px]" />
@@ -387,7 +388,7 @@ export function HomePageComponent(props: {
                             generalist,
                           </h1>
 
-                          <div className="flex items-center justify-center gap-4">
+                          <div className="flex select-none items-center justify-center gap-4">
                             novice coder{" "}
                             <DelayedComponent>
                               <FollowerPointerCard
