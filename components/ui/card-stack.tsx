@@ -29,8 +29,6 @@ export const CardStack = ({
   offset?: number
   scaleFactor?: number
 }) => {
-  console.log("items", items)
-
   const { cardItems } = items
 
   // console.log("cardItems", cardItems)
@@ -40,7 +38,6 @@ export const CardStack = ({
 
   const [cards, DisplayCards] = useState<Card[]>(cardItems)
 
-  console.log("cards", cards)
   useEffect(() => {
     startFlipping()
 
@@ -60,12 +57,6 @@ export const CardStack = ({
   return (
     <div className="!not-prose  relative  my-20 min-h-[35rem] w-full md:min-h-[25rem]  ">
       {cards?.map((card, index) => {
-        // console.log("card", card)
-        // console.log("lenght", cards.length)
-        // console.log("index", index)
-
-        // console.log("top", index * -CARD_OFFSET)
-
         return (
           <motion.div
             key={card.id}

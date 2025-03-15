@@ -1,4 +1,3 @@
-import { PostPageComponent } from "@/components/app/posts/post-page-component"
 import client from "@/tina/__generated__/client"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"

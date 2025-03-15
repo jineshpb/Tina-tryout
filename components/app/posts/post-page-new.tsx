@@ -26,6 +26,7 @@ import { EB_Garamond } from "next/font/google"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { title } from "process"
+import { isSmallScreen, useScreenSize } from "@/utils/useScreenSize"
 
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
@@ -40,24 +41,33 @@ export const ArticleHeader = (props: {
   query: string
 }) => {
   const { data } = useTina(props)
+  const screenSize = useScreenSize()
 
-  console.log("data", data)
+  const titleSize = {
+    sm: "text-4xl",
+    md: "text-5xl",
+    lg: "text-6xl",
+    xl: "text-7xl",
+    "2xl": "text-8xl",
+  }[screenSize]
 
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <div className=" grid grid-cols-1 gap-8 bg-emerald-600 dark:bg-emerald-900 lg:grid-cols-2 ">
       {/* Left: Hero Image */}
-      <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+      <div className="relative aspect-[4/3] overflow-hidden ">
         {data.posts.coverImage && (
           <Image
             src={data?.posts?.coverImage}
             alt={title}
+            width={1000}
+            height={1000}
             className="size-full object-cover"
           />
         )}
       </div>
 
-      <div className="flex flex-col justify-center space-y-4">
-        <div className="space-y-4">
+      <div className="relative flex flex-col justify-center lg:space-y-4 lg:px-8">
+        <div className="relative block  w-full space-y-4  bg-emerald-600  px-6 py-4 dark:bg-emerald-900 sm:absolute sm:left-[-100px] sm:top-1/2 sm:-translate-y-1/2 lg:p-16">
           {data.posts.tags && data.posts.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {data.posts.tags.map(
@@ -65,7 +75,7 @@ export const ArticleHeader = (props: {
                   tag && (
                     <span
                       key={i}
-                      className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                      className="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-800 dark:bg-emerald-800 dark:text-emerald-200 lg:text-sm"
                       data-tina-field={tinaField(data.posts, "tags", i)}
                     >
                       {tag}
@@ -75,12 +85,13 @@ export const ArticleHeader = (props: {
             </div>
           )}
           <h1
-            className="font-whyte-bold text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl"
-            data-tina-field={tinaField(data.posts, "title")}
+            className="text-3xl font-bold leading-tight tracking-tight text-white dark:text-emerald-400 md:text-6xl lg:text-5xl "
+            // data-tina-field={tinaField(data.posts, "title")}
+            // className="!mt-16 !text-white "
           >
             {data.posts.title}
           </h1>
-          <time className="block text-sm text-zinc-500">
+          <time className="block text-sm text-emerald-200 dark:text-emerald-500">
             <span data-tina-field={tinaField(data.posts, "date")}>
               {moment(data.posts.date).format("MMM DD, YYYY")}
             </span>
@@ -106,9 +117,9 @@ export const ArticleContent = (props: {
   console.log("article", data)
 
   return (
-    <article className=" max-w-6xl px-4 py-12">
+    <article className=" max-w-6xl px-4 pb-12">
       {/* Article Body */}
-      <div className="prose-headings:font-inter-bold  prose prose-lg mt-10  max-w-[680px] dark:prose-invert prose-p:leading-relaxed prose-p:tracking-wide">
+      <div className="prose-headings:font-inter-bold  prose prose-lg  max-w-[680px] dark:prose-invert prose-p:leading-relaxed prose-p:tracking-wide">
         <section data-tina-field={tinaField(data.posts, "body")}>
           <TinaMarkdown
             content={content}
@@ -139,11 +150,13 @@ export function PostPageComponentNew(props: {
   query: string
 }) {
   const { data, variables, query } = props // Destructure all props
+  const screenSize = useScreenSize()
 
   return (
     <>
-      <Bounded className="font-inter mt-32 max-sm:!px-[8px]">
-        <ArticleHeader data={data} variables={variables} query={query} />
+      <ArticleHeader data={data} variables={variables} query={query} />
+
+      <Bounded className="font-inter ">
         <ArticleContent data={data} variables={variables} query={query} />
       </Bounded>
       <PostPageFooter />

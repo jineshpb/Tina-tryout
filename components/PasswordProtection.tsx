@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { PostsQuery } from "@/tina/__generated__/types"
-import { PostPageComponent } from "@/components/app/posts/post-page-component"
+
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import Bounded from "./Bounded"
@@ -13,6 +13,7 @@ import { MdContentCopy, MdOutlineAlternateEmail } from "react-icons/md"
 import { FaCheck } from "react-icons/fa"
 import { Toaster, toast } from "react-hot-toast"
 import Lottie from "react-lottie"
+import { PostPageComponentNew } from "./app/posts/post-page-new"
 
 export default function PasswordProtection({
   data,
@@ -51,7 +52,9 @@ export default function PasswordProtection({
   }
 
   if (isAuthenticated) {
-    return <PostPageComponent data={data} variables={variables} query={query} />
+    return (
+      <PostPageComponentNew data={data} variables={variables} query={query} />
+    )
   }
 
   return (
