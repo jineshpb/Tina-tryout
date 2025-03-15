@@ -17,9 +17,6 @@ const config = {
   ],
   prefix: "",
   theme: {
-    fontFamily: {
-      ppeditorial: ["PPEditorial", "serif"],
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -28,6 +25,13 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        ppeditorial: ["PPEditorial", "serif"],
+        inter: ["Inter", "sans-serif"],
+        "abc-regular": ["ABCWhyteRegular", "sans-serif"],
+        "abc-medium": ["ABCWhyteMedium", "sans-serif"],
+        "abc-bold": ["ABCWhyteBold", "sans-serif"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "custom-gradient":

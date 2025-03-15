@@ -3,6 +3,7 @@ import client from "@/tina/__generated__/client"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import PasswordProtection from "@/components/PasswordProtection"
+import { PostPageComponentNew } from "@/components/app/posts/post-page-new"
 
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
@@ -80,5 +81,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return <PasswordProtection {...result} />
   }
 
-  return <PostPageComponent {...result} />
+  return <PostPageComponentNew {...result} />
 }

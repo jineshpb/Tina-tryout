@@ -50,8 +50,8 @@ export function PostPageComponent(props: {
 
   return (
     <>
-      <Bounded className=" mt-32 max-sm:!px-[8px] ">
-        <div className="!not-prose flex w-full">
+      <Bounded className=" font-inter mt-32 max-sm:!px-[8px]">
+        <div className="!not-prose flex">
           <Heading
             as="h1"
             data-tina-field={tinaField(data.posts, "title")}
@@ -77,7 +77,7 @@ export function PostPageComponent(props: {
         </p>
         <hr className=" mb-20 mt-2  border-zinc-300 dark:border-zinc-700 " />
         <article
-          className={`  prose-xl prose-zinc   w-full !max-w-none dark:prose-invert lg:prose-xl  prose-headings:max-w-3xl 	 prose-p:max-w-3xl prose-a:break-words prose-a:text-emerald-500 prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 `}
+          className={`  prose-lg prose-zinc w-full !max-w-none dark:prose-invert lg:prose-lg  prose-headings:max-w-3xl 	 prose-p:max-w-3xl  prose-a:text-emerald-500 prose-code:max-w-4xl prose-img:max-w-7xl prose-video:max-w-4xl dark:prose-a:text-emerald-400 `}
         >
           <section data-tina-field={tinaField(data.posts, "body")}>
             <TinaMarkdown

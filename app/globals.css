@@ -1,22 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: "PPEditorial";
-  src: url("../public/fonts/PPEditorialNew-Italic.otf");
+  src: url("/fonts/PPEditorialNew-Italic.otf") format("opentype");
+  font-display: swap;
 }
 @font-face {
   font-family: "ABCWhyteRegular";
-  src: url("../public/fonts/whyte-inktrap/ABCWhyteInktrap-Book-Trial.otf");
+  src: url("/fonts/whyte-inktrap/ABCWhyteInktrap-Book-Trial.otf")
+    format("opentype");
+  font-display: swap;
 }
 @font-face {
   font-family: "ABCWhyteBold";
-  src: url("../public/fonts/whyte-inktrap/ABCWhyteInktrap-Bold-Trial.otf");
+  src: url("/fonts/whyte-inktrap/ABCWhyteInktrap-Bold-Trial.otf")
+    format("opentype");
+  font-display: swap;
 }
 @font-face {
   font-family: "ABCWhyteMedium";
-  src: url("../public/fonts/whyte-inktrap/ABCWhyteInktrap-Medium-Trial.otf");
+  src: url("/fonts/whyte-inktrap/ABCWhyteInktrap-Medium-Trial.otf")
+    format("opentype");
+  font-display: swap;
 }
 
 #body,
@@ -208,18 +217,6 @@
         #ffffff 32px
       ),
       repeating-linear-gradient(#f0f0f0, #f0f0f0);
-  }
-
-  .font-abcwhyte-regular {
-    font-family: "ABCWhyteRegular", sans-serif;
-  }
-
-  .font-abcwhyte-medium {
-    font-family: "ABCWhyteMedium", sans-serif;
-  }
-
-  .font-abcwhyte-bold {
-    font-family: "ABCWhyteBold", sans-serif;
   }
 
   .custom-dot-bg {

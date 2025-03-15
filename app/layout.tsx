@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-abcwhyte-regular">
+      <body className="font-abc-regular">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="ms:px-0 mx-auto w-full">
             <main className="mx-auto w-full">{children}</main>
