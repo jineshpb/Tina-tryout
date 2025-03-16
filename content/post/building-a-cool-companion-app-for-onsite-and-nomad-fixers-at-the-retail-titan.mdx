@@ -7,14 +7,72 @@ protected: true
 password: technician123
 ---
 
+### Introduction
+
 Don't be alarmed by the title, this is just for me to hide this potential NDA item in plain sight. \
 HVAC/R technicians at wmt are either insource techs on wmt payroll or outsources to different agencies and they will be on respective agency payroll, There is a robust system to schedule rosters and manage workforce. Technicians are paid hourly and tracked for various activities such as travelling, fixing things, clerical etc. \
 In 2024 we onboarded our first external vendor (Lets call them PE) who is interested in using the scheduling tool and tech tool for their HAVC/R systems. \
 when we started the project there was a legacy grass root app for techs to discover work orders, but we decided to redesign it for the long term where there are multiple tenants on both ends, tech and providers. I lead the project and designed an MVP for external scalability and for internal usage
 
-### &#x20;Persona definition
+### Persona definition
+
+As an HVAC technician, I want to receive and track work orders for equipment repairs so that I can efficiently complete service requests and ensure customer satisfaction.
+
+#### Given
+
+* I receive a work order for an overhead HVAC unit at a specified location.
+* The work order includes details such as the equipment type, issue, and an estimated average repair time.
+
+#### When
+
+* I begin working on the repair, I track my progress through the system.
+* I confirm my arrival and update the work order as I assess the issue.
+* If parts are needed, I place an order and monitor their shipping status.
+* The system provides real-time updates on the order status, including estimated arrival times.
+
+#### Then
+
+* Once the required parts arrive, I complete the repair.
+* I log the completion time and finalize the work order.
+* The system marks the job as completed, ensuring accurate tracking and service documentation.
+
+This workflow helps streamline the repair process, ensuring timely service and efficient management of resources.
+
+### Day in his life
+
+<MermaidChart
+  chart="sequenceDiagram
+      participant Home as Technician's Home
+      participant Store1 as Store-1
+      participant Store2 as Store-2
+      participant Domicile as Domicile Store
+
+      Home ->> Store1: Travel to work order-1
+      Store1 ->> Store1: Handle work order-1
+      Store1 ->> Store2: Travel to work order-2
+      Store2 ->> Store2: Handle work order-2
+      Store2 ->> Domicile: Return to Domicile Store
+      Domicile ->> Home: End of Day, Return Home
+  "
+/>
 
 ### &#x20;Secondary research
+
+<MermaidChart
+  chart="flowchart TD
+      A(&#x22;Receive Work Order for refrigeration/HVAC unit&#x22;) --> B(&#x22;Review Work Order Details: Equipment, Issue, Repair Time&#x22;)
+      B --> C(&#x22;Start travel to location&#x22;)
+      C --> D(&#x22;Confirm Arrival and Assess Issue&#x22;)
+      D --> E{&#x22;Parts Needed?&#x22;}
+      E -- Yes --> F(&#x22;Order Parts and Monitor Shipping Status&#x22;)
+      F --> G(&#x22;Receive and Install Parts&#x22;)
+      G --> H(&#x22;Log Completion Time and Finalize Work Order&#x22;)
+      H --> I(&#x22;System Marks Job as Completed&#x22;)
+      E -- No --> n1[&#x22;Fix the issue&#x22;]
+      n1 --> H
+
+  "
+/>
 
 ### Wireframes
 

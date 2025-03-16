@@ -26,6 +26,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 import moment from "moment"
 import { cn } from "@/utils/cn"
+import Mermaid from "@/components/ui/mermaid"
 
 export const TextBox = (props: any) => {
   return (
@@ -355,6 +356,14 @@ export const FigmaPrototype = (props: any) => {
         height={height}
         allowFullScreen
       />
+    </div>
+  )
+}
+
+export const MermaidChart = (props: any) => {
+  return (
+    <div className="my-8">
+      <Mermaid chart={props.chart} />
     </div>
   )
 }

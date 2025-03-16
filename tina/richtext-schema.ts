@@ -283,4 +283,18 @@ export const richTextComponents: Template[] = [
       },
     },
   },
+  {
+    name: "MermaidChart",
+    label: "Mermaid Diagram",
+    fields: [
+      {
+        name: "chart",
+        label: "Chart Definition",
+        type: "string",
+        ui: {
+          component: "textarea",
+        },
+      },
+    ],
+  },
 ]

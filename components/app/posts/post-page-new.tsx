@@ -19,6 +19,7 @@ import {
   ImageCarousel,
   IphoneMockup,
   FigmaPrototype,
+  MermaidChart,
 } from "@/components/RichText"
 
 import PostPageFooter from "@/components/PostPageFooter"
@@ -134,6 +135,7 @@ export const ArticleContent = (props: {
               ImageCarousel,
               IphoneMockup,
               FigmaPrototype,
+              MermaidChart,
             }}
           />
         </section>
