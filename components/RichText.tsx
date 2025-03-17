@@ -295,7 +295,7 @@ export const IphoneMockup = (props: any) => {
 
   return (
     <div className="relative  mt-20 flex items-center justify-center px-10">
-      <div className="relative flex items-center justify-center drop-shadow-xl  lg:max-w-[30%]">
+      <div className="relative flex items-center justify-center drop-shadow-xl  lg:max-w-[70%]">
         <div className="absolute left-0 size-full">
           <img
             src="/iphone_clay_white.png"
