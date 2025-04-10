@@ -3,7 +3,7 @@ title: Building a cool companion app for onsite and nomad fixers at the retail t
 coverImage: >-
   https://res.cloudinary.com/dhuk11prd/image/upload/v1742036341/portfolio-tina/technician%20app/Technician_xoxyxd.jpg
 date: 2025-02-12T05:20:07.613Z
-protected: true
+protected: false
 password: technician123
 ---
 
@@ -42,17 +42,17 @@ This workflow helps streamline the repair process, ensuring timely service and e
 
 <MermaidChart
   chart="sequenceDiagram
-      participant Home as Technician's Home
-      participant Store1 as Store-1
-      participant Store2 as Store-2
-      participant Domicile as Domicile Store
+  participant Home as Technician's Home
+  participant Store1 as Store-1
+  participant Store2 as Store-2
+  participant Domicile as Domicile Store
 
-      Home ->> Store1: Travel to work order-1
-      Store1 ->> Store1: Handle work order-1
-      Store1 ->> Store2: Travel to work order-2
-      Store2 ->> Store2: Handle work order-2
-      Store2 ->> Domicile: Return to Domicile Store
-      Domicile ->> Home: End of Day, Return Home
+  Home ->> Store1: Travel to work order-1
+  Store1 ->> Store1: Handle work order-1
+  Store1 ->> Store2: Travel to work order-2
+  Store2 ->> Store2: Handle work order-2
+  Store2 ->> Domicile: Return to Domicile Store
+  Domicile ->> Home: End of Day, Return Home
   "
 />
 
@@ -60,16 +60,16 @@ This workflow helps streamline the repair process, ensuring timely service and e
 
 <MermaidChart
   chart="flowchart TD
-      A(&#x22;Receive Work Order for refrigeration/HVAC unit&#x22;) --> B(&#x22;Review Work Order Details: Equipment, Issue, Repair Time&#x22;)
-      B --> C(&#x22;Start travel to location&#x22;)
-      C --> D(&#x22;Confirm Arrival and Assess Issue&#x22;)
-      D --> E{&#x22;Parts Needed?&#x22;}
-      E -- Yes --> F(&#x22;Order Parts and Monitor Shipping Status&#x22;)
-      F --> G(&#x22;Receive and Install Parts&#x22;)
-      G --> H(&#x22;Log Completion Time and Finalize Work Order&#x22;)
-      H --> I(&#x22;System Marks Job as Completed&#x22;)
-      E -- No --> n1[&#x22;Fix the issue&#x22;]
-      n1 --> H
+  A(&#x22;Receive Work Order for refrigeration/HVAC unit&#x22;) --> B(&#x22;Review Work Order Details: Equipment, Issue, Repair Time&#x22;)
+  B --> C(&#x22;Start travel to location&#x22;)
+  C --> D(&#x22;Confirm Arrival and Assess Issue&#x22;)
+  D --> E{&#x22;Parts Needed?&#x22;}
+  E -- Yes --> F(&#x22;Order Parts and Monitor Shipping Status&#x22;)
+  F --> G(&#x22;Receive and Install Parts&#x22;)
+  G --> H(&#x22;Log Completion Time and Finalize Work Order&#x22;)
+  H --> I(&#x22;System Marks Job as Completed&#x22;)
+  E -- No --> n1[&#x22;Fix the issue&#x22;]
+  n1 --> H
 
   "
 />
