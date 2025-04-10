@@ -35,6 +35,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import PixelFooter from "../PixelFooter"
 
 const EbGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -335,6 +336,8 @@ export function HomePageComponent(props: {
 
   const postsList = data.postsConnection.edges
 
+  console.log("@@All posts", postsList)
+
   const projectList = data.projectsConnection.edges
   const sortedProjectList =
     projectList?.sort((a, b) => {
@@ -614,6 +617,7 @@ export function HomePageComponent(props: {
 
         <section id="footer">
           <Footer />
+          {/* <PixelFooter /> */}
         </section>
       </div>
     </>

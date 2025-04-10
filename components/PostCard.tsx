@@ -10,6 +10,8 @@ export default function PostCard({
   post: any
   className: any
 }) {
+  console.log("@@password check", post.node)
+
   return (
     <div
       key={post.node.id}
@@ -20,7 +22,7 @@ export default function PostCard({
         className="flex flex-col gap-2"
       >
         <div className="flex flex-col items-start ">
-          {post.node.password && (
+          {post.node.protected && (
             <div className="flex items-center rounded-xl  border border-zinc-100 px-2 py-1 text-sm text-gray-400 shadow-sm dark:border-zinc-800">
               <FaLock className="mr-2 text-gray-400" />
               <p>needs password</p>

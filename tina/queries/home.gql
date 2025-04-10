@@ -17,6 +17,7 @@ query homePage($filter: PostsFilter) {
         title
         date
         id
+        protected
         password
         _sys {
           filename
