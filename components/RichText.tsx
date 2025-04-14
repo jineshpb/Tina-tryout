@@ -27,6 +27,8 @@ gsap.registerPlugin(ScrollTrigger)
 import moment from "moment"
 import { cn } from "@/utils/cn"
 import Mermaid from "@/components/ui/mermaid"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { X } from "lucide-react"
 
 export const TextBox = (props: any) => {
   return (
@@ -73,14 +75,42 @@ export const VideoPlayer = (props: any) => {
 
 export const CaptionedImage = (props: any) => {
   return (
-    <figure className="flex max-w-7xl flex-col items-center justify-center py-6  md:min-w-full lg:min-w-full xl:min-w-full">
-      <img
-        src={props.imageUrl}
-        alt={props.alt}
-        style={{
-          maxWidth: "100%",
-        }}
-      />
+    <figure className="flex max-w-7xl flex-col items-center justify-center py-6 md:min-w-full lg:min-w-full xl:min-w-full">
+      <Dialog>
+        <DialogTrigger asChild>
+          <div className="flex w-full items-center justify-center overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800">
+            <img
+              src={props.imageUrl}
+              alt={props.alt}
+              style={{
+                maxWidth: "100%",
+              }}
+              className="cursor-zoom-in transition-all hover:opacity-90"
+            />
+          </div>
+        </DialogTrigger>
+        <DialogContent className="max-h-[95vh] max-w-[95vw] p-0 md:max-w-[85vw]">
+          <div className="relative flex aspect-auto w-full items-center justify-center">
+            <img
+              src={props.imageUrl}
+              alt={props.alt}
+              className="size-auto max-w-full object-contain"
+            />
+            <button
+              className="absolute right-4 top-4 rounded-full bg-zinc-100/90 p-2 opacity-70 transition-opacity hover:opacity-100 dark:bg-zinc-900/90"
+              onClick={() =>
+                (
+                  document.querySelector(
+                    'button[aria-label="Close"]',
+                  ) as HTMLButtonElement
+                )?.click()
+              }
+            >
+              <X className="size-4" />
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <figcaption className="w-full text-left text-[.8em] italic text-zinc-800 dark:text-zinc-400">
         {props.caption}
