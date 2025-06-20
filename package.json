@@ -23,6 +23,7 @@
     "@react-three/fiber": "^8.16.2",
     "@react-three/postprocessing": "^2.16.2",
     "@rive-app/react-canvas": "^4.13.4",
+    "@tailwindcss/postcss": "^4.1.8",
     "@tinacms/auth": "^1.0.4",
     "@types/p5": "^1.7.6",
     "@vercel/og": "^0.6.2",
@@ -64,14 +65,14 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18",
     "@types/react-lottie": "^1.2.10",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "eslint-plugin-tailwindcss": "^3.15.1",
-    "postcss": "^8",
+    "postcss": "^8.5.4",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.4.5"
   }
 }

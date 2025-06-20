@@ -105,7 +105,7 @@ export default function Footer() {
           />
 
           <button
-            className="relative flex w-full flex-col rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
+            className="relative flex w-full flex-col-reverse items-start gap-4 rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
               event.preventDefault()
 
@@ -122,9 +122,13 @@ export default function Footer() {
               }
             }}
           >
+            {!copied ? (
+              <MdOutlineAlternateEmail size={48} />
+            ) : (
+              <FaCheck size={48} />
+            )}
             {copied ? "Email Copied!" : "Copy Email"}
 
-            {!copied ? <MdOutlineAlternateEmail size={48} /> : <FaCheck />}
             <span className="absolute bottom-[-6px] left-0 z-10  size-full rounded-[64px] bg-emerald-700/10 transition-all duration-300 group-hover:bottom-[-12px]"></span>
             <Toaster />
             {copied && (
@@ -151,7 +155,7 @@ export default function Footer() {
           </RenderModel> */}
         </div>
         <div className="absolute -bottom-[500px] z-10   h-[1200px] w-full">
-          <GravityBalls />
+          {/* <GravityBalls /> */}
         </div>
 
         <div className=" absolute w-full ">
