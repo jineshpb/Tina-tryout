@@ -148,13 +148,13 @@ export default function Footer() {
           </button>
         </div>
       </div>
-      <div className="relative flex w-full flex-col items-end overflow-hidden text-clip">
+      <div className="relative flex w-full flex-col items-end overflow-hidden text-clip bg-gradient-to-t from-amber-800 via-amber-800 to-emerald-800">
         <div className="bottom-0 z-10 h-[600px] w-full">
           <RenderModel className="">
             <ChonkyCat />
           </RenderModel>
         </div>
-        <div className="absolute -bottom-[500px] z-10   h-[1200px] w-full">
+        <div className="absolute -bottom-[500px] z-10 h-[1200px] w-full">
           {/* <GravityBalls /> */}
         </div>
 
@@ -163,7 +163,7 @@ export default function Footer() {
             <Heading
               as="h3"
               size="2xl"
-              className=" font-medium leading-[12rem] tracking-tight text-emerald-700 dark:text-emerald-700"
+              className=" font-bold leading-[11rem] tracking-tight text-gray-700/20 dark:text-gray-700/20"
             >
               Thank you for visiting
             </Heading>
@@ -171,9 +171,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <hr className=" border-emerald-700" />
-      <div className="relative my-[50px] flex flex-col items-center gap-4 ">
-        <div className="flex flex-col items-center text-center text-emerald-400 dark:text-emerald-600">
+      <hr className="border-amber-900" />
+      <div className="relative flex flex-col items-center gap-4 bg-amber-800 py-[50px]">
+        <div className="flex flex-col items-center text-center text-amber-400 dark:text-amber-600">
           <p>All rights reserved. © 2024 Jinesh P bhaskaran </p>
           <span>
             Cat model from Sketchfab by <br /> Kanna-Nakajima, Thanks
@@ -181,25 +181,25 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="flex gap-4 text-zinc-400 *:fill-emerald-400 dark:text-zinc-600 ">
+        <div className="flex gap-4 text-zinc-400 *:fill-amber-400 dark:text-zinc-600 ">
           <Link
             target="_blank"
             href="https://github.com/jineshpb"
-            className=" text-emerald-600 transition-all duration-500 hover:text-emerald-300"
+            className=" text-amber-600 transition-all duration-500 hover:text-amber-300"
           >
             <RiGithubFill size={24} />
           </Link>
           <Link
             href="https://instagram.com/jineshpbhaskar"
             target="_blank"
-            className="text-emerald-600 transition-all duration-500 hover:text-emerald-300"
+            className="text-amber-600 transition-all duration-500 hover:text-amber-300"
           >
             <FaInstagram size={24} />
           </Link>
           <Link
             href="https://www.behance.net/jineshpb"
             target="_blank"
-            className="text-emerald-600 transition-all duration-500 hover:text-emerald-300"
+            className="text-amber-600 transition-all duration-500 hover:text-amber-300"
           >
             <FaSquareBehance size={24} />
           </Link>
