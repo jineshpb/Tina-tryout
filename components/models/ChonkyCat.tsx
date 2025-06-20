@@ -53,7 +53,7 @@ export function ChonkyCat(props: any) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
-        <group name="Rig" position={[0, 0, -0.034]} scale={0.8}>
+        <group name="Rig" position={[0, -3.6, -0.034]} scale={0.8}>
           <skinnedMesh
             name="fat_cat_white001"
             geometry={(nodes.fat_cat_white001 as THREE.SkinnedMesh).geometry}

@@ -150,9 +150,9 @@ export default function Footer() {
       </div>
       <div className="relative flex w-full flex-col items-end overflow-hidden text-clip">
         <div className="bottom-0 z-10 h-[600px] w-full">
-          {/* <RenderModel className="">
+          <RenderModel className="">
             <ChonkyCat />
-          </RenderModel> */}
+          </RenderModel>
         </div>
         <div className="absolute -bottom-[500px] z-10   h-[1200px] w-full">
           {/* <GravityBalls /> */}
