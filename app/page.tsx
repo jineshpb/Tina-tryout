@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import { HomePageComponent } from "@/components/app/home-page"
 import client from "@/tina/__generated__/client"
@@ -10,8 +11,8 @@ export default async function HomePage() {
   return (
     <>
       <Header />
-
       <HomePageComponent {...result} />
+      <Footer />
     </>
   )
 }

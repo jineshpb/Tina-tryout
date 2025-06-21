@@ -31,6 +31,12 @@ export function useScreenSize(): ScreenSize {
   return screenSize
 }
 
+// Add the isMobile hook
+export function useIsMobile(): boolean {
+  const screenSize = useScreenSize()
+  return screenSize === "sm"
+}
+
 // Optional: Add helper functions
 export function isSmallScreen(size: ScreenSize): boolean {
   return size === "sm"

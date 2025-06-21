@@ -1,7 +1,8 @@
 import React from "react"
-import ProductPill from "./ProductPill"
-import CanvasPill from "./CanvasPill"
+import ProductPill from "./app/landing/ProductPill"
+
 import { Radio } from "lucide-react"
+import CanvasPill from "./app/landing/CanvasPill"
 
 const MobileHero = () => {
   return (

@@ -4,8 +4,6 @@ import Bounded from "@/components/Bounded"
 import Heading from "@/components/Heading"
 import { LinkCard } from "@/components/LinkCard"
 import { ProjectsConnectionQuery } from "@/tina/__generated__/types"
-import Link from "next/link"
-import { useCallback } from "react"
 import { useTina } from "tinacms/dist/react"
 
 export function ProjectListPageComponent(props: {

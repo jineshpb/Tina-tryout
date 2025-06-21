@@ -1,7 +1,7 @@
 "use client"
 
 import { Canvas } from "@react-three/fiber"
-import { ChonkyCat } from "./models/ChonkyCat"
+
 import { OrbitControls, OrthographicCamera } from "@react-three/drei"
 import { useGLTF } from "@react-three/drei"
 import { GLTF } from "three-stdlib"

@@ -4,11 +4,6 @@ import { notFound } from "next/navigation"
 import PasswordProtection from "@/components/PasswordProtection"
 import { PostPageComponentNew } from "@/components/app/posts/post-page-new"
 
-// export const metadata: Metadata = {
-//   title: "Tina CMS Blog",
-//   description: "My Web dev blog",
-// }
-
 export async function generateMetadata({
   params,
 }: {

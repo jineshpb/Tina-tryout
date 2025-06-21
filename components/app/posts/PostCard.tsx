@@ -10,7 +10,7 @@ export default function PostCard({
   post: any
   className: any
 }) {
-  console.log("@@password check", post.node)
+  // console.log("@@password check", post.node)
 
   return (
     <div

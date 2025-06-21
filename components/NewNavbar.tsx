@@ -117,9 +117,9 @@ function MobileNav({
   return (
     <>
       {open ? (
-        <div className="mobile-drawer  z-20 !m-0 flex w-full flex-col !p-0 ">
+        <div className="z-20 !m-0 flex w-full flex-col !p-0 ">
           <div
-            className="flex size-full flex-col items-end backdrop-blur-xl"
+            className="flex size-full flex-col items-end rounded-[32px] border border-gray-600  backdrop-blur-xl"
             style={{
               backdropFilter: "blur(20px)",
 
@@ -129,7 +129,7 @@ function MobileNav({
             <button
               aria-expanded={open}
               aria-label="Open menu"
-              className=" p-2 text-2xl text-zinc-800 dark:text-zinc-400"
+              className=" p-6 text-2xl text-zinc-800 dark:text-zinc-400"
               onClick={() => {
                 setOpen(!open)
               }}
@@ -139,11 +139,11 @@ function MobileNav({
 
             <div
               id="drawer"
-              className={clsx(" size-full flex-col items-center p-20 ")}
+              className={clsx(" size-full flex-col items-center  p-8 ")}
             >
               {data[0]?.node.menuItems?.map((item: any, index: any) => (
                 <React.Fragment key={index}>
-                  <li className="mt-4  flex items-center text-zinc-800 first:mt-8 dark:text-zinc-300">
+                  <li className=" flex items-center justify-center pb-6 pt-4 text-zinc-800 dark:text-zinc-300">
                     <button
                       onClick={() => {
                         setOpen(!open)
