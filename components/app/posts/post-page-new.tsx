@@ -28,6 +28,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { title } from "process"
 import { isSmallScreen, useScreenSize } from "@/utils/useScreenSize"
+import SuggestedPosts from "@/components/app/posts/SuggestedPosts"
 
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
@@ -151,7 +152,7 @@ export function PostPageComponentNew(props: {
   }
   query: string
 }) {
-  const { data, variables, query } = props // Destructure all props
+  const { data, variables, query } = props
   const screenSize = useScreenSize()
 
   return (
@@ -160,7 +161,9 @@ export function PostPageComponentNew(props: {
 
       <Bounded className="font-inter ">
         <ArticleContent data={data} variables={variables} query={query} />
+        <SuggestedPosts currentPost={data} />
       </Bounded>
+
       <PostPageFooter />
     </>
   )
