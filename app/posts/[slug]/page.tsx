@@ -60,7 +60,6 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  // generateMetadata({ params })
   const result = await client.queries
     .posts({ relativePath: `${params.slug}.mdx` })
     .then((result) => {
@@ -75,5 +74,48 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return <PasswordProtection {...result} />
   }
 
-  return <PostPageComponentNew {...result} />
+  // Fetch all posts for suggestions
+  const allPostsResult = await client.queries.postsConnection({
+    last: 50, // Get more posts for better suggestions
+  })
+
+  // Calculate suggested posts
+  const suggestedPosts = calculateSuggestedPosts(
+    result.data.posts,
+    allPostsResult.data.postsConnection.edges || []
+  )
+
+  return (
+    <PostPageComponentNew 
+      {...result} 
+      suggestedPosts={suggestedPosts}
+    />
+  )
+}
+
+// Helper function to calculate suggested posts
+const calculateSuggestedPosts = (currentPost: any, allPostsEdges: any[]) => {
+  // Get all posts except current one
+  const allPosts = allPostsEdges
+    .filter((edge) => edge?.node?._sys.filename !== currentPost._sys.filename)
+    .map((edge) => edge?.node)
+    .filter(Boolean)
+
+  // Score posts based on tag matches
+  const scoredPosts = allPosts.map((post) => {
+    const matchingTags = post?.tags?.filter((tag: string) => 
+      currentPost.tags?.includes(tag)
+    ).length || 0
+
+    return {
+      post,
+      score: matchingTags,
+    }
+  })
+
+  // Sort by score and take top 3
+  return scoredPosts
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((item) => item.post)
 }

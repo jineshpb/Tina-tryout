@@ -29,7 +29,6 @@ import Image from "next/image"
 import { title } from "process"
 import { isSmallScreen, useScreenSize } from "@/utils/useScreenSize"
 import SuggestedPosts from "@/components/app/posts/SuggestedPosts"
-import client from "@/tina/__generated__/client"
 
 // export const metadata: Metadata = {
 //   title: "Tina CMS Blog",
@@ -146,34 +145,15 @@ export const ArticleContent = (props: {
   )
 }
 
-export async function PostPageComponentNew(props: {
+export function PostPageComponentNew(props: {
   data: PostsQuery
   variables: {
     relativePath: string
   }
   query: string
+  suggestedPosts?: any[]
 }) {
-  const { data, variables, query } = props
-
-  // Fetch current post data
-  const result = await client.queries.posts({
-    relativePath: `${variables.relativePath}`,
-  })
-
-  // Fetch all posts for suggestions
-  const allPostsResult = await client.queries.postsConnection({
-    last: 50, // Get more posts for better suggestions
-  })
-
-  // Calculate suggested posts
-  const suggestedPosts = calculateSuggestedPosts(
-    result.data.posts,
-    allPostsResult.data.postsConnection.edges || []
-  )
-
-  console.log("result", result.data.posts)
-
-  // const screenSize = useScreenSize()
+  const { data, variables, query, suggestedPosts = [] } = props
 
   return (
     <>
@@ -182,7 +162,7 @@ export async function PostPageComponentNew(props: {
       <Bounded className="font-inter ">
         <ArticleContent data={data} variables={variables} query={query} />
         <SuggestedPosts 
-          currentPost={result.data.posts} 
+          currentPost={data.posts} 
           suggestedPosts={suggestedPosts}
         />
       </Bounded>
@@ -190,33 +170,6 @@ export async function PostPageComponentNew(props: {
       <PostPageFooter />
     </>
   )
-}
-
-// Helper function to calculate suggested posts
-const calculateSuggestedPosts = (currentPost: any, allPostsEdges: any[]) => {
-  // Get all posts except current one
-  const allPosts = allPostsEdges
-    .filter((edge) => edge?.node?._sys.filename !== currentPost._sys.filename)
-    .map((edge) => edge?.node)
-    .filter(Boolean)
-
-  // Score posts based on tag matches
-  const scoredPosts = allPosts.map((post) => {
-    const matchingTags = post?.tags?.filter((tag: string) => 
-      currentPost.tags?.includes(tag)
-    ).length || 0
-
-    return {
-      post,
-      score: matchingTags,
-    }
-  })
-
-  // Sort by score and take top 3
-  return scoredPosts
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-    .map((item) => item.post)
 }
 
 interface ArticleHeaderProps {
