@@ -122,7 +122,6 @@ function MobileNav({
             className="flex size-full flex-col items-end rounded-[32px] border border-gray-600  backdrop-blur-xl"
             style={{
               backdropFilter: "blur(20px)",
-
               WebkitBackdropFilter: "blur(20px)",
             }}
           >

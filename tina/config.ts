@@ -294,9 +294,12 @@ export default defineConfig({
           {
             name: "body",
             type: "rich-text",
-            label: "Body",
+            label: "Content",
             isBody: true,
             templates: richTextComponents,
+            ui: {
+              component: "rich-text",
+            },
           },
           {
             type: "boolean",

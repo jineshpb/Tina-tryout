@@ -113,18 +113,16 @@ export const ArticleContent = (props: {
 }) => {
   const { data } = useTina(props)
 
-  const title = data.posts.title
-  const content = data.posts.body
-
-  console.log("article", data)
-
   return (
-    <article className=" max-w-6xl px-4 pb-12">
+    <article
+      className="max-w-6xl px-4 pb-12"
+      data-tina-field={tinaField(data.posts, "body")}
+    >
       {/* Article Body */}
-      <div className="prose-headings:font-inter-bold  prose prose-lg  max-w-[680px] dark:prose-invert prose-p:leading-relaxed prose-p:tracking-wide">
+      <div className="prose-headings:font-inter-bold prose prose-lg max-w-[680px] dark:prose-invert prose-p:leading-relaxed prose-p:tracking-wide">
         <section data-tina-field={tinaField(data.posts, "body")}>
           <TinaMarkdown
-            content={content}
+            content={data.posts.body}
             components={{
               TextBox,
               TweetEmbed,

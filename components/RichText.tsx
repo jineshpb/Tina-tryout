@@ -29,6 +29,15 @@ import { cn } from "@/utils/cn"
 import Mermaid from "@/components/ui/mermaid"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { X } from "lucide-react"
+import { toast } from "react-hot-toast"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Loader2, Sparkles, ChevronDown } from "lucide-react"
 
 export const TextBox = (props: any) => {
   return (
