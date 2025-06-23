@@ -1,67 +1,20 @@
 "use client"
 
 import { PostsQuery } from "@/tina/__generated__/types"
-import client from "@/tina/__generated__/client"
-
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import moment from "moment"
 import Heading from "@/components/Heading"
 
 interface SuggestedPostsProps {
-  currentPost: PostsQuery
+  currentPost: PostsQuery["posts"]
+  suggestedPosts: any[]
 }
 
-export default function SuggestedPosts({ currentPost }: SuggestedPostsProps) {
-  const [suggestedPosts, setSuggestedPosts] = useState<any[]>([])
-
-  useEffect(() => {
-    async function fetchSuggestedPosts() {
-      try {
-        // Get all posts using postsConnection
-        const result = await client.queries.postsConnection({
-          last: 10, // Limit to recent posts for better performance
-        })
-
-        // Get all posts except current one
-        const allPosts =
-          result.data.postsConnection.edges
-            ?.filter(
-              (edge) =>
-                edge?.node?._sys.filename !== currentPost.posts._sys.filename,
-            )
-            .map((edge) => edge?.node) || []
-
-        // Score posts based on tag matches
-        const scoredPosts = allPosts.map((post) => {
-          const matchingTags =
-            post?.tags?.filter((tag) => currentPost.posts.tags?.includes(tag))
-              .length || 0
-
-          return {
-            post,
-            score: matchingTags,
-          }
-        })
-
-        // Sort by score and take top 3
-        const topPosts = scoredPosts
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 3)
-          .map((item) => item.post)
-
-        setSuggestedPosts(topPosts)
-      } catch (error) {
-        console.error("Error fetching suggested posts:", error)
-      }
-    }
-
-    if (currentPost.posts.tags && currentPost.posts.tags.length > 0) {
-      fetchSuggestedPosts()
-    }
-  }, [currentPost])
-
+export default function SuggestedPosts({ 
+  currentPost, 
+  suggestedPosts 
+}: SuggestedPostsProps) {
   if (!suggestedPosts.length) return null
 
   return (
@@ -76,9 +29,9 @@ export default function SuggestedPosts({ currentPost }: SuggestedPostsProps) {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {suggestedPosts.map((post, i) => (
           <Link
-            href={`/posts/${post._sys.filename}`} // Using filename as the slug
+            href={`/posts/${post._sys.filename}`}
             key={i}
-            className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800"
+            className="group relative flex flex-col overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               {post.coverImage && (
