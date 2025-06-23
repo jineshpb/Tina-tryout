@@ -1,7 +1,6 @@
 "use client"
 
 import { Canvas } from "@react-three/fiber"
-
 import { OrbitControls, OrthographicCamera } from "@react-three/drei"
 import { useGLTF } from "@react-three/drei"
 import { GLTF } from "three-stdlib"
@@ -9,8 +8,10 @@ import * as THREE from "three"
 import { group } from "console"
 import { LayerMaterial, Depth, Fresnel, Noise } from "lamina"
 import { useFrame, useThree } from "@react-three/fiber"
-import { useRef } from "react"
+import { useRef, Suspense } from "react"
 import { cn } from "@/lib/utils"
+import { Loader2 } from "lucide-react"
+import { FaSpinner } from "react-icons/fa"
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -24,14 +25,20 @@ type GLTFResult = GLTF & {
 
 export default function CanvasPill({ className }: { className?: string }) {
   return (
-    <div className={cn("", className)}>
-      <Canvas className="size-full">
-        <CameraWithBreakpoints />
-        <OrbitControls enableZoom={false} enablePan={false} />
-        <ambientLight intensity={2} />
-        <directionalLight position={[10, 10, 10]} intensity={1} />
-        <ConcreteShape />
-      </Canvas>
+    <div className={cn("relative flex items-center justify-center", className)}>
+      <Suspense
+        fallback={
+          <FaSpinner className="size-8 animate-spin text-zinc-400 dark:text-zinc-600" />
+        }
+      >
+        <Canvas className="size-full">
+          <CameraWithBreakpoints />
+          <OrbitControls enableZoom={false} enablePan={false} />
+          <ambientLight intensity={2} />
+          <directionalLight position={[10, 10, 10]} intensity={1} />
+          <ConcreteShape />
+        </Canvas>
+      </Suspense>
     </div>
   )
 }

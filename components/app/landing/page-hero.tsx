@@ -28,7 +28,7 @@ const DelayedComponent = ({
   return isReady ? (
     children
   ) : (
-    <div className="flex animate-shimmer items-center justify-center rounded-[40px] bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
+    <div className="mx-2 flex animate-shimmer items-center justify-center rounded-[40px] bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-[length:400%_100%] dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-700 md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]">
       {/* <Loader className="  animate-spin" /> */}
 
       {/* <BiLoaderAlt className=" size-12 animate-spin" /> */}
@@ -51,7 +51,7 @@ const TitleComponent = ({ title }: { title: string }) => (
 
 const PageHero = ({ block }: { block: any }) => {
   return (
-    <section className="relative  flex w-full flex-col gap-12 lg:mt-24 lg:flex-row">
+    <section className="relative flex w-full flex-col gap-12 lg:mt-24 lg:flex-row">
       <div className=" mt-24 hidden w-full md:flex ">
         <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-8xl xl:text-9xl ">
           <div className="mx-auto w-full items-center justify-center space-y-6 ">
@@ -64,7 +64,7 @@ const PageHero = ({ block }: { block: any }) => {
                 <h1>designer,</h1>
               </div>
             </div>
-            <h1 className=" flex select-none items-start justify-center   ">
+            <h1 className=" flex select-none items-center justify-center   ">
               CG{" "}
               <DelayedComponent>
                 <CanvasPill className="h-[80px] w-[130px] lg:h-[130px] lg:w-[180px]" />
