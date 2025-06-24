@@ -42,6 +42,7 @@ export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
   })
 
   const NavList = data.settingsConnection.edges
+  console.log("@@NavList", NavList)
 
   return (
     <nav

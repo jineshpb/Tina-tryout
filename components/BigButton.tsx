@@ -16,6 +16,7 @@ type BigButtonProps = {
   className?: string
   children: ReactNode
   size?: "xl" | "lg" | "md" | "sm" | "xs"
+  useBack?: boolean
 }
 
 export default function BigButton({
@@ -24,16 +25,27 @@ export default function BigButton({
   target,
   className,
   children,
-
   size = "lg",
+  useBack = false,
 }: BigButtonProps) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (useBack) {
+      e.preventDefault()
+      window.history.back()
+    }
+  }
+
   return href ? (
     <button className={className}>
-      <Link href={href} target={target} className={className}>
+      <Link
+        href={href}
+        target={target}
+        className={className}
+        onClick={handleClick}
+      >
         <div
           className={clsx(
             "group relative w-auto rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-3xl font-medium text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500",
-
             size === "xl" && "text-6xl md:text-6xl",
           )}
           style={{

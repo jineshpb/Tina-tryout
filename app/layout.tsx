@@ -1,24 +1,13 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Space_Grotesk } from "next/font/google"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "900", "300", "400", "500", "600", "700", "800"],
 })
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-})
-
 import "./globals.css"
-import Header from "@/components/Header"
 import { ThemeProvider } from "@/components/ThemeProvider"
-
-import clsx from "clsx"
 
 const newUrl = process.env.VERCEL_URL
 const personalDomain = process.env.PERSONAL_URL
@@ -33,8 +22,6 @@ export const metadata: Metadata = {
   description: "Jinesh UX designer",
   category: "design",
 }
-// className={spaceGrotesk.className}
-// `{GeistSans.className}`
 
 export default function RootLayout({
   children,

@@ -63,11 +63,14 @@ export default function Footer() {
   const [copied, setCopied] = useState(false)
 
   return (
-    <section className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 ">
+    <section
+      className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 "
+      id="footer"
+    >
       <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
         <div className="flex w-full flex-col gap-4 px-6">
           <div>
-            <Heading className="font-abcwhyte-bold tracking-tight text-emerald-400 dark:text-emerald-400">
+            <Heading className=" tracking-tight text-emerald-400 dark:text-emerald-400">
               Hi, I&apos;m Jinesh, <br /> Product Designer based in Bangalore.
             </Heading>
 

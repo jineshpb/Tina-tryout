@@ -9,7 +9,7 @@ const PostsHeader = () => {
   return (
     <div className="absolute left-1/2 top-6 z-[99] flex w-full max-w-[1440px] -translate-x-1/2 items-center justify-between px-4">
       <div className="flex items-center gap-6">
-        <BigButton className="" href="/" linkText="Back Home">
+        <BigButton className="" href="/" linkText="Back Home" useBack>
           <div className="flex">
             <FiHome />
           </div>
