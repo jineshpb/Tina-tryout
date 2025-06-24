@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer"
-import Header from "@/components/Header"
 import NewNavbar from "@/components/NewNavbar"
 import { HomePageComponent } from "@/components/app/home-page"
 import client from "@/tina/__generated__/client"

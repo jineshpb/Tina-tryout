@@ -9,7 +9,6 @@ import { BsHash } from "react-icons/bs"
 import { motion } from "framer-motion"
 import animationData from "@/data/swipeLeft.json"
 import * as LottiePlayer from "@lottiefiles/lottie-player"
-
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import React, { use, useEffect, useRef, useState } from "react"

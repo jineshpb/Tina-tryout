@@ -34,7 +34,7 @@ const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
       <Comp ref={ref} className={clsx("")} {...restProps} id={id}>
         <div
           className={clsx(
-            "relative mx-auto w-full max-w-[1440px] px-8 pt-[120px]",
+            "relative mx-auto w-full max-w-[1440px] pl-24 pt-[120px]",
             {
               "px-[10px] pt-20": isMobile,
             },
