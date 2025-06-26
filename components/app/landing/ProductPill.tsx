@@ -4,15 +4,27 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@radix-ui/react-tooltip"
-import { Radio, SunIcon } from "lucide-react"
+import { MoonIcon, Radio, SunIcon } from "lucide-react"
+import { useTheme } from "next-themes"
 import Link from "next/link"
 import React from "react"
+import { FiSun } from "react-icons/fi"
 
 function ProductPill() {
+  const { setTheme } = useTheme()
   return (
     <div className="flex h-[80px] w-[130px] justify-between gap-1 rounded-[40px] border border-[#2A3148]/[0.04] bg-[#E1E3EA] p-2 dark:bg-[#535B66] lg:h-[100px] lg:w-[162px]">
-      <div className="custom-shadow-light dark:custom-shadow-dark relative flex flex-col items-center justify-center rounded-[32px] p-4 lg:p-8">
-        <Radio className="text-[#C5C8D2] dark:text-[#242835]" />
+      <div
+        className="custom-shadow-light relative flex flex-col items-center justify-center rounded-[32px] p-4 dark:hidden lg:p-8"
+        onClick={() => setTheme("dark")}
+      >
+        <SunIcon className="text-[#C5C8D2] dark:hidden dark:text-[#242835]" />
+      </div>
+      <div
+        className="custom-shadow-light dark:custom-shadow-dark relative hidden flex-col items-center justify-center rounded-[32px] p-4 dark:flex lg:p-8"
+        onClick={() => setTheme("light")}
+      >
+        <MoonIcon className="hidden text-[#C5C8D2] dark:flex dark:text-[#242835] " />
       </div>
       <div className="m-2 flex size-6 items-center justify-center rounded-full bg-gradient-to-b from-[#2D313C] to-[#9B9EA6] lg:size-8 ">
         <div className="flex size-4 items-center justify-center rounded-full bg-gradient-to-b from-[#21242D] to-[#5E626D] lg:size-6">

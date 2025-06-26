@@ -271,7 +271,27 @@
     background-image: url("/Random_static.png");
     background-image: linear-gradient(to bottom, #3f4754fe, #2d333b83),
       url("/Random_static.png");
-    border: 1px solid #10131d;
+    border: 1px solid #5e5e61;
+    box-shadow:
+      0 1px 0 rgba(136, 129, 129, 0),
+      inset 0 2px #8e8e8e,
+      0 67px 121px rgba(42, 49, 72, 0.14),
+      0 27.99px 50.55px rgba(42, 49, 72, 0.2),
+      0 14.97px 27.03px rgba(42, 49, 72, 0.25),
+      0 8.39px 15.15px rgba(42, 49, 72, 0.3),
+      0 4.46px 8.05px rgba(42, 49, 72, 0.36),
+      0 1.85px 3.35px rgba(38, 44, 67, 0.5),
+      0 1px 0 #ffffff2f;
+    transition:
+      box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      border 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .custom-shadow-dark:hover {
+    background-image: url("/Random_static.png");
+    background-image: linear-gradient(to bottom, #3f4754fe, #2d333b83),
+      url("/Random_static.png");
+    border: 1px solid #333439;
     box-shadow:
       0 1px 0 #fff0,
       inset 0 2px 4px #181b22,
