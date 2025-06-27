@@ -45,18 +45,26 @@ export function HomePageComponent(props: {
             }
           })}
         </Bounded>
-        <div className=" mt-[300px] w-full px-6" id="projects">
+        <div className=" relative mt-[300px] w-full px-6" id="projects">
           {sortedProjectList && sortedProjectList?.length > 0 && (
-            <div>
-              <Heading
-                size="md"
-                className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
-              >
-                Projects
-              </Heading>
-              <div className="flex flex-col gap-6 lg:mt-20">
-                <ProjectGrid data={sortedProjectList} />
+            <div className="flex flex-col gap-6 lg:mt-24 lg:pt-24">
+              <div className="flex flex-col gap-4">
+                <Heading
+                  size="lg"
+                  className="mt-8 font-bold tracking-tighter text-zinc-300 dark:text-zinc-700  "
+                >
+                  Projects
+                </Heading>
+                <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
+                  These are a collection of reandom stuff im working on, updates
+                  as and when it is finishes. It is in chronological order.
+                  There are 100% outside of my 9-5 job. I do not publish my 9-5
+                  work here because of NDA and confidentiality. If you are
+                  interested, please reach out.
+                </p>
               </div>
+
+              <ProjectGrid data={sortedProjectList} />
             </div>
           )}
         </div>
@@ -74,12 +82,19 @@ export function HomePageComponent(props: {
 
         {postsList && postsList?.length > 0 && (
           <Bounded className="mt-[300px]" id="posts">
-            <Heading
-              size="md"
-              className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
-            >
-              Latest posts
-            </Heading>
+            <div className="flex flex-col gap-4">
+              <Heading
+                size="md"
+                className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
+              >
+                Latest posts
+              </Heading>
+              <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
+                This is where I try to spill some beans about my 9-5 job.
+                Because of that some are password protected. If you are
+                interested in reading them, please reach out.
+              </p>
+            </div>
             <div className="mt-12 flex flex-col gap-6 ">
               {postsList.map((edge: any, i) => {
                 return <PostCard post={edge} key={i} className="" />

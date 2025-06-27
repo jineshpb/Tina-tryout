@@ -75,21 +75,26 @@ export default function Footer() {
             </Heading>
 
             <p className="prose mt-8 text-2xl text-emerald-200">
-              My expertise is at the intersection of experience design, 3d and
-              cgi. Visually inclined and I believe code is the ultimate truth.
-              You could model something in blender texture it and get a video
-              out , but putting it on the internet and make it available for
-              anyone to experience. Powerful stuff!
+              Thank you for taking your time,, It means a lot. I like
+              experimenting with CGI, code and UI. That reflects in what i
+              practice. Point of this website is just to share the same
+              philosaphy with the world
             </p>
           </div>
-          <Heading
-            className="mt-20 font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
-            as="h1"
-            size="lg"
-          >
-            Socials
-          </Heading>
-          <div className="mx-auto flex w-full  flex-col items-center gap-4 md:flex-row">
+          <div className="flex flex-col gap-0">
+            <Heading
+              className="mt-20 font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
+              as="h1"
+              size="lg"
+            >
+              Socials
+            </Heading>
+            <p className="prose  leading-tight text-emerald-600">
+              LinkedIn is that necessary evil, Behance is pre-2018 works and
+              Instagram is occasional 3d works.
+            </p>
+          </div>
+          <div className="mx-auto mt-4 flex w-full  flex-col items-center gap-4 md:flex-row">
             <SocialsButton
               link="https://www.linkedin.com/in/jineshpb/"
               text="linkedin"
@@ -177,7 +182,7 @@ export default function Footer() {
       <hr className="border-amber-900" />
       <div className="relative flex flex-col items-center gap-4 bg-amber-800 py-[50px]">
         <div className="flex flex-col items-center text-center text-amber-400 dark:text-amber-600">
-          <p>All rights reserved. © 2024 Jinesh P bhaskaran </p>
+          <p>All rights reserved. © 2025 Jinesh P Bhaskaran </p>
           <span>
             Cat model from Sketchfab by <br /> Kanna-Nakajima, Thanks
             Aceternity, uv canvas UI
