@@ -96,7 +96,7 @@ export const FloatingNav = ({
           ease: "easeInOut",
         }}
         className={cn(
-          "fixed inset-x-0 top-10 z-[9999] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white py-2 pl-2 pr-4 shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-white/[0.1] dark:bg-zinc-800",
+          "fixed inset-x-0 top-10 z-[99999] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white py-2 pl-2 pr-4 shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-white/[0.1] dark:bg-zinc-800",
           className,
         )}
       >
