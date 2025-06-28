@@ -19,29 +19,31 @@ export function HomePageComponent(props: {
   const isMobile = useIsMobile()
   const { data } = useTina(props)
 
-  const projectSectionDescription = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksProjects",
-  )?.projectsSectionDescription
+  let projectSectionDescription = ""
+  let projectSectionHeading = ""
+  let postsSectionDescription = ""
+  let postsSectionHeading = ""
+  let experienceSectionDescription = ""
+  let experienceSectionHeading = ""
 
-  const projectSectionHeading = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksProjects",
-  )?.sectionHeading
-
-  const postsSectionDescription = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksPosts",
-  )?.postsSectionDescription
-
-  const postsSectionHeading = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksPosts",
-  )?.sectionHeading
-
-  const experienceSectionDescription = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksExperience",
-  )?.experienceSectionDescription
-
-  const experienceSectionHeading = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksExperience",
-  )?.sectionHeading
+  data.page.blocks?.forEach((block) => {
+    switch (block?.__typename) {
+      case "PageBlocksProjects":
+        projectSectionDescription = block.projectsSectionDescription || ""
+        projectSectionHeading = block.sectionHeading || ""
+        break
+      case "PageBlocksPosts":
+        postsSectionDescription = block.postsSectionDescription || ""
+        postsSectionHeading = block.sectionHeading || ""
+        break
+      case "PageBlocksExperience":
+        experienceSectionDescription = block.experienceSectionDescription || ""
+        experienceSectionHeading = block.sectionHeading || ""
+        break
+      default:
+        break
+    }
+  })
 
   const postsList = data.postsConnection.edges
 

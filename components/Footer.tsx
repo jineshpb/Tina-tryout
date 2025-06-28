@@ -72,27 +72,25 @@ export default function Footer(props: {
   const { data } = useTina(props)
   const [copied, setCopied] = useState(false)
 
-  console.log("@@data", data)
+  let footerDescription = ""
+  let footerHeading = ""
+  let footerLinksHeading = ""
+  let footerLinksDescription = ""
+  let footerLinks: any[] = []
 
-  const footerDescription = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksFooter",
-  )?.footerSectionDescription
-
-  const footerHeading = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksFooter",
-  )?.sectionHeading
-
-  const footerLinksHeading = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksFooter",
-  )?.footerLinksHeading
-
-  const foterLinksDescription = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksFooter",
-  )?.footerLinksDescription
-
-  const footerLinks = data.page.blocks?.find(
-    (block) => block?.__typename === "PageBlocksFooter",
-  )?.footerLinks
+  data.page.blocks?.forEach((block) => {
+    switch (block?.__typename) {
+      case "PageBlocksFooter":
+        footerDescription = block.footerSectionDescription || ""
+        footerHeading = block.sectionHeading || ""
+        footerLinksHeading = block.footerLinksHeading || ""
+        footerLinksDescription = block.footerLinksDescription || ""
+        footerLinks = block.footerLinks || []
+        break
+      default:
+        break
+    }
+  })
 
   return (
     <section
@@ -119,7 +117,7 @@ export default function Footer(props: {
               {footerLinksHeading}
             </Heading>
             <p className="prose  leading-tight text-emerald-600">
-              {foterLinksDescription}
+              {footerLinksDescription}
             </p>
           </div>
           <div className="mx-auto mt-4 flex w-full  flex-col items-center gap-4 md:flex-row">
