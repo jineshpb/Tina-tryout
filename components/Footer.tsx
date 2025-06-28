@@ -70,8 +70,9 @@ export default function Footer(props: {
   query: string
 }) {
   const { data } = useTina(props)
-
   const [copied, setCopied] = useState(false)
+
+  console.log("@@data", data)
 
   const footerDescription = data.page.blocks?.find(
     (block) => block?.__typename === "PageBlocksFooter",
