@@ -81,7 +81,7 @@ export function HomePageComponent(props: {
                 >
                   {projectSectionHeading}
                 </Heading>
-                <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
+                <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
                   {projectSectionDescription}
                 </p>
               </div>
@@ -99,7 +99,7 @@ export function HomePageComponent(props: {
             {experienceSectionHeading}
           </Heading>
           {experienceSectionDescription && (
-            <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
+            <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
               {experienceSectionDescription}
             </p>
           )}
@@ -124,7 +124,7 @@ export function HomePageComponent(props: {
               >
                 {postsSectionHeading}
               </Heading>
-              <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
+              <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
                 {postsSectionDescription}
               </p>
             </div>
