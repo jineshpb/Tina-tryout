@@ -11,9 +11,17 @@ export default async function HomePage() {
 
   return (
     <>
-      <NewNavbar data={result2.data} />
+      <NewNavbar
+        data={result2.data}
+        variables={result2.variables}
+        query={result2.query}
+      />
       <HomePageComponent {...result} />
-      <Footer />
+      <Footer
+        data={result.data}
+        variables={result.variables}
+        query={result.query}
+      />
     </>
   )
 }

@@ -19,6 +19,30 @@ export function HomePageComponent(props: {
   const isMobile = useIsMobile()
   const { data } = useTina(props)
 
+  const projectSectionDescription = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksProjects",
+  )?.projectsSectionDescription
+
+  const projectSectionHeading = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksProjects",
+  )?.sectionHeading
+
+  const postsSectionDescription = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksPosts",
+  )?.postsSectionDescription
+
+  const postsSectionHeading = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksPosts",
+  )?.sectionHeading
+
+  const experienceSectionDescription = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksExperience",
+  )?.experienceSectionDescription
+
+  const experienceSectionHeading = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksExperience",
+  )?.sectionHeading
+
   const postsList = data.postsConnection.edges
 
   const projectList = data.projectsConnection.edges
@@ -51,16 +75,12 @@ export function HomePageComponent(props: {
               <div className="flex flex-col gap-4">
                 <Heading
                   size="lg"
-                  className="mt-8 font-bold tracking-tighter text-zinc-300 dark:text-zinc-700  "
+                  className="mt-8 font-medium tracking-tighter text-zinc-300 dark:text-zinc-700  "
                 >
-                  Projects
+                  {projectSectionHeading}
                 </Heading>
                 <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
-                  These are a collection of reandom stuff im working on, updates
-                  as and when it is finishes. It is in chronological order.
-                  There are 100% outside of my 9-5 job. I do not publish my 9-5
-                  work here because of NDA and confidentiality. If you are
-                  interested, please reach out.
+                  {projectSectionDescription}
                 </p>
               </div>
 
@@ -70,14 +90,27 @@ export function HomePageComponent(props: {
         </div>
 
         <Bounded className=" mt-[300px]" id="career">
-          {data.page.blocks?.map((block) => {
-            switch (block?.__typename) {
-              case "PageBlocksExperience":
-                return <ExperienceHomePageSection block={block} />
-              default:
-                return null
-            }
-          })}
+          <Heading
+            size="md"
+            className="mt-8 font-medium tracking-tighter text-zinc-300 dark:text-zinc-700  "
+          >
+            {experienceSectionHeading}
+          </Heading>
+          {experienceSectionDescription && (
+            <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
+              {experienceSectionDescription}
+            </p>
+          )}
+          <div className="mt-12 flex flex-col gap-6 ">
+            {data.page.blocks?.map((block) => {
+              switch (block?.__typename) {
+                case "PageBlocksExperience":
+                  return <ExperienceHomePageSection block={block} />
+                default:
+                  return null
+              }
+            })}
+          </div>
         </Bounded>
 
         {postsList && postsList?.length > 0 && (
@@ -87,12 +120,10 @@ export function HomePageComponent(props: {
                 size="md"
                 className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
               >
-                Latest posts
+                {postsSectionHeading}
               </Heading>
               <p className="prose leading-tight text-zinc-400 dark:text-zinc-600">
-                This is where I try to spill some beans about my 9-5 job.
-                Because of that some are password protected. If you are
-                interested in reading them, please reach out.
+                {postsSectionDescription}
               </p>
             </div>
             <div className="mt-12 flex flex-col gap-6 ">

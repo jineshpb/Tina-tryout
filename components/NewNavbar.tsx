@@ -13,7 +13,12 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { FloatingNav } from "./ui/floating-navbar"
 
-export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
+export default function NewNavbar(props: {
+  data: SettingsConnectionQuery
+  variables: {}
+  query: string
+  tag?: string
+}) {
   const [isMobile, setIsMobile] = useState(true)
   const [open, setOpen] = useState(false)
 
@@ -35,14 +40,10 @@ export default function NewNavbar(props: { data: SettingsConnectionQuery }) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const { data } = useTina({
-    query: "settings_doc.json",
-    variables: {},
-    data: props.data,
-  })
+  const { data } = useTina(props)
 
   const NavList = data.settingsConnection.edges
-  console.log("@@NavList", NavList)
+  // console.log("@@NavList", NavList)
 
   return (
     <nav
@@ -81,7 +82,7 @@ function isHome(link: string, pathname: string) {
 function NameLogo({ logo }: { logo: any }) {
   // replace any with the actual type of logo
   return (
-    <button
+    <div
       onClick={() => {
         const element = document.getElementById("introduction")
         element?.scrollIntoView({ behavior: "smooth" })
@@ -90,7 +91,7 @@ function NameLogo({ logo }: { logo: any }) {
       className="text-xl font-extrabold tracking-tighter text-zinc-900"
     >
       <Image src={logo} width={24} height={24} alt="Logo" />
-    </button>
+    </div>
   )
 }
 

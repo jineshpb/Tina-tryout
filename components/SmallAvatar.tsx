@@ -8,7 +8,7 @@ type AvatarProps = {
 export default function SmallAvatar({ image, className }: AvatarProps) {
   return (
     <div
-      className={`relative overflow-hidden text-clip rounded-[32px]  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]`}
+      className={`relative -z-10 overflow-hidden text-clip rounded-[32px]  md:h-[60px] md:w-[120px] lg:h-[100px] lg:w-[160px]`}
     >
       <Image src={image} fill className="object-cover" alt="avatar" />
     </div>

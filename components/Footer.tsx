@@ -20,6 +20,11 @@ import copy from "copy-to-clipboard"
 import { useState } from "react"
 import Lottie from "react-lottie"
 import animationData from "@/data/confetti.json"
+import {
+  HomePageQuery,
+  SettingsConnectionQuery,
+} from "@/tina/__generated__/types"
+import { useTina } from "tinacms/dist/react"
 
 function copyEmail({ copyId }: { copyId: string }) {
   // let inputElement = document.createElement("input")
@@ -59,8 +64,34 @@ const handleCopy = ({
   })
 }
 
-export default function Footer() {
+export default function Footer(props: {
+  data: HomePageQuery
+  variables: {}
+  query: string
+}) {
+  const { data } = useTina(props)
+
   const [copied, setCopied] = useState(false)
+
+  const footerDescription = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksFooter",
+  )?.footerSectionDescription
+
+  const footerHeading = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksFooter",
+  )?.sectionHeading
+
+  const footerLinksHeading = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksFooter",
+  )?.footerLinksHeading
+
+  const foterLinksDescription = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksFooter",
+  )?.footerLinksDescription
+
+  const footerLinks = data.page.blocks?.find(
+    (block) => block?.__typename === "PageBlocksFooter",
+  )?.footerLinks
 
   return (
     <section
@@ -71,14 +102,11 @@ export default function Footer() {
         <div className="flex w-full flex-col gap-4 px-6">
           <div>
             <Heading className=" tracking-tight text-emerald-400 dark:text-emerald-400">
-              Hi, I&apos;m Jinesh, <br /> Product Designer based in Bangalore.
+              {footerHeading}
             </Heading>
 
             <p className="prose mt-8 text-2xl text-emerald-200">
-              Thank you for taking your time,, It means a lot. I like
-              experimenting with CGI, code and UI. That reflects in what i
-              practice. Point of this website is just to share the same
-              philosaphy with the world
+              {footerDescription}
             </p>
           </div>
           <div className="flex flex-col gap-0">
@@ -87,31 +115,25 @@ export default function Footer() {
               as="h1"
               size="lg"
             >
-              Socials
+              {footerLinksHeading}
             </Heading>
             <p className="prose  leading-tight text-emerald-600">
-              LinkedIn is that necessary evil, Behance is pre-2018 works and
-              Instagram is occasional 3d works.
+              {foterLinksDescription}
             </p>
           </div>
           <div className="mx-auto mt-4 flex w-full  flex-col items-center gap-4 md:flex-row">
-            <SocialsButton
-              link="https://www.linkedin.com/in/jineshpb/"
-              text="linkedin"
-              icon={<FaLinkedin size={48} />}
-            />
-            <SocialsButton
-              link="https://www.instagram.com/arcdesignz99/"
-              text="Instagram"
-              icon={<FaInstagram size={48} />}
-            />
+            {footerLinks?.map(
+              (link) =>
+                link && (
+                  <SocialsButton
+                    key={link.link || link.label}
+                    link={link.link || "#"}
+                    text={link.label || ""}
+                    icon={link.icon || "FaLinkedin"}
+                  />
+                ),
+            )}
           </div>
-          <SocialsButton
-            link="https://www.behance.net/jineshpb"
-            text="Behance"
-            icon={<FaSquareBehance size={48} />}
-          />
-
           <button
             className="relative flex w-full flex-col-reverse items-start gap-4 rounded-[64px] bg-emerald-900 p-8 text-[38px] text-emerald-400"
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => {

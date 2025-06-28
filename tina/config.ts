@@ -74,7 +74,6 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
-
           {
             name: "blocks",
             label: "Blocks",
@@ -131,11 +130,20 @@ export default defineConfig({
               {
                 name: "experience",
                 label: "Experience",
+
                 fields: [
                   {
-                    name: "experienceHeading",
+                    name: "sectionHeading",
                     type: "string",
-                    label: "Experience Heading",
+                    label: "Section Heading",
+                  },
+                  {
+                    name: "experienceSectionDescription",
+                    type: "string",
+                    label: "Section Description",
+                    ui: {
+                      component: "textarea",
+                    },
                   },
                   {
                     name: "roles",
@@ -144,7 +152,7 @@ export default defineConfig({
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        return { label: item.title }
+                        return { label: item.position || "New Role" }
                       },
                       defaultItem: {
                         position: "designer",
@@ -183,56 +191,94 @@ export default defineConfig({
                 label: "Projects",
                 fields: [
                   {
-                    name: "projectsHeading",
+                    name: "sectionHeading",
                     type: "string",
-                    label: "Projects Heading",
+                    label: "Section Heading",
                   },
                   {
-                    name: "projects",
+                    name: "projectsSectionDescription",
+                    type: "string",
+                    label: "Section Description",
+                    ui: {
+                      component: "textarea",
+                    },
+                  },
+                ],
+              },
+              {
+                name: "posts",
+                label: "Posts",
+                fields: [
+                  {
+                    name: "sectionHeading",
+                    type: "string",
+                    label: "Section Heading",
+                  },
+                  {
+                    name: "postsSectionDescription",
+                    type: "string",
+                    label: "Section Description",
+                    ui: {
+                      component: "textarea",
+                    },
+                  },
+                ],
+              },
+              {
+                name: "footer",
+                label: "Footer",
+                fields: [
+                  {
+                    name: "sectionHeading",
+                    type: "string",
+                    label: "Section Heading",
+                  },
+                  {
+                    name: "footerSectionDescription",
+                    type: "string",
+                    label: "Section Description",
+                    ui: {
+                      component: "textarea",
+                    },
+                  },
+                  {
+                    name: "footerLinksHeading",
+                    type: "string",
+                    label: "Footer Links Heading",
+                  },
+                  {
+                    name: "footerLinksDescription",
+                    type: "string",
+                    label: "Footer Links Description",
+                    ui: {
+                      component: "textarea",
+                    },
+                  },
+                  {
+                    name: "footerLinks",
                     type: "object",
-                    label: "Projects",
+                    label: "Footer Links",
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        return { label: item?.title }
-                      },
-                      defaultItem: {
-                        title: "TinaCMS",
-                        description: "I did some stuff",
-                        link: "https://tina.io",
-                        image: "/jinesh-mug.jpg",
+                        return { label: item.label || "New Link" }
                       },
                     },
                     fields: [
                       {
-                        name: "projectType",
+                        name: "label",
                         type: "string",
-                        label: "Project Type",
+                        label: "Label",
                       },
                       {
-                        name: "title",
+                        name: "icon",
                         type: "string",
-                        label: "Title",
-                      },
-                      {
-                        name: "description",
-                        type: "string",
-                        label: "Description",
+                        label: "Icon",
                       },
                       {
                         name: "link",
                         type: "string",
                         label: "Link",
-                      },
-                      {
-                        name: "image",
-                        type: "image",
-                        label: "Image",
-                      },
-                      {
-                        name: "videoLink",
-                        type: "string",
-                        label: "Video link",
                       },
                     ],
                   },
