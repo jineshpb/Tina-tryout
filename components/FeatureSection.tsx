@@ -16,9 +16,9 @@ const FeatureSection = () => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <div className="flex flex-col items-center justify-start gap-2 md:flex-row md:items-center">
+          <div className="flex flex-col items-center justify-start gap-2  md:flex-row-reverse md:items-center md:justify-end">
             <NeedsPasswordPill />
-            <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-500">
+            <h2 className="text-xl font-bold text-gray-700 dark:text-gray-500">
               Selected Works
             </h2>
           </div>
