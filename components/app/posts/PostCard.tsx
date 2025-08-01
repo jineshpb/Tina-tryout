@@ -2,6 +2,7 @@ import moment from "moment"
 import Link from "next/link"
 import { tinaField } from "tinacms/dist/react"
 import { FaLock } from "react-icons/fa" // Import the lock icon
+import NeedsPasswordPill from "@/components/needs-password-pill"
 
 export default function PostCard({
   post,
@@ -22,12 +23,7 @@ export default function PostCard({
         className="flex flex-col gap-2"
       >
         <div className="flex flex-col items-start ">
-          {post.node.protected && (
-            <div className="flex items-center rounded-xl  border border-zinc-100 px-2 py-1 text-sm text-gray-400 shadow-sm dark:border-zinc-800">
-              <FaLock className="mr-2 text-gray-400" />
-              <p>needs password</p>
-            </div>
-          )}
+          {post.node.protected && <NeedsPasswordPill />}
           <div
             className="text-[40px] font-normal leading-tight tracking-tighter text-zinc-700 hover:text-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-300 md:text-[60px]"
             data-tina-field={

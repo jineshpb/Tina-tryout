@@ -1,13 +1,17 @@
 import client from "@/tina/__generated__/client"
 import { Metadata } from "next"
-import { notFound, redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import PasswordProtection from "@/components/PasswordProtection"
+import { PostPageComponentNew } from "@/components/app/posts/post-page-new"
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string }
 }) {
+  // const detaisl = await getPostFromParams({ params })
+  // console.log("params", params)
+
   try {
     const result = await client.queries.posts({
       relativePath: `${params.slug}.mdx`,
@@ -47,7 +51,7 @@ export async function generateMetadata({
       },
     }
   } catch (error) {
-    console.error("there was an error", error)
+    console.error("ther was an error", error)
     return {
       title: "Not Found",
       description: "This page could not be found",
@@ -66,22 +70,43 @@ export default async function Page({ params }: { params: { slug: string } }) {
       return notFound()
     })
 
-  // If post is protected, show password protection
-  if (result.data.posts.protected) {
-    return (
-      <PasswordProtection
-        password={result.data.posts.password ?? ""}
-        link={`/posts/${params.slug}/content`} // Redirect to content route
-        isExternal={false}
-        title="Password Protection"
-        description="This post is password protected. Please enter the password to access."
-        email="jineshpb@gmail.com"
-        successMessage="Access Granted!"
-      />
-    )
-  }
+  // Fetch all posts for suggestions
+  const allPostsResult = await client.queries.postsConnection({
+    last: 50, // Get more posts for better suggestions
+  })
 
-  // If post is not protected, redirect to content route
-  // This ensures all posts go through the content route
-  redirect(`/posts/${params.slug}/content`)
+  // Calculate suggested posts
+  const suggestedPosts = calculateSuggestedPosts(
+    result.data.posts,
+    allPostsResult.data.postsConnection.edges || [],
+  )
+
+  return <PostPageComponentNew {...result} suggestedPosts={suggestedPosts} />
+}
+
+// Helper function to calculate suggested posts
+const calculateSuggestedPosts = (currentPost: any, allPostsEdges: any[]) => {
+  // Get all posts except current one
+  const allPosts = allPostsEdges
+    .filter((edge) => edge?.node?._sys.filename !== currentPost._sys.filename)
+    .map((edge) => edge?.node)
+    .filter(Boolean)
+
+  // Score posts based on tag matches
+  const scoredPosts = allPosts.map((post) => {
+    const matchingTags =
+      post?.tags?.filter((tag: string) => currentPost.tags?.includes(tag))
+        .length || 0
+
+    return {
+      post,
+      score: matchingTags,
+    }
+  })
+
+  // Sort by score and take top 3
+  return scoredPosts
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((item) => item.post)
 }

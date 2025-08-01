@@ -10,6 +10,7 @@ import PostCard from "./posts/PostCard"
 import PageHero from "./landing/page-hero"
 import ExperienceHomePageSection from "./projects/experience-home-page-section"
 import { useIsMobile } from "@/utils/useScreenSize"
+import FeatureSection from "../FeatureSection"
 
 export function HomePageComponent(props: {
   data: HomePageQuery
@@ -71,6 +72,10 @@ export function HomePageComponent(props: {
             }
           })}
         </Bounded>
+        <Bounded className="mt-52">
+          <FeatureSection />
+        </Bounded>
+
         <div className=" relative mt-[300px] w-full px-6" id="projects">
           {sortedProjectList && sortedProjectList?.length > 0 && (
             <div className="flex flex-col gap-6 lg:mt-24 lg:pt-24">
