@@ -96,7 +96,7 @@ export const FloatingNav = ({
           ease: "easeInOut",
         }}
         className={cn(
-          "fixed inset-x-0 top-10 z-[99999] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white py-2 pl-2 pr-4 shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-white/[0.1] dark:bg-zinc-800",
+          "fixed inset-x-0 top-10 z-[99999] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white py-2 pl-2 pr-6 shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-white/[0.1] dark:bg-zinc-800",
           className,
         )}
       >
@@ -111,8 +111,8 @@ export const FloatingNav = ({
             boxShadow: "inset 0 2px 4px #ffffff/0.5",
           }}
         >
-          {/* <Home size={24} /> */}
-          <NameLogo logo={nameLogo} />
+          <Home size={16} />
+          {/* <NameLogo logo={nameLogo} /> */}
           <span className="absolute bottom-[-6px] left-0 -z-10  size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
         </button>
         {Array.isArray(navItems.menuItems) &&
@@ -125,11 +125,13 @@ export const FloatingNav = ({
               )}
             >
               <span className="block sm:hidden"></span>
-              <span className="hidden text-xl sm:block">{navItem.label}</span>
+              <span className="font-space-mono text-md hidden sm:block">
+                {navItem.label}
+              </span>
             </button>
           ))}
 
-        <div className="mx-auto flex w-auto items-center justify-center tracking-normal">
+        <div className="mx-auto  flex w-auto items-center justify-center tracking-normal">
           <a
             href="https://live.jineshb.me"
             target="_blank"
@@ -140,10 +142,10 @@ export const FloatingNav = ({
             <span className="inline-block min-w-fit">Live</span>
           </a>
         </div>
-        <button className="relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white">
+        {/* <button className="relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white">
           <ThemeToggle />
           <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500  to-transparent" />
-        </button>
+        </button> */}
       </motion.div>
     </AnimatePresence>
   )

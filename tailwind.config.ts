@@ -31,6 +31,11 @@ const config = {
         "abc-regular": ["ABCWhyteRegular", "sans-serif"],
         "abc-medium": ["ABCWhyteMedium", "sans-serif"],
         "abc-bold": ["ABCWhyteBold", "sans-serif"],
+        "neue-montreal-bold": ["NeueMontrealBold", "sans-serif"],
+        "neue-montreal-book": ["NeueMontrealBook", "sans-serif"],
+        "neue-montreal-medium": ["NeueMontrealMedium", "sans-serif"],
+        "neue-montreal-thin": ["NeueMontrealThin", "sans-serif"],
+        "space-mono": ["SpaceMono", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

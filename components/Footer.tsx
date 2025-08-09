@@ -25,6 +25,7 @@ import {
   SettingsConnectionQuery,
 } from "@/tina/__generated__/types"
 import { useTina } from "tinacms/dist/react"
+import MaskedHeader from "./masked-header"
 
 function copyEmail({ copyId }: { copyId: string }) {
   // let inputElement = document.createElement("input")
@@ -94,13 +95,14 @@ export default function Footer(props: {
 
   return (
     <section
-      className=" mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800 "
+      className="  mt-[300px] flex flex-col rounded-t-[56px] bg-emerald-800"
       id="footer"
     >
-      <div className="relative mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
-        <div className="flex w-full flex-col gap-4 px-6">
+      {/* eslint-disable-next-line tailwindcss/classnames-order */}
+      <div className="font-neue-montreal-book relative z-0 mx-auto mt-[200px] flex w-full max-w-[1440px] flex-col items-start gap-4">
+        <div className="flex w-full flex-col gap-4  px-6">
           <div>
-            <Heading className=" tracking-tight text-emerald-400 dark:text-emerald-400">
+            <Heading className=" text-emerald-400 dark:text-emerald-400">
               {footerHeading}
             </Heading>
 
@@ -108,17 +110,18 @@ export default function Footer(props: {
               {footerDescription}
             </p>
           </div>
-          <div className="flex flex-col gap-0">
-            <Heading
-              className="mt-20 font-normal tracking-tighter text-emerald-400 dark:text-emerald-400"
+          <div className="mb-20 mt-40 flex flex-col gap-0">
+            <MaskedHeader
               as="h1"
-              size="lg"
+              size="2xl"
+              className="font-neue-montreal-book !text-emerald-400"
+              shadowClassName="!bg-gradient-to-b !from-transparent !via-emerald-800 !via-65% !to-emerald-800"
             >
               {footerLinksHeading}
-            </Heading>
-            <p className="prose  leading-tight text-emerald-600">
+            </MaskedHeader>
+            {/* <p className="prose  leading-tight text-emerald-600">
               {footerLinksDescription}
-            </p>
+            </p> */}
           </div>
           <div className="mx-auto mt-4 flex w-full  flex-col items-center gap-4 md:flex-row">
             {footerLinks?.map(
@@ -179,22 +182,22 @@ export default function Footer(props: {
       </div>
       <div className="relative flex w-full flex-col items-end overflow-hidden text-clip bg-gradient-to-t from-amber-800 via-amber-800 to-emerald-800">
         <div className="bottom-0 z-10 h-[600px] w-full">
-          <RenderModel className="">
+          {/* <RenderModel className="">
             <ChonkyCat />
-          </RenderModel>
+          </RenderModel> */}
         </div>
         <div className="absolute -bottom-[500px] z-10 h-[1200px] w-full">
           {/* <GravityBalls /> */}
         </div>
 
-        <div className=" absolute w-full ">
-          <div className="mx-auto mt-[100px] max-w-[1440px] px-8 ">
+        <div className="absolute bottom-0 left-1/2 -mb-12 flex w-full -translate-x-1/2 items-center justify-center">
+          <div className="px-8">
             <Heading
               as="h3"
               size="2xl"
-              className=" font-bold leading-[11rem] tracking-tight text-gray-700/20 dark:text-gray-700/20"
+              className="font-neue-montreal-bold !text-[300px]    text-gray-700/20 dark:text-gray-700/20"
             >
-              Thank you for visiting
+              Thank you!
             </Heading>
           </div>
         </div>

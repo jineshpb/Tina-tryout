@@ -11,6 +11,7 @@ import PageHero from "./landing/page-hero"
 import ExperienceHomePageSection from "./projects/experience-home-page-section"
 import { useIsMobile } from "@/utils/useScreenSize"
 import FeatureSection from "../FeatureSection"
+import MaskedHeader from "../masked-header"
 
 export function HomePageComponent(props: {
   data: HomePageQuery
@@ -79,17 +80,12 @@ export function HomePageComponent(props: {
         <div className=" relative mt-[300px] w-full px-6" id="projects">
           {sortedProjectList && sortedProjectList?.length > 0 && (
             <div className="flex flex-col gap-6 lg:mt-24 lg:pt-24">
-              <div className="flex flex-col gap-4">
-                <Heading
-                  size="lg"
-                  className="mt-8 font-medium tracking-tighter text-zinc-300 dark:text-zinc-700  "
-                >
-                  {projectSectionHeading}
-                </Heading>
-                <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
+              <Bounded className="pb-20">
+                <MaskedHeader>{projectSectionHeading}</MaskedHeader>
+                <p className="prose w-full pl-4 leading-tight text-zinc-400 dark:text-zinc-600">
                   {projectSectionDescription}
                 </p>
-              </div>
+              </Bounded>
 
               <ProjectGrid data={sortedProjectList} />
             </div>
@@ -97,18 +93,13 @@ export function HomePageComponent(props: {
         </div>
 
         <Bounded className=" mt-[300px]" id="career">
-          <Heading
-            size="md"
-            className="mt-8 font-medium tracking-tighter text-zinc-300 dark:text-zinc-700  "
-          >
-            {experienceSectionHeading}
-          </Heading>
+          <MaskedHeader size="2xl">{experienceSectionHeading}</MaskedHeader>
           {experienceSectionDescription && (
             <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
               {experienceSectionDescription}
             </p>
           )}
-          <div className="mt-12 flex flex-col gap-6 ">
+          <div className="mt-40 flex flex-col gap-6 ">
             {data.page.blocks?.map((block) => {
               switch (block?.__typename) {
                 case "PageBlocksExperience":
@@ -123,17 +114,12 @@ export function HomePageComponent(props: {
         {postsList && postsList?.length > 0 && (
           <Bounded className="mt-[300px]" id="posts">
             <div className="flex flex-col gap-4">
-              <Heading
-                size="md"
-                className="mt-8 font-normal tracking-tighter text-zinc-300 dark:text-zinc-700  "
-              >
-                {postsSectionHeading}
-              </Heading>
-              <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
+              <MaskedHeader size="2xl">{postsSectionHeading}</MaskedHeader>
+              <p className="prose w-full pl-4 leading-tight text-zinc-400 dark:text-zinc-600">
                 {postsSectionDescription}
               </p>
             </div>
-            <div className="mt-12 flex flex-col gap-6 ">
+            <div className="mt-40 flex flex-col gap-6 ">
               {postsList.map((edge: any, i) => {
                 return <PostCard post={edge} key={i} className="" />
               })}

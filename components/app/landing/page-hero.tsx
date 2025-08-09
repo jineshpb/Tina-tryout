@@ -53,8 +53,9 @@ const PageHero = ({ block }: { block: any }) => {
   return (
     <section className="relative flex w-full flex-col gap-12 lg:mt-24 lg:flex-row">
       <div className=" mt-24 hidden w-full md:flex ">
-        <div className=" w-full items-center justify-center text-6xl font-medium tracking-tighter text-zinc-500 dark:text-zinc-400 md:text-7xl  lg:text-8xl xl:text-9xl ">
-          <div className="mx-auto w-full items-center justify-center space-y-6 ">
+        <div className=" w-full items-center justify-center text-6xl font-bold  text-zinc-500 dark:text-zinc-400  md:text-7xl lg:text-8xl xl:text-9xl ">
+          {/* eslint-disable-next-line tailwindcss/classnames-order */}
+          <div className="font-neue-montreal-book mx-auto w-full items-center justify-center space-y-6">
             <div className="select-none">
               <div className="flex w-full items-center justify-center gap-4">
                 <h1>Product</h1>
@@ -99,7 +100,7 @@ const PageHero = ({ block }: { block: any }) => {
               </DelayedComponent>
             </div>
             <div className="mx-auto flex w-full items-center justify-center">
-              <h3 className="mt-6 font-ppeditorial text-3xl tracking-wide text-zinc-300 dark:text-zinc-700 ">
+              <h3 className="mt-6 font-ppeditorial text-3xl font-normal tracking-wide text-zinc-300 dark:text-zinc-700 ">
                 and generally curious.
               </h3>
             </div>

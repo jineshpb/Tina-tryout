@@ -122,8 +122,8 @@ function ConcreteShape(props: JSX.IntrinsicElements["group"]) {
               origin={[0, 0, 0]}
             />
             <Depth
-              colorA="yellow"
-              colorB="#ff0080"
+              colorA="green"
+              colorB="#047857"
               alpha={0.1}
               mode="add"
               near={2 * gradient}
@@ -140,8 +140,8 @@ function ConcreteShape(props: JSX.IntrinsicElements["group"]) {
               alpha={0.1}
             />
             <Depth
-              colorA="red"
-              colorB="#ff0080"
+              colorA="green"
+              colorB="#10b981"
               alpha={0.5}
               mode="add"
               near={3 * gradient}
