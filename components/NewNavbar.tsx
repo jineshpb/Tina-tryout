@@ -121,7 +121,7 @@ function MobileNav({
       {open ? (
         <div className="z-20 !m-0 flex w-full flex-col !p-0 ">
           <div
-            className="flex size-full flex-col items-end rounded-[32px] border border-gray-600  backdrop-blur-xl"
+            className="relative flex size-full flex-col items-end rounded-[32px] border border-gray-300 backdrop-blur-xl  dark:border-gray-700"
             style={{
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
@@ -130,7 +130,7 @@ function MobileNav({
             <button
               aria-expanded={open}
               aria-label="Open menu"
-              className=" p-6 text-2xl text-zinc-800 dark:text-zinc-400"
+              className=" absolute right-0 top-0 p-6 text-2xl text-zinc-800 dark:text-zinc-400"
               onClick={() => {
                 setOpen(!open)
               }}
@@ -193,10 +193,12 @@ function handleClick(link: string) {
 function DesktopNav({ data, className }: { data: any; className?: string }) {
   const [{ cursor, node }] = data
 
-  console.log("node", node?.menuItems)
+  // console.log("node", node?.menuItems)
 
   return (
-    <div className={clsx("flex items-center justify-between gap-8", className)}>
+    <div
+      className={clsx("flex items-center justify-between gap-8 ", className)}
+    >
       {Array.isArray(data) &&
         data.map((item: any, index: number) => (
           <NameLogo logo={item.node?.logo} key={index} />

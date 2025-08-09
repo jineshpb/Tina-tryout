@@ -20,8 +20,8 @@ export default function MaskedHeader({
     <Comp
       // eslint-disable-next-line tailwindcss/classnames-order
       className={clsx(
-        "font-neue-montreal-medium pointer-events-none relative -z-10 w-auto capitalize leading-tight tracking-normal text-zinc-300 dark:text-zinc-700 lg:-mb-32",
-        size === "2xl" && "text-[100px] lg:text-[200px] xl:text-[300px] ",
+        "font-neue-montreal-medium pointer-events-none relative -z-10 w-auto overflow-hidden capitalize leading-tight tracking-normal text-zinc-300 dark:text-zinc-700 lg:-mb-32",
+        size === "2xl" && "text-[80px] lg:text-[200px] xl:text-[300px] ",
         size === "xl" && "text-7xl md:text-9xl",
         size === "lg" && "text-6xl md:text-7xl lg:text-8xl",
         className,

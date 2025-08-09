@@ -195,7 +195,7 @@ export default function Footer(props: {
             <Heading
               as="h3"
               size="2xl"
-              className="font-neue-montreal-bold !text-[300px]    text-gray-700/20 dark:text-gray-700/20"
+              className="font-neue-montreal-bold   text-gray-700/20 dark:text-gray-700/20"
             >
               Thank you!
             </Heading>
