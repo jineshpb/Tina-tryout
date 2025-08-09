@@ -182,9 +182,9 @@ export default function Footer(props: {
       </div>
       <div className="relative flex w-full flex-col items-end overflow-hidden text-clip bg-gradient-to-t from-amber-800 via-amber-800 to-emerald-800">
         <div className="bottom-0 z-10 h-[600px] w-full">
-          {/* <RenderModel className="">
+          <RenderModel className="">
             <ChonkyCat />
-          </RenderModel> */}
+          </RenderModel>
         </div>
         <div className="absolute -bottom-[500px] z-10 h-[1200px] w-full">
           {/* <GravityBalls /> */}
@@ -195,7 +195,7 @@ export default function Footer(props: {
             <Heading
               as="h3"
               size="2xl"
-              className="font-neue-montreal-bold   text-gray-700/20 dark:text-gray-700/20"
+              className="font-neue-montreal-bold  text-gray-700/20 dark:text-gray-700/20"
             >
               Thank you!
             </Heading>
