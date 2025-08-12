@@ -86,7 +86,7 @@ const ExperienceHomePageSection = ({ block }: { block: any }) => {
       <div className="relative">
         {/* Gradient Timeline Line */}
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-        <div className="timeline-line absolute left-8 top-0 h-full w-1 origin-top">
+        <div className="timeline-line absolute left-2 top-0 h-full w-1 origin-top md:left-8">
           <div className="size-full rounded-full bg-gradient-to-b from-transparent via-blue-400 via-green-400 via-purple-500 via-20% to-transparent"></div>
         </div>
 
@@ -96,11 +96,11 @@ const ExperienceHomePageSection = ({ block }: { block: any }) => {
             <div key={i} className="relative flex items-start">
               {/* Timeline Marker */}
               {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-              <div className="timeline-marker absolute left-[26px] top-4 z-10 size-4 rounded-full border-4 border-zinc-200 bg-white shadow-lg dark:border-zinc-700"></div>
+              <div className="timeline-marker absolute left-[2px] top-4 z-10 size-4 rounded-full border-4 border-zinc-200 bg-white shadow-lg dark:border-zinc-700 md:left-[26px]"></div>
 
               {/* Content Card */}
               {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-              <div className="timeline-content ml-16 flex-1">
+              <div className="timeline-content ml-10 flex-1 md:ml-16">
                 <div>
                   {/* Position Title */}
                   <div
