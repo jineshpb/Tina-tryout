@@ -79,10 +79,10 @@ export function HomePageComponent(props: {
 
         <div className=" relative mt-[300px] w-full px-6" id="projects">
           {sortedProjectList && sortedProjectList?.length > 0 && (
-            <div className="flex flex-col gap-6 lg:mt-24 lg:pt-24">
-              <Bounded className="pb-20">
+            <div className="flex flex-col lg:mt-24 lg:pt-24">
+              <Bounded className="pb-2 md:pb-20">
                 <MaskedHeader>{projectSectionHeading}</MaskedHeader>
-                <p className="prose w-full pl-4 leading-tight text-zinc-400 dark:text-zinc-600">
+                <p className="prose hidden w-full pl-4 leading-tight text-zinc-400 dark:text-zinc-600 md:block">
                   {projectSectionDescription}
                 </p>
               </Bounded>
@@ -95,11 +95,11 @@ export function HomePageComponent(props: {
         <Bounded className=" mt-[300px]" id="career">
           <MaskedHeader size="2xl">{experienceSectionHeading}</MaskedHeader>
           {experienceSectionDescription && (
-            <p className="prose w-full leading-tight text-zinc-400 dark:text-zinc-600">
+            <p className="prose hidden w-full leading-tight text-zinc-400 dark:text-zinc-600 md:block">
               {experienceSectionDescription}
             </p>
           )}
-          <div className="mt-40 flex flex-col gap-6 ">
+          <div className="mt-8 flex flex-col gap-6 md:mt-40">
             {data.page.blocks?.map((block) => {
               switch (block?.__typename) {
                 case "PageBlocksExperience":
@@ -115,11 +115,11 @@ export function HomePageComponent(props: {
           <Bounded className="mt-[300px]" id="posts">
             <div className="flex flex-col gap-4">
               <MaskedHeader size="2xl">{postsSectionHeading}</MaskedHeader>
-              <p className="prose w-full pl-4 leading-tight text-zinc-400 dark:text-zinc-600">
+              <p className="prose hidden w-full pl-4 leading-tight text-zinc-400 dark:text-zinc-600 md:block">
                 {postsSectionDescription}
               </p>
             </div>
-            <div className="mt-40 flex flex-col gap-6 ">
+            <div className="mt-8 flex flex-col gap-6 md:mt-40">
               {postsList.map((edge: any, i) => {
                 return <PostCard post={edge} key={i} className="" />
               })}
